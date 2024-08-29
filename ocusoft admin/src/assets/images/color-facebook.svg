@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="-0.009" x2="0.5" y2="1.043" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00b2ff"/>
+      <stop offset="1" stop-color="#006aff"/>
+    </linearGradient>
+  </defs>
+  <g id="facebook-2020-2-1" transform="translate(-17198.869 -17785.199)">
+    <g id="Group_13341" data-name="Group 13341" transform="translate(17198.869 17785.199)">
+      <path id="Path_13851" data-name="Path 13851" d="M17814.869,18309.2a10,10,0,1,1-10,10A10,10,0,0,1,17814.869,18309.2Z" transform="translate(-17804.867 -18309.199)" fill="url(#linear-gradient)"/>
+      <path id="Path_13852" data-name="Path 13852" d="M19911.141,19737.773v-8.051h2.27l.3-2.836h-2.57l0-1.418c0-.74.07-1.135,1.133-1.135h1.42v-2.834h-2.27c-2.73,0-3.689,1.375-3.689,3.688v1.7h-1.7v2.834h1.7v7.938a10.519,10.519,0,0,0,3.4.113Z" transform="translate(-19899.791 -19717.863)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

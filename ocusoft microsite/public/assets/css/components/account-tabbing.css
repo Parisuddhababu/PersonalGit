@@ -1,0 +1,83 @@
+.account-tabbing-wrap {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .account-tabbing-wrap {
+    max-width: 280px;
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .account-tabbing-wrap {
+    max-width: 330px;
+    width: 100%;
+  }
+}
+.account-tabbing-wrap .account-tabbing-box {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  overflow: hidden;
+}
+.account-tabbing-wrap .account-tabbing-box li {
+  display: -ms-flex;
+  display: flex;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: var(--data_site_gray_color);
+}
+.account-tabbing-wrap .account-tabbing-box li:not(:last-child) {
+  border-bottom: 2px solid var(--data_site_border_color);
+}
+.account-tabbing-wrap .account-tabbing-box li:hover {
+  background-color: var(--data_site_border_color);
+}
+.account-tabbing-wrap .account-tabbing-box li a {
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: inline-block;
+  width: 100%;
+  color: var(--data_site_gray_color);
+  padding: 10px;
+}
+@media only screen and (min-width: 1024px) {
+  .account-tabbing-wrap .account-tabbing-box li a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-tabbing-wrap .account-tabbing-box li a {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .account-tabbing-wrap .account-tabbing-box li a {
+    padding: 14px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .account-tabbing-wrap .account-tabbing-box li a {
+    padding: 18px;
+  }
+}
+.account-tabbing-wrap .account-tabbing-box li.tab-active {
+  background-color: var(--data_site_primary_color);
+}
+.account-tabbing-wrap .account-tabbing-box li.tab-active a {
+  color: var(--data_footer_text);
+  font-weight: 700;
+}

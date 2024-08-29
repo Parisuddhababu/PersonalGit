@@ -1,0 +1,110 @@
+.categories-section {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid var(--data_site_border_color);
+  max-width: 100%;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .categories-section {
+    max-width: 270px;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .categories-section {
+    max-width: 320px;
+    width: 100%;
+    padding: 30px;
+  }
+}
+.categories-section span {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  color: var(--data_site_gray_color);
+}
+@media only screen and (min-width: 1024px) {
+  .categories-section span {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .categories-section span {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .categories-section span {
+    margin-bottom: 14px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .categories-section span {
+    margin-bottom: 18px;
+  }
+}
+.categories-section .categories-wrap {
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .categories-section .categories-wrap {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+.categories-section .categories-wrap li {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-right: 10px;
+  border-right: 1px solid var(--data_site_border_color);
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 768px) {
+  .categories-section .categories-wrap li {
+    padding-right: 0;
+    border-right: none;
+  }
+}
+.categories-section .categories-wrap li:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+.categories-section .categories-wrap li:hover a {
+  color: var(--data_site_text_color);
+}
+.categories-section .categories-wrap li a {
+  color: var(--data_site_gray_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+@media only screen and (min-width: 1024px) {
+  .categories-section .categories-wrap li a {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .categories-section .categories-wrap li a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

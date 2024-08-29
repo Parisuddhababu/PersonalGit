@@ -1,0 +1,121 @@
+@import "../common/mixin";
+
+.osicon-cheveron-down {
+	@include osicon-cheveron-down;
+}
+
+.product-box {
+	@include flexbox;
+	@include align-item-center;
+	@include space-between;
+	@include flexColumn;
+	@include border-radius(10px);
+	gap: 10px;
+	padding: 10px 10px 15px 10px;
+	border: 1px solid var(--data_site_border_color);
+	width: 100%;
+	height: 100%;
+	@include transition(0.3s);
+
+	@include md {
+		width: 100%;
+		padding: 15px 15px 25px 15px;
+		@include border-radius(15px);
+	}
+
+	@include xl {
+		gap: 12px;
+		padding: 20px 20px 30px 20px;
+		@include border-radius(20px);
+	}
+
+	&:hover {
+		@include transition(0.3s);
+		border-color: var(--data_site_gray_color);
+		cursor: pointer;
+		@include box-shadow-small;
+
+		@include md {
+			@include box-shadow-regular;
+		}
+	
+		@include xl {
+			@include box-shadow-large;
+		}
+	}
+
+	figure {
+		display: inline-block;
+		@include space-none;
+		padding-bottom: 100%;
+		width: 100%;
+		position: relative;
+		picture {
+			display: block;
+			max-width: 180px;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+
+			@include md {
+				max-width: 240px;
+				width: 100%;
+			}
+
+			@include xl {
+				max-width: 280px;
+				width: 100%;
+			}
+			img {
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				inset: 0;
+			}
+		}
+	}
+
+	.product-description {
+		color: var(--data_site_text_color);
+		margin-bottom: 0;
+		text-align: center;
+		@include text-clamp(2);
+		@include body-large-bold;
+	}
+
+	.product-price {
+		color: var(--data_site_primary_color);
+		@include font-detail(20px, normal);
+		@include font-family(var(--data_site_font_primary), 700);
+
+		@include md {
+			font-size: 22px;
+		}
+
+		@include lg {
+			font-size: 24px;
+		}
+
+		del {
+			margin-left: 16px;
+			font-size: 18px;
+			font-weight: 400;
+			color: var(--data_site_dark_gray);
+
+			@include md {
+				font-size: 20px;
+				margin-left: 20px;
+			}
+		}
+	}
+
+	.btn {
+		@include btn; 
+	}
+
+	.btn-border {
+		@include btn-border;
+	}
+}

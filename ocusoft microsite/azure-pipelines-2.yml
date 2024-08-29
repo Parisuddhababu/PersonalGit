@@ -1,0 +1,31 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+  env:
+  azureUsername: $(azureUsername)
+  azurePassword: $(azurePassword)
+  gitlabUsername: $(gitlabUsername)
+  gitlabPassword: $(gitlabPassword)
+
+steps:
+- checkout: self
+
+- script: |
+    git config --global user.email "jaimin.panchal@brainvire.com"
+    git config --global user.name "Jaimin Panchal"
+    
+    # Replace 'source-repo' and 'target-repo' with your actual repository URLs
+    git clone https://$(azureUsername):$(azurePassword)@dev.azure.com/BrainvireInfo/OcuSoft%20Microsite%20Platform/_git/microsite
+    cd microsite
+    git checkout main
+
+    
+    # Replace 'target-repo' with your actual target repository URL
+    git remote add target-repo https://$(gitlabUsername):$(gitlabPassword)@github.com/rmolina2/OCuSOFT-Microsites
+    git push target-repo main:main
+   
+   
+   # displayName: 'Mirror branch from source to destination branch in target repo'

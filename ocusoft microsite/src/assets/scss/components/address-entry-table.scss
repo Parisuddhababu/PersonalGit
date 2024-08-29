@@ -1,0 +1,200 @@
+@import "../common/mixin";
+
+.osicon-note {
+  @include osicon-note;
+}
+
+.osicon-trash {
+  @include osicon-trash;
+}
+
+.address-entries-table-wrap {
+  margin-bottom: 20px;
+
+  @include md {
+    margin-bottom: 30px;
+  }
+
+  @include xl {
+    margin-bottom: 40px;
+  }
+
+  @include container-md {
+    margin-bottom: 50px;
+  }
+
+  .address-entries-table-box {
+    @include flexbox;
+    border: 1px solid var(--data_site_dark_gray2);
+    overflow-x: auto;
+    @include border-radius(10px);
+
+    table {
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      table-layout: fixed;
+      border-spacing: 0;
+      width: 100%;
+      thead {
+        tr {
+          th {
+            margin: 0;
+            text-align: left;
+            padding: 10px;
+            background-color: var(--data_site_border_color);
+            @include body-large-bold2;
+
+            @include md {
+              padding: 12px;
+            }
+
+            @include container {
+              padding: 14px;
+            }
+
+            &:first-child {
+              padding-left: 20px;
+            }
+
+            &:last-child {
+              padding-right: 20px;
+            }
+
+            &.first-name {
+              width: 120px;
+
+              @include md {
+                width: 138px;
+              }
+            }
+
+            &.last-name {
+              width: 118px;
+
+              @include md {
+                width: 128px;
+              }
+            }
+
+            &.street-address {
+              width: 146px;
+              
+              @include md {
+                width: 166px;
+              }
+            }
+
+            &.city-name {
+              width: 69px;
+            }
+
+            &.country-name {
+              width: 104px;
+            }
+
+            &.state-name {
+              width: 76px;
+            }
+
+            &.postal-code {
+              width: 128px;
+            }
+
+            &.phone-number {
+              width: 124px;
+
+              @include md {
+                width: 136px;
+              }
+            }
+
+            &.address-first-name {
+              width: 86px;
+
+              @include md {
+                width: 98px;
+              }
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            margin: 0;
+            @include body-large;
+            color: var(--data_site_gray_color);
+            word-wrap: break-word;
+            padding: 14px 6px 2px 8px;
+
+            @include md {
+              padding: 16px 8px 4px 10px;
+            }
+            
+            @include xl{
+              padding: 16px 8px 16px 10px;
+            }
+
+            @include container {
+              padding: 18px 8px 18px 12px;
+            }
+
+            &:first-child {
+              padding-left: 16px;
+
+              @include md {
+                padding-left: 18px;
+              }
+
+              @include container {
+                padding-left: 20px;
+              }
+            }
+
+            &:last-child {
+              padding-right: 16px;
+
+              @include md {
+                padding-right: 18px;
+              }
+
+              @include container {
+                padding-right: 20px;
+              }
+            }
+
+            &.action-buttons {
+              i {
+                color: var(--data_site_primary_color);
+                @include transition(0.3s);
+                cursor: pointer;
+                font-size: 14px;
+                margin-right: 16px;
+                
+                @include md {
+                  font-size: 16px;
+                  margin-right: 18px;
+                }
+                
+                @include xl {
+                  font-size: 18px;
+                  margin-right: 20px;
+                }
+                
+                &:hover {
+                  color: var(--data_site_text_color);
+                }
+
+                &:last-child {
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

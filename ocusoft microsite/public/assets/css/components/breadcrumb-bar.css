@@ -1,0 +1,122 @@
+.breadcrumb {
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+}
+.breadcrumb li {
+  position: relative;
+  padding: 0 12px;
+}
+@media only screen and (min-width: 768px) {
+  .breadcrumb li {
+    padding: 0 16px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .breadcrumb li {
+    padding: 0 20px;
+  }
+}
+.breadcrumb li:first-child {
+  padding-left: 0;
+}
+.breadcrumb li:last-child {
+  padding-right: 0;
+}
+.breadcrumb li:last-child a {
+  font-size: 400;
+}
+.breadcrumb li:not(:last-child)::before {
+  content: "-";
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 10px;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  overflow: hidden;
+  background-color: var(--data_site_gray_color);
+}
+@media only screen and (min-width: 768px) {
+  .breadcrumb li:not(:last-child)::before {
+    width: 15px;
+  }
+}
+.breadcrumb li a {
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  color: var(--data_site_gray_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+}
+@media only screen and (min-width: 1024px) {
+  .breadcrumb li a {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .breadcrumb li a {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.breadcrumb li a em {
+  font-size: 10px;
+  color: var(--data_site_text_color);
+}
+@media only screen and (min-width: 768px) {
+  .breadcrumb li a em {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .breadcrumb li a em {
+    font-size: 14px;
+  }
+}
+
+.osicon-home:before {
+  content: "\e93c";
+}
+
+.breadcrumb-bar-section {
+  padding: 12px 0;
+  background-color: var(--data_site_light_gray);
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .breadcrumb-bar-section {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .breadcrumb-bar-section {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .breadcrumb-bar-section {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .breadcrumb-bar-section {
+    padding: 15px 0;
+  }
+}
+.breadcrumb-bar-section .breadcrumb li a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+}
+.breadcrumb-bar-section .breadcrumb li:last-child a {
+  font-weight: 400;
+}

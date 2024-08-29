@@ -1,0 +1,93 @@
+@import "../common/mixin";
+
+.osicon-cheveron-down {
+	@include osicon-cheveron-down;
+}
+
+.pagination-wrap {
+    padding-top: 20px;
+
+    @include md{
+        padding-top: 40px;
+    }
+
+    @include xl{
+        padding-top: 60px;
+    }
+
+    .product-pagination {
+        @include flexbox;
+        @include just-center;
+        gap: 12px;
+
+        @include md {
+            gap: 16px;
+        }
+
+        @include xl {
+            gap: 20px;
+        }
+        
+        li {
+            @include flexCenter;
+            
+            a {
+                @include h3;
+                color: var(--data_site_gray_color);
+                font-weight: 700;
+                @include flexCenter;
+                @include border-radius(50%);
+                height: 36px;
+                width: 36px;
+                background-color: var(--data_site_border_color);
+                cursor: pointer;
+                @include transition(0.3s);
+
+                @include md {
+                    height: 40px;
+                    width: 40px;
+                }
+
+                @include xl {
+                    height: 46px;
+                    width: 46px;
+                }
+
+                em {
+                    font-size: 10px;
+
+                    @include md {
+                        font-size: 12px;
+                    }
+                    
+                    @include xl{
+                        font-size: 14px;
+                    }
+                }
+                &.active,&:hover {
+                    background-color: var(--data_site_primary_color);
+                    color: var(--data_site_white_color);
+                }
+
+                &.dots {
+                    background-color: transparent;
+                    width: 25px;
+                }
+            }
+            &.prev {
+                a {
+                    em {
+                        @include transform(rotate(90deg));
+                    }
+                }
+            }
+            &.next {
+                a {
+                    em {
+                        @include transform(rotate(-90deg));
+                    }
+                }
+            }
+        }
+    }
+}

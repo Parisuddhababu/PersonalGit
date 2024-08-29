@@ -1,0 +1,144 @@
+ 
+@import "../common/mixin";
+
+.osicon-tick-circle{
+	@include osicon-tick-circle;
+}
+
+.login-section {
+	@include section-bottom-spacing;
+
+	.ocs-checkbox{
+		@include ocs-checkbox;
+	}
+
+	.p-error {
+        @include error;
+    }
+	
+	.password-field{
+		@include password-field;
+	}
+
+	h2 {
+		@include h2;
+	}
+
+	.title-center {
+		@include title-center;
+	}
+
+	.subtitle-with-border {
+		@include subtitle-with-border;
+	}
+
+	.row {
+		@include row;
+		margin: 0 -8px;
+		@include xl {
+			margin: 0 -11px;
+		}
+
+		.form-group {
+			@include form-group;
+		}
+
+		.d-col {
+			padding: 0 8px;
+			@include flexbox;
+			@include flexColumn;
+
+			@include xl {
+				padding: 0 11px;
+			}
+
+			&.d-col-2{
+				margin-bottom: 0;
+			}
+
+			.returning-customers-login,
+			.new-customers {
+				@include flexbox;
+				@include flexColumn;
+				width: 100%;
+			}
+
+			.new-customers{
+				p{
+					margin-bottom: 0;
+				}
+			}
+
+			.returning-customers-login {
+				margin-bottom: 15px;
+
+				@include md {
+					margin-bottom: 0;
+				}
+				
+				form {
+					@include md {
+						max-width: 491px;
+						width: 100%;
+					}
+
+					.forgot-password-bar {
+						@include flexbox;
+						@include flexColumn;
+						@include space-between;
+						@include align-item-start;
+						margin-bottom: 20px;
+						gap: 10px;
+						
+						@include sm{
+							@include align-item-center;
+							@include flexrow;
+							gap: 0;
+						}
+
+						@include md {
+							margin-bottom: 30px;
+						}
+						@include xl {
+							margin-bottom: 40px;
+						}
+
+						a {
+							@include h3;
+							@include transition(0.3s);
+							color: var(--data_site_gray_color);
+
+							&:hover{
+								color: var(--data_site_text_color);
+							}
+						}
+					}
+					
+					.recaptcha-box {
+						margin-bottom: 16px;
+						@include md {
+							margin-bottom: 20px;
+						}
+						@include xl {
+							margin-bottom: 27px;
+						}
+					}
+
+					.btn {
+						@include btn;
+						width: 100%;
+
+						@include sm{
+							min-width: 110px;
+							width: auto;
+						}
+					
+						&.btn-primary {
+							@include btn-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+}

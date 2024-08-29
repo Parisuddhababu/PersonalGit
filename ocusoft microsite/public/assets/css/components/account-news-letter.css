@@ -1,0 +1,294 @@
+.account-information-section {
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section {
+    margin-bottom: 60px;
+  }
+}
+.account-information-section .p-error {
+  color: var(--data_site_warning_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 5px;
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .p-error {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section .p-error {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.account-information-section .news-letter-content-wrap {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap {
+    max-width: calc(100% - 300px);
+    width: 100%;
+    padding-left: 20px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .account-information-section .news-letter-content-wrap {
+    max-width: calc(100% - 355px);
+    width: 100%;
+    padding-left: 25px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-content-title h2 {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  width: 100%;
+  color: var(--data_site_text_color);
+  border-bottom: 1px solid var(--data_site_gray_color);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap .account-content-title h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-content-title h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section .news-letter-content-wrap .account-content-title h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap .account-content-title h2 {
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-content-title h2 {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section h3 {
+  color: var(--data_site_text_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: normal;
+  margin-bottom: 14px;
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section h3 {
+    font-size: 22px;
+    line-height: normal;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section h3 {
+    font-size: 26px;
+    line-height: normal;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section h3 {
+    margin-bottom: 18px;
+  }
+}
+@media only screen and (min-width: 1430px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section h3 {
+    margin-bottom: 20px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox {
+  display: -ms-flex;
+  display: flex;
+  margin-bottom: 20px;
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  margin: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -o-opacity: 0;
+  -ms-opacity: 0;
+  opacity: 0;
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox input:checked + label::before {
+  border-color: var(--data_site_primary_color);
+  background-color: var(--data_site_primary_color);
+  content: "\e967";
+  font-size: 10px;
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label {
+  display: inline-block;
+  padding-left: 24px;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  word-break: break-word;
+  color: var(--data_site_text_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label {
+    padding-left: 28px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--data_site_light_gray1);
+  background-color: var(--data_site_white_color);
+  font-family: "ocusoft", sans-serif;
+  transition: all 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--data_site_white_color);
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox label::before {
+    top: 3px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox input[disabled] + label,
+.account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox input:disabled + label {
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-opacity: 0.5;
+  -moz-opacity: 0.5;
+  -o-opacity: 0.5;
+  -ms-opacity: 0.5;
+  opacity: 0.5;
+}
+@media only screen and (min-width: 768px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .ocs-checkbox {
+    margin-bottom: 40px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: normal;
+  border-radius: var(--data_site_border_radius);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 1430px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .btn {
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn:hover {
+  -ms-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  -o-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 1430px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .btn:hover {
+    -ms-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    -o-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn.disabled {
+  background-color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn.disabled:hover {
+  color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn-primary {
+  padding: 6px 20px;
+  background-color: var(--data_button_primary_color);
+  color: var(--data_site_white_color);
+  border: 1px solid var(--data_button_primary_color);
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .btn-primary {
+    padding: 8px 25px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .btn-primary {
+    padding: 8px 30px;
+  }
+}
+.account-information-section .news-letter-content-wrap .account-news-letter-section .btn-primary:hover {
+  background-color: var(--data_site_white_color);
+  color: var(--data_button_primary_color);
+  border-color: var(--data_button_primary_color);
+}
+@media only screen and (min-width: 576px) {
+  .account-information-section .news-letter-content-wrap .account-news-letter-section .btn-primary {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}

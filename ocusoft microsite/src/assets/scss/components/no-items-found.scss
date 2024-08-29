@@ -1,0 +1,54 @@
+@import "../common/mixin";
+
+.no-items-found-section {
+  @include section-bottom-spacing;
+
+  .no-items-found-wrap {
+    @include flexCenter;
+    @include flexColumn;
+    max-width: 100%;
+    width: 100%;
+    figure {
+      display: block;
+      position: relative;
+      padding: 24%;
+      @include bottom-margin;
+
+      @include xm {
+        padding: 22%;
+      }
+
+      @include sm {
+        padding: 20%;
+      }
+
+      @include md {
+        padding: 18%;
+      }
+
+      @include xl {
+        padding: 12%;
+      }
+
+      picture {
+        img {
+          position: absolute;
+          inset: 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    h2 {
+      @include h2;
+      @include bottom-margin;
+      color: var(--data_site_text_color);
+      text-align: center;
+    }
+    a {
+      @include btn;
+      @include btn-primary;
+    }
+  }
+}

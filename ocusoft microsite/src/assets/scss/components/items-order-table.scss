@@ -1,0 +1,147 @@
+@import "../common/mixin";
+
+.items-ordered-table-section {
+    overflow: hidden;
+    margin-bottom: 18px;
+    @include md {
+      margin-bottom: 26px;
+    }
+    @include xl {
+      margin-bottom: 30px;
+    }
+
+    .account-content-title {
+      @include account-content-title;
+    }
+
+    .items-order-table-wrap {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: auto;
+      table {
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        table-layout: fixed;
+        border-spacing: 0;
+        width: 100%;
+
+        thead {
+          tr {
+            th {
+              text-align: left;
+              @include body-large-bold;
+              color: var(--data_site_text_color);
+
+              &.product-info {
+                width: 260px;
+
+                @include lg {
+                  width: 334px;
+                }
+              }
+
+              &.product-sku {
+                width: 140px;
+
+                @include lg {
+                  width: 180px;
+                }
+              }
+
+              &.product-price {
+                width: 120px;
+                @include lg {
+                  width: 150px;
+                }
+              }
+
+              &.product-qty {
+                width: 145px;
+
+                @include lg {
+                  width: 255px;
+                }
+              }
+
+              &.product-total {
+                text-align: right;
+                padding-right: 20px;
+                width: 94px;
+
+                @include lg {
+                  padding-right: 33px;
+                }
+              }
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            border-bottom: 1px solid var(--data_site_border_color);
+
+            &:last-child {
+              border: none;
+            }
+
+            td {
+              color: var(--data_site_gray_color);
+              @include body-large;
+              word-wrap: break-word;
+              padding: 14px 25px 14px 0;
+              
+              @include md{
+                padding: 16px 40px 16px 0;
+              }
+
+              @include xl {
+                padding: 18px 50px 18px 0;
+              }
+
+              @include container-md {
+                padding: 20px 70px 20px 0;
+              }
+
+              &:last-child {
+                padding-right: 18px;
+                text-align: right;
+
+                @include lg {
+                  text-align: center;
+                  padding-right: 20px;
+                }
+              }
+
+              &.product-subtotal,
+              &.product-total-value {
+                div {
+                  margin-bottom: 16px;
+
+                  @include md {
+                    margin-bottom: 20px;
+                  }
+
+                  @include xl {
+                    margin-bottom: 25px;
+                  }
+
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+              &.product-grand-total {
+                font-weight: 700;
+                padding-right: 14px;
+
+                @include lg {
+                  padding-right: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

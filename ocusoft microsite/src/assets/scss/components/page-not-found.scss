@@ -1,0 +1,60 @@
+@import "../common/mixin";
+
+.pagenotfound-404-section {
+  .pagenotfound-content {
+    @include flexCenter;
+    @include flexColumn;
+    min-height: 80svh;
+
+    h2 {
+      @include h2;
+      color: var(--data_site_text_color);
+      margin-bottom: 20px;
+
+      @include md {
+        margin-bottom: 26px;
+      }
+
+      @include xl {
+        margin-bottom: 30px;
+      }
+    }
+
+    .pagenotfound-text {
+      color: var(--data_site_primary_color);
+    }
+
+    figure {
+      picture {
+        max-width: 480px;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    p {
+      @include body-large;
+      color: var(--data_site_text_color);
+      margin-bottom: 16px;
+
+      @include md {
+        margin-bottom: 20px;
+      }
+
+      @include xl {
+        margin-bottom: 26px;
+      }
+    }
+
+    .btn {
+      @include btn;
+    }
+
+    .btn-primary {
+      @include btn-primary;
+    }
+  }
+}

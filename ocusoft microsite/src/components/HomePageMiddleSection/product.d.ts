@@ -1,0 +1,21 @@
+export type ProductType ={
+    product:{
+        slug:string
+        title:string
+        _id:string
+        sku:string
+    }
+    images:{path:string}[]
+    product_id:string
+    _id:string
+    price_breakup:{
+        is_discounted:number
+        original_total_price:number
+    }
+    discount_percentage:number
+    product_tag_name:string
+    is_fix_price:number
+    diamond_total_carat:number
+    net_weight:number
+    total_price:numberr
+}

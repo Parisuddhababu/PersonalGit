@@ -1,0 +1,633 @@
+.osicon-tick-circle:before {
+  content: "\e94f";
+  color: #4BAE4F;
+}
+
+.login-section {
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section {
+    margin-bottom: 60px;
+  }
+}
+.login-section .ocs-checkbox {
+  display: -ms-flex;
+  display: flex;
+}
+.login-section .ocs-checkbox input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  margin: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -o-opacity: 0;
+  -ms-opacity: 0;
+  opacity: 0;
+}
+.login-section .ocs-checkbox input:checked + label::before {
+  border-color: var(--data_site_primary_color);
+  background-color: var(--data_site_primary_color);
+  content: "\e967";
+  font-size: 10px;
+}
+.login-section .ocs-checkbox label {
+  display: inline-block;
+  padding-left: 24px;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  word-break: break-word;
+  color: var(--data_site_text_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .ocs-checkbox label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .ocs-checkbox label {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-section .ocs-checkbox label {
+    padding-left: 28px;
+  }
+}
+.login-section .ocs-checkbox label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--data_site_light_gray1);
+  background-color: var(--data_site_white_color);
+  font-family: "ocusoft", sans-serif;
+  transition: all 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--data_site_white_color);
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .ocs-checkbox label::before {
+    top: 3px;
+  }
+}
+.login-section .ocs-checkbox input[disabled] + label,
+.login-section .ocs-checkbox input:disabled + label {
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-opacity: 0.5;
+  -moz-opacity: 0.5;
+  -o-opacity: 0.5;
+  -ms-opacity: 0.5;
+  opacity: 0.5;
+}
+.login-section .p-error {
+  color: var(--data_site_warning_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 5px;
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .p-error {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .p-error {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.login-section .password-field {
+  position: relative;
+}
+.login-section .password-field .osicon-visible-eye:before {
+  content: "\e961";
+}
+.login-section .password-field .osicon-invisible-eye:before {
+  content: "\e966";
+}
+.login-section .password-field .form-control[type=password], .login-section .password-field .form-control[type=text] {
+  padding-right: 40px;
+}
+.login-section .password-field i {
+  position: absolute;
+  top: 11px;
+  right: 16px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--data_site_gray_color);
+}
+@media only screen and (min-width: 768px) {
+  .login-section .password-field i {
+    right: 18px;
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .password-field i {
+    top: 13px;
+    right: 20px;
+    font-size: 23px;
+  }
+}
+.login-section .password-field i:hover {
+  color: var(--data_site_text_color);
+}
+.login-section h2 {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}
+.login-section .title-center {
+  color: var(--data_site_text_color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .title-center {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .title-center {
+    margin-bottom: 40px;
+  }
+}
+.login-section .subtitle-with-border {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+}
+.login-section .subtitle-with-border span {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--data_site_gray_color);
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .subtitle-with-border span {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .subtitle-with-border span {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-section .subtitle-with-border span {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+}
+.login-section .subtitle-with-border p {
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 14px;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .subtitle-with-border p {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .subtitle-with-border p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-section .subtitle-with-border p {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .subtitle-with-border p {
+    margin-bottom: 30px;
+  }
+}
+.login-section .row {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 -14px;
+  margin: 0 -8px;
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row {
+    margin: 0 -17px;
+  }
+}
+.login-section .row .d-col {
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 0 14px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col {
+    margin-bottom: 30px;
+    padding: 0 17px;
+  }
+}
+.login-section .row .d-col.d-col-2 {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col.d-col-2 {
+    width: 50%;
+  }
+}
+.login-section .row .d-col.d-col-3 {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col.d-col-3 {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col.d-col-3 {
+    width: 33.33%;
+  }
+}
+.login-section .row .d-col.d-col-4 {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col.d-col-4 {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .d-col.d-col-4 {
+    width: 33.33%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col.d-col-4 {
+    width: 25%;
+  }
+}
+.login-section .row .d-col.d-col-33 {
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .d-col.d-col-33 {
+    width: 33.33%;
+  }
+}
+.login-section .row .d-col.d-col-66 {
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .d-col.d-col-66 {
+    width: 66.66%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row {
+    margin: 0 -11px;
+  }
+}
+.login-section .row .form-group {
+  margin-bottom: 14px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .form-group {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .form-group {
+    margin-bottom: 30px;
+  }
+}
+.login-section .row .form-group .control-label {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .form-group .control-label {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .form-group .control-label {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .form-group .control-label {
+    margin-bottom: 7px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .form-group .control-label {
+    margin-bottom: 9px;
+  }
+}
+.login-section .row .form-group .form-control {
+  border-radius: 30px;
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  border: 1px solid var(--data_site_gray_color);
+  width: 100%;
+  padding: 10px 16px;
+  outline: none;
+  color: var(--data_site_gray_color);
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .form-group .form-control {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .form-group .form-control {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .form-group .form-control {
+    padding: 12px 18px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .form-group .form-control {
+    padding: 14px 20px;
+  }
+}
+.login-section .row .form-group .form-control:focus-visible {
+  outline: none;
+}
+.login-section .row .form-group .form-control[type=password] {
+  padding-right: 40px;
+}
+.login-section .row .form-group .form-control.form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("../../images/down-arrow.svg") no-repeat right 16px center;
+  padding-right: 30px;
+  background-size: 10px auto;
+  cursor: pointer;
+}
+.login-section .row .form-group .form-control.form-select:focus {
+  outline: none;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .form-group .form-control.form-select {
+    padding-right: 40px;
+    background-position: right 20px center;
+  }
+}
+.login-section .row .d-col {
+  padding: 0 8px;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col {
+    padding: 0 11px;
+  }
+}
+.login-section .row .d-col.d-col-2 {
+  margin-bottom: 0;
+}
+.login-section .row .d-col .returning-customers-login,
+.login-section .row .d-col .new-customers {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.login-section .row .d-col .new-customers p {
+  margin-bottom: 0;
+}
+.login-section .row .d-col .returning-customers-login {
+  margin-bottom: 15px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col .returning-customers-login {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col .returning-customers-login form {
+    max-width: 491px;
+    width: 100%;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .forgot-password-bar {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+@media only screen and (min-width: 576px) {
+  .login-section .row .d-col .returning-customers-login form .forgot-password-bar {
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col .returning-customers-login form .forgot-password-bar {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col .returning-customers-login form .forgot-password-bar {
+    margin-bottom: 40px;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .forgot-password-bar a {
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  transition: all 0.3s ease;
+  color: var(--data_site_gray_color);
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .d-col .returning-customers-login form .forgot-password-bar a {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .d-col .returning-customers-login form .forgot-password-bar a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .forgot-password-bar a:hover {
+  color: var(--data_site_text_color);
+}
+.login-section .row .d-col .returning-customers-login form .recaptcha-box {
+  margin-bottom: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .login-section .row .d-col .returning-customers-login form .recaptcha-box {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .login-section .row .d-col .returning-customers-login form .recaptcha-box {
+    margin-bottom: 27px;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .btn {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: normal;
+  border-radius: var(--data_site_border_radius);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+@media only screen and (min-width: 1430px) {
+  .login-section .row .d-col .returning-customers-login form .btn {
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .btn:hover {
+  -ms-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  -o-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 1430px) {
+  .login-section .row .d-col .returning-customers-login form .btn:hover {
+    -ms-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    -o-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+  }
+}
+.login-section .row .d-col .returning-customers-login form .btn.disabled {
+  background-color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+.login-section .row .d-col .returning-customers-login form .btn.disabled:hover {
+  color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+@media only screen and (min-width: 576px) {
+  .login-section .row .d-col .returning-customers-login form .btn {
+    min-width: 110px;
+    width: auto;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .btn.btn-primary {
+  padding: 6px 20px;
+  background-color: var(--data_button_primary_color);
+  color: var(--data_site_white_color);
+  border: 1px solid var(--data_button_primary_color);
+}
+@media only screen and (min-width: 1024px) {
+  .login-section .row .d-col .returning-customers-login form .btn.btn-primary {
+    padding: 8px 25px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .login-section .row .d-col .returning-customers-login form .btn.btn-primary {
+    padding: 8px 30px;
+  }
+}
+.login-section .row .d-col .returning-customers-login form .btn.btn-primary:hover {
+  background-color: var(--data_site_white_color);
+  color: var(--data_button_primary_color);
+  border-color: var(--data_button_primary_color);
+}

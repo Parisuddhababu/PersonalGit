@@ -1,0 +1,42 @@
+@import "../common/mixin";
+
+.btn {
+  @include btn;
+}
+
+.btn-primary {
+  @include btn-primary;
+}
+
+.btn-border-small {
+  @include btn-border-small;
+}
+
+.osicon-close {
+  @include osicon-close;
+}
+
+.delete-popup {
+  .modal-container {
+    .modal-content {
+      span {
+        display: inline-block;
+        @include body-large;
+        text-align: center;
+      }
+
+    }
+    .bottom-buttons {
+      @include flexbox;
+      @include align-item-center;
+      gap: 12px;
+
+      @include md {
+        gap: 14px;
+      }
+      @include container {
+        gap: 16px;
+      }
+    }
+  }
+}

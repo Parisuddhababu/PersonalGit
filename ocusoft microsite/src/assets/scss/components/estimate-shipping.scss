@@ -1,0 +1,70 @@
+@import "../common/mixin";
+
+.estimate-shipping {
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--data_site_gray_color);
+
+    @include md {
+        padding-bottom: 20px;
+    }
+
+    @include container-md {
+        padding-bottom: 30px;
+    }
+
+    select {
+        @include body-large-bold;
+        border: none;
+        color: var(--data_site_gray_color);
+        margin-bottom: 10px;
+        @include form-select;
+
+        @include md {
+            margin-bottom: 15px;
+        }
+    
+        @include container-md {
+            margin-bottom: 18px;
+        }
+
+        option {
+            @include body-regular;
+        }
+    }
+
+    .shipping-info {
+        margin-bottom: 20px;
+        @include md {
+            margin-bottom: 24px;
+        }
+    
+        @include container-md {
+            margin-bottom: 26px;
+        }
+    }
+
+    form {
+        max-width: 720px;
+        width: 100%;
+
+        .form-group {
+            @include form-group;
+
+            .control-label {
+                @include control-label;
+            }
+
+            .form-control {
+                @include form-control;
+            }
+        }
+
+        .btn {
+            @include btn;
+
+            &.btn-primary-large {
+                @include btn-primary-large;
+            }
+        }
+    }
+}

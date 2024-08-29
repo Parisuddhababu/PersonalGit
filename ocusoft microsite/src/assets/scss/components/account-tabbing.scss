@@ -1,0 +1,70 @@
+
+ 
+@import "../common/mixin";
+.account-tabbing-wrap {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+    
+    @include md{
+        max-width: 280px;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    
+    @include xl{
+        max-width: 330px;
+        width: 100%;
+    }
+    
+    .account-tabbing-box {
+        @include flexbox;
+        @include flexColumn;
+        @include border-radius(10px);
+        @include box-shadow(0px 0px 10px 0px rgba($text_color, 0.1));
+        width: 100%;
+        overflow: hidden;
+        
+        li {
+            @include flexbox;
+            @include transition(0.3s);
+            cursor: pointer;
+            color: var(--data_site_gray_color);
+            
+            &:not(:last-child) {
+                border-bottom: 2px solid var(--data_site_border_color);
+            }
+            
+            &:hover {
+                background-color: var(--data_site_border_color);
+            }
+            
+            a{
+                @include body-large;
+                display: inline-block;
+                width: 100%;
+                color: var(--data_site_gray_color);
+                padding: 10px;
+                
+                @include md{
+                    padding: 14px;
+                }
+                
+                @include xl{
+                    padding: 18px;
+                }
+            }
+            
+            &.tab-active {
+                background-color: var(--data_site_primary_color);
+                
+                a {
+                    color: var(--data_footer_text);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

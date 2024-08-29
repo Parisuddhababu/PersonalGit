@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fonts/PlayfairDisplay-Italic.eot");
+  src: url("../assets/fonts/PlayfairDisplay-Italic.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/PlayfairDisplay-Italic.woff2") format("woff2"),
+    url("../assets/fonts/PlayfairDisplay-Italic.woff") format("woff"),
+    url("../assets/fonts/PlayfairDisplay-Italic.ttf") format("truetype"),
+    url("../assets/fonts/PlayfairDisplay-Italic.svg#PlayfairDisplay-Italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fonts/PlayfairDisplay-Regular.eot");
+  src: url("../assets/fonts/PlayfairDisplay-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/PlayfairDisplay-Regular.woff2") format("woff2"),
+    url("../assets/fonts/PlayfairDisplay-Regular.woff") format("woff"),
+    url("../assets/fonts/PlayfairDisplay-Regular.ttf") format("truetype"),
+    url("../assets/fonts/PlayfairDisplay-Regular.svg#PlayfairDisplay-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* ============================================ */
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/Lato-BoldItalic.eot");
+  src: url("../assets/fonts/Lato-BoldItalic.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/Lato-BoldItalic.woff2") format("woff2"), url("../assets/fonts/Lato-BoldItalic.woff") format("woff"),
+    url("../assets/fonts/Lato-BoldItalic.ttf") format("truetype"),
+    url("../assets/fonts/Lato-BoldItalic.svg#Lato-BoldItalic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/Lato-Bold.eot");
+  src: url("../assets/fonts/Lato-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/Lato-Bold.woff2") format("woff2"), url("../assets/fonts/Lato-Bold.woff") format("woff"),
+    url("../assets/fonts/Lato-Bold.ttf") format("truetype"), url("../assets/fonts/Lato-Bold.svg#Lato-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/Lato-Italic.eot");
+  src: url("../assets/fonts/Lato-Italic.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/Lato-Italic.woff2") format("woff2"), url("../assets/fonts/Lato-Italic.woff") format("woff"),
+    url("../assets/fonts/Lato-Italic.ttf") format("truetype"), url("../assets/fonts/Lato-Italic.svg#Lato-Italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/Lato-Regular.eot");
+  src: url("../assets/fonts/Lato-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../assets/fonts/Lato-Regular.woff2") format("woff2"), url("../assets/fonts/Lato-Regular.woff") format("woff"),
+    url("../assets/fonts/Lato-Regular.ttf") format("truetype"),
+    url("../assets/fonts/Lato-Regular.svg#Lato-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* ============================================ */
+
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Medium.eot");
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Medium.eot") format("embedded-opentype"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Medium.woff2") format("woff2"), url("../assets/fonts/Comfortaa/Comfortaa-Medium.woff") format("woff"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Bold.eot");
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Bold.eot") format("embedded-opentype"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Bold.woff2") format("woff2"), url("../assets/fonts/Comfortaa/Comfortaa-Bold.woff") format("woff"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Regular.eot");
+    src: url("../assets/fonts/Comfortaa/Comfortaa-Regular.eot") format("embedded-opentype"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Regular.woff2") format("woff2"), url("../assets/fonts/Comfortaa/Comfortaa-Regular.woff") format("woff"),
+      url("../assets/fonts/Comfortaa/Comfortaa-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

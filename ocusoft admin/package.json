@@ -1,0 +1,161 @@
+{
+  "name": "@coreui/coreui-free-react-admin-template",
+  "description": "CoreUI Free React Admin Template",
+  "version": "4.0.0-rc.0",
+  "config": {
+    "coreui_library_short_version": "4.0"
+  },
+  "author": {
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
+  },
+  "contributors": [
+    {
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
+    }
+  ],
+  "extends": [
+    "react-hooks"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "homepage": ".",
+  "copyright": "Copyright 2017-2021 creativeLabs Łukasz Holeczek",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
+  },
+  "dependencies": {
+    "@coreui/chartjs": "3.0.0",
+    "@coreui/coreui": "4.1.5",
+    "@coreui/icons": "2.0.0",
+    "@coreui/icons-react": "^2.0.0-rc.5",
+    "@coreui/react": "4.0.0-rc.0",
+    "@coreui/react-chartjs": "2.0.0-rc.0",
+    "@coreui/utils": "^1.3.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/lab": "^4.0.0-alpha.61",
+    "@mui/material": "^5.6.4",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "axios": "^0.22.0",
+    "bootstrap-daterangepicker": "^3.1.0",
+    "caniuse-lite": "^1.0.30001431",
+    "chart.js": "^3.5.1",
+    "ckeditor4-react": "^3.0.0",
+    "classnames": "^2.3.1",
+    "core-js": "^3.16.2",
+    "env-cmd": "^10.1.0",
+    "enzyme": "^3.11.0",
+    "html-entities": "^1.4.0",
+    "husky": "^7.0.4",
+    "jodit-react": "1.3.31",
+    "primeflex": "^3.0.1",
+    "primeicons": "^4.1.0",
+    "primereact": "^6.5.1",
+    "prop-types": "^15.7.2",
+    "quill": "^1.3.7",
+    "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
+    "react-bootstrap-daterangepicker": "^7.0.0",
+    "react-checkbox-tree": "^1.7.2",
+    "react-cool-onclickoutside": "^1.7.0",
+    "react-date-range": "^1.4.0",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
+    "react-dom": "17.0.2",
+    "react-google-autocomplete": "^2.6.0",
+    "react-google-maps-loader": "^4.3.0",
+    "react-google-places-suggest": "^3.12.2",
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.51.5",
+    "react-image-crop": "^9.0.5",
+    "react-qr-scanner": "*",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.2.0",
+    "react-tag-input": "^6.8.0",
+    "react-transition-group": "^4.4.2",
+    "redux": "4.1.1",
+    "remarkable": "^2.0.1",
+    "rsuite": "^5.0.3",
+    "simplebar-react": "^2.3.5",
+    "use-places-autocomplete": "^1.11.0"
+  },
+  "devDependencies": {
+    "@types/googlemaps": "^3.43.3",
+    "@typescript-eslint/parser": "^5.6.0",
+    "auto-changelog": "~2.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.21.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "2.3.2",
+    "react-scripts": "^4.0.3",
+    "sass": "^1.38.0",
+    "typescript": "^4.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:stage": "env-cmd -f .env.staging react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "start:clientstag": "env-cmd -f .env.clientstag react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|scss|tsx|md)\"",
+    "test": "react-scripts test",
+    "test:cov": "npm test -- --coverage --watchAll=false",
+    "test:debug": "react-scripts --inspect-brk test --runInBand",
+    "eject": "react-scripts eject",
+    "changelog": "auto-changelog --starting-version 3.0.0 --commit-limit false --hide-credit",
+    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "build:stage": "env-cmd -f .env.staging react-scripts build",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
+    "build:clientstag": "env-cmd -f .env.clientstag react-scripts build"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/*index.js",
+      "!src/serviceWorker.js",
+      "!src/polyfill.js"
+    ]
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format"
+    }
+  }
+}

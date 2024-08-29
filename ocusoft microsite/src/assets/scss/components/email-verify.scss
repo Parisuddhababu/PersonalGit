@@ -1,0 +1,78 @@
+@import "../common/mixin";
+
+.osicon-tick-circle {
+  @include osicon-tick-circle;
+}
+
+.email-verify-section {
+  .email-verify-content {
+    @include flexCenter;
+    @include flexColumn;
+    min-height: 80svh;
+
+    figure {
+      margin-bottom: 20px;
+      @include md {
+        margin-bottom: 30px;
+      }
+
+      picture {
+        max-width: 200px;
+
+        @include md {
+          max-width: 240px;
+        }
+
+        @include xl {
+          max-width: 260px;
+        }
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .verified-text {
+      @include flexbox;
+      @include align-item-center;
+      gap: 14px;
+      margin-bottom: 20px;
+
+      @include md {
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      @include xl {
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      em {
+        font-size: 18px;
+
+        @include md {
+          font-size: 24px;
+        }
+
+        @include xl {
+          font-size: 28px;
+        }
+      }
+
+      h2 {
+        @include h2;
+        color: var(--data_site_text_color);
+      }
+    }
+
+    .btn {
+      @include btn;
+    }
+
+    .btn-primary {
+      @include btn-primary;
+    }
+  }
+}

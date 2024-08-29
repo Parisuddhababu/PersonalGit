@@ -1,0 +1,109 @@
+@import "../common/mixin";
+
+.product-listing-box {
+    @include flexbox;
+    @include border-radius(20px);
+    cursor: pointer;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    @include md {
+        height: 250px;
+    }
+
+    @include xl {
+        height: 280px;
+    }
+
+    @include container {
+        height: 319px;
+    }
+
+    .product-listing-img {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+
+        picture {
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .product-listing-content {
+        @include flexbox;
+        @include transition(0.4s, linear);
+        @include flexColumn;
+        @include just-end;
+        @include body-large;
+        background: linear-gradient(180deg, rgba($text_color, 0) 0%, var(--data_site_text_color) 100%);
+        padding: 12px;
+
+        @include md {
+            padding: 14px 18px;
+        }
+
+        @include container-md {
+            padding: 16px 20px;
+        }
+
+        span {
+            min-height: 24px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            color: var(--data_site_white_color);
+            @include text-clamp(2);
+            @include transition(0.5s, ease-out);
+
+            @include md {
+                min-height: 40px;
+                margin-bottom: 8px;
+            }
+
+            @include xl {
+                min-height: 48px;
+                margin-bottom: 10px;
+            }
+        }
+
+        p {
+            @include text-clamp(4);
+            color: var(--data_site_white_color);
+            max-height: 0;
+            @include transition(0.5s, linear);
+
+            @include md {
+                @include text-clamp(5);
+            }
+
+            @include xl {
+                @include text-clamp(6);
+            }
+        }
+    }
+
+    &:hover {
+        .product-listing-content {
+            background: linear-gradient(180deg, rgba($text_color, 0.5) 0%, var(--data_site_text_color) 100%);
+            p {
+                max-height: 100%;
+            }
+
+            span {
+                min-height: 0;
+            }
+        }
+    }
+}

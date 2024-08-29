@@ -1,0 +1,34 @@
+@import "../common/mixin";
+
+.breadcrumb {
+	@include breadcrumb;
+}
+
+.osicon-home {
+	@include osicon-home;
+}
+
+.breadcrumb-bar-section {
+	padding: 12px 0;
+	background-color: var(--data_site_light_gray);
+	@include section-bottom-spacing;
+    
+    @include md {
+        padding: 15px 0;
+    }
+
+	.breadcrumb {
+		li {
+			a{
+				@include text-clamp(1);
+				cursor: pointer;
+			}
+
+			&:last-child {
+				a {
+					font-weight: 400;
+				}
+			}
+		}
+	}
+}

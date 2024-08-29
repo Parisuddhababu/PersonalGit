@@ -1,0 +1,92 @@
+@import "../common/mixin";
+
+.osicon-like-circle {
+  @include osicon-like-circle;
+}
+
+.successfully-processed-section {
+  @include section-bottom-spacing;
+
+  .btn {
+    @include btn;
+  }
+
+  .btn-primary {
+    @include btn-primary;
+  }
+
+  .container {
+    @include flexbox;
+    @include flexColumn;
+    @include align-item-center;
+
+    .center-icon {
+      font-size: 40px;
+      color: var(--data_site_primary_color);
+      margin-bottom: 18px;
+
+      @include md {
+        margin-bottom: 20px;
+        font-size: 50px;
+      }
+
+      @include xl {
+        font-size: 70px;
+        margin-bottom: 22px;
+      }
+
+      @include container-md {
+        margin-bottom: 25px;
+        font-size: 80px;
+      }
+    }
+
+    h2 {
+      @include h2;
+      text-align: center;
+      color: var(--data_site_text_color);
+      margin-bottom: 14px;
+
+      @include md {
+        margin-bottom: 16px;
+      }
+
+      @include xl {
+        margin-bottom: 20px;
+      }
+    }
+
+    .order-details {
+      @include flexbox;
+      @include flexColumn;
+      @include align-item-center;
+      @include body-large-bold2;
+      color: var(--data_site_gray_color);
+      max-width: 260px;
+      width: 100%;
+      margin-bottom: 16px;
+
+      @include md {
+        margin-bottom: 20px;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      @include xl {
+        margin-bottom: 26px;
+      }
+
+      @include container-md {
+        margin-bottom: 30px;
+      }
+
+      a {
+
+        &:hover {
+          color: var(--data_site_secondary_color);
+        }
+      }
+    }
+
+  }
+}

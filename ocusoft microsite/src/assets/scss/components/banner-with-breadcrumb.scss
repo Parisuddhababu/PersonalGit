@@ -1,0 +1,100 @@
+ 
+@import "../common/mixin";
+.osicon-home {
+	@include osicon-home;
+}
+
+.banner-with-breadcrumb {
+	position: relative;
+	@include section-bottom-spacing;
+	
+	.breadcrumb {
+		@include breadcrumb;
+	}
+
+	
+	.banner-with-breadcrumb-bg-img {
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: -1;
+		
+		&::after{
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			inset: 0;
+			background-color: rgba($white_color, 0.2);
+			z-index: 1;
+	
+			@include sm{
+				display: none;
+			}
+		}
+
+		picture {
+			display: inline-block;
+			max-width: 100%;
+			width: 100%;
+			height: 100%;
+
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+				object-position: right;
+			}
+		}
+	}
+
+	&.cms-banner {
+		.banner-with-breadcrumb-bg-img {
+			picture {
+				img {
+					object-position: 84%;
+				}
+			}
+		}
+	}
+
+	.container {
+		.banner-with-breadcrumb-content {
+			padding: 10px 0;
+			min-height: 128px;
+			@include flexbox;
+			@include flexColumn;
+			@include just-center;
+
+			@include sm {
+				padding: 20px 0;
+				min-height: 200px;
+			}
+
+			@include md {
+				padding: 30px 0;
+				min-height: 260px;
+			}
+
+			@include xl {
+				padding: 40px 0;
+				min-height: 350px;
+			}
+
+			h1 {
+				@include h1;
+				text-transform: uppercase;
+				margin-bottom: 4px;
+				font-weight: 400;
+				color: var(--data_site_text_color);
+
+				@include md {
+					margin-bottom: 9px;
+				}
+			}
+		}
+	}
+}

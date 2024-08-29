@@ -1,0 +1,235 @@
+@import "../common/mixin";
+
+.osicon-note-fill {
+    @include osicon-note-fill;
+}
+
+.btn {
+    @include btn;
+}
+
+.btn-primary {
+    @include btn-primary;
+}
+
+.btn-primary-large {
+    @include btn-primary-large;
+}
+
+.new-address-btn,
+.next-btn {
+    width: 100%;
+
+    @include xm {
+        width: auto;
+    }
+}
+
+.address-box-wrap {
+    @include flexbox;
+    @include flexwrap;
+    gap: 16px;
+    padding: 18px 0 0;
+    
+    @include sm {
+        @include flexnowrap;
+        gap: 24px;
+        padding: 24px 0 0;
+    }
+    
+    @include xl {
+        gap: 30px;
+        padding: 31px 0 0;
+    }
+
+    .ocs-checkbox{
+        @include ocs-checkbox;
+    }
+    
+    .address-box {
+        @include flexbox;
+        @include flexColumn;
+        @include border-radius(10px);
+        @include transition(0.2s);
+        position: relative;
+        max-width: 100%;
+        width: 100%;
+        padding: 30px 20px 20px;
+        border: 1px solid var(--data_site_dark_gray2);
+        color: var(--data_site_gray_color);
+        @include body-large;
+
+        @include md {
+            padding: 40px 30px 30px;
+            max-width: 330px;
+            width: 100%;
+        }
+
+        @include xl {
+            padding: 47px 30px 30px 30px;
+        }
+
+        h5 {
+            font-weight: 700;
+        }
+
+        .ocs-checkbox {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 1px;
+
+            @include md {
+                top: 14px;
+                right: 3px;
+            }
+        }
+
+        &.active {
+            @include box-shadow(0px 0px 0px 2px var(--data_site_primary_color));
+            border-color: transparent;
+
+            .ocs-checkbox {
+                @include flexbox;
+            }
+        }
+
+        address,
+        .address-phone-number {
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .address-phone-number {
+            margin-bottom: 10px;
+
+            @include md {
+                margin-bottom: 12px;
+            }
+        }
+
+        .edit-btn {
+            a {
+                width: fit-content;
+                cursor: pointer;
+            }
+        }
+        
+        a {
+            color: var(--data_site_primary_color);
+            margin-bottom: 16px;
+            @include flexbox;
+            @include align-item-center;
+            @include transition(0.3s);
+            @include h3;
+            gap: 6px;
+
+            &:hover{
+                color: var(--data_site_secondary_color);
+            }
+
+            @include md {
+                margin-bottom: 26px;
+            }
+
+            @include xl {
+                margin-bottom: 28px;
+            }
+
+            em {
+                font-size: 14px;
+
+                @include md {
+                    font-size: 16px;
+                }
+
+                @include xl {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .address-box-btn {
+            margin-top: auto;
+
+            .btn-primary-large {
+                width: 100%;
+            }
+        }
+    }
+}
+.shipping-method-section {
+    .shipping-methods-wrap {
+      .shipping-title {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--data_site_gray_color);
+
+        @include md {
+          padding-bottom: 18px;
+        }
+
+        @include xl {
+          padding-bottom: 21px;
+        }
+      }
+
+      .shipping-warning-message {
+        @include body-large-bold2;
+        color: var(--data_site_warning_color);
+        max-width: 914px;
+        width: 100%;
+        padding: 16px 0;
+        font-weight: 400;
+
+        @include md {
+          padding: 18px 0 30px;
+        }
+
+        @include xl {
+          padding: 19px 0 40px;
+        }
+      }
+
+      .shipping-method-list {
+        @include flexbox;
+        @include flexColumn;
+        gap: 16px;
+        padding-bottom: 18px;
+
+        @include md {
+          gap: 20px;
+          padding-bottom: 24px;
+        }
+
+        @include lg {
+          gap: 24px;
+          padding-bottom: 30px;
+        }
+
+        @include container-md {
+          gap: 30px;
+          padding-bottom: 40px;
+        }
+
+        li {
+          @include flexbox;
+          @include flexColumn;
+
+          .shipping-cost {
+            @include body-large;
+            padding-left: 26px;
+            margin-top: 6px;
+
+            @include md {
+              margin-top: 10px;
+              padding-left: 38px;
+            }
+          }
+
+          .ocs-radio{
+            @include ocs-radio;
+          }
+        }
+      }
+    }
+  }
