@@ -1,0 +1,130 @@
+@import "../common/mixin";
+@import "../components/breadcrumb";
+@import "../components/quotation_table";
+
+.jkm-pdf {
+  @include jkm-pdf;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.btn {
+  @include button;
+  @include btn-primary;
+  @include btn-medium;
+
+  &.btn-download {
+    @media only screen and (min-width: $device-xl) {
+      padding: 13px 37px;
+    }
+  }
+
+  width: auto;
+
+  .jkm-pdf {
+    margin-right: 10px;
+  }
+}
+
+.btn-contineu-checkout {
+  @include button;
+  @include btn-primary;
+  float: right;
+  @include btn-medium;
+}
+
+.quotation-content-top {
+  @include flexbox;
+  @include flexwrap;
+  @include space-between;
+  @include mb-30;
+
+  .content-para {
+    margin-bottom: 15px;
+
+    p {
+      margin: 0;
+
+      &.content-top-para-number {
+        margin-bottom: 10px;
+      }
+
+      @media only screen and (min-width: $device-md) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.quotation-wrap {
+  @include box-shadow(0, 0, 15px, var(--data_box_shadow_color));
+  margin-top: 30px;
+  padding: 20px 15px;
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 134px;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    padding: 30px;
+    margin-top: 50px;
+  }
+}
+
+.quotaion-table-content {
+  @include mb-30;
+  overflow: auto;
+}

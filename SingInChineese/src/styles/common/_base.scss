@@ -1,0 +1,228 @@
+@import './mixin';
+
+/***
+    The new CSS reset - version 1.8.4 (last updated 14.2.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+a,
+button {
+	cursor: revert;
+}
+
+ol,
+ul,
+menu {
+	list-style: none;
+}
+
+img {
+	max-inline-size: 100%;
+	max-block-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+input,
+textarea {
+	user-select: auto;
+}
+
+textarea {
+	white-space: revert;
+}
+
+meter {
+	-webkit-appearance: revert;
+	appearance: revert;
+}
+
+:where(pre) {
+	all: revert;
+}
+
+::placeholder {
+	color: unset;
+}
+
+::marker {
+	content: initial;
+}
+
+:where([hidden]) {
+	display: none;
+}
+
+:where([contenteditable]:not([contenteditable='false'])) {
+	-moz-user-modify: read-write;
+	-webkit-user-modify: read-write;
+	overflow-wrap: break-word;
+}
+
+:where([draggable='true']) {
+	-webkit-user-drag: element;
+}
+
+@layer base {
+	html {
+		font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-tap-highlight-color: transparent;
+		@apply h-full touch-manipulation;
+	}
+
+	html,
+	body {
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		@apply h-full;
+	}
+
+	body {
+		@apply relative text-sm font-primary font-normal bg-light-gray;
+	}
+
+	a,
+	.link {
+		@apply no-underline outline-0 text-black;
+
+		&.disabled,
+		&[disabled] {
+			@apply text-neutral-900 opacity-90;
+
+			&:hover {
+				@apply no-underline;
+			}
+		}
+	}
+
+	/*** Heading ***/
+	h1,
+	.h1 {
+		@include font-xl;
+	}
+
+	h2,
+	.h2 {
+		@include font-lg;
+	}
+
+	h3,
+	.h3 {
+		@include font-md;
+	}
+
+	h4,
+	.h4 {
+		@include font-sm;
+	}
+
+	h5,
+	.h5 {
+		@include font-xs;
+	}
+
+	h6,
+	.h6 {
+		@include font-xxs;
+	}
+
+	/* List styles */
+	.list-decimal,
+	.list-disc {
+		@apply tracking-normal list-none;
+	}
+
+	.unordered-list li,
+	.ordered-list li {
+		@apply font-normal tracking-normal relative pl-3.5 leading-5 text-sm;
+	}
+
+	.unordered-list li:before {
+		content: '•';
+		@apply absolute top-0 left-0;
+	}
+
+	.ordered-list {
+		counter-reset: section;
+	}
+
+	.ordered-list li {
+		@apply pl-5;
+	}
+
+	.ordered-list li:before {
+		counter-increment: section;
+		content: counters(section, '.') '.';
+		@apply absolute top-0 left-0;
+	}
+}
+
+.p-datepicker {
+	&.p-component {
+		width: 25rem !important;
+		max-width: 25rem !important;
+		min-width: 25rem !important;
+	}
+	& .p-datepicker-header {
+		max-height: 3.125rem;
+		box-sizing: border-box;
+		background-color: var(--primary) !important;
+		color: #ffffff !important;
+		& button {
+			color: #ffffff !important;
+			max-height: 2.813rem;
+			box-sizing: border-box;
+		}
+	}
+
+	& .p-datepicker-calendar {
+		& tr {
+			@apply text-xs font-semibold;
+		}
+		& td {
+			@apply p-2;
+
+			& > span {
+				@apply h-5 w-5;
+			}
+		}
+	}
+
+	& .p-datepicker-title {
+		@apply flex gap-x-2;
+	}
+
+	& span.p-highlight {
+		@apply bg-pink-50;
+	}
+}
+.p-calendar {
+	@apply bg-white appearance-none border rounded w-full py-2 px-3 text-slate-800 border-gray-300 text-sm mt-0.5;
+	&:focus,
+	&:active {
+		@apply border-slate-600 outline-0;
+	}
+}
+
+.p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
+	outline: 0 none;
+	outline-offset: 0;
+	box-shadow: 0 0 0 0.2rem transparent !important;
+	border-color: transparent !important;
+}
+.p-button:focus {
+	box-shadow: 0 0 0 2px transparent !important;
+	background: none;
+}

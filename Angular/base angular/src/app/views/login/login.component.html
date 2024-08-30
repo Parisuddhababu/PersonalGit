@@ -1,0 +1,156 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <h1>Login</h1>
+                <p class="text-muted">Sign In to your account</p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div
+                    [ngClass]="{
+                      'form-group m-form__group': true,
+                      'has-danger': !loginForm.get('email').valid && loginForm.get('email').touched
+                    }"
+                  >
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                      </div>
+                      <input formControlName="email" type="text" class="form-control" placeholder="Email" />
+                    </div>
+                    <div
+                      *ngIf="loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+                      class="text-danger"
+                    >
+                      <div *ngIf="loginForm.get('email').errors.required">
+                        Please enter email
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    [ngClass]="{
+                      'form-group m-form__group': true,
+                      'has-danger': !loginForm.get('password').valid && loginForm.get('password').touched
+                    }"
+                  >
+                    <div class="view-pass">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="icon-lock"></i></span>
+                        </div>
+                        <input
+                          formControlName="password"
+                          [type]="showPass ? 'text' : 'password'"
+                          class="form-control"
+                          placeholder="Password"
+                        />
+                      </div>
+                      <i
+                        class="fa fa-lg"
+                        [ngClass]="showPass ? 'fa-eye' : 'fa-eye-slash'"
+                        (click)="showPass = !showPass"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                    <div
+                      *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+                      class="text-danger"
+                    >
+                      <div *ngIf="loginForm.get('password').errors.required">
+                        Please enter password
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="custom-control custom-checkbox mt-1">
+                        <input class="custom-control-input crsr-ptr" id="accept" type="checkbox" formControlName="rememberMe" />
+                        <label class="custom-control-label crsr-ptr" for="accept">Remember me</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                      <button type="button" class="btn btn-link px-0" data-toggle="modal" (click)="showForgotModal()">
+                        Forgot password?
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button [disabled]="loading || !loginForm.valid" class="btn btn-primary px-4">Login</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div
+  *ngIf="isForgotModalShown"
+  [config]="{ show: true }"
+  bsModal
+  #forgotPassModal="bs-modal"
+  (onHidden)="onForgotHidden()"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myForgotModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h4 class="modal-title"><i class="ion-information-circled modal-icon"></i><span>Forgot Password</span></h4>
+        <button type="button" class="close" (click)="hideForgotModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="forgotPassWordForm" (ngSubmit)="forgotPassword()">
+        <div class="modal-body">
+          <p>Enter your e-mail address below to reset your password.</p>
+          <div
+            [ngClass]="{
+              'form-group m-form__group': true,
+              'has-danger': !forgotPassWordForm.get('forgotPassemail').valid && forgotPassWordForm.get('forgotPassemail').touched
+            }"
+          >
+            <input formControlName="forgotPassemail" type="text" class="form-control" id="forgotPassemail" placeholder="Email" />
+            <div
+              *ngIf="
+                forgotPassWordForm.get('forgotPassemail').errors &&
+                (forgotPassWordForm.get('forgotPassemail').dirty || forgotPassWordForm.get('forgotPassemail').touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="forgotPassWordForm.get('forgotPassemail').errors.required">
+                Please enter email
+              </div>
+              <div
+                *ngIf="
+                  !forgotPassWordForm.get('forgotPassemail').errors.required && forgotPassWordForm.get('forgotPassemail').errors?.pattern
+                "
+              >
+                Please enter valid email
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="forgotPassLoading || !forgotPassWordForm.valid">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="hideForgotModal()">Close</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<app-loader></app-loader>

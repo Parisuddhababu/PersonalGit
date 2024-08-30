@@ -1,0 +1,37 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/formControl";
+@import "../layout/button";
+@import "../common/common";
+
+.payment-wrapper{
+    padding: 100px 15px;
+    @include flexCenter;
+    
+    .payment-card {
+
+        border: 1px solid $billowing-clouds;
+        @include border-radius(15px);
+        padding: 30px;
+        @include flexCenter;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: 0px 0px 50px rgba($black-color, 0.05);
+        background-color: $white-color;
+        width: 100%;
+
+        @include media($device-lg){
+            padding: 50px;
+            max-width: 750px;
+        }
+
+        .payment-card-icon{
+            max-width: 80px;
+            @include media($device-md){
+                max-width: none;
+            }
+        }
+
+    }
+}

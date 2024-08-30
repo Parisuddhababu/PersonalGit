@@ -1,0 +1,144 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="title" type="text" name="title" class="form-control" placeholder="{{ 'SURVEY_TITLE' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="survey_status" name="survey_status">
+                    <option value="">{{ 'SELECT_SURVEY_STATUS' | translate }}</option>
+                    <option value="no">Pending</option>
+                    <option value="yes">Completed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- Survey List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['USER_SURVEY_LIST']">
+        <div class="card-header"><i class="fa fa-address-book-o"></i> {{ 'SURVEY_LIST' | translate }}</div>
+        <div class="card-body">
+          <div class="pull-right">
+            <strong>NOTE: </strong>
+            <div class="note box-green"></div>
+            <span class="text-danger mr-2">{{ 'ANSWER_SUBMITTED' | translate }}</span>
+            <div class="note box-red"></div>
+            <span class="text-danger">{{ 'ANSWER_PENDING' | translate }}</span>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="wrap-datatable pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="surveyList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+              [rowClass]="getRowClass"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [width]="70"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'SURVEY_TITLE' | translate }}" prop="title"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'START_DATE' | translate }}" prop="survey_start_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'END_DATE' | translate }}" prop="survey_end_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['USER_SURVEY_ANSWER', 'VIEW_USER_ANSWER']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['VIEW_USER_ANSWER']"
+                      routerLink="/user-survey/view-answers/{{ row.uuid }}"
+                      title="{{ 'VIEW_ANSWER' | translate }}"
+                      [ngClass]="{ 'link-is-disabled': row.has_submitted == 'no' }"
+                      ><i class="fa fa-eye fa-lg"></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['USER_SURVEY_ANSWER']"
+                      routerLink="/user-survey/add-answers/{{ row.uuid }}"
+                      title="{{ 'ANSWER' | translate }}"
+                      [ngClass]="{ 'link-is-disabled': row.is_completed == 'yes' || row.has_submitted == 'yes' }"
+                      ><i class="fa fa-question-circle-o fa-lg"></i
+                    ></a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Survey List -- Start -->
+</div>
+<app-loader></app-loader>

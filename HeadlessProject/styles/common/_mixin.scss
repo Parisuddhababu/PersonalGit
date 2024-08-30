@@ -1,0 +1,277 @@
+// @mixin h1 {
+//   font-size: 30px;
+//   // line-height: 40px;
+//   font-weight: 600;
+//   margin-bottom: 30px;
+
+//   @include large {
+//     font-size: 26px;
+//     margin-bottom: 25px;
+//   }
+
+//   @include xl {
+//     font-size: 24px;
+//     margin-bottom: 20px;
+//   }
+// }
+
+// @mixin h2 {
+//   font-size: 26px;
+//   // line-height: 40px;
+//   font-weight: 500;
+
+//   @include large {
+//     font-size: 24px;
+//     margin-bottom: 25px;
+//   }
+
+//   @include xl {
+//     font-size: 22px;
+//     margin-bottom: 20px;
+//   }
+// }
+
+// @mixin h3 {
+//   font-size: 24px;
+//   font-weight: 600;
+
+//   @include large {
+//     font-size: 22px;
+//   }
+
+//   @include xl {
+//     font-size: 20px;
+//   }
+// }
+
+// @mixin h4 {
+//   font-size: 20px;
+//   font-weight: 600;
+
+//   @include large {
+//     font-size: 18px;
+//   }
+
+//   @include xl {
+//     font-size: 16px;
+//   }
+// }
+
+// @mixin h5 {
+//   font-size: 20px;
+//   font-weight: 500;
+
+//   @include large {
+//     font-size: 18px;
+//   }
+
+//   @include xl {
+//     font-size: 16px;
+//   }
+// }
+
+// @mixin h6 {
+//   font-size: 18px;
+//   font-weight: 500;
+
+//   @include large {
+//     font-size: 16px;
+//   }
+
+//   @include xl {
+//     font-size: 14px;
+//   }
+// }
+
+// @mixin regular-font {
+//   font-size: 18px;
+//   line-height: 26px;
+//   font-weight: 400;
+// }
+
+// @mixin medium-font {
+//   font-size: 16px;
+//   line-height: 26px;
+//   font-weight: 500;
+// }
+
+// @mixin small-font {
+//   font-size: 14px;
+//   line-height: 26px;
+//   font-weight: 500;
+// }
+
+// @mixin extra-small-font {
+//   font-size: 12px;
+//   line-height: 20px;
+//   font-weight: 400;
+// }
+
+// @mixin border-radius($radius) {
+//   -webkit-border-radius: $radius;
+//   -moz-border-radius: $radius;
+//   -o-border-radius: $radius;
+//   border-radius: $radius;
+// }
+
+// @mixin opacity($opacity) {
+//   -webkit-opacity: $opacity;
+//   -moz-opacity: $opacity;
+//   -o-opacity: $opacity;
+//   -ms-opacity: $opacity;
+//   opacity: $opacity;
+// }
+
+// @mixin transition($seconds, $timing: ease) {
+//   -webkit-transition: all $seconds ease;
+//   -moz-transition: all $seconds ease;
+//   -ms-transition: all $seconds ease;
+//   -o-transition: all $seconds ease;
+//   transition: all $seconds $timing;
+// }
+
+// @mixin transform($property) {
+//   -o-transform: $property;
+//   -webkit-transform: $property;
+//   -ms-transform: $property;
+//   -moz-transform: $property;
+//   transform: $property;
+// }
+
+// @mixin flexbox() {
+//   display: -ms-flex;
+//   display: -webkit-flex;
+//   display: flex;
+// }
+
+// @mixin displayflexMixin($value) {
+//   display: -ms-$value;
+//   display: -webkit-$value;
+//   display: $value;
+// }
+
+// @mixin flexwrap($value) {
+//   -webkit-flex-wrap: $value;
+//   -moz-flex-wrap: $value;
+//   -ms-flex-wrap: $value;
+//   -o-flex-wrap: $value;
+//   flex-wrap: $value;
+// }
+
+// @mixin alignitems($value) {
+//   -webkit-align-items: $value;
+//   -webkit-box-align: $value;
+//   -ms-flex-align: $value;
+//   align-items: $value;
+// }
+
+// @mixin justifycontent($value) {
+//   -webkit-justify-content: $value;
+//   -webkit-box-pack: $value;
+//   -ms-flex-pack: $value;
+//   justify-content: $value;
+// }
+
+// @mixin flexdirection($value) {
+//   -webkit-flex-direction: $value;
+//   -ms-flex-direction: $value;
+//   flex-direction: $value;
+// }
+
+// @mixin text-shadow($x-axis, $y-axis, $blur, $color) {
+//   -ms-text-shadow: $x-axis $y-axis $blur $color;
+//   -o-text-shadow: $x-axis $y-axis $blur $color;
+//   -webkit-text-shadow: $x-axis $y-axis $blur $color;
+//   -moz-text-shadow: $x-axis $y-axis $blur $color;
+//   text-shadow: $x-axis $y-axis $blur $color;
+// }
+
+// @mixin box-shadow($x-axis, $y-axis, $blur, $color) {
+//   -ms-box-shadow: $x-axis $y-axis $blur $color;
+//   -o-box-shadow: $x-axis $y-axis $blur $color;
+//   -webkit-box-shadow: $x-axis $y-axis $blur $color;
+//   -moz-box-shadow: $x-axis $y-axis $blur $color;
+//   box-shadow: $x-axis $y-axis $blur $color;
+// }
+
+// @mixin box-shadow-none {
+//   -ms-box-shadow: none;
+//   -o-box-shadow: none;
+//   -webkit-box-shadow: none;
+//   -moz-box-shadow: none;
+//   box-shadow: none;
+// }
+
+// @mixin box($property) {
+//   box-sizing: $property;
+//   -moz-box-sizing: $property;
+//   -webkit-box-sizing: $property;
+//   -o-box-sizing: $property;
+// }
+
+// @mixin text-clamp($line) {
+//   display: -webkit-box;
+//   -webkit-line-clamp: $line;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+//   width: 100%;
+// }
+
+// @mixin space-none {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// @mixin bg-cmn {
+//   background-position: top center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// @mixin large {
+//   @media (max-width: 1800px) {
+//     @content;
+//   }
+// }
+
+// @mixin xl {
+//   @media (max-width: 1600px) {
+//     @content;
+//   }
+// }
+
+// @mixin xlg {
+//   @media (max-width: 1400px) {
+//     @content;
+//   }
+// }
+
+// @mixin lg {
+//   @media (max-width: 1200px) {
+//     @content;
+//   }
+// }
+
+// @mixin md {
+//   @media (max-width: 900px) {
+//     @content;
+//   }
+// }
+
+// @mixin sm {
+//   @media (max-width: 600px) {
+//     @content;
+//   }
+// }
+
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin mq-max($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}

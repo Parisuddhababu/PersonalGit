@@ -1,0 +1,132 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+// @include row;
+.d-flex {
+  @include flexbox;
+}
+
+.just-center {
+  @include just-center;
+  @include flexColumn;
+
+  @media only screen and (min-width: $device-sm) {
+    justify-content: unset;
+    flex-direction: unset;
+  }
+}
+
+.avtar_info {
+  margin-top: -55px;
+  @include mb-50;
+
+  @media only screen and (min-width: $device-sm) {
+    margin-top: -90px;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    margin-top: -105px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-top: -120px;
+  }
+}
+
+.avatar-upload {
+  position: relative;
+  margin-bottom: 20px;
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 10px;
+  }
+
+  .avatar-preview img {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    object-fit: cover;
+    @include border-radius(50%);
+    border: 5px solid #dadada;
+
+    @media only screen and (min-width: $device-sm) {
+      width: 120px;
+      height: 120px;
+    }
+
+    @media only screen and (min-width: $device-md) {
+      width: 150px;
+      height: 150px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .jkm-camera {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    @include flexbox;
+    @include align-item-center;
+    @include justifyCenter;
+    @include border-radius(50%);
+    background: var(--data_site_primary_color);
+    color: var(--data_site_highlight_section_text_color);
+
+    @media only screen and (min-width: $device-md) {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+#imageUpload {
+  display: none;
+}
+
+.avtar_details {
+  color: var(--data_site_primary_color);
+  @include textCenter;
+
+  @media only screen and (min-width: $device-sm) {
+    margin-left: 25px;
+    color: var(--data_site_highlight_section_text_color);
+    text-align: left;
+  }
+
+  h5 {
+    margin-bottom: 5px;
+  }
+
+  a.jkm-pencil {
+    background: var(--data_site_primary_color);
+    color: var(--data_site_highlight_section_text_color);
+    @include border-radius(5px);
+    border: 1px solid transparent;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 15px;
+    @include textCenter;
+    padding: 7px 0;
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+
+    @media only screen and (min-width: $device-sm) {
+      background: var(--data_site_theme_color);
+      color: var(--data_site_text_color);
+    }
+  }
+}

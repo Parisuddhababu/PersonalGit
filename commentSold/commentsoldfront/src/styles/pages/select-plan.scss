@@ -1,0 +1,22 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+@import "../layout/formControl";
+@import "../layout/button";
+@import "../components/start-growing.scss";
+
+.select-plan-card{
+    background-color: $white-color;
+    box-shadow: 0px 0px 50px rgba($black-color, 0.04);
+    @include border-radius(4px);
+    padding: 20px;
+    margin-bottom: 50px;
+    @include media($device-md){
+        padding: 30px;
+        @include border-radius(8px);
+    }
+    @include media($device-lg){
+        padding: 40px;
+    }
+}

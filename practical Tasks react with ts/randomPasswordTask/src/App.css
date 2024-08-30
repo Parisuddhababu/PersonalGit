@@ -1,0 +1,39 @@
+.container{
+    background-color: cadetblue;
+    height: auto;
+    width:100vw;
+    text-align: center;
+}
+.Input-container{
+ height: 40px;
+ width: 300px;
+ border-radius: 10px;
+ margin: 15px;
+}
+.checkBox{
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}
+button{
+    height: 40px;
+    width: 150px;
+    background-color:green;
+    color: rgb(240, 11, 221);
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px;
+}
+h1{
+    color: blue;
+    font-family: Bree-serif;
+    font-style: italic;
+    padding: 15px;
+    margin: 10px;
+}
+label{
+    color: midnightblue;
+}
+li{
+    list-style-type: none;
+}

@@ -1,0 +1,64 @@
+<div>
+    <h2>{{paramId ? 'Edit post' :'create post'}}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="id">post ID</label><br />
+        <input type="text" id="id" formControlName="id" />
+        @if (form.controls.id.touched && form.controls.id.dirty && form.controls.id.invalid) {
+          @if (form.controls.id.errors?.['required']) {
+            <p style="color: red">Please enter post id</p>
+          } @else if (form.controls.id.errors?.['pattern']) {
+            <p style="color: red">Post ID must contain only numbers</p>
+          }
+        }
+      </div>
+      <div>
+        <label for="userId">User ID</label><br />
+        <input
+          type="text"
+          id="userId"
+          formControlName="userId"
+        />
+        @if (form.controls.userId.touched && form.controls.userId.dirty && form.controls.userId.invalid) {
+          @if (form.controls.userId.errors?.['required']) {
+            <p style="color: red">Please enter user id</p>
+          } @else if (form.controls.userId.errors?.['pattern']) {
+            <p style="color: red">User ID must contain only numbers</p>
+          }
+        }
+      </div>
+      <div>
+        <label for="userId">Title</label><br />
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+        />
+        @if (form.controls.title.touched &&
+        form.controls.title.dirty &&
+        form.controls.title.invalid ){
+        <p style="color: red">Please enter title</p>
+        }
+      </div>
+      <div>
+        <label for="body">Body</label><br />
+        <input
+          type="text"
+          id="body"
+          formControlName="body"
+        />
+        @if (form.controls.body.touched &&
+        form.controls.body.dirty &&
+        form.controls.body.invalid ){
+        <p style="color: red">Please enter body Text</p>
+        }
+      </div>
+      <div>
+        <button type="submit" class="submit" [disabled]="form.invalid">
+        {{paramId ? 'Update':"Create"}}
+        </button>
+        <button type="button" class="cancel" (click)="Cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

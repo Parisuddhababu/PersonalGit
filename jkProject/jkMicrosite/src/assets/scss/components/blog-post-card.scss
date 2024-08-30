@@ -1,0 +1,141 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-calendar {
+    @include jkm-calendar;
+}
+
+.jkm-folder {
+    @include jkm-folder;
+}
+
+.jk-card {
+    @include jk-card;
+}
+
+.post-card {
+    @include border-radius(10px);
+    overflow: hidden;
+    width: 100%;
+
+    .post-card-image {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .post-image {
+        position: relative;
+        @include border-radius(10px);
+        padding: 33.4% calc(50% - 2px);
+        border: 1px solid var(--data_border_color);
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            inset: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .post-card-body {
+        padding: 10px 15px 20px;
+
+        @media screen and (min-width: $device-xl) {
+            padding: 20px 25px 30px;
+        }
+
+        @media screen and (min-width: $container-lg) {
+            padding: 30px 35px 40px;
+        }
+
+        p {
+            margin-bottom: 20px;
+
+            @media screen and (min-width: $device-lg) {
+                margin-bottom: 30px;
+            }
+
+            @media screen and (min-width: $device-xl) {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    .post-card-title {
+        margin-bottom: 15px;
+        @include text-clamp(2);
+
+        a {
+            &:hover {
+                color: var(--data_site_primary_color);
+                text-decoration: underline;
+            }
+        }
+
+        @media screen and (min-width: $device-xl) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .post-card-category-info {
+        @include font-detail(16px, 36px);
+    }
+}
+
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+}
+
+.post-card-body {
+    padding: 10px 15px 20px;
+
+    @media screen and (min-width: $device-xl) {
+        padding: 20px 25px 30px;
+    }
+
+    @media screen and (min-width: $container-lg) {
+        padding: 30px 35px 40px;
+    }
+}
+
+.post-card {
+    border: 1px solid var(--data_border_color);
+}
+
+.date-category-info {
+    @include date-category-info;
+}
+
+.date-category-info,
+h2,
+p {
+    margin-bottom: 10px;
+
+    @media screen and (min-width: $device-lg) {
+        margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+    }
+}
+
+.mr-10 {
+    margin-right: 10px;
+}

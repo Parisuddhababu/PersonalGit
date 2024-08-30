@@ -1,0 +1,476 @@
+ @import "../common/mixin";
+
+ .osicon-location {
+     @include osicon-location;
+ }
+
+ .osicon-call {
+     @include osicon-call;
+ }
+
+ .osicon-doctor {
+     @include osicon-doctor;
+ }
+
+ .osicon-instagram {
+     @include osicon-instagram;
+ }
+
+ .osicon-youtube {
+     @include osicon-youtube;
+ }
+
+ .osicon-facebook {
+     @include osicon-facebook;
+ }
+
+ .osicon-twitter {
+     @include osicon-twitter;
+ }
+
+ .osicon-wifi {
+     @include osicon-wifi;
+ }
+
+ .osicon-cheveron-down {
+     @include osicon-cheveron-down;
+ }
+
+ .osicon-whatsapp {
+     @include osicon-whatsapp;
+ }
+
+ .osicon-linkedin {
+     @include osicon-linkedin;
+ }
+
+ .osicon-tumblr {
+     @include osicon-tumblr;
+ }
+
+ .osicon-google {
+     @include osicon-google;
+ }
+
+ .osicon-pinterest {
+     @include osicon-pinterest;
+ }
+
+ .osicon-meet {
+     @include osicon-google;
+ }
+ .osicon-photos {
+    @include osicon-photos;
+}
+
+ footer {
+     background-color: var(--data_footer_bg);
+
+     .footer-main {
+         padding: 20px 0;
+         position: relative;
+
+         @include md {
+             padding: 40px 0;
+         }
+
+         @include xl {
+             padding: 60px 0;
+         }
+
+         &::before {
+             content: "";
+             position: absolute;
+             background-color: var(--data_site_secondary_color);
+             width: 100%;
+             height: 1px;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             @include opacity(0.5);
+         }
+
+         .footer-main-list {
+             @include flexbox;
+             @include flexwrap;
+
+             @include md {
+                 gap: 10px 30px;
+                 @include space-between;
+             }
+
+             @include lg {
+                 gap: 20px 40px;
+             }
+
+             @include container-md {
+                 gap: 50px;
+             }
+
+             .footer-main-list-common {
+                 @include flexbox;
+                 @include flexColumn;
+                 @include transition(0.3s);
+                 cursor: pointer;
+                 max-width: 100%;
+                 width: 100%;
+
+                 @include md {
+                     cursor: auto;
+                     max-width: 20%;
+                     width: auto;
+                 }
+
+                 @include lg {
+                     max-width: 28%;
+                     width: auto;
+                 }
+
+                 @include xl {
+                     max-width: 20%;
+                     width: auto;
+                 }
+
+                 &:last-child {
+                     width: 100%;
+                     max-width: 100%;
+
+                     @include md {
+                         max-width: 25%;
+                         width: auto;
+                     }
+
+                     @include lg {
+                         max-width: 100%;
+                         width: 100%;
+                     }
+
+                     @include xl {
+                         max-width: 15%;
+                         width: auto;
+                     }
+                 }
+
+                 &.active {
+                     .list-title-wrap {
+                         em {
+                             @include transition(0.3s);
+                             @include transform(rotate(180deg));
+                         }
+                     }
+
+                     .footer-main-sublist {
+                         max-height: 100%;
+                     }
+                 }
+
+                 .footer-logo {
+                     @include flexbox;
+
+                     picture {
+                         margin-bottom: 10px;
+                         max-width: 130px;
+                         width: 100%;
+
+                         @include md {
+                             max-width: 150px;
+                             width: 100%;
+                             margin-bottom: 18px;
+                         }
+
+                         @include lg {
+                             max-width: 170px;
+                             width: 100%;
+                             margin-bottom: 20px;
+                         }
+
+                         @include xl {
+                             max-width: 198px;
+                             width: 100%;
+                             margin-bottom: 26px;
+                         }
+
+                         img {
+                             height: 100%;
+                             width: 100%;
+                             object-fit: cover;
+                         }
+                     }
+                 }
+
+                 h3 {
+                     color: var(--data_footer_text);
+                     @include h3;
+
+                     a {
+                         color: var(--data_site_secondary_color);
+                     }
+                 }
+
+                 .list-title-wrap {
+                     @include flexbox;
+                     @include align-item-center;
+                     @include space-between;
+                     padding: 0 0 12px;
+                     cursor: pointer;
+
+                     @include md {
+                         cursor: auto;
+                         margin-bottom: 20px;
+                         padding: 0;
+                     }
+
+                     @include xl {
+                         margin-bottom: 22px;
+                     }
+
+                     @include container-md {
+                         margin-bottom: 26px;
+                     }
+
+                     .list-title {
+                         color: var(--data_site_secondary_color);
+                         @include body-large-bold;
+                     }
+
+                     em {
+                         font-size: 12px;
+                         color: var(--data_site_secondary_color);
+
+                         @include sm {
+                             font-size: 14px;
+                         }
+
+                         @include md {
+                             display: none;
+                         }
+                     }
+                 }
+
+                 .footer-main-sublist {
+                     @include flexbox;
+                     @include flexColumn;
+                     max-height: 0;
+                     overflow: hidden;
+                     @include custom-transition(max-height .4s linear);
+
+                     @include md {
+                         max-height: 100%;
+                     }
+
+                     li {
+                         @include flexbox;
+                         @include align-item-start;
+                         gap: 12px;
+                         margin-bottom: 8px;
+
+                         @include md {
+                             margin-bottom: 10px;
+                         }
+
+                         @include xl {
+                             margin-bottom: 12px;
+                         }
+
+                         @include container-md {
+                             margin-bottom: 14px;
+                         }
+
+                         &:last-child {
+                             margin-bottom: 12px;
+
+                             @include md {
+                                 margin-bottom: 0px;
+                             }
+                         }
+
+                         em {
+                             font-size: 16px;
+                             margin-top: 2px;
+                             color: var(--data_site_secondary_color);
+
+                             @include md {
+                                 font-size: 18px;
+                             }
+
+                             @include lg {
+                                 font-size: 20px;
+                             }
+                         }
+
+                         address,
+                         a {
+                             color: var(--data_footer_text);
+                             line-height: normal;
+                             font-style: normal;
+                             cursor: pointer;
+                             @include h3;
+                             @include transition(0.3s);
+
+                             &:hover {
+                                 text-decoration: underline;
+                             }
+                         }
+                     }
+                 }
+
+                 .footer-main-sublist-address {
+                     li {
+                         margin-bottom: 10px;
+
+                         @include md {
+                             margin-bottom: 12px;
+                         }
+
+                         @include xl {
+                             margin-bottom: 16px;
+                         }
+
+                         @include container-md {
+                             margin-bottom: 20px;
+                         }
+                     }
+                 }
+
+                 .footer-main-iconlist {
+                     @include flexbox;
+                     @include flexwrap;
+                     max-width: 100%;
+                     width: 100%;
+                     gap: 12px;
+
+                     @include md {
+                         gap: 15px;
+                     }
+
+                     @include xl {
+                         gap: 10px 15px;
+                     }
+
+                     @include container-md {
+                         gap: 10px 20px;
+                     }
+
+                     a {
+                         cursor: pointer;
+
+                         &:hover {
+                             em {
+                                 color: var(--data_footer_text);
+                             }
+                         }
+                     }
+
+                     em {
+                         font-size: 14px;
+                         color: var(--data_site_secondary_color);
+                         @include transition(0.3s);
+
+                         @include md {
+                             font-size: 18px;
+                         }
+
+                         @include lg {
+                             font-size: 20px;
+                         }
+                     }
+                 }
+             }
+
+             .footer-main-contact-list {
+                 @include md {
+                     cursor: auto;
+                     max-width: 30%;
+                     width: auto;
+                 }
+
+                 @include lg {
+                     max-width: 28%;
+                     width: auto;
+                 }
+
+                 @include xl {
+                     max-width: 20%;
+                     width: auto;
+                 }
+             }
+
+             .footer-logo-list {
+                 max-width: 100%;
+                 width: 100%;
+                 margin-bottom: 15px;
+
+                 @include lg {
+                     max-width: 35%;
+                     width: 100%;
+                     margin-right: auto;
+                 }
+
+                 @include xl {
+                     max-width: 30%;
+                 }
+             }
+         }
+     }
+
+     .footer-lower {
+         padding: 10px 0;
+
+         @include md {
+             padding: 20px 0;
+         }
+
+         .container {
+             @include flexbox;
+             @include just-center;
+             @include align-item-center;
+             @include flexColumn;
+             gap: 8px;
+
+             @include sm {
+                 @include flexrow;
+                 @include space-between;
+             }
+
+             span {
+                 color: var(--data_site_secondary_color);
+                 text-align: center;
+                 @include body-regular;
+
+                 @include sm {
+                     text-align: left;
+                 }
+             }
+
+             .card-icons-wrap {
+                 @include flexbox;
+                 @include just-center;
+                 @include align-item-center;
+                 gap: 12px;
+
+                 .card-icon {
+                     cursor: pointer;
+                     @include flexbox;
+
+                     picture {
+                         display: inline-block;
+                         max-width: 38px;
+                         width: 100%;
+                         max-height: 26px;
+
+                         @include md {
+                             max-width: 48px;
+                             width: 100%;
+                         }
+
+                         img {
+                             object-fit: cover;
+                             height: 100%;
+                             width: 100%;
+                         }
+                     }
+                 }
+             }
+         }
+     }
+ }

@@ -1,0 +1,187 @@
+@import "../common/mixin-2";
+@import "../components/header-2";
+@import "../components/subscribe-newsletter-2";
+// @import "../components/banner-title-slider-2.scss";
+// @import "../components/product-category-2.scss";
+// @import "../components/similar-products-2.scss";
+// @import "../components/product-collection-2.scss";
+// @import "../components/our-testimonial-2.scss";
+// @import "../components/our_benefits-2";
+// @import "../components/download-app-2";
+// @import "../components/blog-2";
+// @import "../components/post-card-2";
+// @import "../components/simple-feature-2";
+@import "../components/footer-2";
+
+.jkms2-secure-payment {
+  @include jkms2-secure-payment;
+}
+
+.jkms2-ring-size {
+  @include jkms2-ring-size;
+}
+
+.jkms2-new {
+  @include jkms2-new;
+}
+
+.jkms2-eye {
+  @include jkms2-eye;
+}
+
+.jkms2-google-play {
+  @include jkms2-google-play;
+}
+
+.jkms2-apple {
+  @include jkms2-apple;
+}
+
+.jkms2-mail1 {
+  @include jkms2-mail1;
+}
+
+.jkms2-meta {
+  @include jkms2-meta;
+}
+
+.jkms2-instagram {
+  @include jkms2-instagram;
+}
+
+.jkms2-linkedin {
+  @include jkms2-linkedin;
+}
+
+.jkms2-whatsapp {
+  @include jkms2-whatsapp;
+}
+
+.jkms2-youtube {
+  @include jkms2-youtube;
+}
+
+.jkms2-visa {
+  @include jkms2-visa;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img {
+  @include img-common;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+}
+
+.heading {
+  margin-bottom: 30px;
+  @include textCenter;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}
+
+.our-blog {
+  margin-bottom: 40px;
+  padding: 0;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    margin-bottom: 120px;
+  }
+
+  .d-row {
+    @include row;
+
+    .d-col-3 {
+      @include d-col-3;
+    }
+  }
+
+  .btn-bottom {
+    margin: auto;
+    margin-top: 10px;
+
+    @media screen and (min-width: $device-md) {
+      margin-top: 15px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+      margin-top: 20px;
+    }
+  }
+}

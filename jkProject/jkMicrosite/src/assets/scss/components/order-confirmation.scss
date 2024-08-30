@@ -1,0 +1,69 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.order-confirmation-wrap {
+  @include flexbox;
+  @include space-between;
+  @include flexwrap;
+}
+
+.main-content {
+  @include flexCenter;
+  padding: 40px 20px;
+  border: 1px solid var(--data_border_color);
+  margin-bottom: 30px;
+
+  @media only screen and (min-width: $device-lg) {
+    padding: 40px;
+  }
+
+  @media only screen and (min-width: 991px) {
+    margin-bottom: 0;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    padding: 60px 40px;
+  }
+
+  .btn {
+    @include button;
+    @include btn-big;
+
+    &.btn-contiue-shopping {
+      @include btn-primary;
+    }
+
+    &.btn-my-order {
+      margin-bottom: 15px;
+    }
+  }
+
+  .title {
+    @include mb-30;
+  }
+
+  .success-massege {
+    margin-bottom: 20px;
+  }
+
+  .order-number {
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 30px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .verification-message {
+    color: var(--data_border_color);
+    @include mb-50;
+  }
+
+  .confirmation-image {
+    @include mb-50;
+  }
+}

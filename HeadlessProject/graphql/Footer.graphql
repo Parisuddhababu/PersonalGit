@@ -1,0 +1,9 @@
+query footerQuery {
+  GetFooterCMSLinks {
+    allBlocks {
+      name
+      identifier
+      content
+    }
+  }
+}

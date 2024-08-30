@@ -1,0 +1,13 @@
+mutation deletePaymentToken($publicHash: String!) {
+  deletePaymentToken(public_hash: $publicHash) {
+    result
+    customerPaymentTokens {
+      items {
+        details
+        public_hash
+        payment_method_code
+        type
+      }
+    }
+  }
+}

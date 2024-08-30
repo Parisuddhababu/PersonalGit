@@ -1,0 +1,122 @@
+@import "../common/_variable";
+
+@mixin align-item-center {
+  align-items: center;
+}
+
+@mixin just-center {
+  justify-content: center;
+}
+
+@mixin flexbox() {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin modal-popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  @include just-center;
+  @include align-item-center;
+}
+
+@mixin modal-container {
+  max-width: 90%;
+  width: 100%;
+  height: auto;
+  margin: auto;
+
+  @media screen and (min-width: $device-md) {
+    max-width: 700px;
+  }
+
+  @media screen and (min-width: $device-lg) {
+    max-width: 750px;
+  }
+}
+
+@mixin modal-wrapper {
+  background: var(--data_site_theme_color);
+  padding: 60px 20px;
+  margin: 40px auto;
+  position: relative;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 60px;
+  }
+}
+
+@mixin textCenter {
+  text-align: center;
+}
+
+@mixin modal-icon-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  visibility: visible;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  @include just-center;
+  @include align-item-center;
+
+  &.modal-active {
+    @include flexbox;
+  }
+}
+
+body {
+  &.hidden {
+    overflow: hidden;
+  }
+}
+
+.pop-up-container {
+  @include modal-container;
+
+  iframe {
+    height: 50vh;
+  }
+
+  .modal-wrapper {
+    @include modal-wrapper;
+  }
+
+  .jkm-close {
+    @include modal-icon-close;
+  }
+
+  .line {
+    max-width: 120px;
+    width: 100%;
+    height: 3px;
+    margin: 20px auto;
+    background: var(--data_site_text_color);
+
+    @media only screen and (min-width: $device-lg) {
+      margin: 30px auto;
+    }
+  }
+
+  .modal-header {
+    @include textCenter;
+  }
+}

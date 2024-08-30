@@ -1,0 +1,211 @@
+@import "../common/mixin";
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+aside,
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.jkm-share {
+  @include jkm-share;
+}
+
+.d-row {
+  @include row;
+}
+
+.d-col {
+  &.d-col-2 {
+    @include d-col-2;
+  }
+
+  &.d-col-3 {
+    @include d-col-3;
+  }
+
+  &.d-col-4 {
+    @include d-col-4;
+  }
+
+  &.d-col-33 {
+    @include d-col-33;
+  }
+
+  &.d-col-66 {
+    @include d-col-66;
+  }
+}
+
+.jk-card {
+  @include jk-card;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+
+  &.btn-large {
+    @include btn-large;
+  }
+
+  &.btn-extra-large {
+    @include btn-extra-large;
+  }
+
+  &.btn-big {
+    @include btn-big;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+
+  &[disabled] {
+    @include btn-disable;
+  }
+}
+
+.form-control {
+  @include formcontrol;
+}
+
+.form-group {
+  @include formgroup;
+}
+
+.error-message {
+  @include errormessage;
+}
+
+label {
+  @include label;
+}
+
+.cmn-radio {
+  @include radiobutton;
+}
+
+.cmn-checkbox {
+  @include checkbox;
+}
+
+.list-style-decimal {
+  @include list-left-space;
+
+  li {
+    @include ol-decimal-style;
+  }
+}
+
+.list-style-disc {
+  @include list-left-space;
+
+  li {
+    @include ul-disc-style;
+  }
+}
+
+.d-flex {
+  @include flexbox;
+}
+
+.d-flex-wrap {
+  @include flexwrap;
+}
+
+.style-guide-wrapper {
+  margin: 30px 0;
+
+  @media only screen and (min-width: $device-xl) {
+    margin: 50px 0;
+  }
+
+  .button-details {
+    .btn-size-full {
+      max-width: 400px;
+    }
+
+    .btn {
+      margin-right: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .d-row {
+    .d-col .col-box {
+      background: var(--data_input_placeholder_color);
+      height: 50px;
+      width: 100%;
+    }
+  }
+
+  .jk-card,
+  .mb-30 {
+    margin-bottom: 30px;
+  }
+}
+
+.custom-select {
+  @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+  @include bg-arrow(transparent, url(../../images/icons/arrow-down-gray.svg), no-repeat, 95%, center);
+}

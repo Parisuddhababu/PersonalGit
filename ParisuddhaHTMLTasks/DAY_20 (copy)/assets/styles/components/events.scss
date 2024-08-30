@@ -1,0 +1,107 @@
+/* events */
+.events {
+  margin: 0px 20px 0px 20px;
+  .events-section {
+    max-width: 1300px;
+    margin: auto auto;
+    filter: drop-shadow(18.656px 24.758px 21.5px rgba(0, 0, 0, 0.17));
+    position: relative;
+    .slick-dots {
+      text-align: center;
+      position: relative;
+      left: 0;
+      bottom: 27px;
+      @include xl {
+        text-align: left;
+        position: absolute;
+        left: 52px;
+        bottom: 30px;
+      }
+      @include large {
+        bottom: 30px;
+      }
+    }
+    .events-slider {
+      .events-container {
+        position: relative;
+        background-color: $white-color;
+        @include flex-property-col;
+        @include justify-content-center;
+        @include md {
+          @include justify-content-center;
+        }
+        @include xl {
+          @include flex-property-row;
+          gap: 40px;
+        }
+        .text-container {
+          @include xl {
+            padding: 55px 0px 62px 60px;
+          }
+          height: auto;
+          line-height: 33px;
+          color: $grey-color;
+          font-weight: 400;
+          font-family: $Playfair;
+          padding: 25px;
+          @include xl {
+            max-width: 531px;
+          }
+          span {
+            font-size: 18px;
+            @include lg {
+              font-size: 21px;
+            }
+            word-wrap: break-word;
+          }
+          .ellipse-icon {
+            @include pointer;
+          }
+          .events-sub-heading {
+            font-size: 20px;
+            @include lg {
+              font-size: 29px;
+              line-height: 46px;
+            }
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: $grey-color;
+            font-weight: 700;
+            font-family: $Playfair;
+          }
+          .events-main-heading {
+            font-size: 35px;
+            line-height: 46px;
+            color: $primary-color;
+            font-weight: 700;
+            font-family: $Playfair;
+            padding-bottom: 15px;
+            padding-top: 18px;
+            @include lg {
+              font-size: 55px;
+            }
+            @include large {
+              font-size: 63px;
+              padding-bottom: 65px;
+            }
+          }
+        }
+        .image-conatainer {
+          @include large {
+            padding:30px 30px 30px 0px;
+          }
+          padding: 30px;
+          .card-slider {
+            max-width: 659px;
+            height: auto;
+            .event-img {
+              object-fit: cover;
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,279 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="filter.name"
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="{{ 'PLAN_NAME' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.validity" name="validity">
+                    <option value="">{{ 'SELECT_PLAN_VALIDITY' | translate }}</option>
+                    <option *ngFor="let validity of plan_validity | keyvalue" [value]="validity.key">{{
+                      validity.value | translate
+                    }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.price" type="text" name="price" class="form-control" placeholder="{{ 'PRICE' | translate }}" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group dtePkr">
+                  <input
+                    [(ngModel)]="filter.select_date"
+                    name="select_date"
+                    type="text"
+                    class="form-control"
+                    required
+                    #select_date="ngModel"
+                    placeholder="{{ 'PLAN_START_END_DATE' | translate }}"
+                    #DRP="bsDaterangepicker"
+                    placement="top"
+                    bsDaterangepicker
+                    autocomplete="off"
+                    [bsConfig]="dateRangeConfig"
+                  />
+                  <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.is_trial_plan" name="is_trial_plan">
+                    <option value="">{{ 'SELECT_PLAN_TYPE' | translate }}</option>
+                    <option *ngFor="let type of plan_type | keyvalue" [value]="type.key">{{ type.value | translate }} </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- Subscription List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['SUBSCRIPTION_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="fa fa-handshake-o"></i> {{ 'SUBSCRIPTION_LIST' | translate }}
+          <a
+            *ngxPermissionsOnly="['SUBSCRIPTION_CREATE', 'SUPER_ADMIN']"
+            routerLink="/manage-subscription/add"
+            class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="manageSubscriptionList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [width]="70"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_NAME' | translate }}" prop="name"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_VALIDITY' | translate }}" prop="validity">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ (plan_validity[value] | translate) || noData }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{ 'PLAN_PRICE_USD' | translate }}" prop="price"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_DISCOUNT' | translate }}" prop="discount"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_TYPE' | translate }}" prop="is_trial_plan">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ plan_type[value] | translate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_START_DATE' | translate }}" prop="start_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ (value | customDate: momentDateFormat) || noData }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PLAN_END_DATE' | translate }}" prop="end_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ (value | customDate: momentDateFormat) || noData }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="[
+                  'SUPER_ADMIN',
+                  'SUBSCRIPTION_UPDATE',
+                  'SUBSCRIPTION_STATUS',
+                  'SUBSCRIPTION_DELETE',
+                  'SUBSCRIPTION_VIEW'
+                ]"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['SUBSCRIPTION_VIEW', 'SUPER_ADMIN']"
+                      routerLink="/manage-subscription/view/{{ row.uuid }}"
+                      title="{{ 'VIEW' | translate }}"
+                      ><i class="fa fa-eye fa-lg"></i
+                    ></a>
+                    &nbsp;
+                    <a
+                      *ngxPermissionsOnly="['SUBSCRIPTION_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/manage-subscription/edit/{{ row.uuid }}"
+                      title="{{ 'EDIT' | translate }}"
+                      ><i class="fa fa-pencil-square-o fa-lg"></i
+                    ></a>
+                    &nbsp;
+                    <a
+                      *ngxPermissionsOnly="['SUBSCRIPTION_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.uuid, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive' || row.status == 'Pending'
+                        }"
+                        class="fa fa-lg"
+                      ></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['SUBSCRIPTION_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDeleteManageSubscription, row.uuid)"
+                      title="{{ 'DELETE' | translate }}"
+                      ><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Subscription List -- Start -->
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDeleteManageSubscription>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteManageSubscription()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

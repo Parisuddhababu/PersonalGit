@@ -1,0 +1,60 @@
+@import "../common/mixin";
+
+.osicon-note {
+    @include osicon-note;
+}
+
+.shipping-to {
+    margin-top: 20px;
+    
+    @include md{
+        margin-top: 30px;
+    }
+    
+    @include xl{
+        margin-top: 40px;
+    }
+
+    .shipping-box {
+        h4 {
+            @include body-large-bold2;
+            font-weight: normal;
+            @include flexbox;
+            @include space-between;
+            @include align-item-center;
+            padding: 0 0 15px 0;
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid var(--data_site_border_color);
+            color: var(--data_site_gray_color);
+            a {
+                color: var(--data_site_text_color);
+                &:hover {
+                    color: var(--data_site_primary_color);
+                }
+            }
+        }
+        .shipping-address {
+            @include body-large;
+            span {
+                @include body-large-bold;
+            }
+            a:not(.link) {
+                color: var(--data_site_gray_color);
+            }
+            .link {
+                color: var(--data_site_primary_color);
+            }
+        }
+        &+.shipping-box {
+            margin-top: 18px;
+            
+            @include md{
+                margin-top: 24px;
+            }
+            
+            @include xl{
+                margin-top: 30px;
+            }
+        }
+    }
+}

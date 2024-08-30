@@ -1,0 +1,69 @@
+@import "../common/mixin";
+
+.order-summary-section {
+    margin-top: 20px;
+
+    @include sm{
+        margin-top: 20px;
+    }
+
+    @include lg {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 0;
+        max-width: 350px;
+        width: 100%;
+        padding-left: 30px;
+    }
+    
+    @include container{
+        max-width: 360px;
+        width: 100%;
+        padding-left: 40px;
+    }
+ 
+    h2 {
+        @include body-large-bold3;
+        margin-bottom: 12px;
+        
+        @include md {
+            margin-bottom: 16px;
+        }
+        
+        @include xl {
+            margin-bottom: 20px;
+        }
+    }
+
+    .order-box {
+        padding: 16px;
+        @include flexbox;
+        @include flexColumn;
+        background-color: var(--data_site_light_gray2);
+        @include border-radius(8px);
+        
+        @include md {
+            padding: 18px;
+        }
+
+        @include xl {
+            padding: 20px;
+        }
+        .order-wrapper {
+            &+.order-wrapper {
+                margin-top: 30px;
+                @include md {
+                    margin-top: 40px;
+                }
+        
+                @include xl {
+                    margin-top: 50px;
+                }
+            }
+
+            .ocs-checkbox{
+                @include ocs-checkbox;
+            }
+        }
+    }
+}

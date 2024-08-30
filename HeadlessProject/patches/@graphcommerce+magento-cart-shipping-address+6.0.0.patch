@@ -1,0 +1,84 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetBillingAddress.graphql b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetBillingAddress.graphql
+index 2379cca..06c4233 100644
+--- a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetBillingAddress.graphql
++++ b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetBillingAddress.graphql
+@@ -9,7 +9,6 @@ mutation SetBillingAddress(
+   $regionId: Int
+   $region: String
+   $street: String!
+-  $houseNumber: String!
+   $addition: String
+   $telephone: String = "000 - 000 0000"
+   $saveInAddressBook: Boolean!
+@@ -27,7 +26,7 @@ mutation SetBillingAddress(
+           country_code: $countryCode
+           region: $region
+           region_id: $regionId
+-          street: [$street, $houseNumber, $addition]
++          street: [$street, $addition]
+           telephone: $telephone
+           save_in_address_book: $saveInAddressBook
+         }
+diff --git a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingAddress.graphql b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingAddress.graphql
+index c80ed13..4f2c5aa 100644
+--- a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingAddress.graphql
++++ b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingAddress.graphql
+@@ -8,7 +8,6 @@ mutation SetShippingAddress(
+   $countryCode: String!
+   $regionId: Int
+   $street: String!
+-  $houseNumber: String!
+   $addition: String
+   $telephone: String = "000 - 000 0000"
+   $saveInAddressBook: Boolean!
+@@ -27,7 +26,7 @@ mutation SetShippingAddress(
+             city: $city
+             country_code: $countryCode
+             region_id: $regionId
+-            street: [$street, $houseNumber, $addition]
++            street: [$street, $addition]
+             telephone: $telephone
+             save_in_address_book: $saveInAddressBook
+           }
+diff --git a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingBillingAddress.graphql b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingBillingAddress.graphql
+index ebfd090..51a8fea 100644
+--- a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingBillingAddress.graphql
++++ b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/SetShippingBillingAddress.graphql
+@@ -8,7 +8,6 @@ mutation SetShippingBillingAddress(
+   $countryCode: String!
+   $regionId: Int
+   $street: String!
+-  $houseNumber: String!
+   $addition: String
+   $telephone: String = "000 - 000 0000"
+   $saveInAddressBook: Boolean!
+@@ -27,7 +26,7 @@ mutation SetShippingBillingAddress(
+             city: $city
+             country_code: $countryCode
+             region_id: $regionId
+-            street: [$street, $houseNumber, $addition]
++            street: [$street, $addition]
+             telephone: $telephone
+             save_in_address_book: $saveInAddressBook
+           }
+@@ -55,7 +54,7 @@ mutation SetShippingBillingAddress(
+           city: $city
+           country_code: $countryCode
+           region_id: $regionId
+-          street: [$street, $houseNumber, $addition]
++          street: [$street, $addition]
+           telephone: $telephone
+           save_in_address_book: $saveInAddressBook
+         }
+diff --git a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/ShippingAddressForm.tsx b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/ShippingAddressForm.tsx
+index 7860a64..6bd931a 100644
+--- a/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/ShippingAddressForm.tsx
++++ b/node_modules/@graphcommerce/magento-cart-shipping-address/components/ShippingAddressForm/ShippingAddressForm.tsx
+@@ -90,7 +90,6 @@ export const ShippingAddressForm = React.memo<ShippingAddressFormProps>((props)
+           company: currentAddress?.company ?? '',
+           postcode: currentAddress?.postcode ?? '',
+           street: currentAddress?.street?.[0] ?? '',
+-          houseNumber: currentAddress?.street?.[1] ?? '',
+           addition: currentAddress?.street?.[2] ?? '',
+           regionId: currentAddress?.region?.region_id ?? null,
+           countryCode: currentAddress?.country.code ?? shopCountry, // todo: replace by the default shipping country of the store + geoip,

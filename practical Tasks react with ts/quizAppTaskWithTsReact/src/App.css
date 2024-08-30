@@ -1,0 +1,49 @@
+.App{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+  height: 90vh;
+  width: 90vw;
+  background-color: darkslategray;
+  text-align: center;
+}
+p{
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(226, 202, 142);
+}
+.score-section{
+padding: 20px;
+margin-top: 25px;
+  height: 100px;
+  width: 600px;
+  background-color: rgb(184, 184, 91);
+  color: rgb(11, 58, 212);
+}
+h1{
+  font-family: Bree-serif;
+  color: rgb(8, 12, 238);
+  font-style: italic;
+}
+span{
+  font-size: 28px;
+  color: goldenrod;
+}
+.score{
+  color: blueviolet;
+  font-size: 30px;
+  font-style: italic;
+}
+button{
+  color: cornflowerblue;
+  background-color: brown;
+  height: 60px;
+  width: 150px;
+}
+button:hover{
+  color: black;
+  background-color: rgb(61, 161, 61);
+  height: 60px;
+  width: 150px;
+}

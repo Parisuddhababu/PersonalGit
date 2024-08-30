@@ -1,0 +1,105 @@
+/* form-container  */
+.form-section {
+  .form-container {
+    max-width: 1300px;
+    margin: auto auto;
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 140px;
+    .form-tomoto-container {
+      filter: drop-shadow(15.358px 14.322px 16px rgba(0, 0, 0, 0.41));
+      position: absolute;
+      visibility: hidden;
+      @include large {
+        bottom: 165px;
+        right: 25px;
+        visibility: visible;
+      }
+    }
+    .form-button {
+      border-radius: 5px;
+      background-color: $primary-color;
+      font-size: 16px;
+      @include lg {
+        font-size: 21px;
+      }
+      line-height: 46px;
+      text-transform: uppercase;
+      color: $white-color;
+      font-weight: 700;
+      font-family: $Playfair;
+      @include pointer;
+      height: 67px;
+    }
+    .form-button:hover {
+      background-color: $grey-color;
+      text-shadow: 1px 1px $white-color;
+    }
+
+    input {
+      @include xl {
+        width: 380px;
+      }
+      height: 66px;
+      border-radius: 5px;
+      background-color: rgba(235, 174, 76, 0);
+      border: 1px solid $light-color;
+      padding: 0px 15px 0px 15px;
+      font-size: 18px;
+      @include lg {
+        font-size: 21px;
+      }
+      line-height: 46px;
+      &::placeholder {
+        color: $grey-color;
+      }
+    }
+    .form-input-card {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: auto;
+      grid-template-columns: auto;
+      gap: 26px;
+      @include justify-content-center;
+      @include align-center;
+      @include lg {
+        grid-template-columns: auto auto;
+      }
+    }
+
+    .form-sub-heading {
+      font-size: 20px;
+      @include lg {
+        font-size: 29px;
+      }
+      letter-spacing: 2px;
+      line-height: 46px;
+      text-transform: uppercase;
+      color: $grey-color;
+      font-weight: 700;
+      font-family: $Playfair;
+      text-align: center;
+    }
+    .form-main-heading {
+      font-size: 35px;
+      padding:13px 0px 20px 0px;
+      line-height: 33px;
+      color: $primary-color;
+      font-weight: 700;
+      font-family: $Playfair;
+      text-align: center;
+      @include lg {
+        font-size: 55px;
+        padding-bottom: 81px;
+      }
+      @include xl {
+        font-size: 63px;
+      }
+      @include lg {
+        font-size: 63px;
+        letter-spacing: 4px;
+        line-height: 46px;
+      }
+    }
+  }
+}

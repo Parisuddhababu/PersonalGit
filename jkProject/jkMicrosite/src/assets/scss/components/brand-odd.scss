@@ -1,0 +1,104 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.brand-1,
+.brand-2 {
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    .d-row {
+        @include row;
+
+        .d-col-2 {
+            @include d-col-2;
+        }
+
+        .d-col-66 {
+            @include d-col-66;
+        }
+
+        .d-col-33 {
+            @include d-col-33;
+        }
+    }
+
+    .brand_image {
+        position: relative;
+        padding: 23.503% 49.81%;
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+
+    .catalog-content {
+        width: 100%;
+    }
+
+    .actions {
+        @include flexbox;
+
+        @media only screen and (min-width: $device-xl) {
+            padding-top: 40px;
+        }
+
+        .btn-medium {
+            margin-right: 40px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .btn-small {
+            max-width: 140px;
+
+            @media only screen and (min-width: $device-xl) {
+                max-width: 160px;
+            }
+        }
+    }
+}
+
+.brand-2 {
+    .d-col-2.left {
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: $device-md) {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .d-col-2.right {
+        @media only screen and (min-width: $device-md) {
+            padding-right: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .right,
+    .left {
+        position: relative;
+        padding: 48.965%;
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+}

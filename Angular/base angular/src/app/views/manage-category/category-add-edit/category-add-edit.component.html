@@ -1,0 +1,93 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form (ngSubmit)="onCategorySave()" novalidate #catFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+
+            <div class="form-group" *ngFor="let lan of languages">
+              <label>{{ 'CATEGORY_NAME' | translate }} ({{ lan.name }}) <span class="asterisk_input"></span></label>
+              <input
+                appSpaceRemove
+                [(ngModel)]="model.name[lan.locale]"
+                [style.direction]="lan.text_direction"
+                type="text"
+                name="name_{{ lan.locale }}"
+                class="form-control"
+                placeholder="{{ 'CATEGORY_NAME' | translate }}"
+                required
+                #name="ngModel"
+                maxlength="50"
+              />
+              <div class="form-control-feedback text-danger" *ngIf="name.errors && catFrm.submitted">
+                <p *ngIf="name.errors.required">{{ 'PLEASE_ENTER_CATEGORY' | translate }}</p>
+                <p *ngIf="name.errors.maxlength">{{ 'PLEASE_ENTER_MAX_CATEGORY' | translate }}</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>{{ 'PARENT_CATEGORY' | translate }}</label>
+              <app-tree-select
+                name="parent_id"
+                placeholder="Select Parent Category"
+                [items]="parentCatList"
+                childrenField="children"
+                [(ngModel)]="parent_category"
+                idField="id"
+                textField="name"
+              ></app-tree-select>
+            </div>
+            <div class="form-group" *ngFor="let lan of languages">
+              <label for="meta_description">{{ 'CATEGORY_DESCRIPTION' | translate }} ({{ lan.name }})</label>
+              <textarea
+                appSpaceRemove
+                class="form-control"
+                [(ngModel)]="model.description[lan.locale]"
+                [style.direction]="lan.text_direction"
+                name="description_{{ lan.locale }}"
+                placeholder="{{ 'CATEGORY_DESCRIPTION' | translate }}"
+                #description="ngModel"
+                rows="4"
+                maxlength="225"
+              ></textarea>
+              <div class="form-control-feedback text-danger" *ngIf="description.errors && catFrm.submitted">
+                <p *ngIf="name.errors.maxlength">{{ 'PLEASE_ENTER_VALID_DESCRIPTION' | translate }}</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="status">{{ 'STATUS' | translate }} <span class="asterisk_input"></span></label>
+              <div class="d-block">
+                <div class="form-check-inline" *ngFor="let status of statusList | keyvalue: orderbyValueAsc; let i = index">
+                  <label class="form-check-label"
+                    >{{ status.value | translate }}
+                    <input
+                      [(ngModel)]="category_status"
+                      name="cat_status"
+                      class="form-check-input"
+                      type="radio"
+                      id="status_{{ i }}"
+                      [value]="status.key"
+                      #cat_status="ngModel"
+                      required
+                    />
+                    <span class="radio-span"></span>
+                  </label>
+                </div>
+                <div class="form-control-feedback text-danger" *ngIf="(catFrm?.controls)['cat_status']?.errors && catFrm.submitted">
+                  <p *ngIf="(catFrm?.controls)['cat_status']?.errors.required">{{ 'PLEASE_SELECT_STATUS' | translate }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o fa-lg"></i> {{ 'SAVE' | translate }}</button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/category/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

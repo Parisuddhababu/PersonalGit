@@ -1,0 +1,203 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSubscriptionDataSave(f)" novalidate #f="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'PLAN_NAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.plan_name"
+                    type="text"
+                    name="plan_name"
+                    class="form-control"
+                    placeholder="{{ 'PLAN_NAME' | translate }}"
+                    required
+                    #plan_name="ngModel"
+                    [pattern]="CommonRegx.planNameRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="plan_name.errors && submitted">
+                    <p *ngIf="plan_name.errors.required">
+                      {{ 'PLEASE_ENTER_PLAN_NAME' | translate }}
+                    </p>
+                    <p *ngIf="plan_name.errors.pattern">
+                      {{ 'PLEASE_ENTER_PLAN_NAME_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'DESCRIPTION' | translate }}<span class="asterisk_input"></span></label>
+                  <textarea
+                    class="form-control"
+                    [(ngModel)]="model.description"
+                    name="description"
+                    placeholder="{{ 'DESCRIPTION' | translate }}"
+                    #description="ngModel"
+                    rows="4"
+                    maxlength="225"
+                    required
+                  >
+                  </textarea>
+                  <div class="form-control-feedback text-danger" *ngIf="description.errors && submitted">
+                    <p *ngIf="description.errors.required">
+                      {{ 'PLEASE_ENTER_DESCRIPTION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'PLAN_START_END_DATE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="dtePkr">
+                    <input
+                      id="plan_start_end_date"
+                      [(ngModel)]="selected_days"
+                      name="selected_date"
+                      type="text"
+                      class="form-control"
+                      #selected_date="ngModel"
+                      placeholder="{{ 'PLAN_START_END_DATE' | translate }}"
+                      #DRP="bsDaterangepicker"
+                      placement="top"
+                      bsDaterangepicker
+                      required
+                      autocomplete="off"
+                      [minDate]="minDate"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="selected_date.errors && submitted">
+                    <p *ngIf="selected_date.errors.required">
+                      {{ 'PLEASE_SELECT_PLAN_START_END_DATE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'SELECT_PLAN_VALIDITY' | translate }} <span class="asterisk_input"></span></label>
+                  <select class="form-control" [(ngModel)]="validity" name="plan_validity" #plan_validity="ngModel" required>
+                    <option value="">-- {{ 'SELECT_PLAN_VALIDITY' | translate }} --</option>
+                    <option *ngFor="let validity of planValidity | keyvalue" [value]="validity.key">{{
+                      validity.value | translate
+                    }}</option>
+                  </select>
+                  <div class="form-control-feedback text-danger" *ngIf="plan_validity.errors && submitted">
+                    <p *ngIf="plan_validity.errors.required">{{ 'PLEASE_SELECT_PLAN_VALIDITY' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group mb-0">
+                  <label>{{ 'IS_TRIAL_PLAN' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div ngModelGroup="is_trial" #radiosTrials="ngModelGroup" appMultiRadioValidation>
+                      <div class="form-check-inline" *ngFor="let trial of trial_plan_type | keyvalue">
+                        <label class="form-check-label"
+                          >{{ trial.value | translate }}
+                          <input
+                            type="radio"
+                            class="form-check-input"
+                            name="is_trial_plan"
+                            [value]="trial.key"
+                            [(ngModel)]="model.is_trial_plan"
+                            #is_trial_plan="ngModel"
+                          />
+                          <span class="radio-span"></span>
+                        </label>
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="radiosTrials.errors && submitted">
+                        <p *ngIf="radiosTrials.errors.radioRequired">
+                          {{ 'PLEASE_SELECT_PLAN_TYPE' | translate }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-12" *ngIf="model.is_trial_plan == trialEnum.no">
+                <div class="form-group">
+                  <label>{{ 'PRICE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="plan_price"
+                    type="text"
+                    name="price"
+                    [disabled]="model.is_trial_plan == trialEnum.yes"
+                    class="form-control"
+                    placeholder="{{ 'PRICE' | translate }}"
+                    required
+                    #price="ngModel"
+                    [pattern]="CommonRegx.PriceRegx"
+                    minlength="1"
+                    maxlength="7"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="price.errors && submitted">
+                    <p *ngIf="price.errors.required">
+                      {{ 'PLEASE_ENTER_PRICE' | translate }}
+                    </p>
+                    <p *ngIf="price.errors.pattern">
+                      {{ 'PLEASE_ENTER_VALID_PRICE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="model.is_trial_plan == trialEnum.no">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'PLAN_DISCOUNT' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="plan_discount"
+                    type="text"
+                    name="discount"
+                    class="form-control"
+                    placeholder="{{ 'PLAN_DISCOUNT' | translate }}"
+                    #discount="ngModel"
+                    [disabled]="model.is_trial_plan == trialEnum.yes"
+                    [pattern]="CommonRegx.percentRegx"
+                    minlength="1"
+                    maxlength="7"
+                    required
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="discount.errors && submitted">
+                    <p *ngIf="discount.errors.required">
+                      {{ 'PLEASE_ENTER_DISCOUNT' | translate }}
+                    </p>
+                    <p *ngIf="discount.errors.pattern">
+                      {{ 'PLEASE_ENTER_VALID_DISCOUNT' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-subscription/list']"
+              ><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

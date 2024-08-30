@@ -1,0 +1,6 @@
+.product-price {
+    @apply font-bold text-xs leading-extra-4.4 md:text-xs-15 md:leading-5 mt-4 tracking-wide flex flex-row-reverse justify-center absolute bottom-2 left-0 right-0;
+    & .line-through {
+        @apply mr-3 text-gs-1 p-0 md:text-xs-15;
+    }
+}

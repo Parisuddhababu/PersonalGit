@@ -1,0 +1,106 @@
+$disable-background-color: #eceeef;
+$error-border-color: #a94442;
+
+:host.ng-invalid:not(.ng-pristine) span.form-control,
+:host.ng-invalid:not(.ng-untouched) span.form-control {
+  border-color: $error-border-color;
+}
+
+// Fix Bootstrap dropdown position when inside a input-group
+.input-group > .dropdown {
+  //Instead of relative
+  position: static;
+}
+
+.disabled {
+  & > span {
+    background-color: $disable-background-color;
+    cursor: not-allowed;
+  }
+
+  .btn {
+    border-color: #ccc;
+  }
+}
+
+.enabled {
+  & > span {
+    cursor: context-menu;
+  }
+}
+
+ul {
+  height: auto;
+  list-style-type: none;
+  margin-top: 0;
+  max-height: 200px;
+  overflow-x: hidden;
+  width: 100%;
+}
+.btn-secondary {
+  background-color: white !important;
+}
+
+.selected-container-text {
+  padding-left: 7px;
+}
+
+.selected-container-item {
+  padding-left: 2px;
+}
+
+.selected-item-text {
+  font-size: 14px;
+  margin: 3px;
+}
+
+.selected-item-item {
+  font-size: 14px;
+  margin: 2px;
+  outline: 0;
+}
+
+.more-items-icon {
+  bottom: 23px;
+  height: 10px;
+  opacity: 0.5;
+  position: absolute;
+  right: 20px;
+  z-index: 100;
+}
+
+.close {
+  font-size: 18px;
+  line-height: 0.75;
+  margin-left: 5px;
+  padding-top: 3px;
+  position: absolute;
+  z-index: 50;
+}
+
+.caret {
+  height: 10px;
+  margin-top: -2px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+
+.btn {
+  display: table;
+  padding-right: 20px;
+}
+
+.dropdown.open.show > ul.dropdown-menu {
+  display: block !important;
+}
+.tree-select .pull-left {
+  float: left !important;
+}
+.selected-item-text {
+  font-size: 14px !important;
+  margin: 3px !important;
+}
+span.btn.btn-default.btn-secondary.form-control.selected-container-text {
+  text-align: left !important;
+}

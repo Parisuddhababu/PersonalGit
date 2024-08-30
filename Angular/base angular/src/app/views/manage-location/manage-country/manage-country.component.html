@@ -1,0 +1,230 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" *ngxPermissionsOnly="['COUNTRY_LIST', 'SUPER_ADMIN']">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="filter.countryname"
+                    type="text"
+                    name="countryname"
+                    class="form-control"
+                    placeholder="{{ 'COUNTRY_NAME' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="filter.countrycode"
+                    type="text"
+                    name="countrycode"
+                    class="form-control"
+                    placeholder="{{ 'COUNTRY_CODE' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.status" name="status">
+                    <option value="">{{ 'SELECT_STATUS' | translate }}</option>
+                    <option *ngFor="let status of statusList | keyvalue: orderbyValueAsc" [value]="status.key">{{
+                      status.value | translate
+                    }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-map-marker"></i> {{ 'COUNTRY_LIST' | translate }}
+          <a *ngxPermissionsOnly="['COUNTRY_CREATE', 'SUPER_ADMIN']" routerLink="/location/country/add" class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="countryList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [width]="70"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'COUNTRY_NAME' | translate }}"
+                prop="name"
+                [minWidth]="200"
+                cellClass="text-wrap"
+              ></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'COUNTRY_CODE' | translate }}" prop="country_code"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-wrap">{{ (value | customDate: momentDateTime24Format) || noData }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'UPDATED_AT' | translate }}" prop="updated_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-wrap">{{ (value | customDate: momentDateTime24Format) || noData }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'COUNTRY_UPDATE', 'COUNTRY_STATUS', 'COUNTRY_DELETE']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['COUNTRY_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/location/country/edit/{{ row.uuid }}"
+                      title="{{ 'EDIT' | translate }}"
+                      ><i class="fa fa-pencil-square-o fa-lg"></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['COUNTRY_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.uuid, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive'
+                        }"
+                        class="fa fa-lg"
+                      ></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['COUNTRY_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDelete, row.uuid)"
+                      title="{{ 'DELETE' | translate }}"
+                      ><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDelete>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteCountry()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

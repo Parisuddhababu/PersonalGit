@@ -1,0 +1,59 @@
+.image {
+    height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    background-color: cornsilk;
+    border-color: black;
+    margin: 10px;
+  }
+  .imageBig {
+    height: 250px;
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    background-color: cornsilk;
+    border-color: black;
+    margin: auto;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 20%;
+    margin: 15px;
+    background-color: cornflowerblue;
+    text-align: center;
+   
+  }
+  .cardcontainer {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    text-align: center;
+   
+  }
+  
+  .heading {
+    color: blue;
+    font-style: italic;
+    font-size: 30px;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+  }
+  .desc {
+    color: red;
+    font-size: 18px;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+ .button{
+ 
+  text-align: center;
+  margin: auto;
+ }

@@ -1,0 +1,35 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+@mixin badge($minwidth, $paddingX, $paddingY, $inlineblock) {
+  min-width: $minwidth;
+  padding: $paddingX $paddingY;
+  display: $inlineblock;
+  @include position(absolute);
+  @include positon-top(20px);
+  @include positon-left(0);
+  @include textCenter;
+}
+
+@mixin discount-badge($bg-badge, $color-badge) {
+  background: $bg-badge;
+  color: $color-badge;
+}
+
+// .badge {
+//   @include badge(auto, 6px, 15px, inline-block);
+//   @include font-detail(14px, 17px);
+
+//   @media only screen and (min-width: $device-sm) {
+//     @include badge(100px, 10px, 21px, inline-block);
+//   }
+// }
+
+// .discount-badge {
+//   @include discount-badge(var(--data_site_primary_color), var(--data_site_theme_color));
+// }
+
+// .badge-featured {
+//   background: var(--data_site_secondary_color);
+//   color: var(--data_site_theme_color);
+// }

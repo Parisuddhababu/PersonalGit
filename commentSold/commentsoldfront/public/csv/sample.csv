@@ -1,0 +1,4 @@
+name,url,sku,description,color,size,price,images
+Product1,https://amzn.eu/d/cph3vpS',sku1,description,black,132,123,https://picsum.photos/200/300
+Product2,https://amzn.eu/d/cph3vpS',sku2,description,black,132,123456,https://picsum.photos/200/300
+Product3,https://amzn.eu/d/cph3vpS',sku3,description,black,132,123456,https://picsum.photos/200/300

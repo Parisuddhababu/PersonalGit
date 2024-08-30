@@ -1,0 +1,17 @@
+.active {
+	@apply text-black bg-accent;
+}
+
+.sidebar {
+	@apply bg-slate-900 z-50 text-white h-full flex flex-col w-60 absolute top-0 max-lg:-left-72 lg:sticky duration-300;
+	&:before {
+		content: '';
+		@apply lg:hidden h-screen w-screen top-0 left-0 right-0 fixed -z-10 bg-black bg-opacity-30 opacity-0 pointer-events-none;
+	}
+	&.active {
+		@apply max-lg:left-0 duration-300;
+		&:before {
+			@apply opacity-100 pointer-events-auto;
+		}
+	}
+}

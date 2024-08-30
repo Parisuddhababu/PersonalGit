@@ -1,0 +1,40 @@
+form{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    justify-content: center;
+}
+
+input{
+    height: 45px;
+    width: 380px;
+    border-radius: 5px;
+    border-width: 1px;
+}
+.submit{
+    color: white;
+    background-color: blue;
+    height: 45px;
+    width: 380px;
+    border-radius: 5px;
+    border-style: none;
+
+}
+
+.cancel{
+    color: white;
+    background-color: red;
+    height: 45px;
+    width: 380px;
+    border-radius: 5px;
+    border-style: none;
+    
+}
+.details{
+    color: white;
+    background-color: green;
+    height: 45px;
+    width: 380px;
+    border-radius: 5px;
+    border-style: none;
+}

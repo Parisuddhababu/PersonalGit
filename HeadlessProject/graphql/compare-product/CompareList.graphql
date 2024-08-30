@@ -1,0 +1,27 @@
+query compareList($uid: ID!) {
+  compareList(uid: $uid) {
+    uid
+    item_count
+    attributes {
+      code
+      label
+    }
+    items {
+      __typename
+      uid
+      product {
+        id
+        short_description {
+          ...ComplexTextValue
+        }
+        description {
+          html
+        }
+        ...ProductFeatureMedia
+        ...ProductFeatureMediaBoxed
+        ...ProductListItem
+        ...ProductWishlistChip
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+
+.landing-page-header{
+    padding: 15px 0;
+    
+    @include media($device-md){
+        padding: 20px 0;
+    }
+    
+    .landing-page-header-row{
+        @include flexbox;
+        justify-content: space-between;
+        align-items: center;
+
+        .landing-page-logo{
+            img{
+                height: 24px;
+                @include media($device-md){
+                    height: 38px;
+                }
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,252 @@
+@import "../common/mixin";
+
+.shipping-address-section {
+  .container {
+    .form-group {
+      @include form-group;
+    }
+
+    .btn-border-small {
+      @include btn-border-small;
+    }
+
+    .btn-primary {
+      @include btn-primary;
+    }
+
+    .p-error {
+      @include error;
+    }
+
+    .row {
+      @include row;
+    }
+
+    .ocs-radio {
+      @include ocs-radio;
+
+      label {
+        @include flexbox;
+        @include align-item-center;
+
+        picture {
+          display: inline-block;
+          max-width: 30px;
+          width: 100%;
+          padding-right: 6px;
+
+          @include md {
+            max-width: 40px;
+            width: 100%;
+            padding-right: 8px;
+          }
+
+          @include xl {
+            max-width: 43px;
+            width: 100%;
+            padding-right: 10px;
+          }
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .select-payment-content {
+      border-bottom: 1px solid var(--data_site_gray_color);
+      margin-bottom: 15px;
+
+      @include md {
+        margin-bottom: 20px;
+      }
+
+      @include xl {
+        margin-bottom: 30px;
+      }
+
+      &:last-child {
+        border: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .ocs-checkbox {
+        margin-bottom: 8px;
+
+        @include md {
+          margin-bottom: 12px;
+        }
+
+        @include xl {
+          margin-bottom: 15px;
+        }
+      }
+
+      .edit-btn {
+        margin-bottom: 14px;
+
+        @include md {
+          margin-bottom: 20px;
+        }
+
+        @include xl {
+          margin-bottom: 30px;
+        }
+      }
+
+      .add-new-address {
+        max-width: 720px;
+        width: 100%;
+      }
+
+      .address-box {
+        padding: 18px;
+        max-width: 100%;
+        width: 100%;
+        color: var(--data_site_gray_color);
+        border: 1px solid var(--data_site_dark_gray2);
+        @include border-radius(14px);
+        @include body-large;
+        margin-bottom: 14px;
+
+        @include sm {
+          padding: 24px;
+          margin-bottom: 18px;
+        }
+
+        @include md {
+          max-width: 330px;
+          width: 100%;
+          padding: 28px;
+          margin-bottom: 24px;
+        }
+
+        @include xl {
+          padding: 30px;
+          margin-bottom: 30px;
+        }
+
+        span {
+          font-weight: 700;
+        }
+
+        br {
+          display: none;
+
+          @include md {
+            display: block;
+          }
+        }
+
+        a {
+          color: var(--data_site_gray_color);
+        }
+
+        address {
+          font-style: normal;
+        }
+      }
+
+      .shipping-address-detail {
+        @include flexbox;
+        @include flexColumn;
+        @include body-large;
+        color: var(--data_site_gray_color);
+        max-width: 230px;
+        width: 100%;
+        margin-bottom: 18px;
+
+        @include md {
+          margin-bottom: 24px;
+        }
+
+        @include xl {
+          margin-bottom: 30px;
+        }
+
+        a {
+          color: var(--data_site_gray_color);
+        }
+
+        .shipping-number {
+          color: var(--data_site_primary_color);
+        }
+      }
+
+      .order-instruction {
+        @include lg{
+          max-width:780px;
+          width: 100%;
+        }
+        
+        @include h3;
+        color: var(--data_site_warning_color);
+        margin-bottom: 18px;
+
+        @include md {
+          margin-bottom: 24px;
+        }
+
+        @include xl {
+          margin-bottom: 30px;
+        }
+      }
+
+      .card-form-wrap {
+        @include md {
+          max-width: 720px;
+          width: 100%;
+        }
+
+        .width-small {
+          @include md {
+            max-width: 140px;
+            width: 100%;
+          }
+        }
+
+        .d-col {
+          button {
+            width: fit-content;
+          }
+
+          &.update-cancel-btn {
+            @include flexrow;
+            gap: 8px;
+
+            @include md {
+              gap: 10px;
+            }
+          }
+
+          &.place-order-btn{
+            margin-bottom: 0;
+          }
+        }
+
+        .expiry-month-year {
+          @include flexbox;
+          gap: 16px;
+
+          @include md {
+            gap: 18px;
+          }
+
+          @include xl {
+            gap: 20px;
+          }
+
+          select {
+            @include md {
+              max-width: 140px;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

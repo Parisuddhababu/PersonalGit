@@ -1,0 +1,10 @@
+.media-list {
+	.active {
+		@apply relative;
+		&:after {
+			@apply absolute h-4 w-4 bg-primary text-white right-1 top-1 text-center rounded-sm leading-4;
+			font-size: 12px;
+			content: '✔';
+		}
+	}
+}

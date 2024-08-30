@@ -1,0 +1,41 @@
+@import "../common/mixin";
+
+.address-selection-popup {
+  .modal-container {
+    .modal-content {
+
+      .ocs-checkbox{
+        @include ocs-checkbox;
+      }
+      
+      .address-list {
+        @include flexbox;
+        @include flexColumn;
+        li {
+          @include flexbox;
+          padding: 20px 14px;
+
+          &:first-child {
+            padding-top: 0;
+          }
+
+          &:nth-child(even) {
+            background-color: var(--data_site_light_gray3);
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      .address-submit-btn {
+        .btn {
+          @include btn;
+        }
+
+        .btn-primary {
+          @include btn-primary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+
+.landing-page-hero-row {
+    @include flexbox;
+    align-items: center;
+    padding-top: 20px;
+    @include section-spacing(bottom);
+    flex-direction: column;
+
+    @include media($device-md){
+        flex-direction: row;
+    }
+
+    .landing-page-hero-left {
+        flex: 0 0 53.571%;
+        padding-bottom: 30px;
+        
+        @include media($device-md){
+            padding-right: 40px;
+            padding-bottom: 0;
+        }
+
+        @include media($device-lg){
+            padding-right: 60px;
+        }
+
+        @include media($device-xxl){
+            padding-right: 100px;
+        }
+
+        p {
+            color: $label-color;
+            @include font-sm;
+        }
+    }
+
+    .landing-page-hero-right {
+        flex: 0 0 46.429%;
+    }
+    
+    .landing-page-buttons {
+        @include flexbox;
+        gap: 15px;
+        @include media($device-md){
+            gap: 20px;
+        }
+    }
+
+    .landing-page-hero-image {
+        @include border-radius(4px);
+    }
+
+}
+
+

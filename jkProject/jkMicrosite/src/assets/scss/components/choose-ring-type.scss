@@ -1,0 +1,64 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+// content section
+.ring-content-content {
+  padding: 20px 0 0;
+  @include flexbox;
+  @include flexwrap;
+  @media only screen and (min-width: $device-md) {
+    padding: 30px 0 0;
+  }
+  .ring-content-content-col {
+    @include checkbox;
+    @include flexbox;
+    @include flexColumn;
+    @include align-item-center;
+    margin-bottom: 20px;
+    label {
+      width: 90px;
+      height: 90px;
+      @include flexCenter;
+      position: unset;
+      padding: 0;
+      margin-bottom: 10px;
+      border: 1px solid;
+      border-color: var(--data_border_color);
+      &::before {
+        left: unset;
+        right: 10px;
+        top: 10px;
+        width: 16px;
+        height: 16px;
+        font-size: 6px;
+        border: 2px solid var(--data_border_primary_color);
+        @media only screen and (min-width: $device-md) {
+          border: 2px solid var(--data_border_primary_color);
+          width: 20px;
+          height: 20px;
+          font-size: 9px;
+          border: 3px solid var(--data_border_primary_color);
+        }
+      }
+      @media only screen and (min-width: $device-md) {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    input {
+      &:checked + label {
+        border-color: var(--data_site_secondary_color);
+        background: rgba(222, 87, 229, 0.04);
+      }
+    }
+    @media only screen and (min-width: $device-sm) {
+      margin-right: 30px;
+    }
+  }
+
+  .ring-content-icon {
+    font-size: 30px;
+    @media only screen and (min-width: $device-md) {
+      font-size: 60px;
+    }
+  }
+}

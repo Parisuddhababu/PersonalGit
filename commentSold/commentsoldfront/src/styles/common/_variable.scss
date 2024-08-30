@@ -1,0 +1,79 @@
+:root{
+    --primary-color : "#FF9269"
+}
+
+$primary-color: var(--primary-color);
+$title-text: #575757;
+$primary-dark-color: #0e12a9;
+$secondary-color: #EEF3FF;
+$border-color-2: #C7D4F1;
+$green-shade-1: #0ea913;
+$green-shade-3: #b3ebb8;
+$gray-shade-2: #E2E2E2;
+$billowing-clouds: #d7dde3;
+
+$gradient1: transparent linear-gradient(259deg, #A52F86 0%, #8325AF 46%, #2650BA 100%) 0% 0% no-repeat padding-box;
+$gradient2: transparent linear-gradient(248deg, #7B23B9 0%, #C5385E 100%) 0% 0% no-repeat padding-box;
+$border-color-1: #cccccc;
+$body-text: #595959;
+
+// Extra color
+
+$label-color: #575757;
+$white-color: #ffffff;
+$black-color: #000000;
+
+$blue-shade-1: #2B66DB;
+$blue-shade-2: #2A66DB;
+$blue-fantastic: #2C3E4F;
+
+$border-color-3: #D4D7FF;
+
+$black-shade-1: #00000014;
+$black-shade-2: #00000021;
+$black-shade-3: #00000029;
+$black-shade-4: #0000000A;
+$black-shade-5: #000000DB;
+$black-shade-6: #00000033;
+
+$gray-shade-1: #f6f6f6;
+$gray-shade-3: #D4D4D4;
+$gray-shade-4: #DCE6FF;
+$gray-shade-5: #C5C5C5;
+$gray-shade-6: #808080;
+$gray-shade-7: #A1A1A1;
+$gray-shade-8: #898A95;
+$gray-shade-9:#787878;
+$gray-shade-10: #7a736d;
+$gray-shade-11: #4E4E4E;
+$gray-shade-12: #67677D;
+
+$green-shade-2: #216421;
+$text-danger : #C5385E;
+$text-warning : #ffc107;
+
+$pantone: #343132;
+$wisp: #aab9db;
+
+$primary-font: 'Be Vietnam Pro', Arial, Verdana, Tahoma, sans-serif;
+
+// Screen Sizes
+$device-xs: 375px;
+$device-sm: 576px;
+$device-md: 768px;
+$device-lg: 1024px;
+$device-xl: 1200px;
+$device-xxl: 1440px;
+$device-xxxl: 1600px;
+$device-xxxxl: 1800px;
+$container: 1700px;
+
+
+
+
+
+
+
+
+
+

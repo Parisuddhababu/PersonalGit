@@ -1,0 +1,96 @@
+@import "../common/mixin";
+
+.jkm-file-upload {
+  @include jkm-file-upload;
+}
+
+.modal {
+  &.offer-modal {
+    .pop-up-container {
+      max-width: 90%;
+
+      @media screen and (min-width: $device-md) {
+        max-width: 720px;
+      }
+
+      @media screen and (min-width: $device-lg) {
+        max-width: 940px;
+      }
+
+      .d-row {
+        @include row;
+
+        .d-col-66 {
+          @include d-col-66;
+        }
+
+        .d-col-33 {
+          @include d-col-33;
+        }
+      }
+
+      @media only screen and (min-width: $device-md) {
+        .d-row .d-col-66 {
+          width: 66.66%;
+        }
+
+        .d-row .d-col-33 {
+          width: 33.33%;
+        }
+
+        .d-row .d-col {
+          margin: 0;
+        }
+      }
+    }
+
+    .pop-up-offer-image {
+      position: relative;
+      padding: 46.61%;
+      flex: 1;
+      align-self: flex-start;
+
+      img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+      }
+    }
+
+    form {
+      position: relative;
+      flex: 1;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 20px;
+
+      .form-control {
+        @include formcontrol;
+        padding: 10px 15px;
+
+        @media only screen and (min-width: $device-xl) {
+          padding: 13px 20px;
+        }
+      }
+    }
+
+    .btn-popup {
+      @include button;
+      @include btn-primary;
+      @include btn-small;
+    }
+
+    .btn-close {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 14px;
+      color: var(--data_red_color);
+    }
+  }
+}

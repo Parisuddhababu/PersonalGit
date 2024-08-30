@@ -1,0 +1,63 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.contact-sec-wrap {
+  background-image: url("../../images/contact_bg_img.jpg");
+  height: auto;
+  @include bg-cmn;
+
+  .contact-sec-content {
+    @include textCenter;
+    padding: 30px 20px;
+    @include flexCenter;
+    @include flexColumn;
+
+    @media only screen and(min-width: $device-sm) {
+      padding: 40px 20px;
+      @include flexrow;
+    }
+
+    h3,
+    .contact-number {
+      color: var(--data_site_highlight_section_text_color);
+    }
+
+    .contact-info {
+      font-family: var(--data_site_font_primary);
+      margin-bottom: 15px;
+
+      @media only screen and (min-width: $device-sm) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .contact-number {
+      font-family: var(--data_site_font_secondary);
+    }
+
+    @media only screen and (min-width: $device-md) {
+      padding: 70px 0 58px;
+    }
+
+    .contact-logo {
+      color: var(--data_site_highlight_section_text_color);
+      margin: 0 0 15px;
+
+      @media only screen and (min-width: $device-sm) {
+        margin: 0 64px 0 0;
+      }
+
+      .jkm-call-icon {
+        font-size: 40px;
+
+        @media only screen and (min-width: $device-md) {
+          font-size: 60px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          font-size: 80px;
+        }
+      }
+    }
+  }
+}

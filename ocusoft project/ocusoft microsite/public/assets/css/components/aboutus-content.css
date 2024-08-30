@@ -1,0 +1,118 @@
+.aboutus-section {
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .aboutus-section {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .aboutus-section {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .aboutus-section {
+    margin-bottom: 60px;
+  }
+}
+.aboutus-section .aboutus-description-wrap {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .aboutus-section .aboutus-description-wrap {
+    max-width: calc(100% - 290px);
+    width: 100%;
+    padding-left: 20px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .aboutus-section .aboutus-description-wrap {
+    max-width: calc(100% - 350px);
+    width: 100%;
+    padding-left: 30px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .aboutus-section .aboutus-description-wrap {
+    max-width: calc(100% - 360px);
+    width: 100%;
+    padding-left: 40px;
+  }
+}
+.aboutus-section .aboutus-description-wrap h2 {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  margin-bottom: 10px;
+  color: var(--data_site_text_color);
+}
+@media only screen and (min-width: 768px) {
+  .aboutus-section .aboutus-description-wrap h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .aboutus-section .aboutus-description-wrap h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .aboutus-section .aboutus-description-wrap h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .aboutus-section .aboutus-description-wrap h2 {
+    margin-bottom: 16px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .aboutus-section .aboutus-description-wrap h2 {
+    margin-bottom: 20px;
+  }
+}
+.aboutus-section .aboutus-description-wrap p {
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 18px;
+  color: var(--data_site_gray_color);
+}
+@media only screen and (min-width: 1024px) {
+  .aboutus-section .aboutus-description-wrap p {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .aboutus-section .aboutus-description-wrap p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .aboutus-section .aboutus-description-wrap p {
+    margin-bottom: 22px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .aboutus-section .aboutus-description-wrap p {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .aboutus-section .aboutus-description-wrap p {
+    margin-bottom: 38px;
+  }
+}
+.aboutus-section .aboutus-description-wrap p:last-child {
+  margin-bottom: 0;
+}

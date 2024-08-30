@@ -1,0 +1,270 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    [(ngModel)]="filter.name"
+                    name="name"
+                    class="form-control"
+                    placeholder="{{ 'OFFER_NAME' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="filter.select_date"
+                      name="select_date"
+                      type="text"
+                      class="form-control"
+                      required
+                      #select_date="ngModel"
+                      placeholder="{{ 'OFFER_START_END_DATE' | translate }}"
+                      #DRP="bsDaterangepicker"
+                      placement="top"
+                      bsDaterangepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.status" name="status">
+                    <option value="">{{ 'SELECT_STATUS' | translate }}</option>
+                    <option *ngFor="let status of statusList | keyvalue: orderbyValueAsc" [value]="status.key">{{
+                      status.value | translate
+                    }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['OFFER_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="fa fa-gift" aria-hidden="true"></i> {{ 'OFFER_LIST' | translate }}
+          <a *ngxPermissionsOnly="['SUPER_ADMIN', 'OFFER_CREATE']" routerLink="/manage-offer/add" class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pull-right">
+                <button (click)="downloadData('excel')" title="{{ 'EXPORT_TO_EXCEL' | translate }}" class="btn btn-success mr-10">
+                  <i class="fa fa-file-excel-o fa-lg"></i>
+                </button>
+                <button (click)="downloadData('pdf')" title="{{ 'EXPORT_TO_PDF' | translate }}" class="btn btn-success mr-10">
+                  <i class="fa fa-file-pdf-o fa-lg"></i>
+                </button>
+                <button (click)="downloadData('csv')" title="{{ 'EXPORT_TO_CSV' | translate }}" class="btn btn-success">
+                  <i class="fa fa-file-text-o fa-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="manageOfferList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [width]="70"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_NAME' | translate }}" prop="name" cellClass="text-wrap"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_CODE' | translate }}" prop="code" [sortable]="false"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_TYPE' | translate }}" prop="type" [sortable]="false">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ offer_type[value] }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_VALUE' | translate }}" prop="value"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_USAGE' | translate }}" prop="usage">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ offer_usage[value] }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'OFFER_TOTAL_USAGE' | translate }}" prop="total_usage">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center" *ngIf="!value">0</div>
+                  <div class="text-center" *ngIf="value">
+                    <a (click)="openModalReport(row.uuid, row.id, row.name)" title="View Report"
+                      ><strong class="badge badge-primary">{{ value }}</strong></a
+                    >
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'START_DATE' | translate }}" prop="start_dt">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'END_DATE' | translate }}" prop="end_dt">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'OFFER_UPDATE', 'OFFER_STATUS', 'OFFER_DELETE']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['OFFER_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/manage-offer/edit/{{ row.uuid }}"
+                      title="{{ 'EDIT' | translate }}"
+                      ><i class="fa fa-pencil-square-o fa-lg"></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['OFFER_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.uuid, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive' || row.status == 'Pending'
+                        }"
+                        class="fa fa-lg"
+                      ></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['OFFER_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDeleteOffer, row.uuid)"
+                      title="{{ 'DELETE' | translate }}"
+                      ><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDeleteOffer>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteOffer()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<app-loader></app-loader>

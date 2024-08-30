@@ -1,0 +1,43 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+// address
+ // address 
+ .address-content {
+  padding: 15px 0;
+  border-top: 1px solid var(--data_border_color);
+  @media only screen and (min-width: $device-md) {
+      padding: 30px 0;
+  }
+  .address-content-para {
+      margin-bottom: 10px;
+      &:last-child {
+          margin-bottom: 0;
+      }
+  }
+  .form-action {
+      @include flexbox;
+      @include space-between;
+      @include align-item-center;
+      margin-top: 30px;
+      .address-content-option {
+          @include flexbox;
+          @include flexwrap;
+          .cmn-radio {
+              @include radiobutton;
+              &:first-child {
+                  margin-right: 60px;
+              }
+          }
+          label {
+              @include label;
+          }
+      }
+      .action-toolbar {
+          @include flexbox;
+          a:not(:last-child) {
+              margin-right: 30px;
+          }
+          @include action-toolbar;
+      }
+  }
+}

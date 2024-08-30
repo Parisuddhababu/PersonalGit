@@ -1,0 +1,126 @@
+@import "../common/mixin-2";
+
+.our-benefits {
+    @include textCenter;
+    padding: 40px 0 25px;
+
+    @media screen and (min-width: $device-md) {
+        padding: 60px 0 40px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        padding: 80px 0 40px;
+    }
+
+    @media screen and (min-width: $container-main) {
+        padding: 120px 0 80px;
+    }
+
+    .row {
+        @include row;
+        @include just-center;
+
+        .d-col-4 {
+            @include d-col-4;
+        }
+
+        .benefit-wrapper {
+            width: 100%;
+            padding: 40px 15px;
+            border: 1px solid var(--data_border_color);
+            background: var(--data_site_theme_highlight);
+            position: relative;
+            overflow: hidden;
+
+            @media screen and (min-width: $container-lg) {
+                padding: 68px 15px;
+            }
+
+            i {
+                font-size: 70px;
+                color: var(--data_site_primary_color);
+
+                @media screen and (min-width: $container-lg) {
+                    font-size: 80px;
+                }
+            }
+
+            img {
+                max-width: 100px;
+                max-height: 70px;
+                @include transition(0.3s);
+                @include opacity(1);
+
+                @media screen and (min-width: $container-lg) {
+                    max-height: 80px;
+                }
+            }
+
+            h5 {
+                font-weight: bold;
+                margin: 10px 0 0;
+            }
+
+            .before {
+                @include transition(0.3s);
+                @include opacity(1);
+            }
+
+            .benefit-section {
+                position: absolute;
+                inset: 100% 0 0 0;
+                padding: 15px;
+                color: var(--data_site_theme_highlight);
+                cursor: pointer;
+                @include transition(0.3s);
+                @include flexbox;
+                @include flexColumn;
+                @include align-item-center;
+                @include just-center;
+
+                p {
+                    margin-bottom: 0;
+                    @include text-clamp(4);
+                }
+
+                i {
+                    color: var(--data_site_theme_highlight);
+                }
+            }
+
+            &:hover {
+                background: var(--data_site_primary_color);
+                border-color: var(--data_site_primary_color);
+                color: var(--data_site_theme_highlight);
+                cursor: pointer;
+                @include transition(0.3s);
+
+                .benefit-section {
+                    inset: 0;
+                }
+
+                .before {
+                    @include opacity(0);
+                    @include transition(0.3s);
+                }
+
+                i {
+                    color: var(--data_site_theme_highlight);
+                }
+            }
+        }
+    }
+}
+
+.heading {
+    margin-bottom: 30px;
+    @include textCenter;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 50px;
+    }
+}

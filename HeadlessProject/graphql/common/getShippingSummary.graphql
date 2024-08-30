@@ -1,0 +1,47 @@
+query getShippingSummary($cartId: String!,$country: String!, $state: String, $zipCode: String, $discountCode: String, $shippingMethodName: String) {
+  GetSummaryShoppingCart(
+    cartId: $cartId
+    country: $country
+    state: $state
+    zipCode: $zipCode
+    discountCode: $discountCode
+    shippingMethodName: $shippingMethodName
+  ) {
+    orderTotal {
+      ...Money
+    }
+    selectedShippingMethods {
+      amount {
+        ...Money
+      }
+      carrierCode
+      carrierTitle
+      methodCode
+      methodTitle
+    }
+    shippingMethods {
+      carrierTitle
+      carrierCode
+      methodTitle
+      methodCode
+      amount {
+        ...Money
+      }
+    }
+    subtotal {
+      ...Money
+    }
+    discount {
+      ...Money
+    }
+    discountData {
+      title
+      amount {
+        ...Money
+      }
+    }
+    tax {
+      ...Money
+    }
+	}
+}

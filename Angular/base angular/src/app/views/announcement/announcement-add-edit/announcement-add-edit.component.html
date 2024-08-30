@@ -1,0 +1,308 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form (ngSubmit)="onAnnouncementSave()" novalidate #f="ngForm" enctype="multipart/form-data"
+          InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel"><span [innerHTML]="'FORM_NOTE' | translate"></span></p>
+            <div class="row">
+              <div class="col-md-6" *ngFor="let lan of languages">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'TITLE' | translate }} ({{ lan.name }})<span
+                      class="asterisk_input"></span></label>
+                  <input appSpaceRemove [(ngModel)]="model.announcement_title[lan.locale]"
+                    [style.direction]="lan.text_direction" type="text" name="title_{{ lan.locale }}"
+                    class="form-control" placeholder="{{ 'TITLE' | translate }}" required #title="ngModel" />
+                  <div class="form-control-feedback text-danger" *ngIf="title.errors && submitted">
+                    <p *ngIf="title.errors.required">{{ 'PLEASE_ENTER_ANNOUNCEMENT_TITLE' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="type">{{ 'TYPE' | translate }}<span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div ngModelGroup="antype" #radios="ngModelGroup" appMultiRadioValidation>
+                      <div class="form-check-inline" *ngFor="let type of types | keyvalue; let i = index">
+                        <label class="form-check-label" for="type{{ i }}">{{ type.value | translate }}
+                          <input [(ngModel)]="announcement_type" name="antype" class="form-check-input" type="radio"
+                            id="type{{ i }}" [value]="type.key" #antype="ngModel" (change)="resetDescription()" />
+                          <span class="radio-span"></span>
+                        </label>
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="radios.errors && submitted">
+                        <p *ngIf="radios.errors.radioRequired">{{ 'PLEASE_SELECT_TYPE' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12" *ngFor="let lan of languages">
+                <div class="form-group" *ngIf="announcement_type == typesEnum.email">
+                  <label for="meta_description">{{ 'DESCRIPTION' | translate }} ({{ lan.name }})<span
+                      class="asterisk_input"></span></label>
+                  <ck-editor [(ngModel)]="model.announcement_description[lan.locale]"
+                    name="description_{{ lan.locale }}" skin="moono-lisa" [language]="lan.locale" [config]="ckConfig"
+                    required #announcementDescription="ngModel" (change)="getDescData(lan.locale, lan.text_direction)">
+                  </ck-editor>
+                  <div class="form-control-feedback text-danger" *ngIf="desc_error[lan.locale] == true && submitted">
+                    <p>{{ 'PLEASE_ENTER_DESCRIPTION' | translate }}</p>
+                  </div>
+                </div>
+                <div *ngIf="announcement_type != typesEnum.email" class="form-group">
+                  <label for="meta_description">{{ 'DESCRIPTION' | translate }} ({{ lan.name }})<span
+                      class="asterisk_input"></span></label>
+                  <textarea appSpaceRemove class="form-control" name="description_{{ lan.locale }}" rows="8"
+                    placeholder="{{ 'DESCRIPTION' | translate }}" required
+                    [(ngModel)]="model.announcement_description[lan.locale]" [style.direction]="lan.text_direction"
+                    #announcementDescription="ngModel"></textarea>
+                  <div class="form-control-feedback text-danger" *ngIf="announcementDescription.errors && submitted">
+                    <p *ngIf="announcementDescription.errors.required">{{ 'PLEASE_ENTER_DESCRIPTION' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12" *ngIf="announcement_type == typesEnum.push">
+                <div class="form-group">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="image-input flex-column d-flex">
+                      <label>{{ 'PUSH_IMAGE' | translate }} </label>
+                      <div class="row">
+                        <div class="col">
+                          <div class="custom-file">
+                            <input type="file" name="push_image" (change)="onSelectFile($event)" #pushImage="ngModel"
+                              [(ngModel)]="push_image_resource" id="pushImageThumb" accept="image/*" />
+                            <label class="custom-file-label text-ecllips" for="pushImageThumb">{{ 'CHOOSE_FILE' |
+                              translate }}</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn btn-danger" (click)="resetMedia('push')">
+                            {{ 'RESET' | translate }}
+                          </button>
+                        </div>
+                        <div class="col">
+                          <img *ngIf="pushImageSource != null" [src]="pushImageSource" class="rounded"
+                            (error)="onErrorImage($event)" height="150" width="200" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12" *ngIf="announcement_type == typesEnum.email">
+                <div class="form-group">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="image-input flex-column d-flex">
+                      <label>{{ 'EMAIL_ATTACHMENT' | translate }}</label>
+                      <div class="row">
+                        <div class="col">
+                          <div class="custom-file">
+                            <input type="file" name="email_attachment" (change)="onSelectAttachmentFile($event)"
+                              #emailAttachment="ngModel" [(ngModel)]="email_attachment_resource"
+                              id="emailAttachmentInput" accept="*" />
+                            <label class="custom-file-label text-ecllips" for="emailAttachmentInput">{{ 'CHOOSE_FILE' |
+                              translate }}</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn btn-danger" (click)="resetMedia('email')">
+                            {{ 'RESET' | translate }}
+                          </button>
+                        </div>
+                        <div>
+                          <span>{{ emailAttachmentLabel }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                {{ 'FILTER' | translate }}
+              </div>
+
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="device_type">{{ 'PLATFORM' | translate }}<span class="asterisk_input"></span></label>
+                      <div class="d-block">
+                        <div ngModelGroup="anplatform" #radiosPlatform="ngModelGroup" appMultiRadioValidation>
+                          <div class="form-check-inline" *ngFor="let plat of platforms | keyvalue; let i = index">
+                            <label class="form-check-label" for="plat{{ i }}">{{ plat.value | translate }}
+                              <input [(ngModel)]="announcement_user_type" name="user_type" class="form-check-input"
+                                type="radio" id="plat{{ i }}" [value]="plat.key" #user_type="ngModel"
+                                (change)="rerender(true)" />
+                              <span class="radio-span"></span>
+                            </label>
+                          </div>
+                          <div class="form-control-feedback text-danger" *ngIf="radiosPlatform.errors && submitted">
+                            <p *ngIf="radiosPlatform.errors.radioRequired">{{ 'PLEASE_SELECT_PLATFORM' | translate }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{ 'USER_TYPE' | translate }}<span class="asterisk_input"></span></label>
+                      <div class="d-block">
+                        <div class="form-check-inline" *ngFor="let role of userRole | keyvalue; let i = index">
+                          <label class="form-check-label" for="role{{ i }}">{{ role.value | translate }}
+                            <input [(ngModel)]="user_role" name="user_type_name" class="form-check-input" type="radio"
+                              id="role{{ i }}" [value]="role.key" #user_type_name="ngModel" />
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="col-form-label">{{ 'ADVANCED_FILTERS' | translate }}<span
+                          class="asterisk_input"></span></label>
+                      <div class="d-block">
+                        <div class="form-check-inline" *ngFor="let inlcus of inclusions | keyvalue; let i = index">
+                          <label class="form-check-label" for="inlcus{{ i }}">{{ inlcus.value | translate }}
+                            <input [(ngModel)]="advanced_filter" name="advance_filter" class="form-check-input"
+                              type="radio" id="inlcus{{ i }}" [value]="inlcus.key" #advance_filter="ngModel"
+                              (change)="rerender(true)" />
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="col-form-label" for="announcement_date">{{ 'REGISTERED_BETWEEN' | translate }}</label>
+                    <div class="dtePkr">
+                      <input id="announcement_date" [(ngModel)]="selected_days" name="daterange" type="text"
+                        class="form-control" #select_date="ngModel" placeholder="{{ 'CREATED_AT' | translate }}"
+                        #DRP="bsDaterangepicker" placement="top" bsDaterangepicker autocomplete="off"
+                        [bsConfig]="dateRangeConfig" />
+                      <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mt-2" *ngIf="advanced_filter != inclusionEnum.all">
+                    <div class="form-group">
+                      <input [(ngModel)]="query" type="text" id="query" name="query" class="form-control"
+                        placeholder="Search Users" />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mt-2" *ngIf="advanced_filter != inclusionEnum.all">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary pull-left mr-10" (click)="fetchUserTable()">
+                        <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}
+                      </button>
+                      <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                        <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mt-3" *ngIf="selectedUserList.length > 0">
+                    <div class="card card-badge mb-0">
+                      <span class="badge badge-primary" *ngFor="let selected of selectedUserList; let i = index">{{
+                        selected.name }} <a (click)="removeUser(selected.uuid)"> x</a></span>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-3" *ngIf="advanced_filter == inclusionEnum.exclude_selected">
+                    <p class="requiredLabel">
+                      <span class="asterisk_input"></span><span> Notification will be sent to users excepted selected
+                      </span>
+                    </p>
+                  </div>
+                  <div class="col-12 mt-3" *ngIf="advanced_filter == inclusionEnum.only_selected">
+                    <p class="requiredLabel">
+                      <span class="asterisk_input"></span><span> Notification will be sent to selected users only
+                      </span>
+                    </p>
+                  </div>
+                  <!-- </div>  -->
+                </div>
+                <div class="row mt-3" *ngIf="advanced_filter != inclusionEnum.all">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group show-select">
+                          <label>{{ 'SHOW' | translate }}
+                            <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)"
+                              class="form-control">
+                              <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                            </select>
+                            {{ 'ENTRIES' | translate }}
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <ngx-datatable [rows]="userList" class="material fullscreen" headerHeight="headerHeight"
+                        footerHeight="footerHeight" rowHeight="rowHeight" [reorderable]="reorderable"
+                        [columnMode]="ColumnMode.force" #datatable [scrollbarH]="scrollbarH"
+                        [externalSorting]="serverSorting" (sort)="onSort($event)"
+                        [sorts]="[{ prop: sortParam, dir: sortOrder }]" [externalPaging]="serverPaging"
+                        [count]="totalReords" [offset]="pageNumber" [limit]="size" (page)="setPage($event)"
+                        [messages]="dtMessages">
+                        <ngx-datatable-column [width]="40" [sortable]="false" [canAutoResize]="false"
+                          [draggable]="false" [resizeable]="false">
+                          <ng-template ngx-datatable-header-template let-value="value"
+                            let-allRowsSelected="allRowsSelected">
+                            <input type="checkbox" name="check_all" [(ngModel)]="isChecked" value="true"
+                              (click)="checkuncheckall()" />
+                          </ng-template>
+                          <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                            let-row="row">
+                            <input type="checkbox" name="check_{{ row.uuid }}" [(ngModel)]="row.selected" value="true"
+                              [checked]="row.selected"
+                              (change)="checkunchecksingle(row.uuid, row.first_name, row.selected)" />
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="{{ 'NAME' | translate }}" prop="first_name" [sortable]="false">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email" [sortable]="false"
+                          [minWidth]="250">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="{{ 'DEVICE_TYPE' | translate }}" prop="device_type"
+                          [sortable]="false">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="{{ 'ROLE' | translate }}" prop="role" [sortable]="false">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at"
+                          [sortable]="false">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            {{ value | customDate: momentDateTime24Format }}
+                          </ng-template>
+                        </ngx-datatable-column>
+                      </ngx-datatable>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o fa-lg"></i> {{ 'SAVE' |
+              translate }}</button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-announcement/list']"><i class="fa fa-times"></i> {{
+              'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

@@ -1,0 +1,22 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPage.graphql b/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPage.graphql
+index cc038bb..fdc150f 100644
+--- a/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPage.graphql
++++ b/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPage.graphql
+@@ -4,5 +4,6 @@ query ShippingPage($cartId: String!) {
+     id
+     email
+     ...ShippingPageFragment
++    ...SelectedAddressOnCartQueryFragment
+   }
+ }
+diff --git a/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPageFragment.graphql b/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPageFragment.graphql
+index e38f8ef..d99e7ee 100644
+--- a/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPageFragment.graphql
++++ b/node_modules/@graphcommerce/magento-cart-checkout/queries/ShippingPageFragment.graphql
+@@ -3,4 +3,6 @@ fragment ShippingPageFragment on Cart @injectable {
+   ...ShippingAddress
+   ...CartSummary
+   ...CartStartCheckout
++  ...CartItems
++  ...CartTotals
+ }

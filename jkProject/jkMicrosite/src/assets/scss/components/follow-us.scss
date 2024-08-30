@@ -1,0 +1,34 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+.blog-follow-us {
+  @include mb-50;
+  .social-media-menu-list {
+    li {
+      margin: 0;
+      display: inline-block;
+      margin-right: 20px;
+      @media screen and (min-width: $device-xl) {
+        margin-right: 30px;
+      }
+      a,
+      .social-media-link {
+        @include flexCenter;
+        width: 40px;
+        height: 40px;
+        background-color: var(--data_site_text_color);
+        @include border-radius(50%);
+        @media screen and (min-width: $device-xl) {
+          width: 50px;
+          height: 50px;
+        }
+        i {
+          color: var(--data_site_highlight_section_text_color);
+          font-size: 15px;
+          @media screen and (min-width: $device-xl) {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}

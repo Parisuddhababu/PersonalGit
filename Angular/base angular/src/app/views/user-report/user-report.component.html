@@ -1,0 +1,240 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" *ngxPermissionsOnly="['REPORT_LIST', 'SUPER_ADMIN']">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="name"
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="{{ 'USERNAME' | translate }} / {{ 'REPORTED_BY' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- Report List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header"><i class="fa fa-bar-chart"></i> {{ 'REPORT_LIST' | translate }}</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="wrap-datatable pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="reportList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [maxWidth]="100"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'USERNAME' | translate }}" prop="to_firstname">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <ng-template
+                    [ngxPermissionsOnly]="['USER_VIEW', 'SUPER_ADMIN']"
+                    [ngxPermissionsOnlyThen]="thenBlockBy"
+                    [ngxPermissionsOnlyElse]="elseBlockBy"
+                  >
+                  </ng-template>
+                  <ng-template #elseBlockBy>
+                    <div>{{ row.to_firstname }} {{ row.to_lastname }}</div>
+                  </ng-template>
+                  <ng-template #thenBlockBy>
+                    <a routerLink="/manage-user/view/{{ row.user_id }}" title="View">{{ row.to_firstname }} {{ row.to_lastname }}</a>
+                  </ng-template>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'REPORTED_BY' | translate }}" prop="from_firstname">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <ng-template
+                    [ngxPermissionsOnly]="['USER_VIEW', 'SUPER_ADMIN']"
+                    [ngxPermissionsOnlyThen]="thenBlock"
+                    [ngxPermissionsOnlyElse]="elseBlock"
+                  >
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <div>{{ row.from_firstname }} {{ row.from_lastname }}</div>
+                  </ng-template>
+                  <ng-template #thenBlock>
+                    <a routerLink="/manage-user/view/{{ row.reported_by }}" title="View"
+                      >{{ row.from_firstname }} {{ row.from_lastname }}</a
+                    >
+                  </ng-template>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ABUSE_CATEGORY' | translate }}" prop="report_type"> </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'NOTE' | translate }}"
+                prop="note"
+                [sortable]="false"
+                headerClass="text-center"
+                [minWidth]="200"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center white-space-normal">
+                    <div *ngIf="value?.length >= 50">
+                      <span [innerHTML]="value | slice: 0:49"></span>...
+                      <a href="javascript:void(0)" class="text-nowrap" (click)="openDescriptionModal(value)">{{
+                        'SHOW_MORE' | translate
+                      }}</a>
+                    </div>
+                    <div *ngIf="value?.length < 50"><span [innerHTML]="value"></span></div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateTime24Format }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'REPORT_DELETE', 'REPORT_STATUS']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center action-btn">
+                    <a
+                      *ngxPermissionsOnly="['REPORT_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.id, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive'
+                        }"
+                        class="fa fa-lg"
+                      ></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['REPORT_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDelete, row.id)"
+                      title="{{ 'DELETE' | translate }}"
+                      ><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Report List -- End -->
+</div>
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #templateDelete>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteReport()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

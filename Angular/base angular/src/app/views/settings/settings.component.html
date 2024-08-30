@@ -1,0 +1,395 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSettingsDataSave(f)" novalidate #f="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="text-left col-12 col-sm-6 pull-left p-0">{{ 'GENERAL_SETTINGS' | translate }}</h4>
+                <p class="text-sm-right text-left requiredLabel col-12 col-sm-6 p-0 pull-right">
+                  <span [innerHTML]="'FORM_NOTE' | translate"></span>
+                </p>
+              </div>
+              <div class="col-12">
+                <div class="dropdown-divider"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'SITE_NAME' | translate }}<span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.site_name"
+                    type="text"
+                    name="site_name"
+                    class="form-control"
+                    placeholder="{{ 'SITE_NAME' | translate }}"
+                    required
+                    #site_name="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="site_name.errors && submitted">
+                    <p *ngIf="site_name.errors.required">{{ 'PLEASE_ENTER_SITE_NAME' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'TAG_LINE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.tag_line"
+                    type="text"
+                    name="tag_line"
+                    class="form-control"
+                    placeholder="{{ 'TAG_LINE' | translate }}"
+                    required
+                    #tag_line="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="tag_line.errors && submitted">
+                    <p *ngIf="tag_line.errors.required">{{ 'PLEASE_ENTER_TAG_NAME' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'SUPPORT_EMAIL' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.support_email"
+                    type="text"
+                    name="support_email"
+                    class="form-control"
+                    placeholder="{{ 'SUPPORT_EMAIL' | translate }}"
+                    required
+                    #support_email="ngModel"
+                    [pattern]="CommonRegx.emailRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="support_email.errors && submitted">
+                    <p *ngIf="support_email.errors.required">{{ 'PLEASE_ENTER_SUPPORT_EMAIL' | translate }}</p>
+                    <p *ngIf="support_email.errors.pattern">{{ 'PLEASE_ENTER_SUPPORT_EMAIL_VALIDATION' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'CONTACT_EMAIL' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.contact_email"
+                    type="text"
+                    name="contact_email"
+                    class="form-control"
+                    placeholder="{{ 'CONTACT_EMAIL' | translate }}"
+                    required
+                    #contact_email="ngModel"
+                    [pattern]="CommonRegx.emailRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="contact_email.errors && submitted">
+                    <p *ngIf="contact_email.errors.required">{{ 'PLEASE_ENTER_CONTACT_EMAIL' | translate }}</p>
+                    <p *ngIf="contact_email.errors.pattern">{{ 'PLEASE_ENTER_CONTACT_EMAIL_VALIDATION' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'CONTACT_NUMBER' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.contact_number"
+                    type="text"
+                    name="contact_number"
+                    phoneMask
+                    [config]="{ country: 'IN', include_country_code: false, mask: '(000) 000 0000' }"
+                    class="form-control"
+                    (valueChange)="obj = $event"
+                    placeholder="{{ 'CONTACT_NUMBER' | translate }}"
+                    required
+                    #contact_number="ngModel"
+                  />
+                  <div
+                    class="form-control-feedback text-danger"
+                    *ngIf="(contact_number.errors && submitted) || (obj?.valid == false && submitted)"
+                  >
+                    <p *ngIf="contact_number?.errors?.required">{{ 'PLEASE_ENTER_CONTACT_NUMBER' | translate }}</p>
+                    <p *ngIf="!contact_number?.errors?.required && obj?.valid == false">
+                      {{ 'PLEASE_ENTER_CONTACT_NUMBER_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'DEFAULT_LANGUAGE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.default_language"
+                    type="text"
+                    name="default_language"
+                    class="form-control"
+                    placeholder="{{ 'DEFAULT_LANGUAGE' | translate }}"
+                    required
+                    #default_language="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="default_language.errors && submitted">
+                    <p *ngIf="default_language.errors.required">{{ 'PLEASE_ENTER_LANGUAGE' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'ADDRESS' | translate }}</label>
+                  <textarea
+                    [(ngModel)]="model.address"
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    placeholder="{{ 'ADDRESS' | translate }}"
+                    #address="ngModel"
+                    rows="4"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mt-2 mt-sm-3">
+                      <label for="meta_keywords">{{ 'LOGO' | translate }}</label>
+                      <div class="profile">
+                        <div class="profile-wrapper">
+                          <img [src]="logoURL" (change)="openLogoUpload()" (error)="onErrorLogoFavicon($event, 'logo')" />
+                        </div>
+                        <i
+                          class="fa fa-2x fa-times-circle-o"
+                          aria-hidden="true"
+                          (click)="removeLogoPicture(profile_logo)"
+                          *ngIf="noLogo"
+                        ></i>
+                        <a href="" class="change-profile" (click)="openLogoUpload()">{{ 'CHANGE' | translate }}</a>
+                        <input type="file" (change)="changeLogoImage($event)" class="form-control" id="profile_logo" #profile_logo />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mt-2 mt-sm-3">
+                      <label for="meta_keywords">{{ 'FAVICON' | translate }}</label>
+                      <div class="profile">
+                        <div class="profile-wrapper">
+                          <img [src]="faviconURL" (change)="openFavUpload()" (error)="onErrorLogoFavicon($event, 'favicon')" />
+                        </div>
+                        <i
+                          class="fa fa-2x fa-times-circle-o"
+                          aria-hidden="true"
+                          (click)="removeFavPicture(profile_favicon)"
+                          *ngIf="noFav"
+                        ></i>
+                        <a href="" class="change-profile" (click)="openFavUpload()">{{ 'CHANGE' | translate }}</a>
+                        <input type="file" (change)="changeFavImage($event)" class="form-control" id="profile_favicon" #profile_favicon />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="row form-group mt-2 mt-sm-3">
+                  <label class="col-lg-4">{{ 'MULTIPLE_LOGIN' | translate }}</label>
+                  <div class="col-lg-8">
+                    <label class="switch switch-label switch-pill switch-outline-primary-alt">
+                      <input type="checkbox" class="switch-input" name="multiple_login" [(ngModel)]="model.multiple_login" />
+                      <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="row form-group mt-2 mt-sm-3">
+                  <label class="col-lg-4">{{ 'ENQUIRY_EMAIL' | translate }}</label>
+                  <div class="col-lg-8">
+                    <label class="switch switch-label switch-pill switch-outline-primary-alt">
+                      <input type="checkbox" class="switch-input" name="enquiry_email" [(ngModel)]="model.enquiry_email" />
+                      <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="row form-group mt-2 mt-sm-3">
+                  <label class="col-lg-4">{{ 'ACTIVITY_TRACKING' | translate }}</label>
+                  <div class="col-lg-8">
+                    <label class="switch switch-label switch-pill switch-outline-primary-alt">
+                      <input type="checkbox" class="switch-input" name="activity_logs" [(ngModel)]="model.activity_logs" />
+                      <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="device_type" class="pull-left"
+                    >{{ 'SELECT_DEVICE_TRACKING' | translate }} <span class="asterisk_input"></span
+                  ></label>
+                  <div class="d-block pull-left ml-3">
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="single"
+                        >{{ 'SINGLE' | translate }}
+                        <input
+                          [(ngModel)]="model.device_tracking"
+                          name="device_tracking"
+                          #device_tracking="ngModel"
+                          class="form-check-input"
+                          type="radio"
+                          id="single"
+                          value="Single"
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="Multiple"
+                        >{{ 'MULTIPLE' | translate }}
+                        <input
+                          [(ngModel)]="model.device_tracking"
+                          name="device_tracking"
+                          #device_tracking="ngModel"
+                          class="form-check-input"
+                          type="radio"
+                          id="Multiple"
+                          value="Multiple"
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+                    <div class="form-control-feedback text-danger" *ngIf="device_tracking.errors && submitted">
+                      <p *ngIf="device_tracking.errors.required">{{ 'PLEASE_SELECT_DEVICE_TRACKING' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="row form-group mt-2 mt-sm-3">
+                  <label class="col-lg-4">{{ 'AUTO_BLOCK_USER' | translate }}</label>
+                  <div class="col-lg-8">
+                    <label class="switch switch-label switch-pill switch-outline-primary-alt">
+                      <input type="checkbox" class="switch-input" name="auto_block_user" [(ngModel)]="model.auto_block_user" />
+                      <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label>{{ 'ABUSE_THRESHOLD' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    appNumberOnly
+                    [(ngModel)]="model.abuse_threshold"
+                    type="text"
+                    name="abuse_threshold"
+                    class="form-control"
+                    placeholder="{{ 'ABUSE_THRESHOLD' | translate }}"
+                    required
+                    #abuse_threshold="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="abuse_threshold.errors && submitted">
+                    <p *ngIf="abuse_threshold.errors.required">{{ 'PLEASE_ENTER_THRSHOLD_VALUE' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'FB_PIXEL_CODE' | translate }}</label>
+                  <textarea
+                    [(ngModel)]="model.fb_pixel_code"
+                    type="text"
+                    name="fb_pixel_code"
+                    class="form-control"
+                    placeholder="{{ 'FB_PIXEL_CODE' | translate }}"
+                    #fb_pixel_code="ngModel"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'GOOGLE_TAG' | translate }}</label>
+                  <textarea
+                    [(ngModel)]="model.google_tag"
+                    type="text"
+                    name="google_tag"
+                    class="form-control"
+                    placeholder="{{ 'GOOGLE_TAG' | translate }}"
+                    #google_tag="ngModel"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="page_title">{{ 'IMAGE_UPLOAD_SERVER' | translate }}<span class="asterisk_input"></span></label>
+                  <select class="form-control" [(ngModel)]="model.upload_image" name="upload_image" #upload_image="ngModel" required>
+                    <option value="">--{{ 'SELECT_IMAGE_UPLOAD_SERVER' | translate }} --</option>
+                    <option value="LOCAL">{{ 'LOCAL_SERVER' | translate }}</option>
+                    <option value="S3">{{ 'S3_SERVER' | translate }}</option>
+                    <option value="BOTH">{{ 'BOTH_SERVER' | translate }}</option>
+                  </select>
+                  <div class="form-control-feedback text-danger" *ngIf="upload_image.errors && submitted">
+                    <p *ngIf="upload_image.errors.required">{{ 'PLEASE_SELECT_IMAGE_UPLOAD_SERVER' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="page_title">{{ 'SELECT_HOT_JAR_ENABLE_PAGES' | translate }}</label>
+                  <ng-multiselect-dropdown
+                    placeholder="{{ 'SELECT_HOT_JAR_ENABLE_PAGES' | translate }}"
+                    [data]="hot_jar_pages_name"
+                    [(ngModel)]="model.hotjar_ids"
+                    [settings]="hotjarSettings"
+                    name="hotjar_ids"
+                    #hotjar_ids="ngModel"
+                  >
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group mt-2 mt-sm-3">
+                  <label for="meta_keywords">{{ 'HOTJAR_SCRIPT_CODE' | translate }}</label>
+                  <textarea
+                    [(ngModel)]="model.hotjar_script"
+                    type="text"
+                    name="hotjar_script"
+                    class="form-control"
+                    placeholder="{{ 'HOTJAR_SCRIPT_CODE' | translate }}"
+                    #hotjar_script="ngModel"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button *ngxPermissionsOnly="['CONFIG_UPDATE', 'SUPER_ADMIN']" type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i> {{ 'UPDATE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/dashboard']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

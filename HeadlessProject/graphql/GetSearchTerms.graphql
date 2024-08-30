@@ -1,0 +1,8 @@
+query GetSearchTerms {
+  GetSearchTerms {
+    SearchTermData {
+      searchTerm
+      searchUrl
+    }
+  }
+}

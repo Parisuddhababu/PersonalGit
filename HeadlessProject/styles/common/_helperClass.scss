@@ -1,0 +1,93 @@
+// .w-100 {
+//   width: 100%;
+// }
+
+// .link {
+//   color: $primary-color;
+//   font-weight: 500;
+//   text-decoration: none;
+//   cursor: pointer;
+
+//   &:hover {
+//     color: $primary-hover-color;
+//   }
+
+//   @include xl {
+//     font-size: 14px;
+//   }
+// }
+
+// .link-underline {
+//   text-decoration: underline;
+// }
+
+// .link-secondary {
+//   color: $secondary-color;
+//   font-weight: 500;
+//   text-decoration: none;
+
+//   svg {
+//     font-size: 20px;
+//     vertical-align: bottom;
+//   }
+
+//   &:hover {
+//     color: $dark-gray-color;
+//   }
+// }
+
+// .more-button[aria-expanded='true'] {
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 48%;
+//     z-index: -1;
+//     background: $border-color;
+//     @include border-radius(6px);
+//     @include opacity(0.5);
+//     width: 34px;
+//     height: 15px;
+//     @include transform(translateY(-50%));
+
+//     @include xl {
+//       width: 30px;
+//       height: 13px;
+//     }
+//   }
+// }
+
+// .MuiButtonBase-root {
+//   &.icon-bg {
+//     @include xl {
+//       line-height: 18px;
+//     }
+
+//     .MuiButton-startIcon {
+//       margin: 0;
+
+//       svg.MuiSvgIcon-root,
+//       > svg {
+//         background: $primary-color;
+//         @include border-radius(5px);
+//         font-size: 24px;
+//         padding: 6px;
+//         margin-right: 10px;
+
+//         @include xl {
+//           @include border-radius(3px);
+//           padding: 3px;
+//           font-size: 18px;
+//           margin-right: 8px;
+//         }
+
+//         @include md {
+//           margin-right: 5px;
+//         }
+
+//         path {
+//           stroke-width: 4;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -1,0 +1,65 @@
+<div >
+  <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <button type="button" class="details" (click)="getFormDetails()" style="margin-bottom: 100px;">
+      get details
+    </button>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="firstname">First Name</label><br />
+      <input type="text" id="firstname" formControlName="firstName" />
+      @if (form.controls.firstName.touched && form.controls.firstName.dirty &&
+      form.controls.firstName.invalid ){
+      <p style="color: red">please enter first name</p>
+      }
+    </div>
+    <div>
+      <label for="lastname">Last Name</label><br />
+      <input type="text" id="lastname" formControlName="lastName" />
+      @if (form.controls.lastName.touched && form.controls.lastName.dirty &&
+      form.controls.lastName.invalid ){
+      <p style="color: red">please enter last name</p>
+      }
+    </div>
+    <div>
+      <label for="contact">Mobile Number</label><br />
+      <input type="text" id="contact" formControlName="contact" />
+      @if (form.controls.contact.touched && form.controls.contact.dirty &&
+      form.controls.contact.invalid ){
+      <p style="color: red">please enter valid contact number</p>
+      }
+    </div>
+
+    <div>
+      <label for="email">Email ID</label><br />
+      <input type="email" id="email" formControlName="email" />
+      @if (form.controls.email.touched && form.controls.email.dirty &&
+      form.controls.email.invalid ){
+      <p style="color: red">please enter email</p>
+      }
+    </div>
+    <button type="submit" class="submit">Submit</button>
+    <button type="button" class="cancel" (click)="Cancel()">
+      Cancel
+    </button>
+  </form>
+  <ul
+    *ngFor="let contact of responseData"
+    style="
+      text-align: center;
+      background-color: blue;
+      color: azure;
+      max-width: 500px;
+      margin: auto auto;
+    "
+  >
+    <li style="list-style-type: none;" >
+      <p>{{ contact.firstName }}</p>
+      <p>{{ contact.lastName }}</p>
+      <p>{{ contact.contact }}</p>
+      <p>{{ contact.email }}</p>
+      <button (click)="onEdit(contact.id)">edit</button>
+      <button (click)="onDelete(contact.id, contact)">delete</button>
+    </li>
+  </ul>
+</div>

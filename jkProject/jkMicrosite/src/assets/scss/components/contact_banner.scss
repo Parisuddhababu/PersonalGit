@@ -1,0 +1,135 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-contact-call {
+  @include jkm-contact-call;
+}
+
+.jkm-contact-mail {
+  @include jkm-contact-mail;
+}
+
+.jkm-contact-location {
+  @include jkm-contact-location;
+}
+
+.d-row {
+  @include row;
+}
+
+.d-col {
+  width: 100%;
+
+  &.d-col-3 {
+    @include d-col-3;
+  }
+}
+
+.banner-sec {
+  .banner-image-wrap {
+    position: relative;
+    @include flexCenter;
+    padding: 15px;
+    min-height: 160px;
+    background-color: #00000099;
+
+    @media only screen and (min-width: $device-md) {
+      min-height: 330px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: -1;
+    }
+  }
+
+  .d-row {
+    .d-col {
+      @include just-center;
+      @include textCenter;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #c7c6c3;
+
+      @media only screen and (min-width: $device-md) {
+        @include mb-0;
+        border-right: 1px solid #c7c6c3;
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+
+        @media only screen and (min-width: $device-md) {
+          border-right: 0;
+        }
+      }
+
+      &.d-col-3 {
+        @media only screen and (min-width: $device-md) {
+          width: 33.33%;
+        }
+      }
+    }
+  }
+
+  [class^="jkm-"],
+  [class*=" jkm-"] {
+    @include font-detail(36px, 36px);
+    color: var(--data_site_secondary_color);
+    margin-bottom: 20px;
+    display: inline-block;
+
+    &.jkm-contact-mail {
+      @include font-detail(32px, 36px);
+
+      @media only screen and (min-width: $device-md) {
+        @include font-detail(45px, 50px);
+      }
+    }
+
+    @media only screen and (min-width: $device-md) {
+      @include font-detail(50px, 50px);
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.banner-contact-wrap {
+  max-width: 1200px;
+  width: 100%;
+  margin: -120px auto 40px;
+  z-index: 1;
+
+  @media only screen and (min-width: $device-md) {
+    margin: -120px auto 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin: -120px auto 120px;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+.jk-card {
+  border: 1px solid var(--data_border_color);
+  border-radius: var(--data_site_border_radius);
+  padding: 30px;
+  background: var(--data_site_theme_color);
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 40px;
+  }
+}

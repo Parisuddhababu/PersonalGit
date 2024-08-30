@@ -1,0 +1,171 @@
+@import '../common/fonts';
+@import '../common/variable';
+@import '../common/mixin';
+@import '../common/common';
+@import '../layout/formControl';
+@import '../common/table';
+@import '../layout/button';
+@import '../common/modal';
+@import '../components/steps/step1';
+
+.insight-wrapper {
+	padding: 50px 0;
+	.card {
+		@include card(lg, true, false);
+		.border-card {
+			@include card(xsm, false, true);
+		}
+		.row {
+			@include row-justify-center;
+			@include row(1, 20px, 0px);
+			@include media($device-md) {
+				@include row(2, 40px, 40px);
+			}
+			@include media($device-md) {
+				@include row-space-between;
+			}
+			h1 {
+				text-align: center;
+				@include media($device-md) {
+					text-align: left;
+				}
+			}
+			.l-col {
+				h3,
+				strong {
+					font-weight: 600;
+				}
+				.greyText {
+					color: $body-text;
+				}
+				.gap-4 {
+					margin-bottom: 4px;
+				}
+			}
+			.border-bottom {
+				border-bottom: 1px solid $billowing-clouds;
+				padding-bottom: 8px;
+			}
+			.tags-block {
+				@include flexbox();
+				align-items: flex-start;
+				gap: 10px;
+				flex-wrap: wrap;
+				margin-top: 11px;
+				.greyTag {
+					background: #eeeeee;
+					@include border-radius(4px);
+					padding: 6px 11px;
+					@include body-font-md;
+
+					&.active {
+						background: $secondary-color;
+					}
+				}
+			}
+			.morelink {
+				flex-basis: 100%;
+				cursor: pointer;
+				color: $primary-color;
+				margin-top: 25px;
+				text-decoration: underline;
+				display: inline-block;
+				margin-bottom: 28px;
+			}
+			.innerRow {
+				@include row(1, 20px, 20px);
+				margin-bottom: 12px;
+				@include media($device-lg) {
+					@include row(2, 22px, 22px);
+				}
+				.colCard {
+					border: 1px solid $border-color-1;
+					@include border-radius(4px);
+					padding: 16px 10px;
+					.page-bar {
+						font-weight: 600;
+						text-transform: uppercase;
+						margin-bottom: 10px;
+						.icon {
+							margin-right: 10px;
+							font-size: 17.4px;
+						}
+					}
+					.pageDesc {
+						.pageDesc-bar {
+							@include flexbox();
+							@include row-space-between;
+							gap: 0 20px;
+							&:not(:last-child) {
+								border-bottom: 1px solid $billowing-clouds;
+								padding-bottom: 10px;
+								margin-bottom: 12px;
+							}
+							.pageDesc-tag {
+								font-size: 13px;
+								line-height: 20px !important;
+								color: $body-text;
+								text-transform: uppercase;
+								display: block;
+							}
+							.pageDesc-num {
+								line-height: 20px;
+								font-weight: bold;
+							}
+						}
+					}
+				}
+			}
+			.r-col {
+				.small-head {
+					@include font-detail(26px, 33px, 700, 0);
+					margin-bottom: 13px;
+				}
+				.totalViews {
+					font-weight: 800;
+				}
+				.summary-block {
+					h3 {
+						font-weight: 700;
+						margin-bottom: 6px;
+					}
+				}
+				.viewBox {
+					@include row(1, 20px, 20px);
+					@include media($device-lg) {
+						@include row(2, 15px, 15px);
+					}
+					.blueBox {
+						background: $secondary-color;
+						padding: 25px;
+						.font-20 {
+							@include font-detail(20px, 28px, 600, 0.4px);
+							margin-bottom: 12px;
+						}
+						.semibold {
+							font-weight: 600;
+						}
+					}
+				}
+			}
+		}
+	}
+	.insight_row {
+		&.row {
+			@include row-align-items;
+			justify-content: end;
+			@include row(1, 20px, 0px);
+			@include media($device-md) {
+				@include row(2, 0px, 0px);
+				justify-content: end;
+			}
+			.r-col {
+				@include flexbox();
+				@include media($device-md) {
+					@include row-justify-center;
+					justify-content: end;
+				}
+			}
+		}
+	}
+}

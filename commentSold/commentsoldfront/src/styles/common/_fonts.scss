@@ -1,0 +1,301 @@
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Italic.eot');
+  src: url('/fonts/BeVietnamPro-Italic.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Italic.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Italic.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Italic.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Italic.svg#BeVietnamPro-Italic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-ExtraLight.eot');
+  src: url('/fonts/BeVietnamPro-ExtraLight.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-ExtraLight.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-ExtraLight.woff') format('woff'),
+      url('/fonts/BeVietnamPro-ExtraLight.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-ExtraLight.svg#BeVietnamPro-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Black.eot');
+  src: url('/fonts/BeVietnamPro-Black.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Black.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Black.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Black.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Black.svg#BeVietnamPro-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-SemiBold.eot');
+  src: url('/fonts/BeVietnamPro-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-SemiBold.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-SemiBold.woff') format('woff'),
+      url('/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-SemiBold.svg#BeVietnamPro-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Medium.eot');
+  src: url('/fonts/BeVietnamPro-Medium.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Medium.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Medium.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Medium.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Medium.svg#BeVietnamPro-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Bold.eot');
+  src: url('/fonts/BeVietnamPro-Bold.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Bold.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Bold.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Bold.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Bold.svg#BeVietnamPro-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-ExtraBold.eot');
+  src: url('/fonts/BeVietnamPro-ExtraBold.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-ExtraBold.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-ExtraBold.woff') format('woff'),
+      url('/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-ExtraBold.svg#BeVietnamPro-ExtraBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Light.eot');
+  src: url('/fonts/BeVietnamPro-Light.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Light.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Light.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Light.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Light.svg#BeVietnamPro-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Regular.eot');
+  src: url('/fonts/BeVietnamPro-Regular.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Regular.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Regular.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Regular.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Regular.svg#BeVietnamPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url('/fonts/BeVietnamPro-Thin.eot');
+  src: url('/fonts/BeVietnamPro-Thin.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/BeVietnamPro-Thin.woff2') format('woff2'),
+      url('/fonts/BeVietnamPro-Thin.woff') format('woff'),
+      url('/fonts/BeVietnamPro-Thin.ttf') format('truetype'),
+      url('/fonts/BeVietnamPro-Thin.svg#BeVietnamPro-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/fonts/icomoon.eot?53jfxz');
+  src:  url('/fonts/icomoon.eot?53jfxz#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?53jfxz') format('truetype'),
+    url('/fonts/icomoon.woff?53jfxz') format('woff'),
+    url('/fonts/icomoon.svg?53jfxz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon',Arial, Verdana, Tahoma, sans-serif !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sound-plus:before {
+  content: "\e90b";
+}
+.icon-sound-minus:before {
+  content: "\e92e";
+}
+.icon-video:before {
+  content: "\e92a";
+}
+.icon-video-no:before {
+  content: "\e92b";
+}
+.icon-eye-alt-slash:before {
+  content: "\e92c";
+}
+.icon-eye-alt:before {
+  content: "\e92d";
+}
+.icon-youtube:before {
+  content: "\e927";
+}
+.icon-linkedin:before {
+  content: "\e928";
+}
+.icon-tiktok:before {
+  content: "\e929";
+}
+.icon-arrow-up:before {
+  content: "\e924";
+}
+.icon-minus:before {
+  content: "\e900";
+}
+.icon-globe:before {
+  content: "\e91e";
+}
+.icon-right:before {
+  content: "\e91f";
+}
+.icon-left:before {
+  content: "\e920";
+}
+.icon-settings:before {
+  content: "\e921";
+}
+.icon-drag:before {
+  content: "\e922";
+}
+.icon-heart:before {
+  content: "\e923";
+}
+.icon-img-upload:before {
+  content: "\e901";
+}
+.icon-chat:before {
+  content: "\e902";
+}
+.icon-instagram:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-play-store:before {
+  content: "\e905";
+}
+.icon-apple:before {
+  content: "\e906";
+}
+.icon-message:before {
+  content: "\e907";
+}
+.icon-call:before {
+  content: "\e908";
+}
+.icon-plus:before {
+  content: "\e909";
+}
+.icon-down:before {
+  content: "\e90a";
+}
+.icon-refresh:before {
+  content: "\e92f";
+}
+.icon-download:before {
+  content: "\e90c";
+}
+.icon-arrow-up-right:before {
+  content: "\e90d";
+}
+.icon-search:before {
+  content: "\e90e";
+}
+.icon-close:before {
+  content: "\e90f";
+}
+.icon-right-long:before {
+  content: "\e910";
+}
+.icon-left-long:before {
+  content: "\e926";
+}
+.icon-add-file:before {
+  content: "\e911";
+}
+.icon-csv:before {
+  content: "\e912";
+}
+.icon-pen:before {
+  content: "\e913";
+}
+.icon-trash:before {
+  content: "\e914";
+}
+.icon-users:before {
+  content: "\e915";
+}
+.icon-user:before {
+  content: "\e916";
+}
+.icon-check:before {
+  content: "\e917";
+}
+.icon-calendar:before {
+  content: "\e918";
+}
+.icon-calendar-add:before {
+  content: "\e919";
+}
+.icon-time:before {
+  content: "\e91a";
+}
+.icon-flag:before {
+  content: "\e91b";
+}
+.icon-eye-off:before {
+  content: "\e91c";
+}
+.icon-eye:before {
+  content: "\e91d";
+}
+.icon-align-justify:before {
+  content: "\e925";
+}

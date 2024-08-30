@@ -1,0 +1,178 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+h6 {
+  @include h6;
+  font-weight: 700;
+}
+
+.pop-up-container {
+  max-width: 750px;
+  margin: 0 auto;
+  @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+  padding: 60px 20px;
+  position: relative;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 60px;
+  }
+
+  .jkm-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 14px;
+    color: var(--data_red_color);
+  }
+
+  .modal-content {
+    @include textCenter;
+
+    .form-group {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+      margin: 44px auto 50px;
+
+      .jkm-copy {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        color: var(--data_site_secondary_color);
+      }
+    }
+
+    .form-control {
+      @include formcontrol;
+    }
+
+    h4 {
+      @include font-family(var(--data_site_font_secondary), 400);
+      max-width: 470px;
+      margin: 0 auto;
+    }
+
+    .btn-small {
+      margin: 10px auto 40px;
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--data_site_primary_color);
+    }
+
+    .seperator {
+      margin: 20px auto;
+
+      @media only screen and (min-width: $device-lg) {
+        margin: 30px auto;
+      }
+    }
+
+    .social_icons {
+      @include flexbox;
+      margin: 30px auto 50px;
+      @include justifyCenter;
+
+      li {
+        margin-right: 30px;
+        @include textCenter;
+        font-size: 30px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &.facebook a:hover {
+          color: var(--data_facebook_icon_color);
+        }
+
+        &.instagram a:hover {
+          color: var(--data_instagram_icon-color);
+        }
+
+        &.linkedin a:hover {
+          color: var(--data_linkedin_icon_color);
+        }
+
+        &.whatsapp a:hover {
+          color: var(--data_whatsapp_icon_color);
+        }
+
+        &.mail a:hover {
+          color: var(--data_mail_icon_color);
+        }
+
+        a {
+          text-decoration: none;
+          color: var(--data_site_text_color);
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    background: var(--data_site_theme_highlight);
+    padding: 30px;
+    @include textCenter;
+    margin-top: 40px;
+
+    > p {
+      padding: 0;
+
+      @media only screen and (min-width: $device-md) {
+        padding: 0 81px;
+      }
+    }
+
+    h4 {
+      background: var(--data_site_secondary_color);
+      width: 73px;
+      @include border-radius(10px);
+      color: var(--data_site_theme_color);
+      // border-right: 3px dotted var(--data_site_theme_color);
+      position: relative;
+
+      &::after {
+        content: "";
+        border-right: 4px dotted var(--data_site_theme_color);
+        top: 6px;
+        position: absolute;
+        right: -1px;
+        height: 85%;
+      }
+    }
+
+    .d-row {
+      @include row;
+
+      .d-col-2 {
+        @include d-col-2;
+      }
+    }
+
+    .benefits {
+      .d-col.d-col-2 {
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: $device-md) {
+          margin: 0;
+        }
+      }
+
+      p {
+        background: var(--data_site_theme_color);
+        width: calc(100% - 73px);
+        margin: 0;
+        @include border-radius(10px);
+        text-align: left;
+        padding: 10px;
+
+        @media only screen and (min-width: $device-md) {
+          padding: 10px 10px 0;
+        }
+      }
+    }
+  }
+}

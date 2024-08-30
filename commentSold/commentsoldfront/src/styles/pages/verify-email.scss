@@ -1,0 +1,15 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/formControl";
+@import "../layout/button";
+@import "../common/common";
+body{
+    background-color: $white-color;
+}
+.verify-wrapper{
+    @include flexCenter;
+    flex-direction: column;
+    padding: 50px 30px;
+    text-align: center;
+}

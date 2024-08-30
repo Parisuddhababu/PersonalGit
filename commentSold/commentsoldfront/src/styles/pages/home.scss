@@ -1,0 +1,84 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+@import "../layout/button";
+
+body{
+    background-color: $gray-shade-1;
+}
+.hero-section{
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    flex-direction: column;
+
+    @include media($device-md) {
+        flex-direction: row;
+        padding-top: 47px;
+        padding-bottom: 50px;
+    }
+    @include media($device-lg) {
+        flex-direction: row;
+        padding-top: 47px;
+        padding-bottom: 85px;
+    }
+
+    .hero-section-title{
+        @include font-lg;
+        margin-bottom: 10px;
+    }
+
+    .hero-right-column {
+        @include media($device-md) {
+            width: 44.286%;
+        }
+    }
+    
+    .hero-left-column {
+        margin-bottom: 20px;
+        @include media($device-md) {
+            width: 47.2%;
+            margin-bottom: 0;
+        }
+    }
+}
+.connect-to-channels-section{
+    padding-bottom: 30px;
+    @include media($device-md) {
+        padding-bottom: 50px;
+    }
+    .connect-to-channels-row{
+        @include flexbox;
+        gap: 20px;
+        flex-direction: column;
+
+        @include media($device-md) {
+            flex-direction: row
+        }
+        @include media($device-lg) {
+            gap: 40px;
+        }
+        .connect-card{
+            @include border-radius(8px);
+            border: 1px solid $billowing-clouds;
+            background-color: $white-color;
+            padding: 30px;
+            flex: 1;
+            
+            @include media($device-md) {
+                padding: 48px;
+            }
+            .social-icon{
+                @include social-icon(center,large,$title-text);
+                .social-icon-btn{
+                    &.youtube{
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

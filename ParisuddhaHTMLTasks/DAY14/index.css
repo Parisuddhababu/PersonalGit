@@ -1,0 +1,126 @@
+/* section-8 */
+.section-8 {
+    background-color: #ffffff;
+    padding-left: 140px;
+    padding-right: 141px;
+}
+
+.sec-8-main-head {
+    font-size: 75px;
+    color: #313243;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sec-8-main-para {
+    font-size: 33px;
+    color: #313243;
+    font-weight: 400;
+    text-align: center;
+}
+
+.sec-8-img {
+    height: 351px;
+    width: 361px;
+}
+
+.sec-8-main-cont {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sec-8-sub-cont {
+    height: 351px;
+    width: 361px;
+    margin: 20px;
+}
+
+.sec-8-sub-head {
+    font-size: 25px;
+    color: #313243;
+    font-weight: 600;
+}
+
+.sec-8-date {
+    font-size: 17px;
+    color: #00bec9;
+    font-weight: 400;
+}
+
+.sec-8-sub-para {
+    font-size: 17px;
+    color: #313243;
+    font-weight: 400;
+}
+
+.sec-8-read-more {
+    font-size: 21px;
+    color: #00bec9;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 768px) {
+    .sec-8-main-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+
+    .section-8 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .sec-main-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }   
+}
+
+/* section-2  */
+.section-2 {
+    background-color: #ffffff;
+    padding-top: 160px;
+}
+
+.sec-2-main-head {
+    font-size: 75px;
+    color: #313243;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sec-main-cont {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sec-2-small-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 360px;
+}
+
+.sec-2-head {
+    font-size: 28px;
+    color: #202020;
+    font-weight: 700;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.sec-2-title {
+    font-size: 20px;
+    color: #202020;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}

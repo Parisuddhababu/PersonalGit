@@ -1,0 +1,126 @@
+/* footer */
+.footer {
+	background-color: $white-color;
+	height: 492px;
+	margin-top: 400px;
+	padding-left: 57px;
+	padding-right: 57px;
+	@include md {
+		height: 492px;
+	}
+	@include lg {
+		height: 529px;
+		margin-top: 120px;
+	}
+	position: relative;
+	.footer-top-img {
+		position: absolute;
+		top: -215px;
+		left: 5px;
+		@include md {
+			top: -215px;
+			left: 5px;
+		}
+		@include lg {
+			height: 389px;
+			width: 378px;
+			top: -202px;
+			left: -6px;
+		}
+	}
+	.footer-container {
+		background-image: url('./assets/images/webp/footer.webp');
+		background-size: cover;
+		height: 640px;
+		background-repeat: no-repeat;
+		@include flex-property-col;
+		@include justify-content-center;
+		.footer-middle-cont {
+			@include flex-property-col;
+			@include justify-content-center;
+			@include align-center;
+			padding-left: 100px;
+			padding-right: 57px;
+			.footer-logo {
+				@include pointer;
+			}
+			@include md {
+				@include justify-content-center;
+				@include align-center;
+				padding-left: 100px;
+				padding-right: 57px;
+			}
+			@include lg {
+				@include flex-property-row;
+				@include content-between;
+				padding-top: 200px;
+				margin-top: 230px;
+			}
+			.footer-address-cont {
+				@include flex-property-row;
+				@include align-center;
+				padding-top: 40px;
+				@include md {
+					padding-top: 40px;
+				}
+				@include lg {
+					padding-top: 10px;
+				}
+				a {
+					color: $white-color;
+				}
+				.footer-address {
+					font-size: 21px;
+					line-height: 38px;
+					color: $white-color;
+					font-weight: 400;
+					font-family: $Playfair;
+					padding-left: 10px;
+					margin: 0%;
+					@include pointer;
+					text-shadow: 0px 0px $white-color;
+				}
+			}
+		}
+		.footer-bottom-cont {
+			@include flex-property-col;
+			@include justify-content-center;
+			@include align-center;
+			.social-icons :hover {
+				@include pointer;
+				transition-property: background-color;
+				transition-duration: 3s;
+				background-color: $primary-color;
+			}
+			.social-icons {
+				margin: 5px;
+			}
+			@include md {
+				@include justify-content-center;
+				@include align-center;
+			}
+			@include lg {
+				@include flex-property-row;
+				@include content-between;
+				padding-left: 100px;
+				padding-right: 57px;
+				@include align-end;
+				margin-top: 230px;
+				margin-bottom: 200px;
+			}
+			.footer-copyright {
+				font-size: 17px;
+				color: $white-color;
+				font-weight: 400;
+				font-family: $Playfair;
+				padding: 30px 0px;
+				@include md {
+					padding: 30px 0px;
+				}
+				@include lg {
+					padding: 0px 0px;
+				}
+			}
+		}
+	}
+}

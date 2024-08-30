@@ -1,0 +1,76 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.career-details {
+  .career-filter {
+    margin-top: 30px;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $device-md) {
+      margin-top: 50px;
+      margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+      margin-bottom: 80px;
+    }
+  }
+
+  .flex-wrapper {
+    @include align-item-end;
+    @include space-between;
+    @include flexbox;
+    background: var(--data_button_primary_color);
+    padding: 20px 5%;
+    @include flexwrap;
+    @include border-radius(10px);
+
+    @media only screen and (min-width: $device-xl) {
+      padding: 40px 8%;
+    }
+
+    .form-group {
+      width: 100%;
+
+      @media only screen and (min-width: $device-md) {
+        width: calc(50% - 95px);
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        width: calc(50% - 120px);
+      }
+
+      label {
+        color: var(--data_site_highlight_section_text_color);
+        @include label;
+      }
+
+      .form-control {
+        @include formcontrol;
+      }
+
+      &:nth-child(2) {
+        margin-top: 10px;
+
+        @media only screen and (min-width: $device-md) {
+          margin-top: 0px;
+        }
+      }
+
+      .custom-select {
+        @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+        @include bg-arrow(#fff, url(../../images/icons/arrow-down-gray.svg), no-repeat, 95%, center);
+      }
+    }
+
+    .form-button-action {
+      max-width: 160px;
+      width: 100%;
+      margin-top: 15px;
+
+      @media only screen and (min-width: $device-md) {
+        margin-top: 0px;
+      }
+    }
+  }
+}

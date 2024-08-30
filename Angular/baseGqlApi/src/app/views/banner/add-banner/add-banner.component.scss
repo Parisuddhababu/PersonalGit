@@ -1,0 +1,89 @@
+form {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  .banner-card {
+    height: 300px;
+    width: 500px;
+    background-color: lightpink;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: red;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .banner-image {
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    .banner-img {
+      display: none;
+    }
+    .preview-image {
+      display: block;
+      height: 200px;
+      width: 350px;
+      object-fit: cover;
+    }
+  }
+  input {
+    height: 45px;
+    width: 500px;
+    border-radius: 5px;
+    border-width: 1px;
+  }
+  .drp-dwn {
+    height: 45px;
+    width: 500px;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+  }
+  .submit {
+    color: white;
+    background-color: blue;
+    height: 45px;
+    width: 180px;
+    border-radius: 5px;
+    border-style: none;
+    margin-right: 20px;
+  }
+
+  .cancel {
+    color: white;
+    background-color: red;
+    height: 45px;
+    width: 180px;
+    border-radius: 5px;
+    border-style: none;
+  }
+}
+
+.details {
+  color: white;
+  background-color: green;
+  height: 45px;
+  width: 380px;
+  border-radius: 5px;
+  border-style: none;
+}
+h2 {
+  text-align: center;
+  font-size: 30px;
+  font-family: serif;
+}
+
+.invalid-form {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.error {
+  color: red;
+  font-size: 15px;
+  padding: 10px;
+}
+

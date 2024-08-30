@@ -1,0 +1,355 @@
+@import "../common/mixin";
+
+.jkm-camera {
+    @include jkm-camera;
+}
+
+.jkm-pencil {
+    @include jkm-pencil;
+}
+
+.jkm-user {
+    @include jkm-user;
+}
+
+.jkm-info-circle {
+    @include jkm-info-circle;
+}
+
+.jkm-lock {
+    @include jkm-lock;
+}
+
+.jkm-location {
+    @include jkm-location;
+}
+
+.jkm-heart {
+    @include jkm-heart;
+}
+
+.jkm-shopping-bag {
+    @include jkm-shopping-bag;
+}
+
+.jkm-file-upload {
+    @include jkm-file-upload;
+}
+
+.jkm-trash {
+    @include jkm-trash;
+}
+
+.jkm-eye {
+    @include jkm-eye;
+}
+
+.jkm-add-to-cart {
+    @include jkm-add-to-cart;
+}
+
+.jkm-copy {
+    @include jkm-copy;
+}
+
+.jkm-close {
+    @include jkm-close;
+}
+
+.jkm-wallet {
+    @include jkm-wallet;
+}
+
+.jkm-compare-fill {
+    @include jkm-compare-fill;
+}
+
+.jkm-whishlist-fill {
+    @include jkm-whishlist-fill;
+}
+
+.flex-center {
+    @include flexCenter;
+}
+
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+main,
+section {
+    display: block;
+}
+
+img,
+a,
+input,
+nav,
+textarea,
+p {
+    @include space-none;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+label {
+    @include label;
+}
+
+.form-control {
+    @include formcontrol;
+
+    &.custom-select {
+        @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+        @include bg-arrow(transparent, url(../../images/icons/arrow-down-gray.svg), no-repeat, 97%, center);
+    }
+}
+
+.file-upload {
+    height: 177px;
+    width: 100%;
+    position: relative;
+    @include flexbox;
+    @include just-center;
+    @include align-item-center;
+    padding: 20px;
+    border: 1px solid var(--data_border_color);
+    overflow: hidden;
+    @include transition(0.3s);
+
+    input[type="file"] {
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include opacity(0);
+        cursor: pointer;
+    }
+}
+
+.file-upload-icon {
+    @include flexCenter();
+    width: 100%;
+    height: 100%;
+    background: var(--data_border_color);
+    @include font-sl;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.align-item-center {
+    @include align-item-center;
+}
+
+h5 {
+    font-weight: 700;
+}
+
+.btn {
+    @include button;
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.reset {
+        max-width: 70px;
+
+        @media only screen and (min-width: $device-sm) {
+            max-width: 110px;
+        }
+    }
+}
+
+.row {
+    @include row;
+
+    .d-col-4 {
+        @include d-col-4;
+    }
+}
+
+.badge-wrapper {
+    @include position(absolute);
+    @include positon-top(0px);
+    @include positon-left(0px);
+    @include flexbox;
+    @include flexColumn;
+    @include align-item-start;
+    gap: 3px;
+    z-index: 1;
+
+    @media only screen and (min-width: $device-sm) {
+        gap: 5px;
+    }
+
+    .badge {
+        @include badge(auto, 3px, 7px, inline-block);
+        @include font-detail(11px, normal);
+        @include positon-left(0);
+        @include textCenter;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        @media only screen and (min-width: $device-sm) {
+            @include badge(auto, 4px, 8px, inline-block);
+            @include font-detail(13px, normal);
+        }
+    }
+
+    .discount-badge {
+        @include discount-badge(var(--data_site_primary_color),
+            var(--data_site_theme_color));
+    }
+
+    .badge-featured {
+        background: var(--data_site_secondary_color);
+        color: var(--data_site_theme_color);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--tag-bg-color);
+        color: var(--data_site_theme_color);
+
+        .product-tag-img {
+            display: block;
+            @include position(relative);
+            padding: 5px 7px;
+
+            @media only screen and (min-width: $device-sm) {
+                padding: 7px 10px;
+            }
+
+            img {
+                width: auto;
+                height: 16px;
+                position: static;
+                margin: 0px 0;
+                vertical-align: top;
+                @include position(absolute);
+                @include positon-top(-3px);
+                @include positon-left(0px);
+                object-fit: contain;
+
+                @media only screen and (min-width: $device-sm) {
+                    @include positon-top(-4px);
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+    .out-of-stock-badge {
+        @include discount-badge(var(--data_error_color),
+            var(--data_site_theme_color));
+    }
+}
+
+.address-sec {
+    border: 1px solid var(--data_border_color);
+    padding: 30px;
+    margin-bottom: 30px;
+
+    .address-content {
+        .address-content-para {
+            margin-bottom: 10px;
+
+            &.contact-number {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .order-summary-info-top {
+        margin-bottom: 0;
+    }
+}
+
+.sort-info-title {
+    @include font-sl;
+    @include space-none;
+    margin-bottom: 20px;
+}
+
+.firm_details {
+    padding: 0;
+    border: none;
+}
+
+.account_details {
+    .d-row {
+        .d-col.mb-0 {
+            @include mb-0;
+        }
+
+        .mr-40 {
+            margin-right: 10px;
+
+            @media only screen and (min-width: $device-sm) {
+                margin-right: 40px;
+            }
+        }
+    }
+}
+
+.p-error {
+    color: var(--data_error_color);
+}
+
+.wrapper-title {
+    @include textCenter;
+}
+
+.btn-wrapper {
+    @include flexbox;
+    @include just-center;
+
+    .btn {
+        margin: 0 15px;
+        min-width: 80px;
+
+        @media only screen and (min-width: $device-sm) {
+            min-width: 150px;
+
+            & + .btn {
+                margin-top: 0px;
+            }
+        }
+    }
+}

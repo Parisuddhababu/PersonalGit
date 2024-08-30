@@ -1,0 +1,85 @@
+@import "../common/mixin";
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.error404 {
+  background: url(../../images/404/404_background.png) no-repeat center;
+}
+
+.error404-content {
+  max-width: 430px;
+  margin: 0 auto;
+  @include textCenter;
+  padding: 186px 15px;
+  color: var(--data_site_highlight_section_text_color);
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  .image {
+    margin-bottom: 30px + 20px;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+}
+
+.btn {
+  @include button;
+  @include btn-secondary;
+
+  &.btn-small {
+    @include btn-small;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,50 @@
+@import "../common/mixin";
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+main,
+section {
+    display: block;
+}
+
+img {
+    @include img-common;
+}
+
+img,
+a,
+p {
+    @include space-none;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,179 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    [(ngModel)]="filter.keyword"
+                    name="keyword"
+                    class="form-control"
+                    placeholder="{{ 'TITLE' | translate }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="filter.select_date"
+                      name="select_date"
+                      type="text"
+                      class="form-control"
+                      #select_date="ngModel"
+                      placeholder="{{ 'CREATED_AT' | translate }}"
+                      #DRP="bsDaterangepicker"
+                      placement="top"
+                      bsDaterangepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.type" name="category">
+                    <option value="">{{ 'SELECT_TYPE' | translate }}</option>
+                    <option *ngFor="let type of types | keyvalue" [value]="type.key">{{ type.value | translate }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.user_type" name="category">
+                    <option value="">{{ 'SELECT_PLATFORM' | translate }}</option>
+                    <option *ngFor="let platform of platforms | keyvalue" [value]="platform.key">{{ platform.value | translate }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.status" name="status">
+                    <option value="">{{ 'SELECT_STATUS' | translate }}</option>
+                    <option *ngFor="let s of status | keyvalue" [value]="s.key">{{ s.value }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['ANNOUNCEMENT_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="fa fa-bullhorn"></i> {{ 'ANNOUNCEMENT_LIST' | translate }}
+          <a
+            *ngxPermissionsOnly="['SUPER_ADMIN', 'MANAGE_ANNOUNCEMENT_CREATE']"
+            routerLink="/manage-announcement/add"
+            class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="ManageAnnouncementList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column name="{{ 'TITLE' | translate }}" prop="title" [minWidth]="200" cellClass="text-wrap">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ANNOUNCEMENT_TYPE' | translate }}" prop="type">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ types[value] | translate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'TARGET_PLATFORM' | translate }}" prop="user_type">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ platforms[value] | translate }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(status[value])" class="badge">{{ status[value] }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateTime24Format }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [width]="70"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'MANAGE_ANNOUNCEMENT_VIEW']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['MANAGE_ANNOUNCEMENT_VIEW', 'SUPER_ADMIN']"
+                      routerLink="/manage-announcement/view/{{ row.uuid }}"
+                      title="{{ 'VIEW' | translate }}"
+                      ><i class="fa fa-eye fa-lg"></i
+                    ></a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

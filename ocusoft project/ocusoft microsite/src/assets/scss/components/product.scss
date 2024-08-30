@@ -1,0 +1,111 @@
+@import "../common/mixin";
+@import "product-box";
+
+.products-section{
+    padding-top: 30px;
+
+    @include md{
+        padding-top: 50px;
+    }
+    
+    @include xl {
+        padding-top: 50px;
+    }
+    
+    @include container-md {
+        padding-top: 80px;
+    }
+
+    &.padding-top-remove{
+        padding-top: 0;
+    }
+
+    .products-title{
+        @include h2;
+        margin-bottom: 16px;
+        color: var(--data_site_text_color);
+        
+        @include md {
+            margin-bottom: 20px;
+        }
+
+        @include xl {
+            margin-bottom: 30px;
+        }
+    }
+
+    .products-wrapper{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        place-content: center;
+        gap: 10px;
+        position: relative;
+        
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @include md {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        @include xl {
+            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            background-color: var(--data_site_white_color);
+            color: var(--data_site_text_color);
+            @include border-radius(50%);
+            font-size: 10px;
+            padding: 6px;
+            @include flexbox;
+            @include transform(translateY(-50%));
+            z-index: 1;
+            @include box-shadow(0px 0px 3px 0px rgba($shadow,0.7));
+            @include transition(0.3s);
+            @include container {
+                font-size: 12px;
+                padding: 7px;
+            }
+            @include container-md {
+                font-size: 14px;
+                padding: 8px;
+            }
+            &:hover {
+                background-color: var(--data_site_primary_color);
+                color: var(--data_footer_text);
+            }
+            &.left-arrow {
+                left: 10px;
+                @include container-md {
+                    left: -55px;
+                }
+                i {
+                    &:before {
+                        @include transform(rotate(90deg));
+                        display: inline-block;
+                    }
+                }
+            }
+            &.right-arrow {
+                right: 10px;
+                @include container-md {
+                    right: -55px;
+                }
+                i {
+                    &:before {
+                        @include transform(rotate(-90deg));
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+}

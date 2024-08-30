@@ -1,0 +1,257 @@
+@import "../../common/nav";
+
+.hosting-card-title {
+    @include flexCenter;
+    color: $primary-color;
+
+    i {
+        margin-right: 15px;
+    }
+}
+
+.hosting-card-row{
+    @include row(1,20px,20px);
+
+    @include media($device-md) {
+        @include row(2,20px,20px);
+        
+    }
+
+    @include media($device-xl) {
+        @include row(2,40px,40px);
+    }
+
+    .hosting-card {
+        border: 1px solid $primary-color;
+        padding: 20px;
+        border-radius: 4px;
+        background: $secondary-color;
+        text-align: center;
+
+        @include media($device-xl) {
+            padding: 30px; 
+        }
+
+        @include media($device-xxxl) {
+            padding: 40px; 
+        }
+
+        .btn {
+            margin: auto;
+        }
+
+        p {
+            max-width: 498px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        
+    }
+}
+
+.single-hosting-card{
+    border: 1px solid $billowing-clouds;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    
+    @include media($device-md) {
+        margin-top: 40px;
+        padding: 30px;
+    }
+
+    .hosting-card-title{
+        justify-content: flex-start;
+    }
+
+}
+
+.solo-live-hosting {
+    @include flexbox;
+    align-items: center;
+    flex-direction: column;
+
+    @include media($device-md) {
+        flex-direction: row;
+
+    }
+
+    .solo-live-hosting-left {
+        flex: 0 0 269px;
+        background: $secondary-color;
+        border: 1px solid $border-color-2;
+        @include flexCenter;
+        padding: 44px;
+        text-align: center;
+        @include border-radius(8px);
+        min-height: 300px;
+        margin-bottom: 30px;
+
+        @include media($device-md) {
+            padding: 20px;
+            flex: 0 0 200px;
+            margin-right: 30px;
+            margin-bottom: 0;
+            min-height: 478px;
+        }
+
+        @include media($device-xl) {
+            padding: 44px;
+            flex: 0 0 269px;
+            margin-right: 50px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+    .video-type{
+        @include flexbox;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        gap: 20px;
+        
+        @include media($device-md) {
+            margin-bottom: 40px;
+            
+        }
+        @include media($device-xl) {
+            margin-bottom: 50px;
+        }
+
+        li{
+            border-bottom: 4px solid $body-text;
+            padding-bottom: 5px;
+            color: $body-text;
+            cursor: pointer;
+            @include transition(all,0.5s);            
+            &.active, &:hover {
+                color: $primary-color;
+                border-bottom-color: $primary-color;
+            }
+
+        }
+    }
+    
+}
+
+.influencers-card-row {
+    @include flexbox;
+    gap: 20px;
+    flex-direction: column;
+
+    @include media($device-md){
+        flex-direction: row;
+    }
+    @include media($device-xl){
+        gap: 50px;
+    }
+
+    .influencers-card {
+        border: 1px solid $border-color-2;
+        @include border-radius(8px);
+        background: $secondary-color;
+        padding: 20px;
+        text-align: center;
+
+        
+        @include media($device-md){
+            padding: 30px 25px;
+            flex: 0 0 calc(50% - 10px);
+            max-width: 360px;
+        }
+        @include media($device-xxl){
+            flex: 0 0 360px;
+        }
+
+        .influencers-card-image{
+            aspect-ratio: 1/1;
+            height: 90px;
+        }
+
+        .btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-control{
+            max-width: 268px;
+        }
+    }
+
+}
+
+
+.want-to-go-live {
+   @include flexbox;
+   background: $secondary-color;
+   padding: 20px;
+   border: 1px solid $primary-color;
+   @include border-radius(4px);
+   gap: 10px;
+   flex-direction: column;
+   flex-wrap: wrap;
+   
+   @include media($device-lg){
+        align-items: center;
+        padding: 30px;
+        flex-direction: row;
+    }
+
+
+    .want-to-go-live-left {
+        flex: 1;
+    }
+}
+
+.guest-to-live{
+    flex: 0 0 100%;
+    border-top: 1px solid $billowing-clouds;
+    padding-top: 20px;
+    
+    @include media($device-md){
+        padding-top: 30px;
+    }
+
+    .guest-to-live-list{
+        max-width: 636px;
+        gap: 10px;
+        @include media($device-md){
+            gap: 15px;
+        }
+        @include media($device-lg){
+            gap: 30px;
+        }
+        li{
+            @include flexbox;
+            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            @include media($device-md){
+                margin-bottom: 10px;
+                flex-direction: row;
+            }
+            .guest-to-live-list-control {
+                flex: 1;
+                @include media($device-md){
+                    margin-bottom: 0;
+                }
+            }
+        }
+        &.invite-guest-ul-lists{
+            .btn{
+                margin-left: auto;
+                margin-top: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                @include media($device-md){
+                    margin-left: 10px;
+                    margin-top: 0;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+
+        }
+    }
+}

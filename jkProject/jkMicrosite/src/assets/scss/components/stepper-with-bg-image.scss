@@ -1,0 +1,193 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.asterisk,
+.p-error {
+    color: var(--data_error_color);
+}
+
+.stepper-content-container {
+    @include flexbox;
+    @include textCenter;
+    padding: 15px;
+    color: var(--data_site_highlight_section_text_color);
+    @include flexColumn;
+
+    @media only screen and (min-width: $device-md) {
+        @include flexrow;
+    }
+
+    @media only screen and (min-width: $device-md) {
+        @include flexrow;
+        padding: 35px;
+        @include space-between;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        padding: 60px;
+        justify-content: space-around;
+    }
+}
+
+.stepper-content-col {
+    position: relative;
+    @include flexbox;
+    width: 100%;
+    margin-bottom: 15px;
+    @include align-item-center;
+
+    // @include space-between;
+    &:not(:last-child):after {
+        content: '';
+        width: 2px;
+        height: 100%;
+        background: var(--data_site_theme_color);
+        position: absolute;
+        top: 80%;
+        left: 24px;
+        @include transform(translateX(50%));
+
+        @media screen and (min-width: $device-sm) {
+            left: 32px;
+        }
+    }
+
+    &:not(:last-child)::before {
+        width: 5px;
+        left: 23px;
+        top: 97%;
+        border-top: 5px solid transparent;
+        border-left: 5px solid var(--data_site_theme_color);
+        border-bottom: 5px solid transparent;
+        content: "";
+        position: absolute;
+        background: transparent;
+        @include transform(translateY(50%) rotate(90deg));
+        right: unset;
+        border-right: 0;
+
+        @media screen and (min-width: $device-sm) {
+            left: 31.2px;
+        }
+    }
+
+    .stepper-content-info {
+        width: 70%;
+    }
+
+    @media only screen and (min-width: $device-md) {
+        width: 22%;
+        @include flexColumn;
+
+        &:not(:last-child):after {
+            width: 80%;
+            height: 2px;
+            top: 20%;
+            left: 68%;
+            @include transform(none);
+            ;
+        }
+
+        &:not(:last-child):before {
+            width: 20%;
+            right: -25%;
+            left: unset;
+            border-top: 8px solid transparent;
+            border-right: 10px solid transparent;
+            border-left: 8px solid var(--data_site_theme_color);
+            border-bottom: 8px solid transparent;
+            @include transform(none);
+            ;
+            top: 17%;
+        }
+
+        .stepper-content-info {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        &:not(:last-child):before {
+            top: 17.6%;
+        }
+    }
+}
+
+.stepper-content-img {
+    max-width: 50px;
+    height: 50px;
+    width: 100%;
+    @include flexbox;
+    background: var(--data_site_theme_color);
+    @include border-radius(100%);
+    @include align-item-center;
+    @include just-center;
+    z-index: 1;
+    overflow: hidden;
+
+    // @media only screen and (min-width: $device-md) {
+    //     border: 2px solid transparent;
+    // }
+    // &:hover {
+    //     @media only screen and (min-width: $device-md) {
+    //         border: 2px solid var(--data_site_primary_color);
+    //     }
+    // }
+    @media only screen and (min-width: $device-sm) {
+        max-width: 70px;
+        height: 70px;
+    }
+
+    @media only screen and (min-width: $device-md) {
+        max-width: 90px;
+        height: 90px;
+        margin: auto auto 30px auto;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        max-width: 120px;
+        height: 120px;
+    }
+
+    // img {
+    //     @include border-radius(50%);
+    // }
+    .stepper-icons {
+        font-size: 30px;
+        background: var(--data_site_primary_color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @media only screen and (min-width: $device-sm) {
+            font-size: 35px;
+        }
+
+        @media only screen and (min-width: $device-md) {
+            font-size: 41px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            font-size: 61px;
+        }
+    }
+}
+
+.step-count {
+    margin-bottom: 10px;
+}
+
+.step-para {
+    @include text-clamp(2);
+    height: 45px;
+    margin: 0;
+    @include textCenter;
+
+    @media only screen and (min-width: $device-md) {
+        @include text-clamp(3);
+        height: 73.75px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        height: 84px;
+    }
+}

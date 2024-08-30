@@ -1,0 +1,45 @@
+:root {
+    //Dynamic variables
+    --data_site_border_radius: 5px;
+    --data_site_primary_color: #8e1a86;
+    --data_site_secondary_color: #de57e5;
+    //--data_site_font_primary_url: 'https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap';
+    //--data_site_font_secondary_url: 'https://fonts.googleapis.com/css2?family=Lato&display=swap';
+    --data_footer_bg: #231535;
+    --data_footer_text: #ffffff;
+    --data_button_primary_color: #8e1a86;
+    --data_button_secondary_color: #de57e5;
+    --data_site_font_primary: "Playfair Display";
+    --data_site_font_secondary: "Lato";
+    //Static Varibales
+    --data_site_text_color: #404040;
+    --data_site_theme_highlight: #f5f5f5;
+    --data_site_theme_fixed_highlight: #f5f5f5;
+    --data_site_highlight_section_text_color: #ffffff;
+    --data_border_color: #dadada;
+    --data_product_list_border_color: #dadada;
+    --data_site_theme_color: #ffffff;
+    --data_box_shadow_color: #00000029;
+    --data_border_primary_color: var(--data_site_primary_color);
+    --data_border_secondary_color: var(--data_site_secondary_color);
+    --data_error_color: #ef2d56;
+    --data_disable_color: #f6f6f6;
+    --data_img_border_radius: 10px;
+    --data_linkedin_icon_color: #0e76a8;
+    --data_instagram_icon-color: #dd2a7b;
+    --data_youtube_icon_color: #129184;
+    --data_facebook_icon_color: #1877f2;
+    --data_mail_icon_color: #2151a1;
+    --data_whatsapp_icon_color: #25d336;
+    --data_google_icon_color: #ea4335;
+    --data_twitter_icon_color: #00acee;
+    --data_photos_icon_color: #FFC718;
+    --data_meet_icon_color: #1CA45C;
+    --data_pinterest_icon_color: #E60023;
+    --data_tumblr_icon_color: #34526f;
+}
+
+/*** Common SAAS FILES ***/
+@import "components/header";
+@import "components/footer";
+@import "common/loader";

@@ -1,0 +1,241 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onRulesetSave(ruleFrm)" novalidate #ruleFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'RULENAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.rulename"
+                    type="text"
+                    name="rulename"
+                    class="form-control"
+                    placeholder="{{ 'RULENAME' | translate }}"
+                    required
+                    #rulename="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="rulename.errors && ruleFrm.submitted">
+                    <p *ngIf="rulename.errors.required">
+                      {{ 'PLEASE_ENTER_RULENAME' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'DESCRIPTION' | translate }} <span class="asterisk_input"></span></label>
+                  <textarea
+                    [(ngModel)]="model.description"
+                    name="description"
+                    class="form-control"
+                    placeholder="{{ 'DESCRIPTION' | translate }}"
+                    required
+                    #description="ngModel"
+                  ></textarea>
+                  <div class="form-control-feedback text-danger" *ngIf="description.errors && ruleFrm.submitted">
+                    <p *ngIf="description.errors.required">
+                      {{ 'PLEASE_ENTER_DESCRIPTION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'PRIORITY' | translate }} <span class="asterisk_input"></span></label>
+                  <select [(ngModel)]="model.priority" name="priority" class="form-control" required #priority="ngModel">
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                  </select>
+                  <div class="form-control-feedback text-danger" *ngIf="priority.errors && ruleFrm.submitted">
+                    <p *ngIf="priority.errors.required">
+                      {{ 'PLEASE_SELECT_PRIORITY' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'ON_ACTION' | translate }} <span class="asterisk_input"></span></label>
+                  <select [(ngModel)]="model.on_action" name="on_action" class="form-control" required #on_action="ngModel">
+                    <option value="">Select Action</option>
+                    <option value="1">Signup</option>
+                    <option value="2">Signin</option>
+                    <option value="3">Both</option>
+                  </select>
+                  <div class="form-control-feedback text-danger" *ngIf="on_action.errors && ruleFrm.submitted">
+                    <p *ngIf="on_action.errors.required">
+                      {{ 'PLEASE_SELECT_ACTION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <fieldset class="quesFieldset" *ngFor="let filt of filterList; let i = index">
+              <legend>{{ 'FILTER' | translate }} #{{ i + 1 }}</legend>
+              <div class="question-answer-div">
+                <div class="quesDiv">
+                  <div class="row form-group">
+                    <div class="col-md-1 text-right">
+                      <span>If</span>
+                    </div>
+                    <div class="col-md-11">
+                      <div class="input-group">
+                        <select [(ngModel)]="filt.item_name" name="item_name-{{ i }}" class="form-control" #item_name="ngModel">
+                          <option value="email">Email</option>
+                          <option value="email_username">Username</option>
+                          <option value="phone_number">Phone Number</option>
+                          <option value="first_name">First Name</option>
+                          <option value="last_name">Last Name</option>
+                        </select>
+                        <select
+                          [(ngModel)]="filt.verb_descritpion"
+                          name="verb_descritpion-{{ i }}"
+                          class="form-control"
+                          #verb_descritpion="ngModel"
+                        >
+                          <option value="CONTAINS">Contains</option>
+                          <option value="DOES_NOT_CONTAIN">Does not contain</option>
+                          <option value="GREATER_THAN">Greater than</option>
+                          <option value="LESS_THAN">Less than</option>
+                        </select>
+                        <input
+                          [(ngModel)]="filt.specified_input"
+                          type="text"
+                          name="specified_input-{{ i }}"
+                          class="form-control"
+                          placeholder="{{ 'SPECIFIED_INPUT' | translate }}"
+                          required
+                          #specified_input="ngModel"
+                        />
+                      </div>
+                      <div
+                        style="padding-left: 67%;"
+                        class="form-control-feedback text-danger"
+                        *ngIf="specified_input.errors && ruleFrm.submitted"
+                      >
+                        <span *ngIf="specified_input.errors.required">
+                          {{ 'PLEASE_ENTER_SPECIFIED_INPUT' | translate }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="offset-md-3 col-md-6">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">within</span>
+                        </div>
+                        <input
+                          type="text"
+                          [(ngModel)]="filt.time_frame"
+                          name="time_frame-{{ i }}"
+                          class="form-control border-radius-4"
+                          placeholder="{{ 'TIME_FRAME' | translate }}"
+                          required
+                          #time_frame="ngModel"
+                        />
+                        <div class="input-group-append">
+                          <span class="input-group-text">any time/days </span>
+                        </div>
+                      </div>
+                      <div
+                        style="padding-left: 15%;"
+                        class="form-control-feedback text-danger"
+                        *ngIf="time_frame.errors && ruleFrm.submitted"
+                      >
+                        <span *ngIf="time_frame.errors.required">
+                          {{ 'PLEASE_ENTER_TIME_FRAME' | translate }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-md-1 text-right">
+                      then
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="filt.action"
+                          name="action-{{ i }}"
+                          class="form-control border-radius-4"
+                          #action="ngModel"
+                        >
+                          <option value="NOTHING">Nothing</option>
+                          <option value="BLOCK">Block</option>
+                        </select>
+                        <div class="input-group-append">
+                          <span class="input-group-text">the customer's account and</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="input-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="filt.notification"
+                          name="notification-{{ i }}"
+                          class="form-control border-radius-4"
+                          #notification="ngModel"
+                        >
+                          <option value="NOTIFY">Notify</option>
+                          <option value="NOT_NOTIFY">Do not notify</option>
+                        </select>
+                        <div class="input-group-append">
+                          <span class="input-group-text" for="">Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+                      <div class="form-group">
+                        <button
+                          type="button"
+                          (click)="addMoreFilter()"
+                          class="btn btn-success hidden"
+                          popover="Add more Filter"
+                          triggers="mouseenter:mouseleave"
+                        >
+                          <i class="fa fa-plus"></i></button
+                        >&nbsp;&nbsp;
+                        <button
+                          type="button"
+                          *ngIf="filterList.length > 1"
+                          (click)="removeFilter(filt.filter_no)"
+                          class="btn btn-danger removeQues"
+                          popover="Remove Filter"
+                          triggers="mouseenter:mouseleave"
+                        >
+                          <i class="fa fa-minus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/rulesets/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

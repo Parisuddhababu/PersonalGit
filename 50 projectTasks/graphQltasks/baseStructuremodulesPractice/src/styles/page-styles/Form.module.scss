@@ -1,0 +1,229 @@
+.form-group {
+	& > label {
+		@apply block text-gray-700 text-sm font-normal mb-3;
+	}
+
+	input:focus,
+	select:focus,
+	textarea:focus {
+		box-shadow: 0px 0px 3px 1px var(--primary);
+	}
+
+	.form-control {
+		&[type='text'],
+		&[type='password'],
+		&[type='date'],
+		&[type='datetime-local'],
+		&[type='number'],
+		&.custom-select {
+			color: #5c6873;
+			@apply bg-white appearance-none border rounded w-full py-1 px-3 border-gray-300;
+
+			&:focus,
+			&:active {
+				@apply border-primary outline-0;
+			}
+
+			&.disabled,
+			&[disabled] {
+				@apply border-gray-300 bg-slate-300 cursor-not-allowed opacity-70;
+			}
+		}
+
+		&.custom-select {
+			background-image: linear-gradient(45deg, transparent 50%, var(--gray-1) 50%), linear-gradient(135deg, var(--gray-1) 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+			background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+			background-size: 0.313rem 0.313rem, 0.313rem 0.313rem, 1px 1.5em;
+			@apply bg-no-repeat pr-10;
+
+			&:focus {
+				background-image: linear-gradient(45deg, var(--gray-1) 50%, transparent 50%), linear-gradient(135deg, transparent 50%, var(--gray-1) 50%), linear-gradient(to right, #ccc, #ccc);
+				background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, calc(100% - 2.5em) 0.5em;
+				background-size: 0.313rem 0.313rem, 0.313rem 0.313rem, 0.063rem 1.5em;
+				@apply outline-0 bg-no-repeat border-primary;
+			}
+		}
+	}
+
+	.input-group {
+		@apply relative;
+
+		&.with-icon {
+			.input-icon {
+				height: 100%;
+				border-width: 1px;
+				border-color: #e4e7ea;
+				background-color: #f0f3f5;
+				@apply absolute top-0 left-0 w-10 flex items-center justify-center rounded rounded-tr-none rounded-br-none;
+
+				svg,
+				img {
+					@apply h-5 w-5;
+				}
+
+				svg {
+					fill: #5c6873;
+					// @apply fill-[#5c6873];
+				}
+
+				&.error {
+					@apply bg-error border-error text-white;
+
+					svg {
+						@apply fill-white;
+					}
+				}
+			}
+
+			.form-control {
+				@apply pl-12;
+			}
+
+			.input-login {
+				background-color: rgb(216 234 255 / 60%);
+				@apply border border-gray-200 bg-white;
+			}
+		}
+
+		input,
+		select {
+			height: 34.9px;
+			// @apply h-[34.9px];
+		}
+
+		option {
+			@apply text-gray-600;
+		}
+
+		select:disabled {
+			@apply bg-slate-300;
+		}
+	}
+
+	.radio-btn-group {
+		@apply flex flex-wrap items-center;
+
+		.radio-btn {
+			@apply mr-3 my-1 relative;
+
+			> span {
+				@apply inline-flex items-center cursor-pointer px-5;
+
+				&:before {
+					content: '';
+					@apply inline-block h-4 w-4 rounded-full border border-gray-300 mr-2.5 absolute top-0.5 left-0 bg-gray-200;
+				}
+
+				&:after {
+					@apply absolute left-1 top-1.5 bg-primary rounded-full;
+					height: 0.5rem;
+					width: 0.5rem;
+				}
+			}
+
+			input[type='radio'] {
+				@apply absolute left-0 opacity-0;
+
+				&:checked {
+					~ span {
+						&:before {
+							@apply ring-2 ring-red-500 border-red-500 bg-white;
+						}
+
+						&:after {
+							@apply absolute left-1 top-1.5 bg-red-500 rounded-full ring-black;
+							height: 0.5rem;
+							width: 0.5rem;
+						}
+					}
+				}
+
+				&.disabled,
+				&[disabled] {
+					~ span {
+						@apply text-gray-600 cursor-not-allowed;
+
+						&:before,
+						&:after {
+							@apply opacity-70;
+						}
+					}
+				}
+			}
+		}
+
+		&.radio-btn-group-list {
+			@apply block;
+
+			.radio-btn {
+				@apply block mr-0;
+			}
+		}
+	}
+
+	.checkbox-group {
+		.checkbox-item {
+			@apply mr-3 my-1 inline-block relative;
+
+			> span {
+				@apply inline-flex items-center cursor-pointer px-5 relative;
+
+				&:before {
+					content: '';
+					@apply inline-block h-4 w-4 border border-primary mr-2 absolute left-0 rounded;
+				}
+
+				&:after {
+					@apply absolute;
+					display: inline-block;
+					transform: rotate(45deg);
+					left: 0.313rem;
+					height: 0.65rem;
+					width: 0.35rem;
+					border-bottom: 0.125rem solid var(--white);
+					border-right: 0.125rem solid var(--white);
+				}
+			}
+
+			input[type='checkbox'] {
+				@apply absolute left-0 opacity-0;
+
+				&:checked {
+					~ span {
+						&:before {
+							@apply bg-primary border-primary;
+						}
+
+						&:after {
+							content: '';
+						}
+					}
+				}
+
+				&.disabled,
+				&[disabled] {
+					~ span {
+						@apply text-gray-600 cursor-not-allowed;
+
+						&:before,
+						&:after {
+							@apply opacity-70;
+						}
+					}
+				}
+			}
+		}
+
+		&.checkbox-group-list {
+			.checkbox-item {
+				@apply block mr-0;
+			}
+		}
+	}
+}
+
+:global {
+	.error {
+		@apply border-red-500 text-red-500 font-[100];
+	}
+}

@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div>
+      <label for="firstname">First Name</label><br />
+      <input type="text" id="firstname" name="firstName" ngModel required />
+      <p *ngIf="form.controls.firstName.touched && !form.controls.firstName.valid" style="color: red">Please enter first name</p>
+    </div>
+    <div>
+      <label for="lastname">Last Name</label><br />
+      <input type="text" id="lastname" name="lastName" ngModel required />
+      <p *ngIf="form.controls.lastName.touched && !form.controls.lastName.valid" style="color: red">Please enter last name</p>
+    </div>
+    <div>
+      <label for="contact">Mobile Number</label><br />
+      <input type="text" id="contact" name="contact" ngModel required pattern="^((\+91-?)|0)?[0-9]{10}$" />
+      <p *ngIf="form.controls.contact.touched && !form.controls.contact.valid" style="color: red">Please enter valid contact number</p>
+    </div>
+    <div>
+      <label for="email">Email ID</label><br />
+      <input type="email" id="email" name="email" ngModel required email />
+      <p *ngIf="form.controls.email.touched && !form.controls.email.valid" style="color: red">Please enter a valid email</p>
+    </div>
+    <button type="submit" class="submit" [disabled]="!form.valid">Submit</button>
+    <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+  </form>
+  

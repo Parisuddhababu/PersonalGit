@@ -1,0 +1,69 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+
+.order-summary-info-content {
+  @include flexbox;
+  @include just-start;
+  padding-bottom: 20px;
+  position: relative;
+  text-transform: capitalize;
+ 
+  border-bottom: 1px solid var(--data_border_color);
+  img {
+    width: 100px;
+    margin-right: 10px;
+  }
+  .items-img {
+      padding: 16.6%;
+      position: relative;
+      overflow: hidden;
+      margin-right: 20px;
+      @media only screen and (min-width: 420px) {
+          padding: 10% 10%;
+      }
+      @media only screen and (min-width: 992px) {
+          padding: 16.6%;
+      }
+      img {
+          position: absolute;
+          inset: 0;
+          object-fit: cover;
+          height: auto;
+          width: 100%;
+      }
+  }
+  &:not(:first-child) {
+      padding-top: 20px;
+  }
+  .items-details-content-info {
+      flex: 1;
+  }
+  .items-title {
+      margin-bottom: 10px;
+      @media only screen and (min-width: $device-md) {
+          margin-bottom: 20px;
+      }
+  }
+  .items-details-info {
+      @include font-detail(14px, 24px);
+      color: var(--data_site_text_color);
+      span:first-child {
+          margin-right: 20px;
+      }
+      &:nth-last-child(2) {
+          margin-bottom: 25px;
+      }
+      &.price {
+          position: absolute;
+          bottom: 20px;
+          right: 0;
+          @include common-font-size;
+          font-weight: bold;
+          color: var(--data_site_text_color);
+          span {
+              margin: 0;
+          }
+      }
+  }
+}

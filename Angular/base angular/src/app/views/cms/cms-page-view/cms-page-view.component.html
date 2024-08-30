@@ -1,0 +1,17 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-file-o"></i> {{ 'VIEW_PAGE_BUILDER' | translate }}
+          <a class="btn btn-primary pull-right" [routerLink]="['/cms/list']"><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a>
+        </div>
+        <div class="card-body preview">
+          <!-- <div id="gjs"></div> -->
+          <div *ngIf="htmldata" [innerHTML]="htmldata | safeHtml"></div>
+          <div *ngIf="!htmldata" class="text-center">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

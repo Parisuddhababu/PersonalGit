@@ -1,0 +1,204 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSubadminSave(f)" novalidate #f="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'FIRST_NAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.first_name"
+                    type="text"
+                    name="first_name"
+                    class="form-control"
+                    placeholder="{{ 'FIRST_NAME' | translate }}"
+                    required
+                    #first_name="ngModel"
+                    [pattern]="CommonRegx.NameRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="first_name.errors && submitted">
+                    <p *ngIf="first_name.errors.required">
+                      {{ 'PLEASE_ENTER_FIRST_NAME' | translate }}
+                    </p>
+                    <p *ngIf="first_name.errors.pattern">
+                      {{ 'PLEASE_ENTER_FIRST_NAME_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'LAST_NAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.last_name"
+                    type="text"
+                    name="last_name"
+                    class="form-control"
+                    placeholder="{{ 'LAST_NAME' | translate }}"
+                    required
+                    #last_name="ngModel"
+                    [pattern]="CommonRegx.NameRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="last_name.errors && submitted">
+                    <p *ngIf="last_name.errors.required">
+                      {{ 'PLEASE_ENTER_LAST_NAME' | translate }}
+                    </p>
+                    <p *ngIf="last_name.errors.pattern">
+                      {{ 'PLEASE_ENTER_LAST_NAME_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'USERNAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.username"
+                    type="text"
+                    name="username"
+                    [disabled]="editMode"
+                    class="form-control"
+                    placeholder="{{ 'USERNAME' | translate }}"
+                    required
+                    #username="ngModel"
+                    [pattern]="CommonRegx.UsernameRegx"
+                    autocomplete="off"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="username.errors && submitted">
+                    <p *ngIf="username.errors.required">
+                      {{ 'PLEASE_ENTER_USERNAME' | translate }}
+                    </p>
+                    <p *ngIf="username.errors.pattern">
+                      {{ 'PLEASE_ENTER_USERNAME_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'EMAIL' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.email"
+                    type="text"
+                    name="email"
+                    [disabled]="editMode"
+                    class="form-control"
+                    placeholder="{{ 'EMAIL' | translate }}"
+                    required
+                    #email="ngModel"
+                    autocomplete="off"
+                    email
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="email.errors && submitted">
+                    <p *ngIf="email.errors.required">
+                      {{ 'PLEASE_ENTER_EMAIL' | translate }}
+                    </p>
+                    <p *ngIf="email.errors.email">
+                      {{ 'PLEASE_ENTER_EMAIL_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="!editMode">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="view-pass">
+                    <input
+                      [(ngModel)]="model.password"
+                      [type]="showPass ? 'text' : 'password'"
+                      name="password"
+                      class="form-control"
+                      placeholder="{{ 'PASSWORD' | translate }}"
+                      required
+                      #password="ngModel"
+                      (change)="checkPass()"
+                      [pattern]="CommonRegx.PasswordRegx"
+                    />
+                    <i
+                      class="fa fa-lg"
+                      [ngClass]="showPass ? 'fa-eye' : 'fa-eye-slash'"
+                      (click)="showPass = !showPass"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="password.errors && submitted">
+                    <p *ngIf="password.errors.required">
+                      {{ 'PLEASE_ENTER_PASSWORD' | translate }}
+                    </p>
+                    <p *ngIf="password.errors.pattern">
+                      {{ 'PLEASE_ENTER_NEW_PASSWORD_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'CONFIRM_PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="view-pass">
+                    <input
+                      [(ngModel)]="model.confirm_pass"
+                      [type]="showConfPass ? 'text' : 'password'"
+                      name="confirm_pass"
+                      class="form-control"
+                      placeholder="{{ 'CONFIRM_PASSWORD' | translate }}"
+                      required
+                      #confirm_pass="ngModel"
+                      [pattern]="model.conf_pass_match"
+                    />
+                    <i
+                      class="fa fa-lg"
+                      [ngClass]="showConfPass ? 'fa-eye' : 'fa-eye-slash'"
+                      (click)="showConfPass = !showConfPass"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="confirm_pass.errors && submitted">
+                    <p *ngIf="confirm_pass.errors.required">
+                      {{ 'PLEASE_ENTER_CONFIRM_PASSWORD' | translate }}
+                    </p>
+                    <p *ngIf="confirm_pass.errors.pattern">
+                      {{ 'PLEASE_ENTER_CONFIRM_PASSWORD_VALIDATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="page_title">{{ 'ROLE' | translate }} <span class="asterisk_input"></span></label>
+                  <select class="form-control" [(ngModel)]="role" name="role_id" #role_id="ngModel" required>
+                    <option value="" selected>-- {{ 'SELECT_ROLE' | translate }} --</option>
+                    <option *ngFor="let role of roleList" value="{{ role.id }}">
+                      {{ role.name }}
+                    </option>
+                  </select>
+                  <div class="form-control-feedback text-danger" *ngIf="role_id.errors && submitted">
+                    <p *ngIf="role_id.errors.required">{{ roleValidation }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/subadmin/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

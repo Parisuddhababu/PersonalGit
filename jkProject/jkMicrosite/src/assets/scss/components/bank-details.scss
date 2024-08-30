@@ -1,0 +1,38 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+.firm_details {
+  // padding: 20px;
+  // border: 1px solid var(--data_border_color);
+  // @media only screen and (min-width: $device-md) {
+  //   padding: 30px;
+  // }
+  h4 {
+    color: var(--data_site_secondary_color);
+    &:after {
+      content: "";
+      height: 1px;
+      width: 100%;
+      background: var(--data_border_color);
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      @media only screen and (min-width: $device-md) {
+        margin-top: 25px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .form__control {
+    width: 100%;
+    position: relative;
+    .file-upload {
+      height: 150px;
+    }
+  }
+  .d-row {
+    @include row;
+    .d-col-2 {
+      @include d-col-2;
+    }
+  }
+}

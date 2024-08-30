@@ -1,0 +1,119 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  transition: all 0.3s ease;
+  @include sm {
+    &.active {
+      background-color: $grey-color;
+    }
+  }
+  .header-section {
+    background-color: transparent;
+
+    nav {
+      margin: 0 auto;
+      color: $white-color;
+      max-width: 1300px;
+      padding: 40px 25px 10px;
+      .nav-container {
+        @include flex-property-row;
+        @include align-center;
+        @include content-between;
+        padding: 0px 15px 0px 15px;
+        .header-top {
+          display: none;
+          .header-top {
+            display: none;
+            &.active {
+              display: block;
+            }
+          }
+          @include lg {
+            @include flex-property-row;
+            gap: 16px;
+          }
+          div {
+            .header-top-container {
+              @include flex-property-row;
+              @include justify-content-center;
+              @include align-center;
+              font-family: $Montserret;
+              @include xl {
+                justify-content: end;
+              }
+              picture {
+                margin-right: 20px;
+              }
+              .address {
+                text-align: right;
+                font-size: 17px;
+                line-height: 62px;
+                font-weight: bold;
+                span {
+                  a {
+                    color: $white-color;
+                    text-decoration: none;
+                  }
+                  a:hover{
+                    color: $primary-color;
+                  }
+                }
+              }
+            }
+            ul {
+              @include flex-property-row;
+              @include content-between;
+              gap: 27px;
+              @include lg {
+                gap: 48px;
+              }
+              list-style-type: none;
+              li a {
+                text-decoration: none;
+                color: $white-color;
+                font-size: 11px;
+                @include md {
+                  font-size: 17px;
+                }
+                letter-spacing: 3px;
+                font-weight: 700;
+                font-family: $Playfair;
+              }
+              li a:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+        .logo-container {
+          color: $white-color;
+          font-size: 24px;
+          font-weight: bold;
+          @include pointer;
+          .logo {
+            height: 74px;
+            width: 150px;
+            @include xl {
+              height: 74px;
+              width: 259px;
+              object-fit: contain;
+            }
+          }
+        }
+        .hamburger-menu {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 35px;
+          color: $white-color;
+          @include pointer;
+          @include lg {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

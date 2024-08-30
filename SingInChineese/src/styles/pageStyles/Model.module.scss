@@ -1,0 +1,19 @@
+.model-wrapper {
+	@apply fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full max-h-full grid place-content-center bg-black bg-opacity-30 backdrop-blur-sm;
+	.model {
+		@apply relative w-full max-h-full overflow-auto bg-white rounded-lg shadow-lg overflow-x-hidden;
+		min-width: 30vw;
+		&__header {
+			@apply px-6 py-3 flex items-center justify-between border-b rounded-t sticky top-0 bg-white z-10;
+			&_close {
+				@apply absolute right-0 top-2;
+			}
+		}
+		&__body {
+			@apply p-6;
+		}
+		&__footer {
+			@apply px-6 pb-3 flex items-center justify-end space-x-4 rounded-b;
+		}
+	}
+}

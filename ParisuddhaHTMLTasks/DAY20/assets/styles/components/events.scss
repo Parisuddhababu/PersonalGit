@@ -1,0 +1,83 @@
+/* events */
+.events {
+	background-color: $white-color;
+	height: auto;
+	filter: drop-shadow(18.656px 24.758px 21.5px rgba(0, 0, 0, 0.17));
+	.events-slider {
+		@include flex-property-row;
+		@include content-between;
+		@include align-center;
+		.events-container {
+			@include lg {
+				height: 492px;
+			}
+			-webkit-filter: drop-shadow(18.656px 24.758px 21.5px rgba(0, 0, 0, 0.17));
+			filter: drop-shadow(18.656px 24.758px 21.5px rgba(0, 0, 0, 0.17));
+			background-color: $white-color;
+			@include flex-property-col;
+			@include justify-content-center;
+			@include align-center;
+			@include md {
+				@include justify-content-center;
+				@include align-center;
+			}
+			@include lg {
+				@include flex-property-row;
+			}
+			.card-1 {
+				width: 571px;
+				height: auto;
+				font-size: 21px;
+				line-height: 33px;
+				color: $grey-color;
+				font-weight: 400;
+				font-family: $Playfair;
+				margin: 30px;
+				p {
+					word-wrap: break-word;
+				}
+				.ellipse-icon {
+					@include pointer;
+				}
+				.events-sub-heading {
+					font-size: 29px;
+					letter-spacing: 2px;
+					line-height: 46px;
+					text-transform: uppercase;
+					color: $grey-color;
+					font-weight: 700;
+					font-family: $Playfair;
+					margin-top: 30px;
+					margin-bottom: 30px;
+				}
+				.events-main-heading {
+					font-size: 55px;
+					@include lg {
+						font-size: 63px;
+					}
+					line-height: 46px;
+					color: $primary-color;
+					font-weight: 700;
+					font-family: $Playfair;
+					margin-top: 30px;
+					margin-bottom: 30px;
+				}
+			}
+			.card-2 {
+				.card-slider {
+					width: 571px;
+					height: auto;
+					font-size: 21px;
+					line-height: 33px;
+					color: $grey-color;
+					font-weight: 400;
+					font-family: $Playfair;
+					margin: 30px;
+				}
+			}
+		}
+		@include lg {
+			height: 492px;
+		}
+	}
+}

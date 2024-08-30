@@ -1,0 +1,75 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.features_section {
+  padding: 50px 0;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 120px 0 80px;
+  }
+
+  .d-col-4 {
+    @include just-center;
+  }
+
+  .d-row .d-col.d-col-4 {
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $device-sm) {
+      width: 50%;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      width: 33.33%;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      width: 25%;
+      margin-bottom: 40px;
+    }
+  }
+
+  .box {
+    padding: 47px 0;
+    @include textCenter;
+    width: 100%;
+    @include box-shadow(5px, 5px, 10px, var(--data_box_shadow_color));
+    height: 100%;
+  }
+
+  .border_radius {
+    width: 90px;
+    height: 90px;
+    margin: 0px auto 10px;
+    background: transparent linear-gradient(147deg, rgba(33, 81, 161, 0.3) 0%, rgba(235, 25, 51, 0.3) 100%) 0% 0% no-repeat padding-box;
+    @include border-radius(50px);
+    padding-top: 5px;
+  }
+
+  i {
+    font-size: 40px;
+    background: transparent linear-gradient(129deg, #2151a1 0%, #eb1933 100%) 0% 0% no-repeat padding-box;
+    color: var(--data_site_highlight_section_text_color);
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    line-height: 80px;
+    @include border-radius(50px);
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.find-ring-size {
+  .pop-up-container {
+    width: 95%;
+    max-width: 95%;
+
+    .modal-content {
+      display: inline-block;
+    }
+  }
+}

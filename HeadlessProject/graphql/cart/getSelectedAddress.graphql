@@ -1,0 +1,7 @@
+query GetAddressesOnCart($cartId: String!) {
+  cart(cart_id: $cartId) {
+    ...ShippingAddress
+    ...BillingAddress
+    ...SelectedAddressOnCartQueryFragment
+  }
+}

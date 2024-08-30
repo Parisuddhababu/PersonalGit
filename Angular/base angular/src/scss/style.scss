@@ -1,0 +1,276 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "node_modules/@coreui/coreui/scss/coreui";
+// If you want to add something do it here
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+@import "custom";
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+/* Reset some default styling */
+.gjs-mdl-dialog {
+  margin-top: 85px;
+}
+
+.gjs-cv-canvas,
+.gjs-pn-commands {
+  width: 80%;
+}
+
+.gjs-pn-views-container,
+.gjs-pn-views {
+  width: 20%;
+}
+
+.gjs-pn-options {
+  right: 20%;
+}
+
+// .gjs-block {
+//     width: auto;
+//     height: auto;
+//     min-height: auto;
+//   }
+// .gjs-devices-c{
+//     padding: 0;
+// }
+.preview .gjs-off-prv {
+  display: none !important;
+}
+
+.dropdown {
+  .arrow-down {
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+    transition: all 0.3s ease;
+    border-color: #fff;
+    margin-left: 5px;
+  }
+
+  &.active {
+    .arrow-down {
+      transform: rotate(45deg);
+    }
+
+    .sub-dropdown {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  .sub-dropdown {
+    padding: 0;
+    display: none;
+    list-style: none;
+    height: 0;
+    transition: all 3s ease;
+
+    > li a .active {
+      background-color: $primary;
+    }
+  }
+}
+
+// old datatable css
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+table.dataTable th.wordwrap,
+table.dataTable td.wordwrap {
+  white-space: normal;
+}
+
+table.table-bordered.dataTable td:first-child,
+table.table-bordered.dataTable th:first-child {
+  border-left-width: 1px;
+}
+
+// New datatable css
+.ngx-datatable.material {
+  box-shadow: none;
+}
+
+.ngx-datatable.material .empty-row {
+  text-align: center;
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell,
+.ngx-datatable.material .datatable-footer {
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+}
+
+.show-select select {
+  width: 75px;
+  display: inline-block;
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell,
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+  padding: 8px 10px;
+}
+
+.ngx-datatable.material .datatable-header-cell,
+.ngx-datatable.material .datatable-body-cell {
+  border: 1px solid #c8ced3;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+  background-color: $primary;
+  color: #fff;
+}
+
+.ngx-datatable.material .datatable-header {
+  border-bottom: none;
+}
+
+.ngx-datatable.scroll-horz .datatable-body {
+  width: 100% !important;
+}
+
+.ngx-datatable .datatable-body .datatable-scroll {
+  width: 100% !important;
+}
+
+.ngx-datatable.material .datatable-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.ngx-datatable.material .datatable-footer .page-count {
+  line-height: 50px;
+  height: 50px;
+  padding: 0 1.2rem;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager {
+  margin: 0 10px;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li {
+  vertical-align: middle;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.disabled a {
+  color: rgba(0, 0, 0, 0.26) !important;
+  background-color: transparent !important;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+  background-color: $primary;
+  font-weight: bold;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager a {
+  height: 22px;
+  min-width: 24px;
+  line-height: 22px;
+  padding: 0 6px;
+  border-radius: 3px;
+  margin: 6px 3px;
+  text-align: center;
+  vertical-align: top;
+  color: rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+  vertical-align: bottom;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager a:hover {
+  color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-left,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-skip,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-right,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-prev {
+  font-size: 20px;
+  line-height: 20px;
+  padding: 0 3px;
+}
+
+.ngx-datatable {
+  .sortable .sort-btn:before {
+    font-family: data-table;
+    content: "c";
+  }
+
+  .sortable .sort-btn.datatable-icon-down:before {
+    content: "f";
+  }
+
+  .sortable .sort-btn.datatable-icon-up:before {
+    content: "e";
+  }
+}
+
+.datatable-div {
+  outline: none !important;
+}
+
+.ngx-datatable .datatable-header .datatable-row-center {
+  background-color: #fafafa;
+}
+
+.ngx-datatable {
+  transform: none !important;
+  -webkit-transform: none !important;
+}
+
+.sticky-dt-header {
+  position: fixed;
+  top: 55px;
+  z-index: 99;
+  width: 100%;
+  // box-shadow: 0px 6px 6px #00000014;
+}
+
+.view-pass {
+  position: relative;
+
+  input {
+    padding-right: 30px;
+  }
+
+  i.fa {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 4;
+  }
+}
+
+// datetimepicker issue fixed
+@media (min-width: 992px) {
+  .sidebar-fixed .sidebar {
+    height: calc(100vh - 55px) !important;
+    top: 55px;
+  }
+
+  .header-fixed .app-header {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}

@@ -1,0 +1,24 @@
+{
+  "exclude": ["**/node_modules"],
+  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx"],
+  "extends": "@graphcommerce/typescript-config-pwa/nextjs.json",
+  "allowJs": true,
+  "skipLibCheck": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": [
+          "lib/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@graphql/*": [
+        "graphql/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ]
+    }
+  }
+}

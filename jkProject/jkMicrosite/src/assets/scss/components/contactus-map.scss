@@ -1,0 +1,14 @@
+@import "../common/variable-2";
+@import "../common/mixin-2";
+
+.responsive-map {
+    #map {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+
+        @media only screen and (min-width: ($device-md - 1)) {
+            height: 500px;
+        }
+    }
+}

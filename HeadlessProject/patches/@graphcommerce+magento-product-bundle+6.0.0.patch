@@ -1,0 +1,32 @@
+diff --git a/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleOptionValue.tsx b/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleOptionValue.tsx
+index 4b26ba3..2c6b71e 100644
+--- a/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleOptionValue.tsx
++++ b/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleOptionValue.tsx
+@@ -92,6 +92,7 @@ export const BundleOptionValue = (props: ActionCardItemRenderProps<BundleOptionV
+             sx={{ width: responsiveVal(80, 120), mt: 2 }}
+             name={`cartItems.${index}.entered_options.${idx}.value`}
+             type='number'
++            inputProps={{min:1}}
+             onMouseDown={(e) => e.stopPropagation()}
+           />
+         )
+diff --git a/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleProductOptions.graphql b/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleProductOptions.graphql
+index fceab52..6f3817f 100644
+--- a/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleProductOptions.graphql
++++ b/node_modules/@graphcommerce/magento-product-bundle/components/BundleProductOptions/BundleProductOptions.graphql
+@@ -11,6 +11,7 @@ fragment BundleProductOptions on BundleProduct {
+     title
+     type
+     options {
++      id
+       can_change_quantity
+       uid
+       is_default
+@@ -21,6 +22,7 @@ fragment BundleProductOptions on BundleProduct {
+       quantity
+       uid
+       product {
++        sku
+         swatch_image
+         uid
+         __typename

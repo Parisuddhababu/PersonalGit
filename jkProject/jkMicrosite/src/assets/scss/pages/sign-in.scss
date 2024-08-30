@@ -1,0 +1,248 @@
+@import "../common/mixin";
+
+.jkm-eye-fill {
+  @include jkm-eye-fill;
+}
+
+.jkm-eye-off {
+  @include jkm-eye-off;
+}
+
+.jkm-gmail {
+  @include jkm-gmail;
+}
+
+.jkm-meta-fill-square {
+  @include jkm-meta-fill-square;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+input {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.jkm-meta-fill-square {
+  @include jkm-meta-fill-square;
+}
+
+.jkm-gmail {
+  @include jkm-gmail;
+}
+
+.jkm-eye-fill {
+  @include jkm-eye-fill;
+}
+
+.jkm-eye-off {
+  @include jkm-eye-off;
+}
+
+.sign-in-sec {
+  margin-bottom: 60px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 90px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 145px;
+  }
+
+  .sign-in-wrap {
+    @include flexbox;
+    @include flexColumn;
+    @include border-radius(var(--data_site_border_radius));
+    margin: -40px auto auto;
+
+    @media only screen and (min-width: $device-md) {
+      margin: -130px auto auto;
+    }
+
+    border: 1px solid var(--data_border_color);
+    background: var(--data_site_theme_highlight);
+    width: 100%;
+    z-index: 1;
+    padding: 20px;
+    max-width: 520px;
+
+    @media only screen and (min-width: $device-sm) {
+      padding: 30px;
+    }
+
+    @media only screen and (min-width: $device-md) {
+      padding: 40px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      padding: 60px;
+    }
+
+    .form-group {
+      @include mb-30;
+    }
+
+    p {
+      margin-bottom: 5px;
+
+      @media only screen and (min-width: $device-md) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .create-account {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.banner-sec {
+  .banner-image-wrap {
+    @include align-item-start;
+    padding-top: 55px;
+
+    @media only screen and (min-width: $device-md) {
+      padding-top: 100px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      padding-top: 79px;
+    }
+  }
+}
+
+form {
+  .btn {
+
+    // &.btn-primary {
+    //   @include btn-primary;
+    // }
+    &.btn-large {
+      @include btn-large;
+    }
+  }
+
+  .forgot-password-link {
+    @include flexbox;
+    @include just-end;
+    @include mb-30;
+    text-decoration: underline;
+
+    @media only screen and (min-width: $device-md) {
+      margin-top: -10px;
+    }
+  }
+
+  .hide-show-icon {
+    position: absolute;
+    top: 50%;
+    @include transform(translateY(-50%));
+    right: 15px;
+    color: var(--data_site_text_color);
+    display: none;
+    @include opacity(.5);
+
+    &.active {
+      display: block;
+    }
+  }
+
+  #user-password {
+    &::-webkit-input-placeholder {
+      position: relative;
+      top: 4px;
+    }
+
+    &:-ms-input-placeholder {
+      position: relative;
+      top: 4px;
+    }
+
+    &::placeholder {
+      position: relative;
+      top: 4px;
+    }
+  }
+
+  .create-account {
+    @include textCenter;
+    margin: 0;
+
+    .create-new-account {
+      text-decoration: underline;
+      margin-left: 5px;
+    }
+  }
+}
+
+section {
+  @include form-contain;
+}
+
+.social-links-access {
+  @include social-links-accessed;
+}
+
+.guest-sign-in {
+  margin-top: 6rem;
+
+  .sign-in-wrap {
+    margin: 0 auto;
+  }
+}
+
+.p-error {
+  color: var(--data_error_color);
+}
+
+.form-group-wrapper {
+  position: relative;
+}

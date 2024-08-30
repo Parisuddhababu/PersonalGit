@@ -1,0 +1,128 @@
+@import "../common/mixin-2";
+
+.jkms2-quote1 {
+    @include jkms2-quote1;
+}
+
+.testimonial-wrap {
+    .d-row {
+        @include row;
+
+        .d-col-2 {
+            @include d-col-2;
+            margin-bottom: 30px;
+
+            @media only screen and (min-width: $device-md) {
+                margin-bottom: 40px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                margin-bottom: 60px;
+            }
+        }
+    }
+}
+
+.testimonial-content {
+    padding: 20px;
+    background: #EDF2F6;
+    @include transition(0.3s);
+    @include flexbox;
+    position: relative;
+    border: 1px solid var(--data_border_color);
+    @include flexColumn;
+
+    @media only screen and (min-width: $device-sm) {
+        padding: 40px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+        @include flexrow;
+    }
+
+    picture {
+        img {
+            width: 100px;
+            margin: 0 auto 20px;
+            display: block;
+
+            @media only screen and (min-width: $device-lg) {
+                display: inline-block;
+            }
+        }
+    }
+
+    .details {
+        @media only screen and (min-width: $device-lg) {
+            padding-left: 40px;
+            width: calc(100% - 100px);
+        }
+    }
+
+    h4 {
+        @include textCenter;
+        font-weight: 700;
+
+        @media only screen and (min-width: $device-lg) {
+            text-align: left;
+        }
+    }
+
+    .seperator {
+        border: 1px solid var(--data_border_color);
+        margin: 20px 0;
+    }
+
+    .testimonial-para {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .testimonial-icon {
+        font-size: 40px;
+        @include transition(0.3s);
+        color: var(--data_site_secondary_color);
+        @include opacity(0.35);
+        position: absolute;
+        right: 20px;
+        top: -15px;
+        @include transform(scaleX(-1));
+
+        @media only screen and (min-width: $device-sm) {
+            font-size: 60px;
+            right: 30px;
+            top: -20px;
+        }
+    }
+
+    &:hover {
+        background: var(--data_site_primary_color);
+        color: var(--data_site_theme_color);
+
+        .testimonial-icon {
+            @include opacity(1);
+        }
+    }
+}
+
+.testimonials-sec {
+    margin-bottom: 60px;
+
+    @media only screen and (min-width: $device-md) {
+        margin-bottom: 90px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        margin-bottom: 145px;
+    }
+
+    .btn {
+        margin: 20px auto auto;
+        @include button;
+        @include btn-small;
+
+        &.btn-primary {
+            @include btn-primary;
+        }
+    }
+}

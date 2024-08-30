@@ -1,0 +1,760 @@
+diff --git a/node_modules/@graphcommerce/magento-product/Api/ProductListItem.graphql b/node_modules/@graphcommerce/magento-product/Api/ProductListItem.graphql
+index 5daa9de..4a414a3 100644
+--- a/node_modules/@graphcommerce/magento-product/Api/ProductListItem.graphql
++++ b/node_modules/@graphcommerce/magento-product/Api/ProductListItem.graphql
+@@ -11,4 +11,5 @@ fragment ProductListItem on ProductInterface @injectable {
+       ...ProductListPrice
+     }
+   }
++  id
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartButton.tsx b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartButton.tsx
+index 6dc419b..4e61e5d 100644
+--- a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartButton.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartButton.tsx
+@@ -20,11 +20,11 @@ export type AddProductsToCartButtonProps = UseAddProductsToCartActionProps &
+   >
+ 
+ export function AddProductsToCartButton(props: AddProductsToCartButtonProps) {
+-  const { children } = props
++  const { children,sx=[] } = props
+   const action = useAddProductsToCartAction(props)
+ 
+   return (
+-    <Button type='submit' color='primary' variant='pill' size='large' {...props} {...action}>
++    <Button type='submit' sx={sx}  variant='pill' size='large' {...props} {...action}>
+       {children || <Trans id='Add to Cart' />}
+     </Button>
+   )
+diff --git a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartForm.tsx b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartForm.tsx
+index 96ab97a..95b08f4 100644
+--- a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartForm.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartForm.tsx
+@@ -24,6 +24,13 @@ export type AddProductsToCartFormProps = {
+   sx?: SxProps<Theme>
+   // eslint-disable-next-line react/no-unused-prop-types
+   redirect?: RedirectType
++  selected_related_products?:any
++  groupProducts?:any
++  bundleProducts?:any
++  giftCardFormData?:any
++  productName?:any
++  downloadableProductsLinks?:any
++
+ } & UseFormGraphQlOptions<AddProductsToCartMutation, AddProductsToCartMutationVariables> &
+   AddProductsToCartSnackbarProps
+ 
+@@ -51,9 +58,15 @@ declare module '@mui/material/styles/components' {
+  * - Redirects the user to the cart/checkout/added page after successful submission.
+  */
+ export function AddProductsToCartForm(props: AddProductsToCartFormProps) {
+-  let { children, redirect, onComplete, sx, errorSnackbar, successSnackbar, ...formProps } =
++  let { children, redirect, onComplete, sx, errorSnackbar, successSnackbar,selected_related_products, groupProducts ,bundleProducts,giftCardFormData,productName, downloadableProductsLinks,...formProps } =
+     useThemeProps({ name, props })
+   const router = useRouter()
++  const groupProductsData = groupProducts && groupProducts
++  .filter((item) => item.quantity !== 0 && !isNaN(item.quantity))
++  .map((item) => ({
++    sku: item.product.sku,
++    quantity: item.quantity,
++  }));
+ 
+   if (typeof redirect !== 'undefined' && redirect !== 'added' && router.pathname === redirect)
+     redirect = undefined
+@@ -65,17 +78,44 @@ export function AddProductsToCartForm(props: AddProductsToCartFormProps) {
+     ...formProps,
+     // We're stripping out incomplete entered options.
+     onBeforeSubmit: async (variables) => {
++
+       const variables2 = (await formProps.onBeforeSubmit?.(variables)) ?? variables
+       if (variables2 === false) return false
+-
+       const { cartId, cartItems } = variables2
++
++      // BundleProduct value string conversion
++     
++      if(bundleProducts?.length > 0) {
++          cartItems[0].entered_options = bundleProducts
++      }      
++
++      //selected related product to cart along with product
++      if(selected_related_products?.length>0){
++        cartItems.unshift(...selected_related_products)
++      }
++     
++
++      //groupProduct functionality with selected products
++      if (groupProductsData && groupProductsData?.length > 0) {
++        cartItems.length = 0
++        if(selected_related_products?.length>0)
++        {
++          cartItems.unshift(...selected_related_products)
++        }
++        cartItems.unshift(...groupProductsData)
++      }
++     if(downloadableProductsLinks && downloadableProductsLinks?.selectedOptions?.length > 0)
++     {    
++      cartItems[0].selected_options=downloadableProductsLinks.selectedOptions
++     }
++
+       return {
+         cartId,
+         cartItems: cartItems
+           .filter((cartItem) => cartItem.sku)
+           .map((cartItem) => ({
+             ...cartItem,
+-            quantity: cartItem.quantity || 1,
++            quantity: cartItem?.quantity || 1,
+             selected_options: cartItem.selected_options?.filter(Boolean),
+             entered_options: cartItem.entered_options?.filter((option) => option?.value),
+           })),
+@@ -112,7 +152,7 @@ export function AddProductsToCartForm(props: AddProductsToCartFormProps) {
+       <Box component='form' onSubmit={submit} noValidate sx={sx} className={name}>
+         {children}
+       </Box>
+-      <AddProductsToCartSnackbar errorSnackbar={errorSnackbar} successSnackbar={successSnackbar} />
++      <AddProductsToCartSnackbar errorSnackbar={errorSnackbar} successSnackbar={successSnackbar} productName={productName} />
+     </AddProductsToCartContext.Provider>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartSnackbar.tsx b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartSnackbar.tsx
+index 9315f92..602f2a3 100644
+--- a/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartSnackbar.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/AddProductsToCart/AddProductsToCartSnackbar.tsx
+@@ -1,29 +1,27 @@
+ import { useFormState } from '@graphcommerce/ecommerce-ui'
+ import { ApolloCartErrorSnackbar } from '@graphcommerce/magento-cart'
+ import {
+-  Button,
+-  ErrorSnackbar,
+   ErrorSnackbarProps,
+-  filterNonNullableKeys,
+-  iconChevronRight,
+-  IconSvg,
+-  MessageSnackbar,
+   MessageSnackbarProps,
+ } from '@graphcommerce/next-ui'
+-import { Trans } from '@lingui/react'
++
+ import { toUserErrors } from './toUserErrors'
+ import { useFormAddProductsToCart } from './useFormAddProductsToCart'
++import { useContext,useEffect } from 'react'
++import { UIContext } from '../../../../../components/common/contexts/UIContext'
++import router from 'next/router'
+ 
+ export type AddProductsToCartSnackbarProps = {
+   errorSnackbar?: Omit<ErrorSnackbarProps, 'open'>
+   successSnackbar?: Omit<MessageSnackbarProps, 'open' | 'action'>
++  productName?:any
+ }
+ 
+ export function AddProductsToCartSnackbar(props: AddProductsToCartSnackbarProps) {
+-  const { errorSnackbar, successSnackbar } = props
+-  const { error, data, redirect, control } = useFormAddProductsToCart()
++  const { productName}=props
++  const { error, data, redirect, control,reset } = useFormAddProductsToCart()
+   const formState = useFormState({ control })
+-
++  const [, setState] = useContext(UIContext)
+   const userErrors = toUserErrors(data)
+ 
+   const showSuccess =
+@@ -33,46 +31,43 @@ export function AddProductsToCartSnackbar(props: AddProductsToCartSnackbarProps)
+     !userErrors.length &&
+     !redirect
+ 
+-  const items = filterNonNullableKeys(data?.addProductsToCart?.cart.items)
+-
+   const showErrorSnackbar = userErrors.length > 0
+ 
++  useEffect(()=>{
++    if(showSuccess){
++    setState((prev) => ({
++          ...prev,
++          alerts: [
++            {
++              type: 'success',
++              message: `<span>You added ${productName} to your <a href='/cart'>shopping cart.</a></span>` ,
++              timeout: 5000,
++              targetLink: router?.pathname,
++            },
++          ],
++        }))
++        reset()
++      }
++      if(showErrorSnackbar){
++        setState((prev) => ({
++              ...prev,
++              alerts: [
++                {
++                  type: 'error',
++                  message: `${data?.addProductsToCart?.user_errors?.map((e) => e?.message).join(', ')}`,
++                  timeout: 5000,
++                  targetLink: router?.pathname,
++                },
++              ],
++            }))
++            reset()
++          }
++    }, [showSuccess,showErrorSnackbar]);
++
++
+   return (
+     <>
+       {error && <ApolloCartErrorSnackbar error={error} />}
+-
+-      {showErrorSnackbar && (
+-        <ErrorSnackbar variant='pill' severity='error' {...errorSnackbar} open={showErrorSnackbar}>
+-          <>{data?.addProductsToCart?.user_errors?.map((e) => e?.message).join(', ')}</>
+-        </ErrorSnackbar>
+-      )}
+-
+-      {showSuccess && (
+-        <MessageSnackbar
+-          variant='pill'
+-          {...successSnackbar}
+-          open={showSuccess}
+-          action={
+-            <Button
+-              href='/cart'
+-              id='view-shopping-cart-button'
+-              size='medium'
+-              variant='pill'
+-              color='secondary'
+-              endIcon={<IconSvg src={iconChevronRight} />}
+-              sx={{ display: 'flex' }}
+-            >
+-              <Trans id='View shopping cart' />
+-            </Button>
+-          }
+-        >
+-          <Trans
+-            id='<0>{name}</0> has been added to your shopping cart!'
+-            components={{ 0: <strong /> }}
+-            values={{ name: items[items.length - 1]?.product.name }}
+-          />
+-        </MessageSnackbar>
+-      )}
+     </>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductList/ProductList.graphql b/node_modules/@graphcommerce/magento-product/components/ProductList/ProductList.graphql
+index 8a92433..e30f1c2 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductList/ProductList.graphql
++++ b/node_modules/@graphcommerce/magento-product/components/ProductList/ProductList.graphql
+@@ -1,5 +1,5 @@
+ query ProductList(
+-  $pageSize: Int = 24
++  $pageSize: Int = 12
+   $currentPage: Int = 1
+   $filters: ProductAttributeFilterInput = {}
+   $sort: ProductAttributeSortInput = {}
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListFilters/FilterCheckboxType.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListFilters/FilterCheckboxType.tsx
+index 6cb989e..e034e5a 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListFilters/FilterCheckboxType.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListFilters/FilterCheckboxType.tsx
+@@ -23,7 +23,6 @@ export function FilterCheckboxType(props: FilterCheckboxTypeProps) {
+   const isActive = currentFilter?.in?.includes(option.value)
+ 
+   const filter = isActive ? {} : ({ in: [option.value] } as FilterIn)
+-
+   return (
+     <ProductListLink
+       {...params}
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListItem/ProductListItem.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListItem/ProductListItem.tsx
+index a8750ad..00636d9 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListItem/ProductListItem.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListItem/ProductListItem.tsx
+@@ -19,6 +19,7 @@ import React from 'react'
+ import { ProductListItemFragment } from '../../Api/ProductListItem.gql'
+ import { useProductLink } from '../../hooks/useProductLink'
+ import { ProductListPrice } from '../ProductListPrice/ProductListPrice'
++import { ProductReviewSummary } from '@graphcommerce/magento-review'
+ 
+ const { classes, selectors } = extendableComponent('ProductListItem', [
+   'root',
+@@ -163,7 +164,7 @@ export function ProductListItem(props: ProductListItemProps) {
+ 
+         {!imageOnly && (
+           <>
+-            <Box
++            {/* <Box
+               sx={{
+                 gridArea: `1 / 1 / 2 / 2`,
+                 zIndex: 1,
+@@ -188,7 +189,7 @@ export function ProductListItem(props: ProductListItemProps) {
+                 </Box>
+               )}
+               {topLeft}
+-            </Box>
++            </Box> */}
+             <Box
+               sx={{
+                 justifySelf: 'end',
+@@ -210,7 +211,7 @@ export function ProductListItem(props: ProductListItemProps) {
+             >
+               {bottomLeft}
+             </Box>
+-            <Box
++            {/* <Box
+               sx={{
+                 textAlign: 'right',
+                 alignSelf: 'flex-end',
+@@ -221,7 +222,7 @@ export function ProductListItem(props: ProductListItemProps) {
+               className={classes.bottomRight}
+             >
+               {bottomRight}
+-            </Box>
++            </Box> */}
+           </>
+         )}
+       </Box>
+@@ -231,7 +232,8 @@ export function ProductListItem(props: ProductListItemProps) {
+           <Box
+             className={classes.titleContainer}
+             sx={(theme) => ({
+-              display: 'grid',
++              display: 'flex',
++              flexDirection:'column',
+               alignItems: 'baseline',
+               marginTop: theme.spacings.xs,
+               columnGap: 1,
+@@ -245,6 +247,7 @@ export function ProductListItem(props: ProductListItemProps) {
+           >
+             <Typography
+               component={titleComponent}
++              dangerouslySetInnerHTML={{ __html: name }} 
+               variant='subtitle1'
+               sx={{
+                 display: 'inline',
+@@ -256,21 +259,25 @@ export function ProductListItem(props: ProductListItemProps) {
+                 fontWeight: 'fontWeightBold',
+               }}
+               className={classes.title}
+-            >
+-              {name}
+-            </Typography>
++            />
+             <Box sx={{ gridArea: 'subtitle' }} className={classes.subtitle}>
+               {subTitle}
+             </Box>
+ 
++            <ProductReviewSummary {...props}/>
++            
+             <ProductListPrice
+               {...price_range.minimum_price}
+               sx={{
+-                gridArea: 'price',
+-                textAlign: 'right',
+-                justifySelf: { sm: 'flex-end' },
++                display:'flex',
++                flexDirection:'row'
+               }}
+             />
++            <Box sx={{
++              width: '100%'
++            }}>
++              {bottomRight}
++            </Box>
+           </Box>
+           {children}
+         </>
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListItems/ProductListItemsBase.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListItems/ProductListItemsBase.tsx
+index f3fa47e..ac80289 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListItems/ProductListItemsBase.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListItems/ProductListItemsBase.tsx
+@@ -1,5 +1,5 @@
+ import { RenderType, responsiveVal } from '@graphcommerce/next-ui'
+-import { Box, BoxProps } from '@mui/material'
++import { Box, BoxProps, Typography } from '@mui/material'
+ import { ProductListItemFragment } from '../../Api/ProductListItem.gql'
+ import { ProductListItemProps } from '../ProductListItem/ProductListItem'
+ import { ProductListItemRenderer } from './renderer'
+@@ -13,7 +13,8 @@ export type ProductItemsGridProps = {
+   loadingEager?: number
+   title: string
+   size?: 'normal' | 'small'
+-  sx?: BoxProps['sx']
++  sx?: BoxProps['sx'],
++  view?: string
+ } & Pick<ProductListItemProps, 'onClick' | 'titleComponent'>
+ 
+ export function ProductListItemsBase(props: ProductItemsGridProps) {
+@@ -25,21 +26,71 @@ export function ProductListItemsBase(props: ProductItemsGridProps) {
+     size = 'normal',
+     titleComponent,
+     onClick,
++    view
+   } = props
+ 
+   return (
++  <>
+     <Box
+       sx={[
+         (theme) => ({
+           display: 'grid',
+-          gridColumnGap: theme.spacings.md,
++          // gridColumnGap: theme.spacings.md,
++          gridColumnGap: {xs: '0.438rem', md:'0.26rem'},
+           gridRowGap: theme.spacings.md,
++          ...(view === 'list' && {
++            display: 'flex',
++            flexDirection:'column',
++            gridRowGap: {xs:'0.5rem', md:'1.875rem'},
++            'img':{
++              minWidth:'5.625rem',
++              maxWidth:'15rem',
++              width:{xs: '100%', md: '15rem'},
++              height:'auto',
++              maxHeight:'18.75rem',
++              verticalAlign: 'middle'
++            },
++            'a':{
++              display:'flex',
++              flexDirection:'row',
++              alignItems:'flex-start',
++              justifyContent:'flex-start'
++            },
++            '& .ProductListItem-root': {
++              display: 'flex',
++              padding: {xs:'0', md:'0.313rem'},
++              '&:hover': {
++                borderColor: 'transparent',
++                boxShadow: 'none',
++              }
++            },
++            '& .ProductListItem-imageContainer': {
++              width: {xs: '30%', md: 'auto'},
++              paddingRight: {xs:'0.5rem',md: '1.25rem', lg:'1.875rem'},
++            },
++            '& .product-card-details': {
++              width: {xs: '70%', md: 'auto'},
++              flexBasis: '0',
++              flexGrow: '1',
++              maxWidth: '100%'
++            },
++            '& .product-card-footer ': {
++              border: 'none',
++              boxShadow: 'none',
++              display: 'flex',
++              position: 'relative',
++              right: '0',
++              zIndex: '2',
++              paddingLeft: '0',
++              paddingRight: '0',
++            },
++          })
+         }),
+         size === 'small' && {
+           gridTemplateColumns: `repeat(auto-fill, minmax(${responsiveVal(150, 280)}, 1fr))`,
+         },
+         size === 'normal' && {
+-          gridTemplateColumns: { xs: `repeat(2, 1fr)`, md: `repeat(3, 1fr)`, lg: `repeat(4, 1fr)` },
++          gridTemplateColumns: { xs: `repeat(${view === 'list' ? '1' : '2'}, 1fr)`, md: `repeat(${view === 'list' ? '1' : '3'}, 1fr)`, lg: `repeat(${view === 'list' ? '1' : '4'}, 1fr)` },
+         },
+         ...(Array.isArray(sx) ? sx : [sx]),
+       ]}
+@@ -63,5 +114,6 @@ export function ProductListItemsBase(props: ProductItemsGridProps) {
+         ) : null,
+       )}
+     </Box>
++  </>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListItems/filteredProductList.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListItems/filteredProductList.tsx
+index 74cecd6..fd60a93 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListItems/filteredProductList.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListItems/filteredProductList.tsx
+@@ -25,7 +25,7 @@ export function parseParams(
+       return undefined
+     }
+     if (param === 'limit') {
+-      categoryVariables.pageSize = Number(param)
++      categoryVariables.pageSize = Number(value)
+       return undefined
+     }
+     if (param === 'sort') {
+@@ -65,7 +65,7 @@ export function extractUrlQuery(params?: { url: string[] }) {
+   if (!params?.url) return [undefined, undefined] as const
+ 
+   const queryIndex = params.url.findIndex(
+-    (slug) => slug === 'q' || slug === 'page' || slug === 'dir',
++    (slug) => slug === 'q' || slug === 'page' || slug === 'dir' || slug === 'limit',
+   )
+   const qIndex = queryIndex < 0 ? params.url.length : queryIndex
+   const url = params.url.slice(0, qIndex).join('/')
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListItems/renderer.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListItems/renderer.tsx
+index 4dcaef8..d28f425 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListItems/renderer.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListItems/renderer.tsx
+@@ -1,5 +1,6 @@
+ import { TypeRenderer } from '@graphcommerce/next-ui'
+-import { ProductListItemFragment } from '../../Api/ProductListItem.gql'
++import { ReactElement, JSXElementConstructor } from 'react'
++import { ProductListItemFragment, ProductListItem_GiftCardProduct_Fragment } from '../../Api/ProductListItem.gql'
+ import { ProductListItem } from '../ProductListItem/ProductListItem'
+ 
+ export type ProductListItemRenderer = TypeRenderer<ProductListItemFragment>
+@@ -11,4 +12,5 @@ export const renderer: ProductListItemRenderer = {
+   VirtualProduct: ProductListItem,
+   DownloadableProduct: ProductListItem,
+   GroupedProduct: ProductListItem,
++  GiftCardProduct: ProductListItem,
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListLink/ProductListLink.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListLink/ProductListLink.tsx
+index 766f74f..a25d90e 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListLink/ProductListLink.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListLink/ProductListLink.tsx
+@@ -38,7 +38,7 @@ export const ProductListLink = React.forwardRef<HTMLAnchorElement, ProductListLi
+       rel = 'nofollow'
+ 
+     return noLink ? (
+-      <PageLink href={productListLink} passHref {...link} legacyBehavior>
++      <PageLink href={productListLink} {...link} legacyBehavior>
+         {children}
+       </PageLink>
+     ) : (
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListPrice/ProductListPrice.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListPrice/ProductListPrice.tsx
+index 05ca5b3..a7867df 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListPrice/ProductListPrice.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListPrice/ProductListPrice.tsx
+@@ -15,20 +15,26 @@ export function ProductListPrice(props: ProductListPriceProps) {
+ 
+   return (
+     <Typography component='div' variant='body1' className={classes.root} sx={sx}>
+-      {regular_price.value !== final_price.value && (
+-        <Box
+-          component='span'
+-          sx={{
+-            textDecoration: 'line-through',
+-            color: 'text.disabled',
+-            marginRight: '8px',
+-          }}
+-          className={classes.discountPrice}
+-        >
+-          <Money {...regular_price} />
+-        </Box>
+-      )}
+-      <Money {...final_price} />
++      {regular_price.value !== final_price.value ? (
++        <Typography sx={{
++          display:'flex',
++          flexDirection:'row',
++          '&::before': {
++            content: '"As low as"',
++            marginRight:'5px',
++            marginTop: '2px',
++            color: '#666666',
++            fontSize: '12px',
++            fontWeight: '400',
++            fontVariationSettings: "'wght' 400",
++        }
++        }}>
++        <Money {...final_price} />
++          </Typography>
++      )
++      :
++      (<Money {...regular_price} />)
++    }
+     </Typography>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductListSort/ProductListSort.tsx b/node_modules/@graphcommerce/magento-product/components/ProductListSort/ProductListSort.tsx
+index 4ae1901..72e8840 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductListSort/ProductListSort.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductListSort/ProductListSort.tsx
+@@ -43,11 +43,11 @@ export function ProductListSort(props: ProductListSortProps) {
+     <ChipMenu
+       className={classes.menu}
+       variant='outlined'
+-      selected={selected}
++      selected={false}
+       label={label}
+       {...filterMenuProps}
+-      selectedLabel={selected ? currentOption?.label ?? '' : label}
+-      onDelete={selected ? removeFilter : undefined}
++      selectedLabel={`Sort By: ${currentSort!?.charAt(0)?.toUpperCase() + currentSort?.slice(1)}`}
++      // onDelete={selected ? removeFilter : undefined}
+       sx={Array.isArray(sx) ? sx : [sx]}
+     >
+       {sort_fields?.options?.map((option) => {
+@@ -74,6 +74,7 @@ export function ProductListSort(props: ProductListSortProps) {
+                   color='inherit'
+                   underline='none'
+                   link={{ scroll: false, replace: true }}
++                  sx={{position: 'relative'}}
+                 />
+               )),
+             )}
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductPageDescription/ProductPageDescription.tsx b/node_modules/@graphcommerce/magento-product/components/ProductPageDescription/ProductPageDescription.tsx
+index 835c5ab..d8000c0 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductPageDescription/ProductPageDescription.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductPageDescription/ProductPageDescription.tsx
+@@ -20,23 +20,21 @@ const parts = ['root', 'description'] as const
+ const { classes } = extendableComponent(componentName, parts)
+ 
+ export function ProductPageDescription(props: ProductPageDescriptionProps) {
+-  const { description, name, right, fontSize = 'subtitle1', sx = [] } = props
++  const { description, name, fontSize = 'subtitle1', sx = [] } = props
+ 
+   return (
+     <ColumnTwoWithTop
+-      className={classes.root}
++      className={classes?.root}
+       sx={sx}
+       top={
+-        <Typography variant='h1' component='h1'>
+-          {name}
+-        </Typography>
++     <Typography variant='h1' component='h1' dangerouslySetInnerHTML={{ __html:name! }} />
+       }
+       left={
+         description && (
+           <Box
+-            className={classes.description}
++            className={classes?.description}
+             // eslint-disable-next-line react/no-danger
+-            dangerouslySetInnerHTML={{ __html: description.html }}
++            dangerouslySetInnerHTML={{ __html: description?.html }}
+             sx={[
+               {
+                 '& p:first-of-type': {
+@@ -45,8 +43,7 @@ export function ProductPageDescription(props: ProductPageDescriptionProps) {
+                 '& ul': {
+                   padding: 0,
+                   margin: 0,
+-                  display: 'inline',
+-                  listStyleType: 'none',
++                  listStyle:'circle'
+                 },
+                 '& li': {
+                   display: 'inline',
+@@ -65,9 +62,9 @@ export function ProductPageDescription(props: ProductPageDescriptionProps) {
+               },
+             ]}
+           />
+-        )
++          )
+       }
+-      right={right}
++
+     />
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductPagePrice/ProductPagePrice.graphql b/node_modules/@graphcommerce/magento-product/components/ProductPagePrice/ProductPagePrice.graphql
+index a9cf12c..827272d 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductPagePrice/ProductPagePrice.graphql
++++ b/node_modules/@graphcommerce/magento-product/components/ProductPagePrice/ProductPagePrice.graphql
+@@ -18,6 +18,24 @@ fragment ProductPagePrice on ProductInterface {
+         label
+       }
+     }
++    maximum_price {
++      regular_price {
++        ...Money
++      }
++      discount {
++        amount_off
++        percent_off
++      }
++      final_price {
++        ...Money
++      }
++      fixed_product_taxes {
++        amount {
++          ...Money
++        }
++        label
++      }
++    }
+   }
+   price_tiers {
+     discount {
+diff --git a/node_modules/@graphcommerce/magento-product/components/ProductSpecs/ProductSpecs.tsx b/node_modules/@graphcommerce/magento-product/components/ProductSpecs/ProductSpecs.tsx
+index 406089f..e99638d 100644
+--- a/node_modules/@graphcommerce/magento-product/components/ProductSpecs/ProductSpecs.tsx
++++ b/node_modules/@graphcommerce/magento-product/components/ProductSpecs/ProductSpecs.tsx
+@@ -9,7 +9,7 @@ const parts = ['root', 'specs', 'options'] as const
+ const { classes } = extendableComponent(name, parts)
+ 
+ export function ProductSpecs(props: ProductSpecsProps) {
+-  const { aggregations, title, sx = [] } = props
++  const { aggregations, sx = [] } = props
+   const filter = ['price', 'category_id', 'size', 'new', 'sale', 'color']
+   const specs = aggregations?.filter(
+     (attr) => !filter.includes(attr?.attribute_code ?? '') && attr?.options?.[0]?.value !== '0',
+@@ -22,10 +22,6 @@ export function ProductSpecs(props: ProductSpecsProps) {
+       className={classes.root}
+       sx={[{ typography: 'subtitle1' }, ...(Array.isArray(sx) ? sx : [sx])]}
+     >
+-      <SectionContainer
+-        labelLeft={title}
+-        sx={(theme) => ({ '& .SectionHeader-root': { marginBottom: theme.spacings.md } })}
+-      >
+         <Box
+           component='ul'
+           className={classes.specs}
+@@ -42,18 +38,21 @@ export function ProductSpecs(props: ProductSpecsProps) {
+             },
+           })}
+         >
+-          {specs?.map((aggregation) => (
+-            <li key={aggregation?.attribute_code}>
+-              <div>{aggregation?.label}</div>
+-              <Box className={classes.options} sx={{ display: 'grid', gridAutoFlow: 'row' }}>
+-                {aggregation?.options?.map((option) => (
+-                  <span key={option?.label}>{option?.label === '1' ? 'Yes' : option?.label}</span>
+-                ))}
+-              </Box>
+-            </li>
+-          ))}
++        {specs?.map((aggregation, index) => (
++  <li key={aggregation?.attribute_code}>
++    <div>{aggregation?.label}</div>
++    <Box className={classes.options} sx={{ display: 'flex'}}>
++      {aggregation?.options?.map((option, index) => (
++        <span key={option?.label}>
++          {option?.label === '1' ? 'Yes' : option?.label}
++          {index !== aggregation!.options!.length - 1 ? " , ":''}
++        </span>
++      ))}
++    </Box>
++  </li>
++))}
++
+         </Box>
+-      </SectionContainer>
+     </Row>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product/hooks/useProductListLink.ts b/node_modules/@graphcommerce/magento-product/hooks/useProductListLink.ts
+index 9a8f8e8..af2e953 100644
+--- a/node_modules/@graphcommerce/magento-product/hooks/useProductListLink.ts
++++ b/node_modules/@graphcommerce/magento-product/hooks/useProductListLink.ts
+@@ -6,8 +6,9 @@ import {
+ } from '../components/ProductListItems/filterTypes'
+ 
+ export function createProductListLink(props: ProductListParams): string {
+-  const { url, sort, currentPage, filters: incoming } = props
+-  const filters = { ...incoming, category_uid: undefined }
++  const { url, sort, currentPage,pageSize, filters: incoming } = props
++  // changed {...incoming, category_uid: undefind} to {...incoming} since it was setting category_uid as undefined
++  const filters = { ...incoming }
+   const uid = incoming?.category_uid?.eq || incoming?.category_uid?.in?.[0]
+ 
+   // base url path generation
+@@ -15,12 +16,13 @@ export function createProductListLink(props: ProductListParams): string {
+   let query = ``
+ 
+   if (currentPage && currentPage > 1) paginateSort += `/page/${currentPage}`
++  if (pageSize) paginateSort += `/limit/${pageSize}`
+ 
+   // todo(paales): How should the URL look like with multiple sorts?
+   // Something like: /sort/position,price/dir/asc,asc
+   const [sortBy] = Object.keys(sort)
+   if (sort && sortBy) query += `/sort/${sortBy}`
+-  if (sort && sortBy && sort[sortBy] && sort[sortBy] === 'DESC') query += `/dir/desc`
++  if (sort && sortBy && sort[sortBy] && sort[sortBy] === 'DESC') query += `/dir/DESC`
+ 
+   // Apply filters
+   if (filters)

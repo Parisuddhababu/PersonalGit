@@ -1,0 +1,123 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+
+.grow-sales-section{
+    @include section-spacing(top);
+
+    .grow-sales-row{
+        @include row(1,20px,0px);
+        padding: 0 15px;
+        
+        @include media($device-md){
+            padding: 0;
+            background-size: cover;
+            @include row(3,0px,0px);
+            background-position: center;
+            background-image: url("/images/landing-page/grow-sales.webp");
+        }
+
+
+        .grow-sales-col{
+            overflow: hidden;
+            background: $primary-color;
+
+            @include media($device-md){
+                background: transparent linear-gradient(180deg, #446ED900 0%, $primary-color 100%) 0% 0% no-repeat padding-box;
+            }
+            .grow-sales-item{
+                min-height: 260px;
+                @include flexbox;
+                justify-content: flex-end;
+                flex-direction: column;
+                color: $white-color;
+                padding: 20px;
+                
+                @include media($device-sm){
+                    min-height: 200px;
+                }
+
+                @include media($device-md){
+                    min-height: 460px;
+                }
+
+                @include media($device-lg){
+                    min-height: 420px;
+                }
+                
+                @include media($device-xl){
+                    padding: 30px;
+                    min-height: 500px;
+                }
+                
+                @include media($device-xxl){
+                    padding: 40px;
+                    min-height: 560px;
+                }
+
+                @include media($device-xxxl){
+                    min-height: 719px;
+                }
+                
+                .grow-sales-item-title{
+                    @include transition(all,0.4s);
+                    @include font-lg;  
+                    
+                    @include media($device-md){
+                        transform: translateY(100px);
+                        @include text-clamp(4);
+                    }
+                    
+                    @include media($device-lg){
+                        @include text-clamp(3);
+                        transform: translateY(120px);
+                    }
+                    
+                    @include media($device-xl){
+                        transform: translateY(110px);
+                        @include text-clamp(2);
+                        height: 70px;
+                    }
+                    
+                    @include media($device-xxxl){
+                        transform: translateY(80px);
+                        height: 84px;
+                        @include font-xl;
+                    }
+                    
+                }
+                .grow-sales-item-description{
+                    @include font-sm;
+                    @include transition(all,0.4s);
+                    @include media($device-md){
+                        opacity: 0;
+                        @include text-clamp(6);
+                    }
+                    @include media($device-xl){
+                        @include text-clamp(4);
+                    }
+                    @include media($device-xxxxl){
+                        @include text-clamp(3);
+                    }
+                }
+                
+
+                &:hover{
+                    @include media($device-md){
+                        background: transparent linear-gradient(180deg, #446ED900 0%, $primary-color 100%) 0% 0% no-repeat padding-box;
+                        .grow-sales-item-description{
+                            opacity: 1;
+                        }
+                        .grow-sales-item-title{
+                            transform: translateY(0px);
+                        }
+                    }
+                }
+                    
+            }
+            
+        }
+    }
+
+}

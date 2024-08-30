@@ -1,0 +1,58 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+
+.summary-info {
+  p {
+      margin-bottom: 10px;
+  }
+
+}
+
+.btn-summary {
+  @include button;
+  @include btn-primary;
+  @include btn-large;
+  margin: auto;
+  background: var(--data_button_primary_color);
+}
+
+.sort-info-title {
+  @include font-sl;
+  @include space-none;
+  margin-bottom: 20px;
+}
+
+.sort-info-content {
+  @include flexbox;
+  @include space-between;
+  flex-wrap: nowrap;
+  .sort-info-values {
+      font-weight: bold;
+  }
+  p {
+      
+      &.sort-info-values {
+          text-align: right;
+      }
+  }
+
+  .sort-info-tags,
+  .sort-info-values {
+      margin-bottom: 18px;
+  }
+  
+  &:last-child {
+      .sort-info-tags,
+      .sort-info-values {
+          margin-bottom: 0;
+      }
+  }
+  &.tolal-summary {
+      .total-amout-title,
+      .sort-info-values {
+          margin-bottom: 20px;
+          font-weight: bold;
+      }
+  }
+}

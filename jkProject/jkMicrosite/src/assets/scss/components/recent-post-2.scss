@@ -1,0 +1,75 @@
+@import "../common/mixin-2";
+
+.blog-recent-posts {
+  background: var(--data_site_theme_highlight);
+  border: 1px solid var(--data_border_color);
+  padding: 20px;
+  margin-bottom: 20px;
+
+  @media only screen and (min-width: $device-sm) {
+    margin-bottom: 40px;
+    padding: 30px 30px 40px;
+  }
+
+  h3 {
+    color: var(--data_site_primary_color);
+    @include h3;
+    @include mb-30;
+  }
+
+  .d-row .d-col.blog-highlight-post {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  picture {
+    position: relative;
+    padding: 14.29% 17.86%;
+
+    @media only screen and (min-width: $device-sm) {
+      padding: 6.75% 8.437%;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      padding: 14.29% 17.86%;
+    }
+  }
+
+  .blog-post-detail {
+    padding-left: 20px;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0px;
+  }
+
+  .d-row {
+    .mb-0 {
+      @include mb-0;
+    }
+  }
+
+  .blog-highlight-title {
+    @include text-clamp(2);
+    margin-bottom: 10px;
+
+    a {
+      &:hover {
+        color: var(--data_site_primary_color);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .blog-highlight-date {
+    @include font-detail(14px, 18px);
+
+    @media screen and (min-width: $device-xl) {
+      @include font-detail(16px, 36px);
+    }
+  }
+}

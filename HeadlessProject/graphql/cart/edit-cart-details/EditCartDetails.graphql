@@ -1,0 +1,18 @@
+query EditCartDetails($id: String!, $productId: String!) {
+  GetEditProduct(id: $id, productId: $productId) {
+    name
+    qty
+    options {
+      code
+      value
+    }
+    price {
+      currency
+      value
+    }
+    editData {
+      sku
+      qty
+    }
+  }
+}

@@ -1,0 +1,402 @@
+diff --git a/node_modules/@graphcommerce/magento-review/components/ProductReviewChip/ProductReviewChip.tsx b/node_modules/@graphcommerce/magento-review/components/ProductReviewChip/ProductReviewChip.tsx
+index 4d658e9..92896c6 100644
+--- a/node_modules/@graphcommerce/magento-review/components/ProductReviewChip/ProductReviewChip.tsx
++++ b/node_modules/@graphcommerce/magento-review/components/ProductReviewChip/ProductReviewChip.tsx
+@@ -5,28 +5,33 @@ import React from 'react'
+ export type ProductReviewChipProps = {
+   rating?: number
+   reviewSectionId?: string
++  setReviewTab?:(value:number) => void
+   max?: number
+ } & ChipProps<'button'>
+ 
+ export function ProductReviewChip(props: ProductReviewChipProps) {
+-  const { rating, reviewSectionId = '', max = 5, ...chipProps } = props
++  const { rating, reviewSectionId = '',setReviewTab, max = 5, ...chipProps } = props
+ 
+   if (!rating) return null
+ 
+   const normalizedRating = Math.round(rating / (10 / max)) / 10
+ 
+   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+-    const element = document.getElementById(reviewSectionId)
+-    e.preventDefault()
+-    if (!element) return
+-
+-    window.scrollTo({
+-      top: element.offsetTop - 50,
+-      left: 0,
+-      behavior: 'smooth',
+-    })
++    e.preventDefault();
++    setReviewTab && setReviewTab(2);
++    const element = document.getElementById(reviewSectionId);
++    if (!element) return;
++    window.requestAnimationFrame(() => {
++      window.scrollTo({
++        top: element.offsetTop,
++        left: 0,
++        behavior: 'smooth',
++
++      });
++    });
+   }
+ 
++
+   const chip = (
+     <Chip
+       component='button'
+diff --git a/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.graphql b/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.graphql
+index b4b852c..603c91c 100644
+--- a/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.graphql
++++ b/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.graphql
+@@ -1,4 +1,5 @@
+ fragment ProductReviewSummary on ProductInterface
+ @inject(into: ["ProductListItem", "ProductPageItem"]) {
+   rating_summary
++  review_count
+ }
+diff --git a/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.tsx b/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.tsx
+index f2d93c8..0d53f44 100644
+--- a/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.tsx
++++ b/node_modules/@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary.tsx
+@@ -1,22 +1,48 @@
+ import { IconSvg, iconStar, extendableComponent } from '@graphcommerce/next-ui'
+-import { Box, SxProps, Theme } from '@mui/material'
++import { Box, SxProps, Theme, Typography } from '@mui/material'
+ import { ProductReviewSummaryFragment } from './ProductReviewSummary.gql'
++import { useProductLink } from '../../../magento-product/hooks/useProductLink'
++import { ProductListItemFragment } from '../../../magento-product/Api/ProductListItem.gql'
++import { useRouter } from 'next/router'
++import { ImageProps } from '@graphcommerce/image'
+ 
+-export type ProductReviewSummaryProps = ProductReviewSummaryFragment & { sx?: SxProps<Theme> }
++export type OverlayAreaKeys = 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight'
++
++export type OverlayAreas = Partial<Record<OverlayAreaKeys, React.ReactNode>>
++
++type StyleProps = {
++  aspectRatio?: [number, number]
++  imageOnly?: boolean
++}
++
++type BaseProps = { subTitle?: React.ReactNode; children?: React.ReactNode } & StyleProps &
++OverlayAreas &
++ProductListItemFragment &
++Pick<ImageProps, 'loading' | 'sizes' | 'dontReportWronglySizedImages'>
++
++export type ProductListItemProps = BaseProps & {
++  sx?: SxProps<Theme>
++  titleComponent?: React.ElementType
++  onClick?: (event: React.MouseEvent<HTMLAnchorElement>, item: ProductListItemFragment) => void
++}
++
++export type ProductReviewSummaryProps = ProductReviewSummaryFragment & { sx?: SxProps<Theme> } & ProductListItemProps;
+ 
+ const name = 'ProductReviewSummary' as const
+ const parts = ['root', 'rating', 'iconStar', 'iconStarDisabled'] as const
+ const { classes } = extendableComponent(name, parts)
+ 
+-export function ProductReviewSummary(props: ProductReviewSummaryProps) {
+-  const { rating_summary, sx = [] } = props
++export function ProductReviewSummary(props) {
++  const { rating_summary, review_count, sx = [] } = props
++  const productLink = useProductLink(props)
++  const router = useRouter()
+ 
+   if (!rating_summary) return null
+ 
+   const disabledStar = (
+     <IconSvg
+       src={iconStar}
+-      size='xs'
++      size='medium'
+       className={classes.iconStarDisabled}
+       sx={(theme) => ({ stroke: 'none', fill: theme.palette.grey[300] })}
+     />
+@@ -25,18 +51,23 @@ export function ProductReviewSummary(props: ProductReviewSummaryProps) {
+   const star = (
+     <IconSvg
+       src={iconStar}
+-      size='xs'
++      size='medium'
+       className={classes.iconStar}
+       sx={{ stroke: 'none', fill: '#FFDA1C' }}
+     />
+   )
+ 
+   return (
++    <Box sx={{display:'flex', flexDirection:'row'}}>
+     <Box
+       className={classes.root}
+       sx={[
+         {
++          
++          display:'flex',
++          flexDirection:'row',
+           width: 'max-content',
++          marginLeft:'-3px',
+           position: 'relative',
+           '& > div': {
+             lineHeight: 0,
+@@ -71,5 +102,7 @@ export function ProductReviewSummary(props: ProductReviewSummaryProps) {
+         </div>
+       </Box>
+     </Box>
++      <Typography onClick={(e)=>{e.preventDefault(); router.push({pathname: productLink, query:{data:'review'}})}} component='div' sx={{color: '#006bb4', marginLeft:'10px', '&:hover':{textDecoration:'underline'}}}>{review_count} Reviews</Typography>
++    </Box>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-review/components/ProductReviews/ProductReviews.tsx b/node_modules/@graphcommerce/magento-review/components/ProductReviews/ProductReviews.tsx
+index 055c41f..090da6e 100644
+--- a/node_modules/@graphcommerce/magento-review/components/ProductReviews/ProductReviews.tsx
++++ b/node_modules/@graphcommerce/magento-review/components/ProductReviews/ProductReviews.tsx
+@@ -1,4 +1,5 @@
+ import { useQuery } from '@graphcommerce/graphql'
++import { ProductReviewSummary } from '@graphcommerce/magento-review/components/ProductReviewSummary/ProductReviewSummary'
+ import {
+   Pagination,
+   responsiveVal,
+@@ -7,7 +8,7 @@ import {
+   useDateTimeFormat,
+ } from '@graphcommerce/next-ui'
+ import { Trans } from '@lingui/react'
+-import { Typography, Button, Box, SxProps, Theme, Link } from '@mui/material'
++import { Typography, Button, Box, SxProps, Theme, Link, Grid } from '@mui/material'
+ import { useRouter } from 'next/router'
+ import React, { useState } from 'react'
+ import { ProductReviewChip } from '../ProductReviewChip/ProductReviewChip'
+@@ -34,7 +35,7 @@ const parts = [
+ const { classes } = extendableComponent(name, parts)
+ 
+ export function ProductReviews(props: ProductReviewsProps) {
+-  const { reviews, url_key, sx = [] } = props
++  const { reviews, url_key, sx = [], review_count } = props
+   const router = useRouter()
+ 
+   const [reviewPage, setPage] = useState<number>(1)
+@@ -65,32 +66,24 @@ export function ProductReviews(props: ProductReviewsProps) {
+         display: 'flex',
+         alignItems: 'center',
+         justifyContent: 'space-between',
+-        marginTop: theme.spacings.sm,
++        // marginTop: theme.spacings.xs,
++        '& .Pagination-root': {
++          marginTop: '1rem',
++          marginBottom: '2.5rem',
++        }
+       })}
+     >
+-      <Button
+-        variant='pill'
+-        color='primary'
+-        size='medium'
+-        className={classes.writeReviewButton}
+-        onClick={() => router.push(`/account/reviews/add?url_key=${url_key}`)}
+-        sx={(theme) => ({
+-          [theme.breakpoints.down('sm')]: {
+-            whiteSpace: 'nowrap',
+-          },
+-        })}
+-      >
+-        <Trans id='Write a review' />
+-      </Button>
+ 
+       {!!total_pages && total_pages > 1 && (
+         <Pagination
+           count={total_pages ?? 1}
+           page={current_page ?? 1}
+           classes={{ root: classes.paginationRoot }}
+-          sx={{
+-            margin: `0 -16px 0`,
+-          }}
++          // sx={{
++          //   // margin: `0 -16px 0`,
++          //   marginTop: '1rem',
++          //   marginBottom: '2.5rem',
++          // }}
+           renderLink={(p: number, icon: React.ReactNode) => (
+             <Link color='inherit' underline='hover' onClick={() => setPage(p)}>
+               {icon}
+@@ -144,7 +137,9 @@ export function ProductReviews(props: ProductReviewsProps) {
+     <Box
+       className={classes.container}
+       sx={[
+-        (theme) => ({ marginTop: `calc(${theme.spacings.xxs} * -1)` }),
++        (theme) => ({ 
++          // marginTop: `calc(${theme.spacings.xxs} * -1)`
++        }),
+         ...(Array.isArray(sx) ? sx : [sx]),
+       ]}
+     >
+@@ -155,13 +150,88 @@ export function ProductReviews(props: ProductReviewsProps) {
+             className={classes.review}
+             sx={(theme) => ({
+               display: 'grid',
+-              gap: theme.spacings.sm,
++              // gap: theme.spacings.sm,
+               borderBottom: `1px solid ${theme.palette.divider}`,
+-              padding: `${theme.spacings.md} 0`,
++              // padding: `${theme.spacings.md} 0`,
++              padding: {xs: '1.25rem 0', md:'1.875rem 0'},
+               typography: 'body1',
+             })}
+           >
+-            <Box
++
++            <Grid container spacing={2}>
++              <Grid item xs={12}>
++                <Typography component='h3' variant='h5'>
++                  {review?.summary}
++                </Typography>
++              </Grid>
++              {review?.average_rating && review?.average_rating > 0 ? 
++                <>
++                  <Grid item xs={2} md={1}>
++                    <Typography component='span' variant='body1'>
++                      Rating
++                    </Typography>
++                  </Grid>
++                  <Grid item xs={10} md={1.5}>
++                    <Box
++                      sx={{
++                        '& > div': {
++                          alignItems: 'center',
++                        },
++                        '& .ProductReviewSummary-root': {
++                          '& .ProductReviewSummary-iconStarDisabled': {
++                            fill: '#e0e0e0',
++                            fontSize: { xs: '1rem', md: '1.25rem' },
++                          },
++                          '& .ProductReviewSummary-iconStar': {
++                            fill: '#ff5501',
++                            fontSize: { xs: '1rem', md: '1.25rem' },
++                          },
++                        },
++                        '& .MuiTypography-root': {
++                          display: 'none',
++                        },
++                      }}
++                    >
++                    <ProductReviewSummary rating_summary={review?.average_rating ? Number(review?.average_rating): null} />
++                    </Box>
++                  </Grid>
++                </>
++                : null
++              }
++              <Grid item xs={12} md={9.5}>
++                <Typography 
++                  variant='body1'
++                  sx={{
++                    marginBottom: '1rem'
++                  }}
++                >
++                  {review?.text}
++                </Typography>
++                <Box
++                  className={classes.meta}
++                  sx={(theme) => ({
++                    display: 'flex',
++                    gap: '0.5rem',
++                    flexWrap: 'wrap'
++                  })}
++                >
++                  <Box className={classes.nickname} sx={{ typography: 'body1' }}>
++                    <Trans id='Written by {nickname}' values={{ nickname: review?.nickname }} />
++                  </Box>
++                  <Box
++                    component='time'
++                    className={classes.date}
++                    dateTime={review?.created_at}
++                    sx={{ typography: 'body1' }}
++                  >
++                    {review?.created_at &&
++                      formatter.format(new Date(review?.created_at.replace(/-/g, '/')))}
++                  </Box>
++                </Box>
++              </Grid>
++            </Grid>
++
++            {/* <Box
+               className={classes.title}
+               sx={(theme) => ({
+                 display: 'grid',
+@@ -171,72 +241,13 @@ export function ProductReviews(props: ProductReviewsProps) {
+                 alignItems: 'center',
+               })}
+             >
+-              <ProductReviewChip rating={review?.average_rating} />
+-              <Typography component='h3' variant='h5'>
+-                {review?.summary}
+-              </Typography>
+-            </Box>
+-            <Typography variant='body1'>{review?.text}</Typography>
+-
+-            {(review?.ratings_breakdown ?? 0) > 1 && (
+-              <Box
+-                className={classes.ratingRow}
+-                sx={(theme) => ({
+-                  display: 'flex',
+-                  flexWrap: 'wrap',
+-                  gap: theme.spacings.sm,
+-                  color: theme.palette.text.disabled,
+-                  typography: 'body2',
+-                })}
+-              >
+-                {review?.ratings_breakdown.map((ratingBreakdown) => (
+-                  <Box
+-                    key={`rating-${ratingBreakdown?.value}`}
+-                    className={classes.rating}
+-                    sx={(theme) => ({
+-                      display: 'grid',
+-                      gridAutoFlow: 'column',
+-                      gridTemplateColumns: '0.4fr 0.6fr',
+-                      justifyContent: 'space-between',
+-                      marginRight: theme.spacings.xxs,
+-                      rowGap: responsiveVal(8, 16),
+-                      gap: 8,
+-                      alignItems: 'center',
+-                    })}
+-                  >
+-                    <span>{ratingBreakdown?.name}</span>
+-                    <StarRatingField
+-                      readOnly
+-                      size='small'
+-                      defaultValue={Number(ratingBreakdown?.value ?? 0)}
+-                    />
+-                  </Box>
+-                ))}
+-              </Box>
+-            )}
+               
+-            <Box
+-              className={classes.meta}
+-              sx={(theme) => ({
+-                color: theme.palette.text.disabled,
+-                display: 'grid',
+-                gridAutoFlow: 'column',
+-                justifyContent: 'space-between',
+-              })}
+-            >
+-              <Box className={classes.nickname} sx={{ typography: 'body2' }}>
+-                <Trans id='Written by {nickname}' values={{ nickname: review?.nickname }} />
+-              </Box>
+-              <Box
+-                component='time'
+-                className={classes.date}
+-                dateTime={review?.created_at}
+-                sx={{ typography: 'body2' }}
+-              >
+-                {review?.created_at &&
+-                  formatter.format(new Date(review?.created_at.replace(/-/g, '/')))}
+-              </Box>
+-            </Box>
++              
++            </Box> */}
++            
++
++            
++            
+           </Box>
+         ))}
+       {actions}

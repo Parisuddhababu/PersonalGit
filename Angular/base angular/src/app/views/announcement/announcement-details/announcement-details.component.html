@@ -1,0 +1,164 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-bullhorn"></i> {{ 'ANNOUNCEMENT' | translate }}
+          <a class="btn btn-primary pull-right" [routerLink]="['/manage-announcement/list']"
+            ><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a
+          >
+        </div>
+
+        <div class="card-body view-user">
+          <div class="row">
+            <div class="col-md-6" *ngFor="let lan of languages">
+              <div class="row">
+                <label class="col-md-5">{{ 'TITLE' | translate }} ({{ lan.name }})</label>
+                <div class="col-md-7">
+                  {{ announcement.title[lan.locale] }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'TYPE' | translate }} </label>
+                <div class="col-md-7">
+                  {{ types[announcement.type] | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLATFORM' | translate }} </label>
+                <div class="col-md-7">
+                  {{ platforms[announcement.user_type] | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'STATUS' | translate }} </label>
+                <div class="col-md-7">
+                  <span [ngClass]="getStatusClass(status[announcement.status])" class="badge">{{ status[announcement.status] }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'ADVANCED_FILTERS' | translate }} </label>
+                <div class="col-md-7">
+                  {{ inclusion[announcement.inclusion] | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" *ngFor="let lan of languages">
+              <div class="row">
+                <label class="col-md-5">{{ 'DESCRIPTION' | translate }} ({{ lan.name }})</label>
+                <div class="col-md-7" [innerHtml]="announcement.description[lan.locale]"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-5" *ngIf="announcement.inclusion">
+                  <div *ngIf="announcement.email_attachment != null">
+                    <a type="button" href="{{ announcement.email_attachment_url }}" target="_blank"
+                      ><button class="btn btn-primary">{{ 'VIEW_ATTACHMENT' | translate }}</button></a
+                    >
+                  </div>
+                  <div *ngIf="announcement.push_image != null">
+                    <button class="btn btn-primary" (click)="openModalForImage(announcement.push_image_url)">
+                      {{ 'VIEW_ATTACHMENT' | translate }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="announcement.inclusion == inclusionEnum.exclude_selected">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-users"></i> {{ 'EXCLUDED_USER' | translate }}
+          <button class="btn btn-primary pull-right" (click)="getAnnouncementDetails()">
+            <i class="fa fa-refresh"></i> {{ 'REFRESH' | translate }}
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                [(ngModel)]="global_search"
+                (keyup)="filterDatatable($event)"
+                type="text"
+                name="global_search"
+                class="form-control col-md-6 pull-right"
+                placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="wrap-datatable">
+            <ngx-datatable
+              [rows]="userList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [messages]="dtMessages"
+              [limit]="size"
+            >
+              <ngx-datatable-column name="{{ 'NAME' | translate }}" prop="first_name"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email" [width]="auto"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'DEVICE_TYPE' | translate }}" prop="device_type"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ROLE' | translate }}" prop="role">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ userRole[value] | translate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ getDateInformate(value) }}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-users"></i> {{ 'RECEIVERS' | translate }}
+          <button class="btn btn-primary pull-right" (click)="getAnnouncementDetails()">
+            <i class="fa fa-refresh"></i> {{ 'REFRESH' | translate }}
+          </button>
+        </div>
+        <div class="card-body">
+          <app-announcement-receivers [(announcement-uuid)]="announcement.uuid"></app-announcement-receivers>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

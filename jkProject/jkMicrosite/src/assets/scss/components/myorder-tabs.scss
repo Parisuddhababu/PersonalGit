@@ -1,0 +1,229 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.table-wrap {
+  overflow-x: scroll;
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: $device-xl) {
+    overflow-x: unset;
+  }
+}
+
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+
+  thead {
+    background: var(--data_site_theme_highlight);
+    font-weight: bold;
+
+    th {
+      padding: 14px 24px;
+      text-align: left;
+
+      @media only screen and (max-width: $device-xl) {
+        padding: 14px 20px;
+      }
+    }
+  }
+
+  // .items-details-content-info {
+  //   width: 450px;
+  // }
+  .items-size,
+  .items-qty {
+
+    // .items-qty,
+    // .items-amout {
+    .items-col {
+      width: 100px;
+    }
+  }
+
+  tbody {
+    .item-action {
+      // position: absolute;
+      // right: 0;
+      // bottom: 0;
+      // width: 100%;
+      // text-align: right;
+      // text-align: -webkit-right;
+    }
+
+    tr td {
+
+      &.items-amout,
+      &.payable {
+        .items-col {
+          @media only screen and (max-width: $device-xl) {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  .action-toolbars {
+    @include flexbox;
+    @include just-end;
+
+    a:not(:last-child) {
+      margin-right: 15px;
+
+      @media only screen and (min-width: $device-sm) {
+        margin-right: 30px;
+      }
+    }
+
+    .order-details {
+      padding: 9.5px 23px;
+      font-weight: bold;
+      border: 1px solid;
+      @include font-detail(16px, 19px);
+      @include border-radius(var(--data_site_border_radius));
+      @include btn-secondary;
+    }
+
+    // @include action-toolbar;
+  }
+
+  .items-details-contnet,
+  .items-details-info {
+    @include flexbox;
+
+    @media only screen and (min-width: $device-sm) {
+      @include align-item-start;
+    }
+  }
+
+  .items-details-contnet img {
+    width: 140px;
+  }
+
+  .items-details-content-info {
+    flex: 1;
+    margin-left: 20px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-left: 40px;
+    }
+  }
+
+  .items-details-info {
+    @include flexColumn;
+    @include font-detail(14px, 24px);
+    color: var(--data_site_text_color);
+
+    p {
+      margin-bottom: 10px;
+
+      @media only screen and (min-width: $device-sm) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .payment-status {
+      color: var(--data_site_secondary_color);
+
+      &.failed {
+        color: var(--data_error_color);
+      }
+
+      &.success {
+        color: #0cc505;
+      }
+
+      .jkm-wallet {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .items-details-img {
+    padding: 13.3%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .items-amout-amt {
+    font-weight: bold;
+  }
+
+  tbody {
+    > tr {
+      > td {
+        padding: 0;
+      }
+    }
+
+    table {
+      width: 100%;
+      position: relative;
+      border-bottom: 1px solid var(--data_border_color);
+      border-collapse: collapse;
+    }
+
+    tr td tr td {
+      vertical-align: top;
+      padding: 20px;
+
+      &.items-details,
+      &.item-action-col {
+        padding: 20px 0 10px;
+      }
+
+      @media only screen and (min-width: $device-md) {
+        padding: 30px 24px;
+
+        &.items-details,
+        &.item-action-col {
+          padding: 30px 0;
+        }
+      }
+
+      @media only screen and (min-width: $device-md) and (max-width: $device-xl) {
+        padding: 30px 20px;
+      }
+    }
+  }
+
+  // @media only screen and (min-width: 1366px) {
+  thead,
+  tbody {
+    tr {
+      .first-item {
+        width: 27%;
+      }
+
+      .col-2 {
+        width: 15%;
+      }
+
+      .col-3 {
+        width: 15%;
+      }
+
+      .col-4 {
+        width: 15%;
+        text-align: right;
+      }
+
+      .col-5 {
+        width: 28%;
+        text-align: right;
+      }
+    }
+  }
+
+  // }
+}

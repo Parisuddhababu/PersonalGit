@@ -1,0 +1,44 @@
+mutation GiftCardProductsAddToCart(
+  $cartId: String!
+  $sku: String!
+  $quantity: String!
+  $amount: String!
+  $senderName: String!
+  $recipientName: String!
+  $senderEmail: String
+  $recipientEmail: String
+  $message: String!
+) {
+  GiftCardProductsAddToCart(
+    input: {
+      cartId: $cartId
+      sku: $sku
+      quantity: $quantity
+      amount: $amount
+      senderName: $senderName
+      recipientName: $recipientName
+      senderEmail: $senderEmail
+      recipientEmail: $recipientEmail
+      message: $message
+    }
+  ) {
+    itemsData {
+      id
+      product {
+        name
+        sku
+        giftCardData {
+          amount {
+            currency
+            value
+          }
+          options {
+            code
+            value
+          }
+        }
+      }
+      quantity
+    }
+  }
+}

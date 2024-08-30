@@ -1,0 +1,66 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+// address
+.account_address_content {
+  border: 1px solid var(--data_border_color);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.address-content {
+  padding: 15px 0;
+  border-top: 1px solid var(--data_border_color);
+  @media only screen and (min-width: $device-md) {
+    padding: 30px 0;
+  }
+  &:last-child {
+    @media only screen and (min-width: $device-md) {
+      padding-bottom: 0;
+    }
+  }
+  .address-content_para {
+    margin-bottom: 10px;
+    &.contact-number {
+      margin-bottom: 0;
+    }
+  }
+  form {
+    position: relative;
+  }
+  .form-action {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    .action-toolbar {
+      @include flexbox;
+      a:not(:last-child) {
+        margin-right: 10px;
+        @media only screen and (min-width: $device-sm) {
+          margin-right: 30px;
+        }
+      }
+      @include action-toolbar;
+    }
+  }
+}
+.order-summary-info-top {
+  @include flexbox;
+  @include flexwrap;
+  @include space-between;
+  margin-bottom: 20px;
+  .sort-info__title {
+    margin: 0;
+  }
+  .coupon-links {
+    padding-top: 5px;
+  }
+}
+
+// heading title
+.sort-info__title {
+  @include font-sl;
+  margin-bottom: 20px;
+}
+// coupon link
+.coupon-links {
+  @include linkStyle(underline, var(--data_site_primary_color), bold, capitalize);
+}

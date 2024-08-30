@@ -1,0 +1,132 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/nav";
+@import "../layout/formControl";
+@import "../common/common";
+
+.growing-wrapper {
+    background-color: $secondary-color;
+    padding: 40px 0;
+    @include media($device-md) {
+        padding: 60px 0;
+    }
+    @include media($device-lg) {
+        padding: 80px 0;
+    }
+    @include media($device-xl) {
+        padding: 100px 0;
+    }
+    .growing-inner {
+        .growing-card {
+            @include card(lg,true,false);
+            .corporate-row {
+                @include row(1, 0px, 0px);
+                @include media($device-md) {
+                    @include row(2, 0px, 30px);
+                }
+                @include media($device-lg) {
+                    @include row(3, 0px, 18px);
+                }
+                @include media($device-xl) {
+                    @include row(3, 0px, 40px);
+                }
+                label {
+                    color: $title-text;
+                }
+            }
+        }
+    }
+}
+.tab-cards {
+    @include row(1, 30px, 0px);
+    @include media($device-md) {
+        @include row(2, 30px, 30px);
+    }
+    @include media($device-lg) {
+        @include row(3, 0px, 18px);
+    }
+    @include media($device-xl) {
+        @include row(3, 0px, 40px);
+    }
+    .tab-card {
+        .tab-card-inner {
+            @include card(sm,true,true);
+            border-color: $border-color-2;
+            height: 100%;
+            @include media($device-md) {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }                   
+        h3 {
+            font-weight: 600;
+        }
+        .h1 {
+            &.blue-color {
+                color: $primary-color; 
+            }
+        }
+        .card-ul {
+            li {
+                padding-left: 28px;
+                position: relative;
+                @include media($device-xl) {
+                    padding-left: 40px;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 15px;
+                    @include media($device-xl) {
+                        margin-bottom: 30px;
+                    }
+                }
+                &::before {
+                    content: '\e917';
+                    width: 16px;
+                    height: 16px;
+                    background-color: $green-shade-3;
+                    color: $green-shade-2;
+                    @include flexbox();
+                    @include row-justify-center;
+                    @include row-align-items;
+                    font-family: 'icomoon',Arial, Verdana, Tahoma, sans-serif !important;
+                    font-size: 6px;
+                    @include border-radius(15px);
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    font-weight: 700;
+                    @include media($device-xl) {
+                        width: 20px;
+                        height: 20px;  
+                    }
+                }
+                &.unchecked {
+                    &::before {
+                        content: '\e90f';
+                        background-color: $billowing-clouds;
+                        color: $title-text;
+                    }
+                }
+            }
+        }
+        .button-center {
+            margin: auto;
+        }
+        &.bluecard {
+            .tab-card-inner {
+                background-color: $primary-color;
+                h3,
+                .h1,
+                li {
+                    color: $white-color;
+                }
+            }
+        }
+        &.light-bluecard {
+            .tab-card-inner {
+                background-color: $secondary-color;
+            }
+        }
+    }
+}

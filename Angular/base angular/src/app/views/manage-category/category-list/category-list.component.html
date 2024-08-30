@@ -1,0 +1,120 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-list"></i> {{ 'CATEGORY_LIST' | translate }}
+          <a *ngxPermissionsOnly="['CATEGORY_CREATE', 'SUPER_ADMIN']" routerLink="/category/add"
+            class="btn btn-primary pull-right"><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a>
+          <button *ngxPermissionsOnly="['CATEGORY_TREEVIEW', 'SUPER_ADMIN']" type="button"
+            routerLink="/category/treeview" class="btn btn-primary btn-with-icon pull-right mr-10">
+            <i class="fa fa-asterisk fa-lg"></i> {{ 'CATEGORY_TREEVIEW' | translate }}
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label>{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input [(ngModel)]="global_search" (keyup)="filterDatatable()" type="text" name="global_search"
+                class="form-control col-md-6 pull-right" placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off" />
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable [rows]="categoryList" class="material fullscreen" headerHeight="headerHeight"
+              footerHeight="footerHeight" rowHeight="rowHeight" [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force" #datatable [scrollbarH]="scrollbarH" [messages]="dtMessages"
+              [limit]="size" (sort)="onSort($event)" [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              (page)="setPage($event)" [offset]="pageNumber">
+              <ngx-datatable-column name="{{ 'SR_NO' | translate }}" headerClass="no-sorting text-center"
+                [sortable]="false" [width]="70">
+                <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  <div class="text-center">{{ rowIndex + 1 }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CATEGORY_NAME' | translate }}" prop="name" cellClass="text-wrap">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PARENT_CATEGORY' | translate }}" prop="parent_name">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ACTION' | translate }}" prop="id" [frozenRight]="piningRight"
+                [sortable]="false" headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'CATEGORY_UPDATE', 'CATEGORY_STATUS', 'CATEGORY_DELETE']">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a *ngxPermissionsOnly="['CATEGORY_UPDATE', 'SUPER_ADMIN']" routerLink="/category/edit/{{ row.uuid }}"
+                      title="{{ 'EDIT' |translate }}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                    &nbsp;
+                    <a *ngxPermissionsOnly="['CATEGORY_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.uuid, row.status)"
+                      title="{{ 'CHANGE_STATUS' |translate }}"><i
+                        [ngClass]="{ 'fa-toggle-on': row.status == 'Active', 'fa-toggle-off': row.status == 'Inactive' }"
+                        class="fa fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['CATEGORY_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDeleteCategory, row.uuid)" title="{{ 'DELETE' |translate }}"><i
+                        class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title"><i class="fa fa-info-circle modal-icon"></i> {{ 'CONFIRMATION' | translate }}</h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">{{ 'YES' | translate }}</button>
+      <button type="button" class="btn btn-warning" (click)="decline()">{{ 'NO' | translate }}</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDeleteCategory>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title"><i class="fa fa-info-circle modal-icon"></i> {{ 'CONFIRMATION' | translate }}</h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteCategory()">{{ 'YES' | translate }}</button>
+      <button type="button" class="btn btn-warning" (click)="decline()">{{ 'NO' | translate }}</button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

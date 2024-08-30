@@ -1,0 +1,62 @@
+@import "../common/mixin-2";
+
+.post-card {
+    overflow: hidden;
+    border: 1px solid var(--data_product_list_border_color);
+    width: 100%;
+
+    &:hover {
+        @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+
+        .post-image {
+            img {
+                @media only screen and (min-width: $device-md) {
+                    @include transform(scale(1.5));
+                }
+            }
+        }
+    }
+
+    .post-image {
+        position: relative;
+        padding: 21.04% 50%;
+        overflow: hidden;
+
+        @media only screen and (min-width: $device-md) {
+            padding: 31.388% 50%;
+        }
+
+        img {
+            transition: 0.8s cubic-bezier(0, 0, 0.2, 1);
+            position: absolute;
+            inset: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .post-card-body {
+        padding: 20px;
+
+        @media screen and (min-width: $container-lg) {
+            padding: 30px;
+        }
+    }
+
+    .post-card-title {
+        margin-bottom: 15px;
+        @include text-clamp(2);
+
+        a {
+            &:hover {
+                color: var(--data_site_primary_color);
+                text-decoration: underline;
+            }
+        }
+
+        @media screen and (min-width: $device-xl) {
+            margin-bottom: 25px;
+        }
+    }
+}

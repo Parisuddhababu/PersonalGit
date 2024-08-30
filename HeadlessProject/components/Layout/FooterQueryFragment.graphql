@@ -1,0 +1,9 @@
+fragment FooterQueryFragment on Query {
+  GetFooterCMSLinks {
+    allBlocks {
+      name
+      identifier
+      content
+    }
+  }
+}

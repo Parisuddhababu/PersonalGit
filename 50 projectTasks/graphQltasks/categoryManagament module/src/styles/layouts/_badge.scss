@@ -1,0 +1,27 @@
+.badge-group {
+	@apply flex flex-wrap;
+	.badge {
+		@apply mr-1 mb-1;
+	}
+}
+.badge {
+	@apply inline-block text-xs font-bold leading-4 text-center align-baseline px-1.5 py-0.5 bg-transparent;
+	&-primary {
+		@apply bg-primary text-white;
+	}
+	&-secondary {
+		@apply bg-secondary;
+	}
+	&-warning {
+		@apply bg-warning;
+	}
+	&-info {
+		@apply bg-info;
+	}
+	&-success {
+		@apply bg-success text-black;
+	}
+	&-danger {
+		@apply bg-error text-white;
+	}
+}

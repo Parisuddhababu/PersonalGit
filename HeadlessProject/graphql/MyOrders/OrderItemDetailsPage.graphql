@@ -1,0 +1,12 @@
+query OrderItemDetailsPage($orderNumber: String) {
+  customer {
+    ...StoreCreditFragment
+    orders(filter: { number: { eq: $orderNumber } }) {
+      items {
+        ...OrderDetails
+        ...OrderItems
+        ...OrderStateLabel
+      }
+    }
+  }
+}

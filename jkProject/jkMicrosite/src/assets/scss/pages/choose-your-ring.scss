@@ -1,0 +1,182 @@
+@import "../common/mixin";
+@import "../components/page-wrapper-ttile";
+@import "../components/breadcrumb";
+@import "../components/choose-ring-type";
+@import "../components/modal";
+
+// @import "../components/offer-popup";
+.jkm-check {
+  @include jkm-check;
+}
+
+.jkm-info-circle {
+  @include jkm-info-circle;
+}
+
+.jkm-men {
+  @include jkm-men;
+}
+
+.jkm-women {
+  @include jkm-women;
+}
+
+.jkm-diamond-stroke {
+  @include jkm-diamond-stroke;
+}
+
+.jkm-gemstore {
+  @include jkm-gemstore;
+}
+
+.jkm-band {
+  @include jkm-band;
+}
+
+.jkm-fashion {
+  @include jkm-fashion;
+}
+
+.jkm-close {
+  @include jkm-close;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+input,
+textarea,
+p {
+  @include space-none;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+.progress-bar {
+  @include progress-bar;
+  @include mb-50;
+}
+
+.choose-your-ring-sec {
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 134px;
+  }
+}
+
+.choose-your-ring-wrap {
+  @include box-shadow(0, 0, 15px, var(--data_box_shadow_color));
+  padding: 0 20px 47px;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 0 30px 47px;
+  }
+}
+
+.rign-content-top {
+  @include flexbox;
+  @include space-between;
+  @include flexwrap;
+  @include flexColumn;
+  border-bottom: 1px solid var(--data_border_color);
+  padding: 15px 0;
+
+  @media only screen and (min-width: 490px) {
+    @include flexrow;
+    @include align-item-center;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    padding: 20px 0;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 26px 0;
+  }
+}
+
+.top-heading-tile {
+  @include font-sl;
+  @include space-none;
+  color: var(--data_site_secondary_color);
+
+  .jkm-info-circle {
+    font-size: 14px;
+    position: relative;
+    bottom: 2px;
+    margin-left: 5px;
+
+    @media only screen and (min-width: $device-md) {
+      bottom: 5px;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+}
+
+.ring-content-button {
+  @include flexbox;
+  @include flexwrap;
+  margin-top: 15px;
+
+  @media only screen and (min-width: 490px) {
+    margin: 0;
+  }
+
+  a:first-child {
+    margin-right: 20px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-right: 40px;
+    }
+  }
+
+  .btn {
+    @include button;
+    @include btn-small;
+    @include btn-secondary;
+    width: 100px;
+  }
+}

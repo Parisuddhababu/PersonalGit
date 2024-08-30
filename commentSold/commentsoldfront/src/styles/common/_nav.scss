@@ -1,0 +1,53 @@
+.nav{
+    margin-bottom: 20px;
+    @include media($device-md) {
+        margin-bottom: 30px;
+    }
+    ul.list-unstyled{
+        @include flexbox;
+        border-bottom: 1px solid $billowing-clouds;
+        width: max-content;
+        min-width: 100%;
+        li{
+            font-weight: 600;
+            color: $body-text;
+            margin-right: 20px;
+            border-bottom: 4px solid transparent;
+            padding-bottom: 9px;
+            margin-bottom: -1px;
+            cursor: pointer;
+            @include transition(all,0.3s);
+            
+            @include media($device-md) {
+                margin-right: 30px;                
+            }
+            @include media($device-lg) {
+                margin-right: 40px;
+            }
+
+            &.acitve, &:hover{
+                border-bottom-color: $primary-color;
+                color: $primary-color;
+            }
+        }
+        &.nav-center {
+            @include flexbox;
+            gap: 0 20px;
+            @include row-justify-center;
+            border: 0;
+            @include media($device-lg) {
+                gap: 0 40px;
+            }
+            li {
+                @include font-lg;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+.nav-tab{
+    display: none;
+    &.active{
+        display: block;
+    }
+}

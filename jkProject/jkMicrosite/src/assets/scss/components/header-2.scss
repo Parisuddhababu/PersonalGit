@@ -1,0 +1,1362 @@
+@import "../common/mixin-2";
+
+.jkms2-close {
+    @include jkms2-close;
+}
+
+.jkms2-arrow-left {
+    @include jkms2-arrow-left;
+}
+
+.jkms2-call {
+    @include jkms2-call;
+}
+
+.jkms2-menu {
+    @include jkms2-menu;
+}
+
+.jkms2-heart {
+    @include jkms2-heart;
+}
+
+.jkms2-add-to-cart {
+    @include jkms2-add-to-cart;
+}
+
+.jkms2-user {
+    @include jkms2-user;
+}
+
+.jkms2-call {
+    @include jkms2-call;
+}
+
+.jkms2-gold {
+    @include jkms2-gold;
+}
+
+.jkms2-diamond-icon {
+    @include jkms2-diamond-icon;
+}
+
+.jkms2-arrow-right {
+    @include jkms2-arrow-right;
+}
+
+.jkms2-gemstone {
+    @include jkms2-gemstone;
+}
+
+.jkms2-star2 {
+    @include jkms2-star2;
+}
+
+.jkms2-magic-ring {
+    @include jkms2-magic-ring;
+}
+
+.jkms2-solitaire {
+    @include jkms2-solitaire;
+}
+
+.jkms2-search {
+    @include jkms2-search;
+}
+
+.jkms2-silver {
+    @include jkms2-silver;
+}
+
+.jkms2-arrow-down {
+    @include jkms2-arrow-down;
+}
+
+.jkms2-more {
+    @include jkms2-more;
+}
+
+header {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        @include box-shadow(0px, 5px, 10px, var(--data_box_shadow_color));
+    }
+
+    .top-header {
+        background: var(--data_site_primary_color);
+        padding: 8px 50px;
+        color: var(--data_site_highlight_section_text_color);
+
+        .click {
+            margin: 0;
+            @include font-detail(16px, 34px);
+            @include textCenter;
+
+            a {
+                color: var(--data_site_secondary_color);
+            }
+        }
+    }
+
+    .main-header {
+        padding: 10px 15px;
+
+        @media screen and (min-width: $device-xl) {
+            padding: 0 30px;
+        }
+
+        @media screen and (min-width: $container-main) {
+            padding: 0 50px;
+        }
+
+        > ul {
+            @include flexbox;
+            @include just-center;
+            @include align-item-center;
+
+            > li {
+                margin: 0 12px;
+                font-size: 16px;
+                padding: 5px 0;
+
+                @media only screen and (min-width: $device-sm) {
+                    margin: 0 15px;
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    padding: 20px 0;
+                    font-size: 18px;
+                }
+
+                @media screen and (min-width: $container-main) {
+                    margin: 0 20px;
+                }
+
+                &.logo {
+                    margin: 0 auto 0 0;
+                    display: none;
+
+                    @media only screen and (min-width: $device-xl) {
+                        display: block;
+                    }
+
+                    img {
+                        width: 180px;
+
+                        @media only screen and (min-width: $device-xl) {
+                            width: 190px;
+                        }
+
+                        @media only screen and (min-width: $container-xl) {
+                            width: 255px;
+                        }
+                    }
+                }
+
+                &.header-search {
+                    max-width: 660px;
+                    width: 100%;
+                    margin-right: auto;
+                    display: none;
+
+                    @media screen and (min-width: $device-xl) {
+                        max-width: 32%;
+                        display: block;
+                        width: auto;
+                        flex: 1;
+                    }
+
+                    @media screen and (min-width: $container-main) {
+                        max-width: 480px;
+                    }
+
+                    @media screen and (min-width: $container-lg) {
+                        max-width: 660px;
+                    }
+
+                    .search-section {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                    .button-search {
+                        position: absolute;
+                        top: 1px;
+                        right: 1px;
+                        background: var(--data_site_theme_highlight);
+                        font-size: 19px;
+                        max-width: 50px;
+                        width: 100%;
+                        height: 48px;
+                        max-height: calc(100% - 2px);
+                        @include border-radius(50%);
+                        line-height: 48px;
+                        border: 0;
+                        cursor: pointer;
+                        @include transition(0.3s);
+
+                        &:hover {
+                            background: var(--data_button_primary_color);
+                            color: var(--data_site_theme_color);
+                        }
+                    }
+                }
+
+                &.country {
+                    position: relative;
+
+                    .country-item,
+                    .selected-country {
+                        @include flexbox;
+                        @include align-item-center;
+                        cursor: pointer;
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                            object-fit: cover;
+                            @include border-radius(50%);
+
+                            @media only screen and (min-width: $device-lg) {
+                                width: 30px;
+                                height: 30px;
+                            }
+                        }
+                    }
+
+                    .selected-country {
+                        div {
+                            display: none;
+
+                            @media only screen and (min-width: $device-sm) {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    .list-item {
+                        margin: 0;
+                        padding: 0.5rem 1rem;
+                        @include font-detail(16px, 24px);
+
+                        &:hover {
+                            background: #e9ecef;
+                        }
+                    }
+
+                    .country-list {
+                        display: none;
+                        position: absolute;
+                        width: 225px;
+                        max-height: 200px;
+                        overflow-y: auto;
+                        z-index: 13;
+                        background: var(--data_site_theme_color);
+                        color: var(--data_site_primary_color);
+                        @include border-radius(3px);
+                        box-shadow: 0 2px 4px -1px var(--data_box_shadow_color);
+
+                        &.active {
+                            display: block;
+                            margin-top: 15px;
+                            left: -16px;
+
+                            @media only screen and (min-width: $device-sm) {
+                                right: 0;
+                                left: auto;
+                            }
+                        }
+
+                        img {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+
+                &:nth-child(4),
+                &:nth-child(5) {
+                    display: none;
+
+                    @media screen and (min-width: $device-xl) {
+                        display: block;
+                    }
+                }
+
+                &.call {
+                    .jkms2-call {
+                        margin-right: 15px;
+                        font-size: 16px;
+                    }
+                }
+
+                &.item-count {
+                    a {
+                        position: relative;
+                    }
+
+                    .item-count-circle {
+                        background: var(--data_site_secondary_color);
+                        color: var(--data_site_theme_highlight);
+                        height: 20px;
+                        width: 20px;
+                        font-size: 11px;
+                        position: absolute;
+                        @include textCenter;
+                        line-height: 20px;
+                        top: -10px;
+                        right: -10px;
+                        font-weight: bold;
+                        @include border-radius(50%);
+                    }
+                }
+
+                &.divider {
+                    border-left: 1px solid var(--data_product_list_border_color);
+                }
+            }
+        }
+    }
+
+    .bottom-header {
+        padding: 0 15px;
+        border-top: 1px solid var(--data_border_color);
+        position: static;
+        @include flexbox;
+        @include align-item-center;
+
+        @media only screen and (min-width: $device-xl) {
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .mobile-menu {
+            @include flexbox;
+            @include space-between;
+            @include align-item-center;
+            margin: 5px 0;
+            width: 100%;
+
+            @media only screen and (min-width: $device-xl) {
+                display: none
+            }
+
+            .logo {
+                max-width: 170px;
+            }
+        }
+
+        .main-menu {
+            @include flexbox;
+            @include align-item-center;
+            // @include space-between;
+            @include flexColumn;
+            position: fixed;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            @include transition(0.5s, ease-out);
+
+            @media only screen and (min-width: $device-xl) {
+                @include flexrow;
+                position: static;
+            }
+
+            &.active {
+                left: 0;
+                @include transition(0.5s, ease-in);
+            }
+
+            .jkms2-arrow-right {
+                width: 45px;
+                height: 52px;
+                right: 0;
+                top: 0;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                @include flexbox;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                @include align-item-center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                @include just-center;
+                z-index: 1;
+                border: 1px solid var(--data_site_theme_highlight);
+
+                @media only screen and (min-width: $device-xl) {
+                    display: none;
+                }
+            }
+
+            .mobile-header {
+                @include flexbox;
+                @include space-between;
+                border-bottom: 1px solid var(--data_site_theme_highlight);
+                margin: 0;
+                width: 100%;
+                position: relative;
+                z-index: 999999;
+
+                .menu-mobile-arrow {
+                    width: 45px;
+                    height: 45px;
+                    border: 0;
+                    background: none;
+                    border-right: 1px solid var(--data_site_theme_highlight);
+                }
+
+                .menu-mobile-close {
+                    width: 45px;
+                    height: 45px;
+                    border: 0;
+                    background: none;
+                    border-left: 1px solid var(--data_site_theme_highlight);
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    display: none;
+                }
+            }
+
+            > li {
+                &.mobile-book-btn {
+                    a {
+                        border-bottom: 1px solid var(--data_site_primary_color) !important;
+                    }
+                }
+            }
+
+            > li:not(.book-btn) {
+                > a {
+                    height: 100%;
+                    width: 100%;
+                    padding: 15px;
+                    margin: 0;
+                    border-bottom: 1px solid var(--data_site_theme_highlight);
+                    display: inline-block;
+
+                    @media only screen and (min-width: $device-xl) {
+                        padding: 26px 0;
+                        border: 0;
+                    }
+                }
+            }
+
+            > li {
+                @include flexbox;
+                @include align-item-center;
+
+                @media only screen and (min-width: $device-xl) {
+                    font-size: 14px;
+                    margin: 0 10px;
+                }
+
+                @media only screen and (min-width: $container-xl) {
+                    margin: 0 20px;
+                    font-size: 18px;
+                }
+
+                // padding: 10px 0;
+                @include transition(0.3s);
+                border: 0;
+                width: 100%;
+
+                @media only screen and (min-width: $device-xl) {
+                    border-bottom: 5px solid transparent;
+                    @include transition(0.3s);
+                    @include textCenter;
+                }
+
+                &:hover:not(.search-icon, .book-btn) {
+                    border-color: var(--data_site_secondary_color);
+
+                    > a,
+                    > i {
+                        color: var(--data_site_secondary_color);
+                    }
+                }
+
+                &.mobile-search {
+                    position: relative;
+                    border: 0;
+                    width: calc(100% - 30px);
+                    margin: 15px;
+
+                    @media only screen and (min-width: $device-xl) {
+                        display: none;
+                    }
+
+                    .search-section {
+                        width: 100%;
+                    }
+
+                    .button-search {
+                        position: absolute;
+                        top: 1px;
+                        right: 1px;
+                        background: var(--data_site_theme_highlight);
+                        font-size: 19px;
+                        max-width: 42px;
+                        width: 100%;
+                        height: 40px;
+                        @include border-radius(50%);
+                        line-height: 40px;
+                        border: 0;
+                        cursor: pointer;
+                        @include transition(0.3s);
+                    }
+                }
+
+                &.mobile-book-btn {
+                    display: block;
+                    border: 0;
+                    width: 100%;
+
+                    @media only screen and (min-width: $device-xl) {
+                        display: none;
+                    }
+
+                    a {
+                        padding: 9px 15px;
+                        height: 42px;
+                        margin: 0 15px;
+                        width: calc(100% - 30px);
+                        max-width: inherit;
+                    }
+                }
+
+                &:hover {
+                    .menu-section {
+                        @include flexbox;
+                        height: 100%;
+
+                        @media only screen and (min-width: $device-xl) {
+                            margin-top: 0;
+                            height: auto;
+                        }
+                    }
+                }
+
+                .menu-section {
+                    position: absolute;
+                    width: 100%;
+                    overflow: hidden;
+                    top: 0;
+                    left: -100%;
+                    margin: auto;
+                    @include flexbox;
+                    z-index: 11;
+                    background: var(--data_site_theme_color);
+                    @include transition(0.5s, ease-out);
+                    margin-top: 46px;
+                    height: 100%;
+
+                    @media only screen and (min-width: $device-xl) {
+                        top: 84px;
+                        left: 0;
+                        right: 0;
+                        display: none;
+                        height: auto;
+                    }
+
+                    &.active {
+                        left: 0;
+                        @include transition(0.5s, ease-in);
+                        z-index: 99999;
+                    }
+
+                    .left-section {
+                        width: 100%;
+                        background: var(--data_site_theme_highlight);
+                        position: relative;
+                        @include transition(0.5s, ease-out);
+
+                        > ul {
+                            @include flexbox;
+                            @include flexColumn;
+
+                            @media only screen and (min-width: $device-xl) {
+                                padding: 25px;
+                            }
+
+                            @media only screen and (min-width: $container-xl) {
+                                padding: 35px 50px;
+                            }
+
+                            > li {
+                                position: relative;
+                                @include flexbox;
+
+                                @media only screen and (min-width: $device-xl) {
+                                    position: static;
+                                }
+
+                                > a {
+                                    width: calc(100% - 45px);
+                                    padding: 15px;
+                                    display: inline-block;
+                                    @include flexbox;
+                                    @include align-item-center;
+
+                                    @media only screen and (min-width: $device-xl) {
+                                        width: 207px;
+                                        padding: 10px 15px;
+                                        // @include just-center;
+                                    }
+
+                                    @media only screen and (min-width: $container-xl) {
+                                        padding: 14px 15px;
+                                    }
+
+                                    .jkms2-arrow-right {
+                                        width: 45px;
+                                        height: 52px;
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;
+                                        @include flexbox;
+                                        @include align-item-center;
+                                        @include just-center;
+                                        z-index: 1;
+                                        border: 1px solid var(--data_site_theme_highlight);
+
+                                        @media only screen and (min-width: $device-xl) {
+                                            height: 55px;
+                                        }
+                                    }
+
+                                    i {
+                                        margin-left: auto;
+                                        font-size: 13px;
+
+                                        @media only screen and (min-width: $device-xl) {
+                                            @include opacity(0);
+                                        }
+                                    }
+
+                                    &:hover {
+                                        i {
+                                            @include opacity(1);
+                                        }
+                                    }
+                                }
+
+                                &:hover {
+                                    .right-section {
+                                        @include flexbox;
+                                    }
+                                }
+
+                                .right-section {
+                                    width: 100%;
+                                    padding: 15px;
+                                    @include flexbox;
+                                    position: absolute;
+                                    top: 0;
+                                    left: -100%;
+                                    background: var(--data_site_theme_color);
+                                    bottom: 0;
+                                    overflow: auto;
+                                    @include flexColumn;
+                                    height: 100vh;
+                                    z-index: 2;
+                                    display: block;
+                                    @include transition(0.5s, ease-out);
+
+                                    @media only screen and (min-width: $device-xl) {
+                                        display: none;
+                                    }
+
+                                    &.active {
+                                        left: 0;
+                                        @include transition(0.5s, ease-in);
+                                    }
+
+                                    @media only screen and (min-width: $device-xl) {
+                                        width: calc(100% - 307px);
+                                        padding: 35px;
+                                        left: 307px;
+                                        @include flexrow;
+                                        height: auto;
+                                    }
+
+                                    @media only screen and (min-width: $device-lg) {
+                                        width: 90%;
+                                        width: calc(100% - 257px);
+                                        left: 257px;
+                                    }
+
+                                    @media only screen and (min-width: $container-lg) {
+                                        padding: 50px;
+                                        width: calc(100% - 307px);
+                                        left: 307px;
+                                    }
+
+                                    &:hover {
+                                        @include flexbox;
+                                    }
+
+                                    .product-details {
+                                        width: 100%;
+                                        @include flexbox;
+                                        @include flexwrap;
+
+                                        @media only screen and (min-width: $device-xl) {
+                                            width: 68%;
+                                            padding-right: 50px;
+                                            text-align: left;
+                                        }
+
+                                        .detail-wrapper {
+                                            display: inline-block;
+                                            margin-bottom: 15px;
+
+                                            &:first-child {
+                                                @media only screen and (min-width: $device-xl) {
+                                                    width: 50%;
+                                                }
+
+                                                li {
+                                                    width: calc(50% - 2px);
+                                                    display: inline-block;
+
+                                                    @media only screen and (min-width: $device-xl) {
+                                                        width: 100%;
+                                                    }
+
+                                                    @media only screen and (min-width: $container-lg) {
+                                                        width: calc(50% - 2px);
+                                                    }
+                                                }
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    width: 30%;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    width: 50%;
+                                                }
+                                            }
+
+                                            &:nth-child(2) {
+                                                width: 100%;
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    width: 50%;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    width: 32%;
+                                                }
+                                            }
+
+                                            &:nth-child(3) {
+                                                width: 100%;
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    width: 20%;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    width: 18%;
+                                                }
+                                            }
+
+                                            h5 {
+                                                font-size: 18px;
+                                                color: var(--data_site_text_color);
+                                                border-bottom: 1px solid var(--data_border_color);
+                                                padding-bottom: 10px;
+                                                margin-bottom: 15px;
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    padding-bottom: 15px;
+                                                    margin-bottom: 10px;
+                                                    font-size: 14px;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    padding-bottom: 30px;
+                                                    margin-bottom: 20px;
+                                                    font-size: 18px;
+                                                }
+                                            }
+
+                                            ul {
+                                                li {
+                                                    width: 100%;
+                                                    margin-bottom: 10px;
+
+                                                    @media only screen and (min-width: $container-xl) {
+                                                        margin-bottom: 15px;
+                                                    }
+
+                                                    a {
+                                                        display: inline-block;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .btn {
+                                            width: 100%;
+                                            max-width: 100%;
+                                            @include just-center;
+                                            margin-top: auto;
+                                        }
+                                    }
+
+                                    .product-image {
+                                        width: 100%;
+                                        margin-top: 25px;
+
+                                        @media only screen and (min-width: $device-xl) {
+                                            width: 32%;
+                                            margin-top: 0px;
+                                        }
+
+                                        .image {
+                                            padding: 21% 50%;
+                                            overflow: hidden;
+                                            position: relative;
+                                            display: block;
+                                            @include border-radius(10px);
+                                            border: 1px solid var(--data_border_color);
+
+                                            img {
+                                                position: absolute;
+                                                inset: 0;
+                                                object-fit: cover;
+                                                height: 100%;
+                                                width: 100%;
+                                            }
+
+                                            &::after {
+                                                content: '';
+                                                background-image: linear-gradient(180deg, #00000000 0%, #000000 100%);
+                                                position: absolute;
+                                                inset: 0;
+                                            }
+
+                                            & + .image {
+                                                margin-top: 25px;
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    margin-top: 22px;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    margin-top: 32px;
+                                                }
+                                            }
+
+                                            h4 {
+                                                position: absolute;
+                                                @include textCenter;
+                                                color: var(--data_site_highlight_section_text_color);
+                                                left: 0;
+                                                right: 0;
+                                                bottom: 40px;
+                                                z-index: 1;
+
+                                                @media only screen and (min-width: $device-xl) {
+                                                    bottom: 20px;
+                                                }
+
+                                                @media only screen and (min-width: $container-lg) {
+                                                    bottom: 40px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                > li {
+                    position: relative;
+
+                    .menu-section {
+                        min-width: 200px;
+                        height: auto;
+                        max-height: calc(85vh - 147px);
+                        min-height: auto;
+                        width: 100%;
+                        overflow: auto;
+
+                        .left-section {
+                            > ul {
+                                padding: 5px 0;
+                                max-height: initial;
+
+                                li {
+                                    a {
+                                        padding: 10px 15px;
+                                        line-height: initial;
+                                        width: 100%;
+                                    }
+
+                                    i {
+                                        display: none !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.menu-over {
+                overflow: visible;
+
+                @media only screen and (min-width: $device-xl) {
+                    width: 80%;
+                    margin-right: auto;
+                }
+
+                .extra-menu {
+                    position: relative;
+                    height: 20px;
+                    margin: auto 15px;
+                    border: none;
+                    text-align: left;
+                    width: auto;
+
+                    i {
+                        font-size: 10px;
+                        vertical-align: middle;
+
+                        @media only screen and (min-width: $device-md) {
+                            font-size: 14px;
+                        }
+                    }
+
+                    > a {
+                        border: none;
+                        padding: 0;
+                        cursor: pointer;
+                        line-height: 15px;
+                    }
+
+                    ul {
+                        position: absolute;
+                        top: 100%;
+                        @include opacity(0);
+                        visibility: hidden;
+                        background-color: #fff;
+                        padding: 5px 0;
+                        box-shadow: 0px 0px 5px 0px #bcbcbc;
+
+                        li {
+                            padding: 5px 20px;
+
+                            i {
+                                margin-right: 10px;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        ul {
+                            @include opacity(1);
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }
+
+        .jkms2-left {
+            margin-right: 10px;
+        }
+
+        .book-btn {
+            border: 0;
+            display: none;
+            white-space: nowrap;
+
+            @media only screen and (min-width: $device-xl) {
+                display: block;
+            }
+
+            a {
+                @media only screen and (min-width: $device-xl) {
+                    font-size: 13px;
+                    // padding: 0;
+                    // line-height: 50px;
+                }
+
+                // @media only screen and (min-width: $container-xl) {
+                //     padding: 13px 20px;
+                //     height: 50px;
+                //     font-size: 18px;
+                //     line-height: 22px;
+                // }
+            }
+        }
+    }
+
+    .user-dropdown {
+        position: relative;
+
+        .user-dropdown-btn {
+            display: block;
+            height: 30px;
+            width: 30px;
+            @include border-radius(100%);
+            cursor: pointer;
+            object-fit: cover;
+
+            @media screen and (max-width: $device-lg) {
+                height: 20px;
+                width: 20px;
+            }
+
+            > img {
+                width: 100%;
+            }
+        }
+
+        .user-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            z-index: 12;
+            background-color: var(--data_site_highlight_section_text_color);
+            width: 365px;
+            box-shadow: 0px 3px 6px #00000029;
+
+            @media screen and (max-width: $device-md) {
+                width: 320px;
+            }
+
+            @media screen and (max-width: $device-lg) {
+                top: 41px;
+            }
+
+            @media screen and (max-width: $device-md) {
+                width: 300px;
+            }
+
+            @media screen and (max-width: 340px) {
+                right: -15px;
+                width: 320px;
+            }
+        }
+
+        &.active {
+            .user-dropdown-menu {
+                animation: fade-in 0.5s;
+                display: block;
+            }
+        }
+
+        .user-profile-details {
+            background-color: var(--data_site_secondary_color);
+            @include flexbox;
+            @include align-item-center;
+            padding: 30px;
+
+            @media screen and (max-width: $device-sm) {
+                padding: 25px;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 20px;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 16px;
+            }
+
+            .user-profile-image {
+                display: block;
+                height: 52px;
+                width: 52px;
+                margin-right: 10px;
+                @include border-radius(100%);
+                object-fit: cover;
+
+                @media screen and (max-width: $device-md) {
+                    height: 45px;
+                    width: 45px;
+                }
+            }
+
+            .user-profile-content {
+                max-width: 242px;
+
+                @media screen and (max-width: $device-md) {
+                    max-width: 210px;
+                }
+            }
+
+            .user-name {
+                font-weight: bold;
+                @include font-detail(20px, 23px);
+                font-family: var(--data_site_font_primary);
+                letter-spacing: 0px;
+                color: var(--data_site_highlight_section_text_color);
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @media screen and (max-width: $device-md) {
+                    @include font-detail(18px, 21px);
+                }
+
+                @media screen and (max-width: $device-md) {
+                    @include font-detail(16px, 19px);
+                }
+            }
+
+            .user-email {
+                @include font-detail(18px, 28px);
+                font-family: var(--data_site_font_primary);
+                letter-spacing: 0px;
+                color: var(--data_site_highlight_section_text_color);
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @media screen and (max-width: $device-md) {
+                    @include font-detail(16px, 26px);
+                }
+
+                @media screen and (max-width: $device-md) {
+                    @include font-detail(14px, 24px);
+                }
+            }
+        }
+
+        .user-dropdown-menu-link {
+            @include flexbox;
+            @include align-item-center;
+            padding: 0px 30px;
+            background-color: var(--data_site_highlight_section_text_color);
+
+            @media screen and (max-width: $device-md) {
+                padding: 0px 25px;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 0px 20px;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 0px 16px;
+            }
+
+            i {
+                font-size: 18px;
+                color: var(--data_site_primary_color);
+                display: inline-block;
+                margin-right: 12px;
+
+                @media screen and (max-width: $device-md) {
+                    font-size: 16px;
+                }
+            }
+
+            span {
+                display: inline-block;
+                font-weight: bold;
+                @include font-detail(16px, 22px);
+                font-family: var(--data_site_font_primary);
+                letter-spacing: 0px;
+                color: var(--data_site_text_color);
+
+                @media screen and (max-width: $device-md) {
+                    @include font-detail(14px, 20px);
+                }
+            }
+
+            &:hover .user-dropdown-menu-inner {
+                // background-color: rgba(33, 81, 161, 0.1);
+                color: var(--data_site_primary_color);
+            }
+        }
+
+        .user-dropdown-menu-inner {
+            padding: 24px 0;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid rgba(5, 5, 5, 0.1);
+            color: var(--data_site_text_color);
+
+            @media screen and (max-width: $device-md) {
+                padding: 20px 0;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 16px 0;
+            }
+
+            @media screen and (max-width: $device-md) {
+                padding: 14px 0;
+            }
+        }
+
+        .user-dropdown-menu-item {
+            &:last-child {
+                .user-dropdown-menu-link {
+                    .user-dropdown-menu-inner {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-box {
+    .suggestion-searchbox {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--data_site_theme_color);
+        border: 1px solid var(--data_border_color);
+        border-top: 0;
+        display: none;
+        z-index: 3;
+
+        .searching-list {
+            li {
+                a {
+                    padding: 8px 14px;
+                    display: inline-block;
+                    border-bottom: 1px solid #ced4da;
+                    width: 100%;
+                    font-size: 14px;
+
+                    &:hover {
+                        background: lightgray;
+                    }
+                }
+            }
+        }
+
+        .default-list {
+            padding: 14px;
+
+            li {
+                margin-bottom: 5px;
+
+                &.disabled {
+                    span {
+                        @include opacity(0.5);
+                        pointer-events: none;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                }
+
+                a {
+                    @include body5;
+
+                    &:hover {
+                        color: var(--data_button_primary_color);
+                    }
+                }
+            }
+        }
+    }
+
+    &.suggestion-open {
+        .suggestion-searchbox {
+            display: block;
+        }
+    }
+}
+
+.live-chat-sidemenu {
+    .btn-primary {
+        border: 0;
+        height: auto;
+        position: fixed;
+        right: -35px;
+        top: 60%;
+        z-index: 3;
+        padding: 6px 15px;
+        font-size: 13px;
+        @include transform(rotate(90deg));
+
+        @media screen and (min-width: $device-sm) {
+            line-height: 23px;
+            padding: 8px 25px;
+            right: -42px;
+        }
+
+        p {
+            margin: 0 !important;
+        }
+    }
+
+    .slide-content {
+        background: var(--data_site_primary_color);
+        @include border-radius(5px);
+        box-shadow: var(--data_box_shadow_color);
+        color: var(--data_site_theme_color);
+        padding: 0 15px;
+        position: fixed;
+        right: -270px;
+        top: 60%;
+        @include transition(0.5s, $timing: ease);
+        width: 270px;
+        z-index: 4;
+        height: auto;
+
+        &.active {
+            right: 47px;
+            @include transition(0.5s, $timing: ease);
+        }
+
+        // &.deactive {
+        //   right: -270px;
+        //   @include transition(0.5s, $timing: ease);
+        // }
+        li {
+            @include flexbox;
+            @include space-between;
+            border-bottom: 1px solid var(--data_border_color);
+            color: var(--data_site_theme_color);
+            font-size: 14px;
+            padding: 10px 0;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        .jkms2-close {
+            @include border-radius(50px);
+            background: var(--data_site_primary_color);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px;
+            position: absolute;
+            right: 0;
+            top: -30px;
+        }
+    }
+}

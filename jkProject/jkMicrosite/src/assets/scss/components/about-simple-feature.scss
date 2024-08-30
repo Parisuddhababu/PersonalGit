@@ -1,0 +1,139 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-wedding-ring {
+    @include jkm-wedding-ring;
+}
+
+.jkm-delivery-truck {
+    @include jkm-delivery-truck;
+}
+
+.jkm-new-arrival {
+    @include jkm-new-arrival;
+}
+
+.jkm-offer {
+    @include jkm-offer;
+}
+
+.features_section {
+    // padding: 40px 0 0;
+    margin-bottom: 25px;
+
+    @media screen and (min-width: $device-md) {
+        // padding: 60px 0 0;
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        // padding: 120px 0 0;
+        margin-bottom: 80px;
+    }
+
+    .d-row {
+        @include just-center;
+        @include row;
+
+        .d-col-4 {
+            @include d-col-4;
+
+            @media screen and (min-width: $device-sm) {
+                width: 50%;
+            }
+
+            @media screen and (min-width: $device-md) {
+                width: 33.33%;
+            }
+
+            @media screen and (min-width: $device-lg) {
+                width: 25%;
+            }
+        }
+    }
+
+    .box {
+        padding: 27px 0;
+        width: 320px;
+        max-width: 100%;
+        @include textCenter;
+        margin: auto;
+        cursor: pointer;
+        height: 100%;
+
+        &:hover {
+            @include border-radius(10px);
+            @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+        }
+
+        @media screen and (min-width: $device-md) {
+            padding: 37px 0;
+        }
+
+        @media screen and (min-width: $device-xl) {
+            padding: 47px 0;
+        }
+
+        picture img {
+            width: 60px;
+            margin-bottom: 20px;
+
+            @media screen and (min-width: $device-md) {
+                width: 70px;
+            }
+
+            @media screen and (min-width: $device-xl) {
+                width: 80px;
+            }
+        }
+    }
+
+    i {
+        @include textCenter;
+        display: block;
+        margin-bottom: 20px;
+        color: var(--data_site_primary_color);
+        font-size: 60px;
+        height: 60px;
+        line-height: 60px;
+
+        @media screen and (min-width: $device-md) {
+            font-size: 70px;
+            height: 70px;
+            line-height: 70px;
+        }
+
+        @media screen and (min-width: $device-xl) {
+            font-size: 80px;
+            height: 80px;
+            line-height: 80px;
+        }
+    }
+
+    i.jkm-delivery-truck {
+        font-size: 40px;
+
+        @media screen and (min-width: $device-md) {
+            font-size: 50px;
+        }
+
+        @media screen and (min-width: $device-xl) {
+            font-size: 60px;
+        }
+    }
+
+    h3 {
+        margin-bottom: 0;
+    }
+}
+
+.find-ring-size {
+    .pop-up-container {
+        width: 95%;
+        max-width: 95%;
+
+        .modal-content {
+            display: inline-block;
+        }
+    }
+}

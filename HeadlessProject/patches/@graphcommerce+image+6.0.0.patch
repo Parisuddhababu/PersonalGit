@@ -1,0 +1,13 @@
+diff --git a/node_modules/@graphcommerce/image/components/Image.tsx b/node_modules/@graphcommerce/image/components/Image.tsx
+index 851f6f7..29da42b 100644
+--- a/node_modules/@graphcommerce/image/components/Image.tsx
++++ b/node_modules/@graphcommerce/image/components/Image.tsx
+@@ -508,7 +508,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
+               ref={combinedRef}
+               {...imgProps}
+               src={src}
+-              loading={loading ?? 'lazy'}
++              loading="eager"
+               width={width}
+               height={height}
+               sx={[style, ...(Array.isArray(sx) ? sx : [sx])]}

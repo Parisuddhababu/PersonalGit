@@ -1,0 +1,136 @@
+@import "../common/mixin";
+
+.jkm-arrow-right {
+  @include jkm-arrow-right;
+}
+
+.jkm-star {
+  @include jkm-star;
+}
+
+.jkm-star-fill {
+  @include jkm-star-fill;
+}
+
+.jkm-meta-fill-square {
+  @include jkm-meta-fill-square;
+}
+
+.jkm-insta-fill-square {
+  @include jkm-insta-fill-square;
+}
+
+.jkm-whatsapp {
+  @include jkm-whatsapp;
+}
+
+.jkm-mail {
+  @include jkm-mail;
+}
+
+.jkm-gold-bars {
+  @include jkm-gold-bars;
+}
+
+.jkm-diamond-fill {
+  @include jkm-diamond-fill;
+}
+
+.jkm-stone {
+  @include jkm-stone;
+}
+
+.jkm-arrow-top {
+  @include jkm-arrow-top;
+}
+
+.jkm-arrow-down {
+  @include jkm-arrow-down;
+}
+
+.jkm-copy {
+  @include jkm-copy;
+}
+
+.jkm-heart {
+  @include jkm-heart;
+}
+
+.jkm-compare-fill {
+  @include jkm-compare-fill;
+}
+
+.jkm-whishlist-fill {
+  @include jkm-whishlist-fill;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+input,
+textarea,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.img-zoom-custom-img {
+  z-index: 2;
+  position: absolute;
+  left: calc(100% - 50%);
+  top: 0;
+  @include opacity(1);
+  border: 1px solid lightgray;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  @include transform(translateY(30%));
+}
+
+.image-zoom-hover {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid lightgray;
+}

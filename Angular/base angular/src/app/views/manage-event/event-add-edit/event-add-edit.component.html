@@ -1,0 +1,248 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onEventSave(eventFrm)" novalidate #eventFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div *ngIf="!accessToken && !editMode" class="form-group">
+              <button type="button" class="btn btn-success" (click)="authenticate()">Authenticate</button>
+            </div>
+            <div *ngIf="accessToken">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>{{ 'EVENT_NAME' | translate }} <span class="asterisk_input"></span></label>
+                    <input
+                      [(ngModel)]="model.eventname"
+                      type="text"
+                      name="eventname"
+                      class="form-control"
+                      placeholder="{{ 'EVENT_NAME' | translate }}"
+                      required
+                      #eventname="ngModel"
+                    />
+                    <div class="form-control-feedback text-danger" *ngIf="eventname.errors && eventFrm.submitted">
+                      <p *ngIf="eventname.errors.required">
+                        {{ 'PLEASE_ENTER_EVENTNAME' | translate }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                  <div class="form-group">
+                    <label>{{ 'SEND_NOTIFICATIONA' | translate }}</label>
+                    <div>
+                      <label class="switch switch-label switch-pill switch-outline-primary-alt">
+                        <input type="checkbox" class="switch-input" name="send_notification" [(ngModel)]="model.send_notification" />
+                        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>{{ 'DESCRIPTION' | translate }} <span class="asterisk_input"></span></label>
+                    <textarea
+                      [(ngModel)]="model.description"
+                      name="description"
+                      class="form-control"
+                      rows="4"
+                      placeholder="{{ 'DESCRIPTION' | translate }}"
+                      required
+                      #description="ngModel"
+                    ></textarea>
+                    <div class="form-control-feedback text-danger" *ngIf="description.errors && eventFrm.submitted">
+                      <p *ngIf="description.errors.required">
+                        {{ 'PLEASE_ENTER_DESCRIPTION' | translate }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>{{ 'ADDRESS' | translate }}</label>
+                    <textarea
+                      [(ngModel)]="model.address"
+                      name="address"
+                      class="form-control"
+                      rows="4"
+                      placeholder="{{ 'ADDRESS' | translate }}"
+                      #address="ngModel"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>{{ 'START_DATE_TIME' | translate }} <span class="asterisk_input"></span></label>
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        [min]="minDate"
+                        [owlDateTime]="startDateTime"
+                        [(ngModel)]="model.start_datetime"
+                        name="start_datetime"
+                        placeholder="{{ 'START_DATE_TIME' | translate }}"
+                        [owlDateTimeTrigger]="startDateTime"
+                        autocomplete="off"
+                        required
+                        #start_datetime="ngModel"
+                      />
+                      <div class="input-group-append crsr-ptr" [owlDateTimeTrigger]="startDateTime">
+                        <span class="input-group-text"><i class="fa fa-lg fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <owl-date-time #startDateTime [hour12Timer]="true"></owl-date-time>
+                    <div class="form-control-feedback text-danger" *ngIf="start_datetime.errors && eventFrm.submitted">
+                      <p *ngIf="start_datetime.errors.required">{{ 'SELECT_START_DATE_TIME' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>{{ 'END_DATE_TIME' | translate }} <span class="asterisk_input"></span></label>
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        [disabled]="!model.start_datetime"
+                        [min]="maxEndDate(model.start_datetime)"
+                        [owlDateTime]="endDateTime"
+                        [(ngModel)]="model.end_datetime"
+                        name="end_datetime"
+                        placeholder="{{ 'END_DATE_TIME' | translate }}"
+                        [owlDateTimeTrigger]="endDateTime"
+                        autocomplete="off"
+                        required
+                        #end_datetime="ngModel"
+                      />
+                      <div class="input-group-append crsr-ptr" [owlDateTimeTrigger]="endDateTime">
+                        <span class="input-group-text"><i class="fa fa-lg fa-calendar"></i></span>
+                      </div>
+                    </div>
+                    <owl-date-time #endDateTime [hour12Timer]="true"></owl-date-time>
+                    <div class="form-control-feedback text-danger" *ngIf="end_datetime.errors && eventFrm.submitted">
+                      <p *ngIf="end_datetime.errors.required">{{ 'SELECT_END_DATE_TIME' | translate }}</p>
+                      <p *ngIf="end_datetime.errors.owlDateTimeMin">
+                        {{ 'MAX_END_DATE_TIME' | translate }} {{ model.start_datetime | customDate: momentDateTime24Format }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="device_type">{{ 'REPEATED' | translate }} <span class="asterisk_input"></span></label>
+                    <div class="d-block">
+                      <div class="form-check-inline">
+                        <label class="form-check-label"
+                          >Never
+                          <input
+                            [(ngModel)]="model.repeated"
+                            name="repeated"
+                            class="form-check-input"
+                            type="radio"
+                            id="Never"
+                            value="never"
+                            #repeated="ngModel"
+                            required
+                          />
+                          <span class="radio-span"></span>
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label"
+                          >Daily
+                          <input
+                            class="form-check-input"
+                            name="repeated"
+                            [(ngModel)]="model.repeated"
+                            type="radio"
+                            id="Daily"
+                            value="daily"
+                            #repeated="ngModel"
+                            required
+                          />
+                          <span class="radio-span"></span>
+                        </label>
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="repeated.errors && eventFrm.submitted">
+                        <p *ngIf="repeated.errors.required">{{ 'SELECT_REPEATED' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12" *ngIf="model.repeated == 'daily'">
+                  <div class="form-group">
+                    <label>{{ 'REPEATED_DATE' | translate }}</label>
+                    <div class="dtePkr">
+                      <input
+                        [(ngModel)]="model.recurrence_upto"
+                        [disabled]="!model.start_datetime || !model.end_datetime"
+                        name="recurrence_upto"
+                        type="text"
+                        class="form-control"
+                        #recurrence_upto="ngModel"
+                        placeholder="MM/DD/YYYY"
+                        #redate="bsDatepicker"
+                        placement="top"
+                        bsDatepicker
+                        autocomplete="off"
+                        [minDate]="setRecurrenceMinDate(model.start_datetime)"
+                        [maxDate]="setRecurrenceMaxDate(model.end_datetime)"
+                        [bsConfig]="dateRangeConfig"
+                      />
+                      <i class="fa fa-calendar crsr-ptr" (click)="redate.toggle()"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="editMode">
+                <div class="col-md-12">
+                  <div class="form-group attendeeDiv">
+                    <label>{{ 'ATTENDEES' | translate }} </label>
+                    <tag-input
+                      [(ngModel)]="model.attendees"
+                      name="attendees"
+                      theme="bootstrap"
+                      inputId="Attendees"
+                      [addOnBlur]="true"
+                      [separatorKeyCodes]="[9, 188, 13]"
+                      placeholder=""
+                      secondaryPlaceholder="{{ 'EMAIL' | translate }}"
+                      [validators]="emailValidators"
+                      [errorMessages]="emailErrorMessages"
+                      [onTextChangeDebounce]="300"
+                    >
+                      <tag-input-dropdown [autocompleteObservable]="requestAutocompleteItems" [minimumTextLength]="2">
+                        <ng-template let-item="item" let-index="index">
+                          <div class="right-panel">
+                            {{ item.display }}
+                          </div>
+                        </ng-template>
+                      </tag-input-dropdown>
+                    </tag-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button *ngIf="accessToken" type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/event/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

@@ -1,0 +1,23 @@
+mutation SimpleCartUpdate($cart: String!, $item_id: String!, $sku: String!, $qty: String!) {
+  EditCartItem(input: { cart: $cart, item_id: $item_id, sku: $sku, qty: $qty }) {
+    cart {
+      items {
+        id
+        uid
+        quantity
+        product {
+          id
+          uid
+          sku
+          name
+        }
+        prices {
+          row_total {
+            value
+            currency
+          }
+        }
+      }
+    }
+  }
+}

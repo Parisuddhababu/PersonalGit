@@ -1,0 +1,387 @@
+@import "../common/mixin-2";
+
+.form-control {
+    @include formcontrol;
+}
+
+.form-group {
+    @include formgroup;
+}
+
+.btn {
+    @include button;
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+}
+
+.user-rating-top-section {
+    @include flexbox;
+    @include flexwrap;
+    @include space-between;
+    @include flexColumn;
+    @include align-item-center;
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-md) {
+        @include flexrow;
+        margin-bottom: 30px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        margin-bottom: 40px;
+    }
+}
+
+.count-star {
+    @include flexbox;
+    @include align-item-center;
+    @include flexwrap;
+    margin-right: 30px;
+
+    @media only screen and (min-width: $device-md) {
+        margin-right: 30px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        margin-right: 98px;
+    }
+}
+
+.rating-counter-section {
+    @include flexbox;
+    width: 100%;
+    @include align-item-center;
+    @include flexwrap;
+
+    @media only screen and (min-width: $device-md) {
+        max-width: 60%;
+        @include flexrow;
+        @include align-item-center;
+    }
+
+    strong {
+        color: var(--data_site_theme_color);
+        @include font-detail(20px, 22px);
+        display: inline-block;
+        margin-right: 32px;
+        margin-bottom: 10px;
+
+        @media only screen and (min-width: $device-md) {
+            @include font-detail(20px, 22px);
+        }
+
+        @media only screen and (min-width: $device-lg) {
+            @include font-detail(24px, 29px);
+        }
+
+        span {
+            margin-right: 5px;
+            @include font-detail(26px, 20px);
+
+            @media only screen and (min-width: $device-md) {
+                @include font-detail(32px, 26px);
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                @include font-detail(36px, 29px);
+            }
+        }
+    }
+
+    .star-rating {
+        color: #fdc847;
+        margin-bottom: 10px;
+
+        .icon {
+            margin-right: 6px;
+            font-size: 28px;
+
+            @media only screen and (min-width: $device-md) {
+                font-size: 36px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                font-size: 44px;
+            }
+        }
+    }
+
+    .total-review {
+        @include font-detail(18px, 20px);
+        margin-bottom: 10px;
+        color: var(--data_site_theme_color);
+
+        @media only screen and (min-width: $device-md) {
+            @include font-detail(18px, 20px);
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            @include font-detail(20px, 24px);
+        }
+    }
+}
+
+.review-action-button {
+    width: 100%;
+    @include flexbox;
+    @include just-end;
+    gap: 20px;
+
+    @media only screen and (min-width: $device-md) {
+        max-width: 40%;
+    }
+
+    .btn {
+        @include button;
+
+        &.btn-secondary {
+            @include btn-secondary;
+        }
+
+        max-width: 216px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.rating-review-section {
+    background-color: var(--data_site_primary_color);
+    padding: 30px 0;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $device-md) {
+        padding: 60px 0;
+        margin-bottom: 60px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+        padding: 80px 0;
+        margin-bottom: 80px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        padding: 120px 0;
+        margin-bottom: 120px;
+    }
+}
+
+.user-review-slider {
+    border-top: 1px solid var(--data_site_theme_color);
+    padding-top: 30px;
+
+    .btn-slider {
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
+        height: 30px;
+        width: 30px;
+        outline: none;
+        border: none;
+        z-index: 1;
+        cursor: pointer;
+        background-color: var(--data_site_theme_color);
+        @include flexCenter;
+        @include box-shadow(0, 0, 4px, var(--data_box_shadow_color));
+
+        @media only screen and (min-width: $device-md) {
+            height: 40px;
+            width: 40px;
+        }
+
+        &.btn-prev {
+            left: 20px;
+            @include transform(translateY(-50%) rotate(180deg));
+
+            @media only screen and (min-width: $device-xl) {
+                left: 0;
+            }
+        }
+
+        &.btn-next {
+            right: 20px;
+
+            @media only screen and (min-width: $device-xl) {
+                right: 0;
+            }
+        }
+
+        &:hover {
+            background-color: var(--data_button_primary_color);
+            color: var(--data_site_theme_color);
+            @include border-radius(var(--data_site_border_radius));
+        }
+    }
+
+    .slider-group {
+        position: relative;
+
+        &.row {
+            @include row;
+
+            .d-col-4 {
+                @include d-col-4;
+
+                @media only screen and (min-width: $device-sm) {
+                    width: 50%;
+                }
+
+                @media only screen and (min-width: $device-md) {
+                    width: 33.33%;
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    .review-card {
+        background-color: var(--data_site_theme_color);
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        @include flexbox;
+        @include flexColumn;
+        @include space-between;
+
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 0;
+            padding: 40px 30px;
+        }
+
+        .profile-name {
+            @include font-detail(18px, 22px);
+            color: var(--data_site_text_color);
+            margin-bottom: 10px;
+
+            @media only screen and (min-width:$device-md) {
+                margin-bottom: 20px;
+            }
+        }
+
+        .verified {
+            margin-bottom: 5px;
+
+            .icon {
+                margin-bottom: 5px;
+                vertical-align: middle;
+                color: #24AC02;
+            }
+
+            span {
+                @include font-detail(12px, 15px);
+                color: #24AC02;
+                margin-left: 5px;
+            }
+        }
+
+        .date {
+            @include font-detail(14px, 17px);
+            margin-bottom: 10px;
+            color: var(--data_site_text_color);
+        }
+
+        h5 {
+            color: var(--data_site_text_color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .rating-verified {
+            @include flexbox;
+            @include align-item-center;
+            margin-bottom: 13px;
+            @include flexwrap;
+        }
+
+        .star-rating {
+            font-size: 20px;
+            color: #FDC847;
+
+            .icon {
+                margin-right: 1px;
+            }
+
+            margin-right: 18px;
+            margin-bottom: 5px;
+        }
+
+        .description {
+            @include font-detail(18px, 24px);
+            color: var(--data_site_text_color);
+            margin-bottom: 15px;
+            width: 85%;
+            height: 97px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+
+            @media only screen and (min-width: $device-md) {
+                margin-bottom: 20px;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .product-img-group {
+            margin-bottom: 13px;
+            @include flexbox;
+
+            picture {
+                position: relative;
+                padding: 12.8%;
+                margin-right: 20px;
+                border: 1px solid var(--data_border_color);
+
+                img {
+                    position: absolute;
+                    inset: 0;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    height: auto;
+                    width: 100%;
+                }
+            }
+
+            .jkms2-view-more {
+                position: absolute;
+                z-index: 99;
+                inset: 0;
+                @include flexCenter;
+                font-size: 16px;
+                color: var(--data_site_theme_color);
+                background: var(--data_site_primary_color);
+                @include opacity(64%);
+            }
+        }
+
+        .like-section {
+            @include flexbox;
+
+            .like-box {
+                .icon {
+                    vertical-align: middle;
+                    @include font-detail(13px, 12px);
+                    color: #24AC02;
+
+                    &.jkms2-dislike {
+                        color: #fd0322;
+                        margin-left: 38px;
+                    }
+                }
+
+                span {
+                    @include font-detail(14px, 17px);
+                    color: var(--data_site_text_color);
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

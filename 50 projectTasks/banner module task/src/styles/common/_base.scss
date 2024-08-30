@@ -1,0 +1,182 @@
+@import "./mixin";
+
+/***
+    The new CSS reset - version 1.8.4 (last updated 14.2.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: revert;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+:where(pre) {
+  all: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+::marker {
+  content: initial;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+:where(dialog:modal) {
+  all: revert;
+}
+
+@layer base {
+  html {
+    font-feature-settings: "case" 1, "rlig" 1, "calt" 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    @apply h-full touch-manipulation;
+  }
+
+  html,
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-smooth: auto;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    @apply h-full;
+  }
+
+  body {
+    @apply relative text-sm font-primary font-normal bg-light-gray;
+  }
+
+  a,
+  .link {
+    @apply no-underline outline-0 text-black;
+
+    &.disabled,
+    &[disabled] {
+      @apply text-neutral-900 opacity-90;
+
+      &:hover {
+        @apply no-underline;
+      }
+    }
+  }
+
+  .rct-node-icon {
+    display: inline-block;
+  }
+  /*** Heading ***/
+  h1,
+  .h1 {
+    @include font-xl;
+  }
+
+  h2,
+  .h2 {
+    @include font-lg;
+  }
+
+  h3,
+  .h3 {
+    @include font-md;
+  }
+
+  h4,
+  .h4 {
+    @include font-sm;
+  }
+
+  h5,
+  .h5 {
+    @include font-xs;
+  }
+
+  h6,
+  .h6 {
+    @include font-xxs;
+  }
+
+  /* List styles */
+  .list-decimal,
+  .list-disc {
+    @apply tracking-normal list-none;
+  }
+
+  .unordered-list li,
+  .ordered-list li {
+    @apply font-normal tracking-normal relative pl-3.5 leading-5 text-sm;
+  }
+
+  .unordered-list li:before {
+    content: "•";
+    @apply absolute top-0 left-0;
+  }
+
+  .ordered-list {
+    counter-reset: section;
+  }
+
+  .ordered-list li {
+    @apply pl-5;
+  }
+
+  .ordered-list li:before {
+    counter-increment: section;
+    content: counters(section, ".") ".";
+    @apply absolute top-0 left-0;
+  }
+}

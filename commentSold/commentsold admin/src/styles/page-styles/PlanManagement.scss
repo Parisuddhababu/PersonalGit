@@ -1,0 +1,12 @@
+.add-plan-management-control {
+    display: flex;
+    align-items: flex-start;
+	.add-plan-management-text-input {
+		flex: 1;
+	}
+	.btn {
+		min-height: 36px;
+		margin-top: 28px;
+		margin-left: 15px;
+	}
+}

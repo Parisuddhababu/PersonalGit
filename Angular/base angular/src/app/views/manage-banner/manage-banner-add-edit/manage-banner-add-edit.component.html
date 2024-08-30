@@ -1,0 +1,96 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onBannerDataSave(bannerFrm)" novalidate #bannerFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'BANNER_PHOTO' | translate }} <span class="asterisk_input"></span></label>
+                  <div>
+                    <div class="image-box has-upload">
+                      <i class="fa fa-2x fa-times-circle-o" aria-hidden="true" (click)="removePicture(upld_photo)" *ngIf="noPicture"></i>
+                      <img [hidden]="noPicture == false" [src]="url" class="img-responsive img-fluid image-box" />
+                      <div class="upload-area" id="uploadImageFile" [hidden]="noPicture == true" (click)="openImageUpload()">
+                        <input type="file" (change)="changeImage($event)" #upld_photo class="form-control" id="banner_picture" required />
+                        <label for="fileSelect"
+                          ><strong>Browse</strong> <span><br />for a banner image to upload</span>.</label
+                        >
+                        <input type="hidden" [(ngModel)]="model.banner_image" #upld="ngModel" name="banner_image" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="upld.errors && bannerFrm.submitted">
+                    <p *ngIf="upld.errors.required">{{ 'PLEASE_UPLOAD_BANNER_IMAGE' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+              <div class="col-md-6 col-12" *ngFor="let lan of languages">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'BANNER_TITLE' | translate }} ({{ lan.name }}) <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.banner_title[lan.locale]"
+                    [style.direction]="lan.text_direction"
+                    type="text"
+                    name="banner_title_{{ lan.locale }}"
+                    class="form-control"
+                    placeholder="{{ 'BANNER_TITLE' | translate }}"
+                    required
+                    #banner_title="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="banner_title.errors && submitted">
+                    <p *ngIf="banner_title.errors.required">
+                      {{ 'PLEASE_ENTER_BANNER_TITLE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="device_type">{{ 'STATUS' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div class="form-check-inline" *ngFor="let status of statusList | keyvalue: orderbyValueAsc; let i = index">
+                      <label class="form-check-label"
+                        >{{ status.value | translate }}
+                        <input
+                          [(ngModel)]="model.banner_status"
+                          name="banner_status"
+                          class="form-check-input"
+                          type="radio"
+                          id="status_{{ i }}"
+                          [value]="status.key"
+                          #banner_status="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+                    <div
+                      class="form-control-feedback text-danger"
+                      *ngIf="(bannerFrm?.controls)['banner_status']?.errors && bannerFrm.submitted"
+                    >
+                      <p *ngIf="(bannerFrm?.controls)['banner_status']?.errors.required">{{ 'PLEASE_SELECT_STATUS' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-banner/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

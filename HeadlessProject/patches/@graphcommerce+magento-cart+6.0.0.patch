@@ -1,0 +1,69 @@
+diff --git a/node_modules/@graphcommerce/magento-cart/components/CartFab/CartFab.tsx b/node_modules/@graphcommerce/magento-cart/components/CartFab/CartFab.tsx
+index 72066c4..1ee5226 100644
+--- a/node_modules/@graphcommerce/magento-cart/components/CartFab/CartFab.tsx
++++ b/node_modules/@graphcommerce/magento-cart/components/CartFab/CartFab.tsx
+@@ -56,7 +56,6 @@ function CartFabContent(props: CartFabContentProps) {
+       ]}
+     >
+       <MotionFab
+-        href='/cart'
+         className={classes.cart}
+         aria-label={i18n._(/* i18n */ 'Cart')}
+         color='inherit'
+diff --git a/node_modules/@graphcommerce/magento-cart/components/CartSummary/GetCartSummary.graphql b/node_modules/@graphcommerce/magento-cart/components/CartSummary/GetCartSummary.graphql
+index 28f7d82..91fb2be 100644
+--- a/node_modules/@graphcommerce/magento-cart/components/CartSummary/GetCartSummary.graphql
++++ b/node_modules/@graphcommerce/magento-cart/components/CartSummary/GetCartSummary.graphql
+@@ -1,5 +1,6 @@
+ query GetCartSummary($cartId: String!) {
+   cart(cart_id: $cartId) {
+     ...CartSummary
++    ...SelectedAddressOnCartQueryFragment
+   }
+ }
+diff --git a/node_modules/@graphcommerce/magento-cart/components/InlineAccount/InlineAccount.tsx b/node_modules/@graphcommerce/magento-cart/components/InlineAccount/InlineAccount.tsx
+index fa487f5..fcf8cb5 100644
+--- a/node_modules/@graphcommerce/magento-cart/components/InlineAccount/InlineAccount.tsx
++++ b/node_modules/@graphcommerce/magento-cart/components/InlineAccount/InlineAccount.tsx
+@@ -74,15 +74,22 @@ export function InlineAccount(props: InlineAccountProps) {
+                 <Typography variant='h4' className={classes.title} sx={{ paddingBottom: '8px' }}>
+                   {title ?? <Trans id='No account yet?' />}
+                 </Typography>
+-                {description ?? <Trans id='You can track your order status and much more!' />}
++                {description ?? <Trans id='You can track your order status by creating an account!' />}
++                <br />
++                {cart?.email &&
++                (<>
++                  <Trans id="Email Address:" /> {cart?.email} 
++                </>)
++                }
+               </div>
+               <div>
+                 {!toggled && (
+                   <Button
+-                    variant='pill'
++                    variant='contained'
+                     color='secondary'
++                    size="medium"
++                    href="/account/signup"
+                     loading={loading}
+-                    onClick={() => setToggled(!toggled)}
+                     className={classes.button}
+                     sx={{ minWidth: 160 }}
+                   >
+@@ -125,10 +132,14 @@ export function InlineAccount(props: InlineAccountProps) {
+             </div>
+             <div>
+               <Button
+-                variant='pill'
++                variant='contained'
+                 color='secondary'
++                size="medium"
+                 href={accountHref}
+                 className={classes.button}
++                sx={{
++                  marginTop: '1rem'
++                }}
+               >
+                 <Trans id='Account' />
+               </Button>

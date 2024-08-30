@@ -1,0 +1,211 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.title" type="text" name="title" class="form-control"
+                    placeholder="{{ 'SURVEY_TITLE' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.survey_status" name="survey_status">
+                    <option value="">{{ 'SELECT_SURVEY_STATUS' | translate }}</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Inprocess">Inprocess</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.status" name="status">
+                    <option value="">{{ 'SELECT_STATUS' | translate }}</option>
+                    <option *ngFor="let status of statusList | keyvalue: orderbyValueAsc" [value]="status.key">{{
+                      status.value | translate
+                      }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' |
+                    translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- Survey List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['SURVEY_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="fa fa-address-book-o"></i> {{ 'SURVEY_LIST' | translate }}
+          <a *ngxPermissionsOnly="['SURVEY_CREATE', 'SUPER_ADMIN']" routerLink="/manage-survey/add"
+            class="btn btn-primary pull-right"><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a>
+        </div>
+        <div class="card-body">
+          <div class="pull-right">
+            <strong>{{'NOTES' | translate}}: </strong>
+            <div class="note box-green"></div>
+            <span class="text-danger mr-2">{{ 'RUNNING_SURVEY' | translate }}</span>
+            <div class="note box-red"></div>
+            <span class="text-danger mr-2">{{ 'COMPLETED_SURVEY' | translate }}</span>
+            <div class="note box-yellow"></div>
+            <span class="text-danger">{{ 'UPCOMING_SURVEY' | translate }}</span>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group show-select">
+                <label>{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="wrap-datatable pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable [rows]="surveyList" class="material fullscreen" headerHeight="headerHeight"
+              footerHeight="footerHeight" rowHeight="rowHeight" [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force" #datatable [scrollbarH]="scrollbarH" [externalSorting]="serverSorting"
+              (sort)="onSort($event)" [sorts]="[{ prop: sortParam, dir: sortOrder }]" [externalPaging]="serverPaging"
+              [count]="totalReords" [offset]="pageNumber" [limit]="size" (page)="setPage($event)"
+              [messages]="dtMessages" [rowClass]="getRowClass">
+              <ngx-datatable-column name="{{ 'SR_NO' | translate }}" headerClass="no-sorting text-center" prop="srNum"
+                [sortable]="false" [width]="70">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'SURVEY_TITLE' | translate }}" prop="title"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'START_DATE' | translate }}" prop="survey_start_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'END_DATE' | translate }}" prop="survey_end_date">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ACTION' | translate }}" prop="id" [frozenRight]="piningRight"
+                [sortable]="false" headerClass="text-center no-sorting" *ngxPermissionsOnly="[
+                  'SUPER_ADMIN',
+                  'SURVEY_UPDATE',
+                  'SURVEY_STATUS',
+                  'SURVEY_DELETE',
+                  'SURVEY_REPORT',
+                  'SURVEY_USER_REPORT'
+                ]">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a *ngxPermissionsOnly="['SURVEY_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/manage-survey/edit/{{ row.id }}" title="{{ 'EDIT' | translate }}"
+                      [ngClass]="{ 'link-is-disabled': row.is_completed == 'yes' }"><i
+                        class="fa fa-pencil-square-o fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['SURVEY_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.id, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"><i [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive'
+                        }" class="fa fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['SURVEY_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/manage-survey/add-questions/{{ row.id }}"
+                      title="{{ 'QUESTION' | translate }}"
+                      [ngClass]="{ 'link-is-disabled': row.is_started == 'yes' }"><i
+                        class="fa fa-question-circle-o fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['SURVEY_REPORT', 'SUPER_ADMIN']"
+                      routerLink="/manage-survey/report/{{ row.id }}"
+                      title="{{ 'VIEW_REPORT' | translate }}"><i class="fa fa-bar-chart fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['SURVEY_USER_REPORT', 'SUPER_ADMIN']"
+                      (click)="openModalUserReport(row.id)" title="{{ 'USER_REPORT' | translate }}"><i
+                        class="fa fa-user fa-lg"></i> </a>&nbsp;
+                    <a *ngxPermissionsOnly="['SURVEY_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDelete, row.id)" title="{{ 'DELETE' | translate }}"
+                      [ngClass]="{ 'link-is-disabled': row.is_started == 'yes' }"><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Survey List -- Start -->
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDelete>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteSurvey()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

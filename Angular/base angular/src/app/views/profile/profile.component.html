@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-12">
+    <!-- Profile Information -- Start -->
+    <div class="card">
+      <form novalidate #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
+        <div class="card-body">
+          <p class="col-sm-12 text-right requiredLabel">
+            <span [innerHTML]="'FORM_NOTE' | translate"></span>
+          </p>
+          <h4 class="card-title">{{ 'PROFILE_INFO' | translate }}</h4>
+          <div class="divider-md"></div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">{{ 'FIRST_NAME' | translate }} <span class="asterisk_input"></span></label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="firstname"
+                  #firstName="ngModel"
+                  name="firstname"
+                  required
+                  [pattern]="CommonRegx.NameRegx"
+                  minlength="3"
+                  placeholder="{{ 'FIRST_NAME' | translate }}"
+                />
+                <div *ngIf="firstName.invalid && profileForm.submitted" class="text-danger">
+                  <span *ngIf="firstName.errors.required">
+                    {{ 'PLEASE_ENTER_FIRST_NAME' | translate }}
+                  </span>
+                  <span *ngIf="firstName.errors.minlength">
+                    {{ 'FIRST_NAME_LENGTH' | translate }}
+                  </span>
+                  <span *ngIf="firstName.errors.pattern">
+                    {{ 'PLEASE_ENTER_FIRST_NAME_VALIDATION' | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lastname">{{ 'LAST_NAME' | translate }} <span class="asterisk_input"></span></label>
+                <input
+                  class="form-control"
+                  [(ngModel)]="lastname"
+                  #lastName="ngModel"
+                  name="lastname"
+                  required
+                  [pattern]="CommonRegx.NameRegx"
+                  minlength="3"
+                  placeholder="{{ 'LAST_NAME' | translate }}"
+                />
+                <div *ngIf="lastName.invalid && profileForm.submitted" class="text-danger">
+                  <span *ngIf="lastName.errors.required">
+                    {{ 'PLEASE_ENTER_LAST_NAME' | translate }}
+                  </span>
+                  <span *ngIf="lastName.errors.minlength">
+                    {{ 'LAST_NAME_LENGTH' | translate }}
+                  </span>
+                  <span *ngIf="lastName.errors.pattern">
+                    {{ 'PLEASE_ENTER_LAST_NAME_VALIDATION' | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">{{ 'USERNAME' | translate }}</label>
+                <input class="form-control" [(ngModel)]="username" disabled="" name="username" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">{{ 'EMAIL' | translate }}</label>
+                <input type="email" [(ngModel)]="email" disabled="" class="form-control" name="email" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" type="submit">
+            <i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ 'UPDATE_PROFILE' | translate }}</button
+          >&nbsp;
+          <a class="btn btn-warning" [routerLink]="['/dashboard']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+        </div>
+      </form>
+    </div>
+    <!-- Profile Information -- End -->
+    <!-- Change Password -- Start -->
+    <div class="card">
+      <form novalidate #changePassFrm="ngForm" (ngSubmit)="changePassword(changePassFrm)">
+        <div class="card-body">
+          <p class="col-sm-12 text-right requiredLabel">
+            <span [innerHTML]="'FORM_NOTE' | translate"></span>
+          </p>
+          <h4 class="card-title">{{ 'CHANGE_PASSWORD' | translate }}</h4>
+          <div class="divider-md"></div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="oldpass">{{ 'CURRENT_PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+                <div class="view-pass">
+                  <input
+                    [type]="showOldPass ? 'text' : 'password'"
+                    class="form-control"
+                    [(ngModel)]="oldpass"
+                    #oldPassword="ngModel"
+                    placeholder="{{ 'CURRENT_PASSWORD' | translate }}"
+                    name="oldpass"
+                    required
+                  />
+                  <i
+                    class="fa fa-lg"
+                    [ngClass]="showOldPass ? 'fa-eye' : 'fa-eye-slash'"
+                    (click)="showOldPass = !showOldPass"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <div *ngIf="oldPassword.errors && changePassFrm.submitted" class="text-danger">
+                  <span *ngIf="oldPassword.errors.required">
+                    {{ 'PLEASE_ENTER_CURRENT_PASSWORD' | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="newpass">{{ 'NEW_PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+                <div class="view-pass">
+                  <input
+                    [type]="showPass ? 'text' : 'password'"
+                    class="form-control"
+                    id="newpass"
+                    [(ngModel)]="newpass"
+                    (change)="checkPass()"
+                    #newPassword="ngModel"
+                    placeholder="{{ 'NEW_PASSWORD' | translate }}"
+                    name="newpass"
+                    required
+                    [pattern]="CommonRegx.PasswordRegx"
+                  />
+                  <i
+                    class="fa fa-lg"
+                    [ngClass]="showPass ? 'fa-eye' : 'fa-eye-slash'"
+                    (click)="showPass = !showPass"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <div *ngIf="newPassword.errors && changePassFrm.submitted" class="text-danger">
+                  <span *ngIf="newPassword.errors.required">
+                    {{ 'PLEASE_ENTER_NEW_PASSWORD' | translate }}
+                  </span>
+                  <span *ngIf="newPassword.errors.pattern">
+                    {{ 'PLEASE_ENTER_NEW_PASSWORD_VALIDATION' | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="confirmpass">{{ 'CONFIRM_PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+                <div class="view-pass">
+                  <input
+                    [type]="showConfPass ? 'text' : 'password'"
+                    class="form-control"
+                    id="confirmpass"
+                    [(ngModel)]="confirmpass"
+                    [pattern]="conf_pass_match"
+                    #confirmPassword="ngModel"
+                    placeholder="{{ 'CONFIRM_PASSWORD' | translate }}"
+                    name="confirmpass"
+                    required
+                  />
+                  <i
+                    class="fa fa-lg"
+                    [ngClass]="showConfPass ? 'fa-eye' : 'fa-eye-slash'"
+                    (click)="showConfPass = !showConfPass"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <div *ngIf="confirmPassword.errors && changePassFrm.submitted" class="text-danger">
+                  <span *ngIf="confirmPassword.errors.required">
+                    {{ 'PLEASE_ENTER_CONFIRM_PASSWORD' | translate }}
+                  </span>
+                  <span *ngIf="confirmPassword.errors.pattern">
+                    {{ 'PLEASE_ENTER_CONFIRM_PASSWORD_VALIDATION' | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" type="submit">
+            <i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ 'CHANGE_PASSWORD' | translate }}</button
+          >&nbsp;
+          <a class="btn btn-warning" [routerLink]="['/dashboard']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+        </div>
+      </form>
+    </div>
+    <!-- Change Password -- End -->
+  </div>
+</div>
+<app-loader></app-loader>

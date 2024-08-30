@@ -1,0 +1,92 @@
+// slider
+.slider {
+	.slider-slider-container {
+		position: relative;
+		height: 785px;
+		@include flex-property-col;
+		@include justify-content-center;
+		@include lg {
+			.prevArrow {
+				position: absolute;
+				bottom: 50%;
+				left: 32%;
+				@include pointer;
+			}
+			.nextArrow {
+				position: absolute;
+				bottom: 50%;
+				right: 32%;
+				@include pointer;
+				z-index: 99;
+			}
+			.prevArrow {
+				position: absolute;
+				bottom: 50%;
+				left: 32%;
+				@include pointer;
+				z-index: 99;
+			}
+		}
+		.slider-image-card {
+			text-align: center;
+			margin: 15px 0;
+			p {
+				margin-top: 25px;
+				font-size: 21px;
+				letter-spacing: 3px;
+				line-height: 33px;
+				color: $light-grey;
+				font-weight: 700;
+				margin-bottom: 20px;
+				font-family: $Playfair;
+			}
+			img {
+				margin: 10px auto;
+				height: 330px;
+				width: 310px;
+				object-fit: contain;
+			}
+		}
+	}
+
+	.slider-top-container {
+		background-image: url('./assets/images/webp/Background-image.webp');
+		color: $white-color;
+		text-align: center;
+		line-height: 33px;
+		padding: 88px 0 110px 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		@include flex-property-col;
+		@include justify-content-center;
+		@include align-center;
+		height: 305px;
+		h3 {
+			font-size: 21px;
+			font-weight: 400;
+			font-family: $Playfair;
+			padding: 50px;
+			@include md {
+				font-size: 21px;
+				padding: 50px;
+			}
+			@include lg {
+				width: 882px;
+				height: 91px;
+			}
+		}
+		h2 {
+			font-size: 33px;
+			font-weight: 700;
+			font-family: $Playfair;
+			margin-bottom: 30px;
+		}
+		.slider-pepper {
+			position: absolute;
+			top: -11%;
+			left: 160px;
+		}
+	}
+}

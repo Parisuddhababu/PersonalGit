@@ -1,0 +1,144 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(238, 231, 231);
+}
+
+.banner-grid-section {
+    background-image: url("https://assets-global.website-files.com/64380d1f2275c122f55d7d8a/646a02bbe56849aa8a899e4f_0_3.png");
+    height: 90vh;
+    margin-top: 30px;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    width: 1080px;
+    position: relative;
+    top: 10%;
+}
+
+.card1 {
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.card2 {
+    height: 200px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.116);
+    padding: 20px;
+    color: white;
+    margin: 10px;
+}
+
+.card3 {
+    height: 200px;
+    width: 300px;
+    background-color: rgb(238, 88, 19);
+    padding: 20px;
+    margin: 10px;
+}
+
+.card4 {
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.more-class {
+    text-decoration: underline;
+}
+
+.boxes-section {
+    background-color: white;
+    height: 90vh;
+    width: 90vw;
+    margin: auto;
+    position: relative;
+}
+
+.below-section {
+    background-color: rgb(247, 229, 246);
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    bottom: 50%;
+    right: 30%;
+}
+
+.small-card {
+    background-color: white;
+    color: black;
+    height: 300px;
+    width: 250px;
+    padding: 15px;
+    position: absolute;
+    bottom: 25%;
+    left: 30%;
+    text-align: center;
+}
+.big-card{
+    background-color: rgb(240, 132, 10);
+    color:white;
+    height: 300px;
+    width: 250px;
+    padding: 15px;
+    position: absolute;
+    bottom: 3%;
+    right: 25%;
+}
+.button{
+    background-color: rgb(167, 236, 140);
+    height: 50px;
+    width: 150px;
+    border-radius: 20px;
+}
+.contact-form-section{
+    background-color: rgb(179, 184, 183);
+    height: 70vh;
+    /* width: 2100px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middle-card{
+    background-color:white ;
+    height: 500px;
+    width: 700px;
+    text-align: center;
+    padding: 30px;
+    margin-left: 50px;
+    position: relative;
+    left: 10%;
+}
+input[type=text],textarea {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+  }
+  .grey-card{
+    height: 350px;
+    width: 350px;
+    background-color: rgb(116, 110, 110);
+    color: white;
+    position: relative;
+    right: 50%;
+    padding: 15px;
+    text-align: center;
+  }

@@ -1,0 +1,142 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.products-results {
+  @include flexbox;
+  @include align-item-center;
+  @include justifyCenter;
+  @include flexwrap;
+  @include textCenter;
+  margin-bottom: 30px;
+
+  @media only screen and (min-width: $device-md) {
+    text-align: unset;
+    @include space-between;
+  }
+
+  .left-section {
+    width: 100%;
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-md) {
+      width: auto;
+      margin-bottom: 0;
+    }
+
+    p {
+      @include font-family(--jk-primary-fonts, 400);
+      @include font-detail(20px, 27px);
+      @include mb-0;
+    }
+  }
+
+  .right-section {
+    width: 100%;
+
+    @media only screen and (min-width: $device-md) {
+      width: auto;
+    }
+
+    .sort-label {
+      margin-right: 10px;
+    }
+
+    select {
+      @include border-radius(var(--data_site_border_radius));
+      @include font-detail(16px, 20px);
+      @include custom-selectbox(var(--data_site_text_color),
+        var(--data_border_color));
+      @include bg-arrow(transparent,
+        url(../../images/icons/arrow-down.svg),
+        no-repeat,
+        90%,
+        center);
+      min-width: 200px;
+
+      &:hover,
+      &:focus {
+        border: 1px solid var(--data_button_primary_color);
+      }
+
+      @media only screen and (min-width: $device-lg) {
+        @include font-detail(18px, 22px);
+      }
+    }
+  }
+}
+
+.badge-wrapper {
+  @include position(absolute);
+  @include positon-top(0px);
+  @include positon-left(0px);
+  @include flexbox;
+  @include flexColumn;
+  @include align-item-start;
+  gap: 3px;
+  z-index: 1;
+
+  @media only screen and (min-width: $device-sm) {
+    gap: 5px;
+  }
+
+  .badge {
+    @include badge(auto, 3px, 7px, inline-block);
+    @include font-detail(11px, normal);
+    @include positon-left(0);
+    @include textCenter;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    @media only screen and (min-width: $device-sm) {
+      @include badge(auto, 4px, 8px, inline-block);
+      @include font-detail(13px, normal);
+    }
+  }
+
+  .discount-badge {
+    @include discount-badge(var(--data_site_primary_color),
+      var(--data_site_theme_color));
+  }
+
+  .badge-featured {
+    background: var(--data_site_secondary_color);
+    color: var(--data_site_theme_color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--tag-bg-color);
+    color: var(--data_site_theme_color);
+
+    .product-tag-img {
+      display: block;
+      @include position(relative);
+      padding: 5px 7px;
+
+      @media only screen and (min-width: $device-sm) {
+        padding: 7px 10px;
+      }
+
+      img {
+        width: auto;
+        height: 16px;
+        position: static;
+        margin: 0px 0;
+        vertical-align: top;
+        @include position(absolute);
+        @include positon-top(-3px);
+        @include positon-left(0px);
+        object-fit: contain;
+
+        @media only screen and (min-width: $device-sm) {
+          @include positon-top(-4px);
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  .out-of-stock-badge {
+    @include discount-badge(var(--data_error_color),
+      var(--data_site_theme_color));
+  }
+}

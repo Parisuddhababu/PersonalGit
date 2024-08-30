@@ -1,0 +1,427 @@
+@import "../common/mixin";
+
+.osicon-low-stock {
+    @include osicon-low-stock;
+}
+
+.osicon-cheveron-down {
+    @include osicon-cheveron-down;
+}
+
+.osicon-heart {
+    @include osicon-heart;
+}
+
+.osicon-note {
+    @include osicon-note;
+}
+
+.osicon-trash {
+    @include osicon-trash;
+}
+
+.shipping-address-wrap {
+    border-bottom: 1px solid var(--data_site_gray_color);
+
+    .product-list-table-wrap {
+        overflow-x: auto;
+
+        .product-list-table {
+            width: 100%;
+            margin-top: 20px;
+            table-layout: fixed;
+
+            @include md {
+                margin-top: 30px;
+            }
+
+            @include container-md {
+                margin-top: 49px;
+            }
+
+            td {
+                vertical-align: top;
+                word-wrap: break-word;
+            }
+
+            > thead {
+                > tr {
+                    > th {
+                        @include body-large-bold;
+                        padding: 15px 5px 5px;
+                        border-bottom: 1px solid var(--data_site_gray_color);
+                        color: var(--data_site_text_color);
+                        text-align: left;
+
+                        @include sm {
+                            padding: 15px 5px 8px 5px;
+                        }
+
+                        @include xl {
+                            padding: 20px 8px 12px;
+                        }
+
+                        @include container-md {
+                            padding: 25px 10px 16px;
+                        }
+
+                        &:first-child {
+                            padding-left: 0;
+                        }
+
+                        &.Product {
+                            width: 302px;
+
+                            @include md {
+                                width: 56%;
+                            }
+                        }
+
+                        &.Price {
+                            width: 90px;
+
+                            @include md {
+                                width: 12%;
+                            }
+                        }
+
+                        &.Quantity {
+                            width: 150px;
+
+                            @include md {
+                                width: 170px;
+                            }
+                        }
+
+                        &.Total {
+                            width: 100px;
+
+                            @include md {
+                                width: 12%;
+                            }
+                        }
+
+                        &.action {
+                            width: 50px;
+
+                            @include md {
+                                width: 5%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            > tbody {
+                > tr {
+                    &:first-child {
+                        > td {
+                            padding-top: 30px;
+
+                            @include md {
+                                padding-top: 40px;
+                            }
+
+                            @include xl {
+                                padding-top: 50px;
+                            }
+
+                            @include container-md {
+                                padding-top: 69px;
+                            }
+                        }
+                    }
+
+                    > td {
+                        @include h3;
+                        color: var(--data_site_gray_color);
+                        border-bottom: 1px solid var(--data_site_border_color);
+                        padding: 15px 10px;
+
+                        @include xl {
+                            padding: 20px 10px;
+                        }
+
+                        @include container-md {
+                            padding: 25px 10px;
+                        }
+
+                        &:first-child {
+                            padding-left: 0;
+                        }
+
+                        // .qty-box {
+                        //     @include qty-box;
+                        // }
+                        .qty-btn {
+                            width: fit-content;
+                            @include qty-btn;
+
+                            em {
+                                font-size: 10px;
+                                padding:0px 4px;
+
+                                @include md {
+                                    font-size: 12px;
+                                }
+
+                                @include container-md  {
+                                    font-size: 14px;
+                                }
+                            }
+
+                            input {
+                                width: 35px;
+                                font-size: 12px;
+
+                                @include md {
+                                    font-size: 14px;
+                                    width: 50px;
+                                }
+
+                                @include container-md  {
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+
+                        figure {
+                            width: 80px;
+                            position: relative;
+                            padding-bottom: 100%;
+
+                            @include md {
+                                width: 100px;
+                            }
+
+                            @include container {
+                                width: 140px;
+                            }
+
+                            picture {
+                                position: absolute;
+                                inset: 0;
+
+                                img {
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: contain;
+                                }
+                            }
+                        }
+
+                        .product-name {
+                            @include body-large;
+
+                            a{
+                                color: var(--data_site_gray_color);
+                                @include transition(0.3s);
+                                cursor: pointer;
+
+                                &:hover{
+                                    color: var(--data_site_text_color);
+                                }
+                            }
+                        }
+
+                        .product-title {
+                            margin: 6px 0 11px;
+                            display: inline-block;
+                        }
+
+                        .button-wrapper {
+                            @include flexbox;
+                            @include flexwrap;
+                            gap: 10px;
+                        }
+
+                        .form-control {
+                            @include form-control;
+                            font-weight: bold;
+                            color: var(--data_site_text_color);
+                            text-align: center;
+                        }
+
+                        .product-wrapper {
+                            padding-left: 15px;
+
+                            @include xl {
+                                padding-left: 30px;
+                            }
+
+                            @include container-md {
+                                padding-left: 40px;
+                            }
+                        }
+
+                        &.total {
+                            font-weight: 700;
+                            position: relative;
+                            padding-bottom: 50px;
+
+                            span {
+                                span {
+                                    margin-top: 6px;
+                                    display: inline-block;
+                                }
+                            }
+
+                            ul {
+                                @include flexbox;
+                                @include just-end;
+                                gap: 20px;
+                                position: absolute;
+                                bottom: 15px;
+                                right: 0;
+
+                                @include xl {
+                                    bottom: 20px;
+                                    gap: 25px;
+                                }
+
+                                @include container-md {
+                                    bottom: 25px;
+                                    gap: 35px;
+                                }
+
+                                li {
+                                    a {
+                                        color: var(--data_site_gray_color);
+                                        cursor: pointer;
+
+                                        &:hover {
+                                            color: var(--data_site_primary_color);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.action {
+                            text-align: center;
+
+                            ul {
+                                @include flexbox;
+                                @include just-end;
+                                gap: 20px;
+
+                                @include xl {
+                                    bottom: 20px;
+                                    gap: 25px;
+                                }
+
+                                @include container-md {
+                                    bottom: 25px;
+                                    gap: 35px;
+                                }
+
+                                li {
+                                    a {
+                                        color: var(--data_site_gray_color);
+                                        cursor: pointer;
+
+                                        &:hover {
+                                            color: var(--data_site_primary_color);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .subtotal {
+                text-align: right;
+                color: var(--data_site_text_color);
+                padding: 10px 0;
+
+                @include xl {
+                    padding: 15px 0;
+                }
+
+                @include container-md {
+                    padding: 20px 0;
+                }
+
+                span {
+                    @include body-large-bold;
+
+                    & + span {
+                        margin-left: 26px;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn {
+        @include btn;
+        @include flexbox;
+        @include align-item-center;
+
+        &.btn-primary-large {
+            @include btn-primary-large;
+        }
+
+        &.btn-border-large {
+            @include btn-border-large;
+        }
+
+        &.btn-border-small {
+            @include btn-border-small;
+        }
+
+        &.btn-border-gray {
+            @include btn-border-gray;
+        }
+
+        i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+    }
+
+    .multiple-buttons {
+        @include flexbox;
+        @include flexwrap;
+        gap: 10px;
+        @include just-end;
+        padding: 15px 0;
+
+        @include md {
+            gap: 15px;
+        }
+
+        @include xl {
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        @include container-md {
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        button {
+            width: 100%;
+            @include just-center;
+
+            @include xm {
+                width: fit-content;
+            }
+        }
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

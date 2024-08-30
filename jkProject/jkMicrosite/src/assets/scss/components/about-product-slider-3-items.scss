@@ -1,0 +1,89 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-arrow-right {
+    @include jkm-arrow-right;
+}
+
+img {
+    @include img-common;
+}
+
+.product_slider {
+    position: relative;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    @media screen and (min-width: $container-main) {
+        margin-bottom: 120px;
+    }
+
+    .slider-content {
+        @include flexbox;
+        overflow: hidden;
+    }
+
+    .slider_image {
+        @include flexbox;
+        margin-right: 40px;
+
+        picture {
+            position: relative;
+            padding: 120px;
+
+            @media only screen and (min-width: $device-md) {
+                padding: 170px 190px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                padding: 240px 320px;
+            }
+        }
+
+        img {
+            overflow: hidden;
+            @include border-radius(10px);
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    .slider-arrow-btn {
+        @include slider-arrow-btn(50px);
+    }
+
+    .left {
+        left: 15px;
+
+        @media only screen and (min-width: $device-xl) {
+            left: 20px;
+        }
+
+        @media only screen and (min-width: $container-lg) {
+            left: 150px;
+        }
+    }
+
+    .right {
+        right: 15px;
+
+        @media only screen and (min-width: $device-xl) {
+            right: 20px;
+        }
+
+        @media only screen and (min-width: $container-lg) {
+            right: 150px;
+        }
+    }
+}

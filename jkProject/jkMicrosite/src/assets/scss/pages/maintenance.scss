@@ -1,0 +1,119 @@
+@import "../common/mixin";
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img {
+  @include space-none;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+.error404 {
+  background: url(../../images/404/404_background.png) no-repeat center;
+}
+h2 {
+  margin-bottom: 30px;
+}
+
+h4 {
+  margin-bottom: 30px;
+  @include font-family(var(--data_site_font_secondary), 400);
+  max-width: 590px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-center {
+  @include align-item-center;
+}
+
+.just-end {
+  @media only screen and (min-width: $device-md) {
+    @include just-end;
+  }
+  @include textCenter;
+}
+
+.btn {
+  @include button;
+  @include btn-secondary;
+  &.btn-small {
+    @include btn-small;
+    margin: 0 auto;
+  }
+}
+.error404 {
+  background-size: cover;
+  padding: 100px 0;
+  @media only screen and (min-width: $device-md) {
+    padding: 154px 0;
+  }
+}
+.maintenance-content {
+  color: var(--data_site_highlight_section_text_color);
+  .d-row {
+    @include row;
+    .d-col {
+      flex-direction: column-reverse;
+      @media only screen and (min-width: $device-md) {
+        @include flexrow;
+      }
+    }
+  }
+
+  .box {
+    @media only screen and (min-width: $device-md) {
+      width: 42.764%;
+    }
+  }
+  .maintenance-image {
+    position: relative;
+    padding: 35%;
+    margin-bottom: 30px;
+    @media only screen and (min-width: $device-md) {
+      width: 57.236%;
+      padding: 15.987% 24%;
+      margin-bottom: 0;
+    }
+    img {
+      -o-object-fit: cover;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+  }
+  .maintenance-image img {
+    margin-bottom: 20px;
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 0;
+    }
+  }
+}

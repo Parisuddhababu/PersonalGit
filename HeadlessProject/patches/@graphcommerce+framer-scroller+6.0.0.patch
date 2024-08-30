@@ -1,0 +1,22 @@
+diff --git a/node_modules/@graphcommerce/framer-scroller/components/MotionImageAspect.tsx b/node_modules/@graphcommerce/framer-scroller/components/MotionImageAspect.tsx
+index d6b160d..8d9e67b 100644
+--- a/node_modules/@graphcommerce/framer-scroller/components/MotionImageAspect.tsx
++++ b/node_modules/@graphcommerce/framer-scroller/components/MotionImageAspect.tsx
+@@ -2,6 +2,7 @@ import { Image, ImageProps } from '@graphcommerce/image'
+ import { Box } from '@mui/material'
+ import { m } from 'framer-motion'
+ import { forwardRef } from 'react'
++import Head from "next/head";
+ 
+ export type MotionImageAspectProps = Omit<ImageProps, 'layout' | 'unoptimized'>
+ 
+@@ -51,6 +52,9 @@ export const MotionImageAspect = m(
+         },
+       }}
+     >
++        <Head>
++            {props?.src && <link href={props.src as string} rel="preload" as="image"/>}
++        </Head>
+       <Image
+         {...props}
+         layout='fill'

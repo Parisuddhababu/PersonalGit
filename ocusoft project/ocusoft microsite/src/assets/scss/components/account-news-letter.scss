@@ -1,0 +1,50 @@
+@import "../common/mixin";
+
+.account-information-section {
+  @include section-bottom-spacing;
+
+  .p-error {
+    @include error;
+  }
+
+  .news-letter-content-wrap {
+    @include account-right-content-wrap;
+
+    .account-content-title {
+      @include account-content-title;
+    }
+
+    .account-news-letter-section {
+      h3 {
+        @include body-large-bold3;
+        margin-bottom: 14px;
+
+        @include md {
+          margin-bottom: 18px;
+        }
+
+        @include container {
+          margin-bottom: 20px;
+        }
+      }
+
+      .ocs-checkbox {
+        @include ocs-checkbox;
+        @include bottom-margin;
+      }
+
+      .btn {
+        @include btn;
+      }
+
+      .btn-primary {
+        @include btn-primary;
+
+        width: 100%;
+        @include sm {
+          width: fit-content;
+        }
+      }
+    }
+  }
+}

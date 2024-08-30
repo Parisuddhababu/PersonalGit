@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstname">First Name</label><br />
+    <input type="text" id="firstname" formControlName="firstName" />
+    @if (form.controls.firstName.touched && form.controls.firstName.dirty &&
+    form.controls.firstName.invalid ){
+    <p style="color: red">please enter first name</p>
+    }
+  </div>
+  <div>
+    <label for="lastname">Last Name</label><br />
+    <input type="text" id="lastname" formControlName="lastName" />
+    @if (form.controls.lastName.touched && form.controls.lastName.dirty &&
+    form.controls.lastName.invalid ){
+    <p style="color: red">please enter last name</p>
+    }
+  </div>
+  <div>
+    <label for="contact">Mobile Number</label><br />
+    <input type="text" id="contact" formControlName="contact" />
+    @if (form.controls.contact.touched && form.controls.contact.dirty &&
+    form.controls.contact.invalid ){
+    <p style="color: red">please enter valid contact number</p>
+    }
+  </div>
+
+  <div>
+    <label for="email">Email ID</label><br />
+    <input type="email" id="email" formControlName="email" />
+    @if (form.controls.email.touched && form.controls.email.dirty &&
+    form.controls.email.invalid ){
+    <p style="color: red">please enter email</p>
+    }
+  </div>
+  <button type="submit" class="submit" >Submit</button>
+  <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+</form>

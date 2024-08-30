@@ -1,0 +1,2424 @@
+@import "../common/variable";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+@font-face {
+  font-family: 'jkmain';
+  src: url('../../fonts/jkmain.eot?ljw1xh');
+  src: url('../../fonts/jkmain.eot?ljw1xh#iefix') format('embedded-opentype'),
+    url('../../fonts/jkmain.ttf?ljw1xh') format('truetype'),
+    url('../../fonts/jkmain.woff?ljw1xh') format('woff'),
+    url('../../fonts/jkmain.svg?ljw1xh#jkmain') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="jkm-"],
+[class*=" jkm-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'jkmain' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin jkm-meet {
+  &:before {
+    content: "\e96e";
+  }
+}
+
+@mixin jkm-photos {
+  &:before {
+    content: "\e96f";
+  }
+}
+
+@mixin jkm-pinterest {
+  &:before {
+    content: "\e970";
+  }
+}
+
+@mixin jkm-tumblr {
+  &:before {
+    content: "\e971";
+  }
+}
+
+@mixin jkm-compare-fill {
+  &:before {
+    content: "\e96a";
+  }
+}
+
+@mixin jkm-whishlist-fill {
+  &:before {
+    content: "\e96b";
+  }
+}
+
+@mixin jkm-pdf {
+  &:before {
+    content: "\e969";
+  }
+}
+
+@mixin jkm-diamond-fill {
+  &:before {
+    content: "\e966";
+  }
+}
+
+@mixin jkm-stone {
+  &:before {
+    content: "\e967";
+  }
+}
+
+@mixin jkm-gold-bars {
+  &:before {
+    content: "\e968";
+  }
+}
+
+@mixin jkm-fashion {
+  &:before {
+    content: "\e958";
+  }
+}
+
+@mixin jkm-band {
+  &:before {
+    content: "\e959";
+  }
+}
+
+@mixin jkm-gemstore {
+  &:before {
+    content: "\e95a";
+  }
+}
+
+@mixin jkm-diamond-stroke {
+  &:before {
+    content: "\e95b";
+  }
+}
+
+@mixin jkm-women {
+  &:before {
+    content: "\e95c";
+  }
+}
+
+@mixin jkm-men {
+  &:before {
+    content: "\e95d";
+  }
+}
+
+@mixin jkm-google-play {
+  &:before {
+    content: "\e95e";
+  }
+}
+
+@mixin jkm-apple {
+  &:before {
+    content: "\e95f";
+  }
+}
+
+@mixin jkm-debit-card {
+  &:before {
+    content: "\e960";
+  }
+}
+
+@mixin jkm-gift {
+  &:before {
+    content: "\e961";
+  }
+}
+
+@mixin jkm-credit-card {
+  &:before {
+    content: "\e962";
+  }
+}
+
+@mixin jkm-net-banking {
+  &:before {
+    content: "\e963";
+  }
+}
+
+@mixin jkm-bhim-upi {
+  &:before {
+    content: "\e964";
+  }
+}
+
+@mixin jkm-wallet {
+  &:before {
+    content: "\e965";
+  }
+}
+
+@mixin jkm-noun-share {
+  &:before {
+    content: "\e94d";
+  }
+}
+
+@mixin jkm-ship {
+  &:before {
+    content: "\e94e";
+  }
+}
+
+@mixin jkm-trash {
+  &:before {
+    content: "\e94f";
+  }
+}
+
+@mixin jkm-cart-bag {
+  &:before {
+    content: "\e950";
+  }
+}
+
+@mixin jkm-your-reward {
+  &:before {
+    content: "\e951";
+  }
+}
+
+@mixin jkm-frined-reward {
+  &:before {
+    content: "\e952";
+  }
+}
+
+@mixin jkm-ring-size {
+  &:before {
+    content: "\e953";
+  }
+}
+
+@mixin jkm-new {
+  &:before {
+    content: "\e954";
+  }
+}
+
+@mixin jkm-b2b {
+  &:before {
+    content: "\e955";
+  }
+}
+
+@mixin jkm-plus {
+  &:before {
+    content: "\e956";
+  }
+}
+
+@mixin jkm-minus {
+  &:before {
+    content: "\e957";
+  }
+}
+
+@mixin jkm-diamond-icon {
+  &:before {
+    content: "\e949";
+  }
+}
+
+@mixin jkm-dollor-icon {
+  &:before {
+    content: "\e94a";
+  }
+}
+
+@mixin jkm-cart-icon {
+  &:before {
+    content: "\e94b";
+  }
+}
+
+@mixin jkm-diamond-ring-icon {
+  &:before {
+    content: "\e94c";
+  }
+}
+
+@mixin jkm-play-icon {
+  &:before {
+    content: "\e945";
+  }
+}
+
+@mixin jkm-call-icon {
+  &:before {
+    content: "\e948";
+  }
+}
+
+@mixin jkm-file-upload {
+  &:before {
+    content: "\e914";
+  }
+}
+
+@mixin jkm-arrow-left {
+  &:before {
+    content: "\e947";
+  }
+}
+
+@mixin jkm-hours-delivery {
+  &:before {
+    content: "\e900";
+  }
+}
+
+@mixin jkm-add-to-cart {
+  &:before {
+    content: "\e901";
+  }
+}
+
+@mixin jkm-arrow-down {
+  &:before {
+    content: "\e902";
+  }
+}
+
+@mixin jkm-arrow-right {
+  &:before {
+    content: "\e903";
+  }
+}
+
+@mixin jkm-arrow-top {
+  &:before {
+    content: "\e904";
+  }
+}
+
+@mixin jkm-briefcase {
+  &:before {
+    content: "\e905";
+  }
+}
+
+@mixin jkm-calendar {
+  &:before {
+    content: "\e906";
+  }
+}
+
+@mixin jkm-call {
+  &:before {
+    content: "\e907";
+  }
+}
+
+@mixin jkm-camera {
+  &:before {
+    content: "\e908";
+  }
+}
+
+@mixin jkm-chat {
+  &:before {
+    content: "\e909";
+  }
+}
+
+@mixin jkm-check {
+  &:before {
+    content: "\e90a";
+  }
+}
+
+@mixin jkm-close {
+  &:before {
+    content: "\e90b";
+  }
+}
+
+@mixin jkm-contact-call {
+  &:before {
+    content: "\e90c";
+  }
+}
+
+@mixin jkm-contact-location {
+  &:before {
+    content: "\e90d";
+  }
+}
+
+@mixin jkm-contact-mail {
+  &:before {
+    content: "\e90e";
+  }
+}
+
+@mixin jkm-copy {
+  &:before {
+    content: "\e90f";
+  }
+}
+
+@mixin jkm-customer-service {
+  &:before {
+    content: "\e910";
+  }
+}
+
+@mixin jkm-delivery-truck {
+  &:before {
+    content: "\e911";
+  }
+}
+
+@mixin jkm-diamond {
+  &:before {
+    content: "\e912";
+  }
+}
+
+@mixin jkm-dislike {
+  &:before {
+    content: "\e913";
+  }
+}
+
+@mixin jkm-eye {
+  &:before {
+    content: "\e915";
+  }
+}
+
+@mixin jkm-eye-fill {
+  &:before {
+    content: "\e916";
+  }
+}
+
+@mixin jkm-eye-off {
+  &:before {
+    content: "\e917";
+  }
+}
+
+@mixin jkm-folder {
+  &:before {
+    content: "\e918";
+  }
+}
+
+@mixin jkm-gemstone {
+  &:before {
+    content: "\e919";
+  }
+}
+
+@mixin jkm-gmail {
+  &:before {
+    content: "\e91a";
+  }
+}
+
+@mixin jkm-gold {
+  &:before {
+    content: "\e91b";
+  }
+}
+
+@mixin jkm-green-check {
+  &:before {
+    content: "\e91c";
+  }
+}
+
+@mixin jkm-heart {
+  &:before {
+    content: "\e91d";
+  }
+}
+
+@mixin jkm-info-circle {
+  &:before {
+    content: "\e91e";
+  }
+}
+
+@mixin jkm-inspiration {
+  &:before {
+    content: "\e91f";
+  }
+}
+
+@mixin jkm-insta-fill-square {
+  &:before {
+    content: "\e920";
+  }
+}
+
+@mixin jkm-instagram {
+  &:before {
+    content: "\e921";
+  }
+}
+
+@mixin jkm-jewellary {
+  &:before {
+    content: "\e922";
+  }
+}
+
+@mixin jkm-like {
+  &:before {
+    content: "\e923";
+  }
+}
+
+@mixin jkm-linkedin {
+  &:before {
+    content: "\e924";
+  }
+}
+
+@mixin jkm-location {
+  &:before {
+    content: "\e925";
+  }
+}
+
+@mixin jkm-lock {
+  &:before {
+    content: "\e926";
+  }
+}
+
+@mixin jkm-magic-ring {
+  &:before {
+    content: "\e927";
+  }
+}
+
+@mixin jkm-magnetism {
+  &:before {
+    content: "\e928";
+  }
+}
+
+@mixin jkm-mail {
+  &:before {
+    content: "\e929";
+  }
+}
+
+@mixin jkm-mail1 {
+  &:before {
+    content: "\e92a";
+  }
+}
+
+@mixin jkm-meta {
+  &:before {
+    content: "\e92b";
+  }
+}
+
+@mixin jkm-meta-fill-square {
+  &:before {
+    content: "\e92c";
+  }
+}
+
+@mixin jkm-mission {
+  &:before {
+    content: "\e92d";
+  }
+}
+
+@mixin jkm-monthly-wall-calendar {
+  &:before {
+    content: "\e92e";
+  }
+}
+
+@mixin jkm-new-arrival {
+  &:before {
+    content: "\e92f";
+  }
+}
+
+@mixin jkm-offer {
+  &:before {
+    content: "\e930";
+  }
+}
+
+@mixin jkm-outline {
+  &:before {
+    content: "\e931";
+  }
+}
+
+@mixin jkm-pencil {
+  &:before {
+    content: "\e932";
+  }
+}
+
+@mixin jkm-quote {
+  &:before {
+    content: "\e933";
+  }
+}
+
+@mixin jkm-quote1 {
+  &:before {
+    content: "\e934";
+  }
+}
+
+@mixin jkm-search {
+  &:before {
+    content: "\e935";
+  }
+}
+
+@mixin jkm-secure-payment {
+  &:before {
+    content: "\e936";
+  }
+}
+
+@mixin jkm-share {
+  &:before {
+    content: "\e937";
+  }
+}
+
+@mixin jkm-shopping-bag {
+  &:before {
+    content: "\e938";
+  }
+}
+
+@mixin jkm-silver {
+  &:before {
+    content: "\e939";
+  }
+}
+
+@mixin jkm-solitaire {
+  &:before {
+    content: "\e93a";
+  }
+}
+
+@mixin jkm-solution {
+  &:before {
+    content: "\e93b";
+  }
+}
+
+@mixin jkm-star {
+  &:before {
+    content: "\e93c";
+  }
+}
+
+@mixin jkm-star1 {
+  &:before {
+    content: "\e93d";
+  }
+}
+
+@mixin jkm-star2 {
+  &:before {
+    content: "\e93e";
+  }
+}
+
+@mixin jkm-star-fill {
+  &:before {
+    content: "\e93f";
+  }
+}
+
+@mixin jkm-time {
+  &:before {
+    content: "\e940";
+  }
+}
+
+@mixin jkm-user {
+  &:before {
+    content: "\e941";
+  }
+}
+
+@mixin jkm-visa {
+  &:before {
+    content: "\e942";
+  }
+}
+
+@mixin jkm-wedding-ring {
+  &:before {
+    content: "\e943";
+  }
+}
+
+@mixin jkm-whatsapp {
+  &:before {
+    content: "\e944";
+  }
+}
+
+@mixin jkm-youtube {
+  &:before {
+    content: "\e946";
+  }
+}
+
+@mixin jkm-nav {
+  &:before {
+    content: "\e96c";
+  }
+}
+
+@mixin jkm-more {
+  &:before {
+    content: "\e96d";
+  }
+}
+
+@mixin jkm-twitter {
+  &:before {
+    content: "\ea96";
+  }
+}
+
+@mixin font-family($face,
+  $weight) {
+  font-family: $face;
+  font-weight: $weight;
+}
+
+@mixin font-detail($font-size-value,
+  $line-height-value) {
+  font-size: $font-size-value;
+  line-height: $line-height-value;
+}
+
+@mixin common-font-size {
+  @include font-detail(14px,
+    21px);
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(16px, 24px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(18px,
+      27px);
+  }
+}
+
+@mixin body-font {
+  @include font-family(var(--data_site_font_secondary),
+    400);
+  @include common-font-size;
+  font-style: normal;
+  letter-spacing: normal;
+  color: var(--data_site_text_color);
+}
+
+@mixin font-xl {
+  @include font-detail(32px,
+    40px);
+  @include font-family(var(--data_site_font_primary),
+    normal);
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(48px, 63px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(85px,
+      113px);
+  }
+}
+
+@mixin font-lg {
+  @include font-detail(28px,
+    34px);
+  @include font-family(var(--data_site_font_primary),
+    normal);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(38px, 40px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(50px,
+      65px);
+  }
+}
+
+@mixin font-md {
+  @include font-family(var(--data_site_font_primary),
+    normal);
+  @include font-detail(24px,
+    30px);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(28px, 34px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(32px,
+      42px);
+  }
+}
+
+@mixin font-sl {
+  @include font-detail(20px,
+    28px);
+  @include font-family(var(--data_site_font_primary),
+    normal);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(24px, 30px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(28px,
+      37px);
+  }
+}
+
+@mixin font-sm {
+  @include font-detail(20px,
+    28px);
+  @include font-family(var(--data_site_font_primary),
+    normal);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(22px, 30px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(24px,
+      36px);
+  }
+}
+
+@mixin font-xs {
+  @include font-detail(16px,
+    20px);
+  @include font-family(var(--data_site_font_secondary),
+    500);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(18px, 24px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(20px,
+      30px);
+  }
+}
+
+@mixin font-xxs {
+  @include font-detail(14px,
+    18px);
+  @include font-family(var(--data_site_font_secondary),
+    normal);
+  margin-bottom: 0;
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(16px, 20px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(18px,
+      27px);
+  }
+}
+
+@mixin body3 {
+  @include font-detail(16px,
+    20px);
+}
+
+@mixin body5 {
+  @include font-detail(14px,
+    18px);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin opacity($opacity) {
+  -webkit-opacity: $opacity;
+  -moz-opacity: $opacity;
+  -o-opacity: $opacity;
+  -ms-opacity: $opacity;
+  opacity: $opacity;
+}
+
+@mixin transition($seconds,
+  $timing: ease) {
+  -webkit-transition: all $seconds ease;
+  -moz-transition: all $seconds ease;
+  -ms-transition: all $seconds ease;
+  -o-transition: all $seconds ease;
+  transition: all $seconds $timing;
+}
+
+@mixin transform($property) {
+  -o-transform: $property;
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  -moz-transform: $property;
+  transform: $property;
+}
+
+@mixin flexbox() {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flexCenter() {
+  @include flexbox;
+  @include align-item-center;
+  @include justifyCenter;
+}
+
+@mixin text-shadow($x-axis,
+  $y-axis,
+  $blur,
+  $color) {
+  -ms-text-shadow: $x-axis $y-axis $blur $color;
+  -o-text-shadow: $x-axis $y-axis $blur $color;
+  -webkit-text-shadow: $x-axis $y-axis $blur $color;
+  -moz-text-shadow: $x-axis $y-axis $blur $color;
+  text-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin box-shadow($x-axis,
+  $y-axis,
+  $blur,
+  $color) {
+  -ms-box-shadow: $x-axis $y-axis $blur $color;
+  -o-box-shadow: $x-axis $y-axis $blur $color;
+  -webkit-box-shadow: $x-axis $y-axis $blur $color;
+  -moz-box-shadow: $x-axis $y-axis $blur $color;
+  box-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin box-shadow-none {
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin box($property) {
+  box-sizing: $property;
+  -moz-box-sizing: $property;
+  -webkit-box-sizing: $property;
+  -o-box-sizing: $property;
+}
+
+@mixin text-clamp($line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+
+@mixin space-none {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin bg-cmn {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin label {
+  display: inline-block;
+  margin-bottom: 5px;
+  line-height: 22px;
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 10px;
+  }
+}
+
+@mixin formgroup {
+  width: 100%;
+}
+
+@mixin formgroup-with-invalid {
+  @include formgroup;
+
+  &.invalid {
+    .form-control {
+      border: 1px solid var(--data_error_color) !important;
+    }
+
+    label,
+    em {
+      color: var(--data_error_color);
+    }
+
+    .jkm-erro-icon {
+      font-size: 20px;
+    }
+  }
+}
+
+@mixin formcontrol {
+  padding: 10px 55px 10px 15px;
+  @include font-detail(14px,
+    20px);
+  display: inline-block;
+  width: 100%;
+  background: var(--data_site_theme_color);
+  color: rgba($color: var(--data_site_text_color), $alpha: 0.5);
+  @include font-family(var(--data_site_font_secondary),
+    normal);
+  @include transition(0.3s);
+  outline: none;
+  @include box-shadow-none;
+  @include border-radius(var(--data_site_border_radius));
+  border: 1px solid var(--data_border_color);
+  text-decoration: none !important;
+  position: relative;
+  resize: vertical;
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 13px 55px 13px 20px;
+    @include font-detail(18px,
+      22px);
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--data_border_primary_color);
+  }
+
+  &::-webkit-input-placeholder {
+    @include opacity(0.5);
+    color: var(--data_site_text_color);
+  }
+
+  &::-moz-placeholder {
+    @include opacity(0.5);
+    color: var(--data_site_text_color);
+  }
+
+  &:-ms-input-placeholder {
+    @include opacity(0.5);
+    color: var(--data_site_text_color);
+  }
+
+  &:-moz-placeholder {
+    @include opacity(0.5);
+    color: var(--data_site_text_color);
+  }
+}
+
+@mixin formcontrol-with-disable {
+  @include formcontrol;
+
+  &[disabled],
+  &:disabled {
+    background: var(--data_disable_color);
+    color: #afafaf;
+    @include opacity(0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+
+    em {
+      right: 16px;
+    }
+  }
+}
+
+@mixin custom-selectbox($color,
+  $border) {
+  padding: 10px 30px 10px 13px;
+  color: $color;
+  border: 1px solid $border;
+  cursor: pointer;
+  outline: none;
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 13px 30px 13px 13px;
+  }
+}
+
+@mixin bg-arrow($transparent,
+  $url,
+  $repeat,
+  $right,
+  $center) {
+  background: $transparent $url $repeat $right $center;
+  background-size: 10px;
+  -webkit-appearance: none;
+}
+
+@mixin checkbox {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  line-height: 0;
+
+  input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 0;
+    @include opacity(0);
+    z-index: 1;
+    cursor: pointer;
+    vertical-align: middle;
+
+    &:checked + span {
+      &::before {
+        content: "\e90a";
+        color: var(--data_site_highlight_section_text_color);
+        background: var(--data_button_primary_color);
+      }
+    }
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    min-height: 17px;
+    min-width: 17px;
+    vertical-align: middle;
+
+    @media only screen and (min-width: $device-xl) {
+      min-height: 22px;
+      min-width: 22px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid var(--data_border_primary_color);
+      background: var(--data_site_theme_color);
+      font-family: "jkmain" !important;
+      speak: never;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      @include transition(0.4s);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--data_site_highlight_section_text_color);
+      @include flexCenter;
+      font-size: 7px;
+
+      @media only screen and (min-width: $device-xl) {
+        width: 20px;
+        height: 20px;
+        border: 3px solid var(--data_border_primary_color);
+        font-size: 9px;
+      }
+    }
+  }
+
+  label {
+    display: inline-block;
+    padding-left: 10px;
+    position: relative;
+    cursor: pointer;
+    min-height: 17px;
+    vertical-align: middle;
+    margin-bottom: 0;
+
+    @media only screen and (min-width: $device-xl) {
+      min-height: 22px;
+      padding-left: 15px;
+    }
+  }
+}
+
+@mixin checkbox-with-disable {
+  @include checkbox;
+
+  input {
+
+    &[disabled],
+    &:disabled {
+      & + label {
+        cursor: not-allowed;
+        pointer-events: none;
+        @include opacity(0.5);
+      }
+    }
+  }
+}
+
+@mixin radiobutton {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+
+  input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    font-size: 0;
+    @include opacity(0);
+
+    &:checked + label {
+      &::before {
+        border-width: 5px;
+        border: 4px solid var(--data_site_primary_color);
+      }
+    }
+  }
+
+  label {
+    display: inline-block;
+    padding-left: 35px;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--data_border_color);
+      background: var(--data_site_theme_color);
+      @include border-radius(50%);
+      @include transition(0.4s);
+    }
+  }
+}
+
+@mixin radiobutton-with-disable {
+  @include radiobutton;
+
+  input {
+
+    &[disabled],
+    &:disabled {
+      & + label {
+        cursor: not-allowed;
+        pointer-events: none;
+        @include opacity(0.5);
+      }
+    }
+  }
+}
+
+@mixin errormessage {
+  color: var(--data_error_color);
+  margin-top: 5px;
+  @include font-detail(12px,
+    20px);
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(14px, 24px);
+    margin-top: 10px;
+  }
+}
+
+@mixin breadcrumsection {
+  background: var(--data_site_theme_highlight);
+  padding: 8px 0px;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 15px 0px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 30px 0px;
+  }
+}
+
+@mixin breadcrumlist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media only screen and (min-width: $device-xs) {
+    flex-wrap: wrap;
+  }
+
+  li {
+    font-family: var(--data_site_font_secondary);
+    letter-spacing: 0px;
+    color: var(--data_site_text_color);
+    margin-right: 35px;
+    position: relative;
+    @include font-detail(14px,
+      24px);
+
+    @media only screen and (min-width: $device-xl) {
+      @include font-detail(16px, 19px);
+    }
+
+    > a {
+      color: var(--data_site_text_color);
+    }
+
+    &::after {
+      content: ">>";
+      position: absolute;
+      right: -26px;
+      color: var(--data_site_text_color);
+      font-size: 16px;
+      height: 100%;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+}
+
+@mixin figure {
+  margin: 0;
+  display: inherit;
+}
+
+@mixin ul-disc-style {
+  list-style: disc;
+}
+
+@mixin ol-decimal-style {
+  list-style: decimal;
+}
+
+@mixin ol-circle-style {
+  list-style: circle;
+}
+
+@mixin list-left-space {
+  padding-left: 20px;
+}
+
+@mixin h1 {
+  @include font-xl;
+  @include space-none;
+}
+
+@mixin h2 {
+  @include font-lg;
+  @include space-none;
+}
+
+@mixin h3 {
+  @include font-md;
+  @include space-none;
+}
+
+@mixin h4 {
+  @include font-sm;
+  @include space-none;
+}
+
+@mixin h5 {
+  @include font-xs;
+  @include space-none;
+}
+
+@mixin h6 {
+  @include font-xxs;
+  @include space-none;
+}
+
+h1,
+.h1 {
+  @include h1;
+}
+
+h2,
+.h2 {
+  @include h2;
+}
+
+h3,
+.h3 {
+  @include h3;
+}
+
+h4,
+.h4 {
+  @include h4;
+}
+
+h5,
+.h5 {
+  @include h5;
+}
+
+h6,
+.h6 {
+  @include h6;
+}
+
+@mixin body-common {
+  @include space-none;
+  @include body-font;
+  font-smooth: auto;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+@mixin order-unoderlist {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin anchor-link-common {
+  text-decoration: none;
+  outline: none;
+  color: var(--data_site_text_color);
+  @include transition(0.4s);
+
+  &:hover {
+    color: var(--data_site_primary_color);
+  }
+}
+
+@mixin img-common {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+  vertical-align: middle;
+  height: auto;
+}
+
+@mixin main {
+  float: left;
+  padding: 0px;
+  width: 100%;
+  min-height: 400px;
+}
+
+@mixin container {
+  max-width: $container;
+  width: 100%;
+  margin: 0 auto;
+  @include flexbox;
+  @include flexColumn;
+  padding: 0 20px;
+}
+
+@mixin section {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+
+@mixin subtitle {
+  @include font-detail(16px,
+    20px);
+  @include font-family(var(--data_site_font_secondary),
+    500);
+
+  @media only screen and (min-width: $device-md) {
+    @include font-detail(20px, 28px);
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    @include font-detail(24px,
+      36px);
+  }
+}
+
+@mixin titleWithBorder($color) {
+  color: $color;
+  position: relative;
+  padding-bottom: 10px;
+
+  &::after {
+    content: "";
+    background: $color;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+
+  @media only screen and (min-width: $device-lg) {
+    padding-bottom: 15px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    padding-bottom: 20px;
+  }
+}
+
+@mixin body-area3 {
+  @include body3;
+}
+
+@mixin mb-30 {
+  margin-bottom: 15px;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 30px;
+  }
+}
+
+@mixin mb-0 {
+  margin-bottom: 0px;
+}
+
+@mixin mb-50 {
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 30px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}
+
+@mixin row {
+  @include flexbox;
+  @include flexrow;
+  @include flexwrap;
+  margin: 0 -15px;
+
+  @media only screen and (min-width: $device-xl) {
+    margin: 0 -20px;
+  }
+
+  .d-col {
+    @include flexbox;
+    @include flexwrap;
+    padding: 0 15px;
+    max-width: 100%;
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+  }
+}
+
+@mixin d-col-2 {
+  width: 100%;
+
+  @media only screen and (min-width: $device-md) {
+    width: 50%;
+  }
+}
+
+@mixin d-col-3 {
+  width: 100%;
+
+  @media only screen and (min-width: $device-md) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    width: 33.33%;
+  }
+}
+
+@mixin d-col-4 {
+  width: 100%;
+
+  @media only screen and (min-width: $device-md) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: $device-lg) {
+    width: 33.33%;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    width: 25%;
+  }
+}
+
+@mixin d-col-33 {
+  width: 100%;
+
+  @media only screen and (min-width: $device-lg) {
+    width: 33.33%;
+  }
+}
+
+@mixin d-col-66 {
+  width: 100%;
+
+  @media only screen and (min-width: $device-lg) {
+    width: 66.66%;
+  }
+}
+
+@mixin jk-card {
+  @include box-shadow(0,
+    0,
+    10px,
+    var(--data_box_shadow_color));
+  @include border-radius(var(--data_site_border_radius));
+  padding: 30px;
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 40px;
+  }
+}
+
+@mixin align-item-center {
+  align-items: center;
+}
+
+@mixin align-item-end {
+  align-items: flex-end;
+}
+
+@mixin align-item-start {
+  align-items: flex-start;
+}
+
+@mixin just-center {
+  justify-content: center;
+}
+
+@mixin just-end {
+  justify-content: end;
+}
+
+@mixin just-start {
+  justify-content: start;
+}
+
+@mixin space-between {
+  justify-content: space-between;
+}
+
+@mixin flexrow {
+  flex-direction: row;
+}
+
+@mixin flexColumn {
+  flex-direction: column;
+}
+
+@mixin justifyCenter {
+  justify-content: center;
+}
+
+@mixin flexwrap {
+  flex-wrap: wrap;
+}
+
+@mixin textCenter {
+  text-align: center;
+}
+
+@mixin button {
+  display: block;
+  @include font-family(var(--data_site_font_secondary),
+    bold);
+  text-align: center;
+  @include transition(0.3s);
+  outline: none;
+  cursor: pointer;
+  @include box-shadow-none;
+  @include border-radius(var(--data_site_border_radius));
+  text-decoration: none !important;
+  position: relative;
+  border: 1px solid;
+  padding: 8px 15px;
+  height: 40px;
+  @include font-detail(14px,
+    20px);
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 13px 20px;
+    height: 50px;
+    @include font-detail(18px,
+      22px);
+  }
+}
+
+@mixin btn-extra-large {
+  max-width: 742px;
+  width: 100%;
+  height: 50px;
+
+  @media only screen and (min-width: $device-xl) {
+    height: 70px;
+  }
+}
+
+@mixin btn-large {
+  max-width: 713px;
+  width: 100%;
+}
+
+@mixin btn-big {
+  max-width: 400px;
+  width: 100%;
+}
+
+@mixin btn-medium {
+  max-width: 216px;
+  width: 100%;
+}
+
+@mixin btn-small {
+  max-width: 160px;
+  width: 100%;
+}
+
+@mixin btn-icon {
+  max-width: 50px;
+  width: 100%;
+  @include flexCenter;
+
+  i {
+    color: var(--data_site_highlight_section_text_color);
+  }
+}
+
+@mixin btn-primary {
+  background: var(--data_button_primary_color);
+  color: var(--data_site_highlight_section_text_color);
+  border-color: var(--data_button_primary_color);
+
+  &:hover {
+    background: var(--data_site_theme_color);
+    color: var(--data_site_primary_color);
+  }
+}
+
+@mixin btn-secondary {
+  background-color: var(--data_button_secondary_color);
+  color: var(--data_site_highlight_section_text_color);
+  border-color: var(--data_border_secondary_color);
+
+  &:hover {
+    background-color: var(--data_site_theme_color);
+    color: var(--data_site_secondary_color);
+  }
+}
+
+@mixin btn-disable {
+  @include opacity(0.6);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@mixin hyperLink {
+  color: var(--data_site_text_color);
+  font-size: 16px;
+  line-height: 20px;
+  @include font-family(var(--data_site_font_secondary),
+    bold);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  @include transition(0.3s);
+  outline: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    color: var(--data_site_text_color);
+  }
+}
+
+@mixin pagination {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+
+  ul {
+    @include flexCenter;
+    @include flexwrap;
+
+    li {
+      margin-left: 10px;
+      @include flexbox;
+      margin-bottom: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        @include font-detail(14px,
+          17px);
+        padding: 11px 16px;
+        border: 1px solid var(--data_border_color);
+        border-radius: var(--data_site_border_radius);
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+          background: var(--data_button_secondary_color);
+          color: var(--data_site_highlight_section_text_color);
+        }
+
+        &.hidden {
+          display: none;
+        }
+
+        &.btn {
+          line-height: 15px;
+          height: auto;
+
+          .icon {
+            vertical-align: middle;
+          }
+        }
+
+        &.btn-previous {
+          .icon {
+            transform: rotate(180deg);
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin date-category-info {
+  @include flexbox;
+  @include flexwrap;
+  @include font-detail(14px,
+    18px);
+
+  .date {
+    margin-right: 20px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    @include font-detail(16px,
+      36px);
+  }
+}
+
+@mixin form-contain {
+  form {
+    label {
+      @include label;
+    }
+
+    .form-group {
+      width: 100%;
+      position: relative;
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .form-control {
+      @include formcontrol;
+    }
+
+    .btn {
+      @include button;
+      margin-bottom: 15px;
+
+      @media only screen and (min-width: $device-md) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+@mixin social-links-accessed {
+  .access-links-link {
+    margin-bottom: 20px;
+    width: 100%;
+    @include border-radius(var(--data_site_border_radius));
+
+    &.facebook {
+      background: var(--data_mail_icon_color);
+    }
+
+    &.google {
+      background: var(--data_google_icon_color);
+    }
+  }
+
+  a {
+    @include flexbox;
+    @include align-item-center;
+    padding: 9px 30px;
+    color: var(--data_site_highlight_section_text_color);
+
+    .social-icon-text {
+      margin: auto;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      padding: 11.5px 30px;
+    }
+  }
+}
+
+@mixin position($position) {
+  position: $position;
+}
+
+@mixin positon-top($position-top) {
+  top: $position-top;
+}
+
+@mixin positon-right($position-right) {
+  right: $position-right;
+}
+
+@mixin positon-bottom($position-bottom) {
+  bottom: $position-bottom;
+}
+
+@mixin positon-left($position-left) {
+  left: $position-left;
+}
+
+@mixin translate-y($translate-y) {
+  transform: translateY($translate-y);
+}
+
+@mixin translate-x($translate-x) {
+  transform: $translate-x;
+}
+
+@mixin position-align-center {
+  @include position(absolute);
+  @include positon-top(50%);
+  @include translate-y(-50%);
+}
+
+@mixin progress-bar {
+  @include flexbox;
+  @include align-item-center;
+
+  li {
+    width: 100%;
+    position: relative;
+
+    .complete-mark {
+      display: none;
+    }
+
+    &.active {
+      &::after {
+        background: var(--data_site_secondary_color);
+        @include opacity(1);
+      }
+
+      a {
+        background: var(--data_site_secondary_color);
+      }
+
+      span {
+        color: var(--data_site_secondary_color);
+        @include opacity(1);
+        font-weight: bold;
+      }
+    }
+
+    &.process-complete {
+      a {
+        @include font-detail(0,
+          0);
+        background: var(--data_site_theme_color);
+        border: 1px solid;
+        border-color: var(--data_site_secondary_color);
+      }
+
+      .complete-mark {
+        display: block;
+        font-size: 16px;
+        line-height: 40px;
+
+        @media only screen and (min-width: $device-md) {
+          line-height: 50px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          font: 18px;
+        }
+
+        color: var(--data_site_secondary_color);
+      }
+    }
+
+    &:after {
+      content: "";
+      background: #dadada;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      top: 23%;
+      color: var(--jk-black-color);
+      @include opacity(0.5);
+
+      @media only screen and (min-width: $device-md) {
+        top: 30%;
+      }
+    }
+
+    a {
+      @include border-radius(50px);
+      background: #dadada;
+      color: var(--data_site_highlight_section_text_color);
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto;
+      text-align: center;
+      width: 40px;
+      position: relative;
+      z-index: 9;
+
+      @media only screen and (min-width: $device-md) {
+        height: 50px;
+        line-height: 50px;
+        width: 50px;
+      }
+    }
+
+    span {
+      display: block;
+      text-align: center;
+      line-height: normal;
+      color: var(--jk-black-color);
+      @include opacity(0.5);
+      text-transform: capitalize;
+      width: 90px;
+      height: 40px;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media only screen and (min-width: $device-sm) {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}
+
+@mixin linkStyle($text_decoration,
+  $color,
+  $font_weight,
+  $text_transform) {
+  text-decoration: $text_decoration;
+  color: $color;
+  font-weight: $font_weight;
+  text-transform: $text_transform;
+  cursor: pointer;
+}
+
+@mixin float-content-width($width,
+  $float-position,
+  $breakpoint,
+  $background) {
+  @include flexbox;
+  @include flexColumn;
+  width: 100%;
+  background: $background;
+
+  @media only screen and (min-width: $breakpoint) {
+    float: $float-position;
+    width: $width;
+  }
+}
+
+@mixin action-toolbar {
+
+  .edit,
+  .remove {
+    background: var(--data_site_theme_highlight);
+    @include flexCenter;
+    font-size: 18px;
+    padding: 9px;
+    @include border-radius(var(--data_site_border_radius));
+    cursor: pointer;
+
+    @media only screen and (min-width: $device-sm) {
+      font-size: 22px;
+    }
+  }
+
+  .edit {
+    background: var(--data_site_theme_highlight);
+
+    &:hover {
+      background: var(--data_site_secondary_color);
+      color: var(--data_site_highlight_section_text_color);
+    }
+  }
+
+  .remove {
+    background: var(--data_site_primary_color);
+    color: var(--data_site_highlight_section_text_color);
+  }
+}
+
+@mixin badge($minwidth,
+  $paddingX,
+  $paddingY,
+  $inlineblock) {
+  min-width: $minwidth;
+  padding: $paddingX $paddingY;
+  display: $inlineblock;
+}
+
+@mixin discount-badge($bg-badge,
+  $color-badge) {
+  background: $bg-badge;
+  color: $color-badge;
+}
+
+@mixin info_details {
+  flex-direction: column;
+  max-width: 310px;
+  margin-left: unset;
+
+  @media only screen and (min-width: $device-xl) {
+    max-width: 350px;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    margin-left: auto;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  .a::before {
+    content: "A";
+    margin-right: 10px;
+    background: var(--data_site_secondary_color);
+    @include border-radius(50px);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 22px;
+    color: var(--data_site_highlight_section_text_color);
+  }
+
+  .b::before {
+    content: "B";
+    margin-right: 10px;
+    background: var(--data_site_secondary_color);
+    @include border-radius(50px);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 22px;
+    color: var(--data_site_highlight_section_text_color);
+  }
+
+  .jkm-info-circle {
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: super;
+    margin-left: 5px;
+    color: var(--data_site_secondary_color);
+    vertical-align: inherit;
+  }
+}
+
+@mixin social-icon-group($ml) {
+  ul {
+    @include flexbox;
+    @include align-item-center;
+
+    li {
+      margin-left: $ml;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@mixin social-icon($color,
+  $font-size,
+  $lineheight) {
+  color: $color;
+  vertical-align: middle;
+  @include font-detail($font-size,
+    $lineheight);
+}
+
+@mixin slider-arrow-btn($button_size) {
+  position: absolute;
+  outline: none;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+  background: var(--data_site_theme_color);
+  @include flexCenter;
+  @include box-shadow(0,
+    0,
+    4px,
+    var(--data_box_shadow_color));
+  @include border-radius(var(--data_site_border_radius));
+  @include transition(0.3s);
+  background: var(--data_site_theme_color);
+  height: $button_size;
+  width: $button_size;
+  transform: translateY(-100%);
+  top: 40%;
+
+  @media only screen and (min-width: $device-sm) {
+    top: 50%;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    top: 45%;
+  }
+
+  &.left {
+    i {
+      transform: rotate(180deg);
+    }
+  }
+
+  i {
+    color: var(--data_site_text_color);
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background: var(--data_button_primary_color);
+    color: var(--data_site_highlight_section_text_color);
+    @include border-radius(var(--data_site_border_radius));
+
+    i {
+      color: var(--data_site_highlight_section_text_color);
+    }
+  }
+}
+
+@mixin qtybox($padding-y,
+  $padding-x) {
+  @include position(relative);
+  display: block;
+  overflow: hidden;
+  border-radius: var(--data_site_border_radius);
+
+  span {
+    @include position(absolute);
+    @include positon-right(0);
+    @include flexCenter;
+    z-index: 1;
+    border-left: 1px solid var(--data_border_color);
+    padding: $padding-y $padding-x;
+    cursor: pointer;
+    @include font-detail(7px,
+      normal);
+
+    &.arrow-up {
+      @include positon-top(0);
+      border-bottom: 1px solid var(--data_border_color);
+      width: 33px;
+      height: 26px;
+
+      i {
+        font-size: 7px;
+        padding-right: 5px;
+        padding-top: 3px;
+      }
+    }
+
+    &.arrow-down {
+      @include positon-bottom(0);
+      width: 33px;
+      height: 26px;
+
+      i {
+        font-size: 7px;
+        padding-right: 3px;
+        padding-bottom: 3px;
+      }
+    }
+
+    &:hover {
+      background: var(--data_site_primary_color);
+      color: var(--data_site_highlight_section_text_color);
+    }
+  }
+}
+
+@mixin pop-up-container($max-width,
+  $margin,
+  $padding-smalld-device,
+  $padding-big-device) {
+  max-width: $max-width;
+  margin: $margin;
+  padding: $padding-smalld-device;
+  position: relative;
+  border: 1px solid var(--data_border_color);
+
+  @media only screen and (min-width: $device-md) {
+    padding: $padding-big-device;
+  }
+
+  .jkm-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 14px;
+    color: var(--data_site_text_color);
+  }
+}
+
+@mixin heading-with-bottom-line($max-width,
+  $hieght,
+  $line-bg-color) {
+  margin: auto;
+  @include mb-30;
+  text-align: center;
+
+  .title {
+    @include h3;
+    @include mb-30;
+  }
+
+  .line {
+    max-width: $max-width;
+    width: 100%;
+    height: $hieght;
+    background: $line-bg-color;
+    margin: auto;
+  }
+}
+
+@mixin modal-popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  @include just-center;
+  @include align-item-center;
+}
+
+@mixin modal-container {
+  max-width: 90%;
+  width: 100%;
+  height: auto;
+  margin: auto;
+
+  @media screen and (min-width: $device-md) {
+    max-width: 700px;
+  }
+
+  @media screen and (min-width: $device-lg) {
+    max-width: 750px;
+  }
+}
+
+@mixin modal-wrapper {
+  background: var(--data_site_theme_color);
+  padding: 60px 20px;
+  margin: 40px auto;
+  position: relative;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 60px;
+  }
+}
+
+@mixin modal-icon-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  visibility: visible;
+}

@@ -1,0 +1,66 @@
+.view-user label {
+  font-weight: bold;
+}
+.over-flow-scroll {
+  max-height: 500px;
+  overflow-x: hidden;
+}
+
+.list-group-item {
+  border-bottom: 1px solid #c8ced3;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  height: 100%;
+  background-color: none !important;
+}
+.list-group-item-action {
+  color: none;
+  background: none;
+  width: 105% !important;
+}
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #bb3f42;
+  border-color: #bb3f42;
+}
+.table td {
+  padding: 0;
+}
+
+.navbar-light,
+.border-smooth {
+  border: 1px solid #c8ced3 !important;
+  border-radius: 0rem !important;
+}
+
+.table-striped tr:nth-of-type(odd) {
+  background: #fff !important;
+}
+.table-striped tr:nth-of-type(even) {
+  background: #c8ced5 !important;
+}
+
+.card-hover-eff a {
+  height: 100% !important;
+}
+.card-hover-eff:hover {
+  .grid-card {
+    background: #c8ced5;
+  }
+  .card {
+    border: 2px solid #c8ced5 !important;
+  }
+}
+.grid-selected {
+  z-index: 2;
+  color: #fff !important;
+  background-color: #bb3f42;
+  border-color: #bb3f42;
+}
+.grid-selected:hover {
+  background-color: #c8ced5;
+  color: #5c6873 !important;
+}
+.grid-text {
+  color: #5c6873 !important;
+}

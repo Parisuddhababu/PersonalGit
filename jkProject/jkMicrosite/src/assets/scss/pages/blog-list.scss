@@ -1,0 +1,130 @@
+@import "../common/mixin";
+
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+aside,
+main,
+section {
+    display: block;
+}
+
+img,
+a,
+p {
+    @include space-none;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+// needs to be fix (Components missed)
+.flex-column {
+    @include flexColumn;
+}
+
+// needs to be fix (Components missed)
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+}
+
+// needs to be fix (Components missed)
+.blog-wrapper {
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    @media screen and (min-width: $container-main) {
+        margin-bottom: 105px;
+    }
+
+    .d-row {
+        @include align-item-start;
+    }
+}
+
+// needs to be fix (Components missed)
+.blog-list-content-footer {
+    width: 100%;
+    margin-top: 20px;
+    @include flexCenter;
+
+    @media screen and (min-width: $device-md) {
+        margin-top: 40px;
+    }
+
+    @media screen and (min-width: $device-lg) {
+        margin-top: 60px;
+    }
+}
+
+// needs to be fix (Components missed)
+.d-row {
+    @include row;
+
+    .d-col {
+        &.d-col-2 {
+            @include d-col-2;
+        }
+
+        &.d-col-33 {
+            @include d-col-33;
+        }
+
+        &.d-col-66 {
+            @include d-col-66;
+        }
+    }
+}
+
+// needs to be fix (Components missed)
+.mb-0 {
+    @include mb-0;
+}

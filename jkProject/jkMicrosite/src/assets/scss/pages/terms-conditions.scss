@@ -1,0 +1,182 @@
+@import "../common/mixin";
+@import "../components/breadcrumb";
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+}
+
+.jkm-mail1 {
+  @include jkm-mail1;
+}
+
+.jkm-meta {
+  @include jkm-meta;
+}
+
+.jkm-instagram {
+  @include jkm-instagram;
+}
+
+.jkm-linkedin {
+  @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+  @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+  @include jkm-youtube;
+}
+
+.jkm-visa {
+  @include jkm-visa;
+}
+
+img {
+  @include img-common;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.terms-conditions-wrapper {
+  margin-top: 30px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-top: 50px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    margin-bottom: 115px;
+  }
+
+  .terms-conditions-details {
+    .terms-conditions-title {
+      @include font-family(var(--jk-lato-bold), bold);
+      color: var(--data_site_primary_color);
+      margin-bottom: 10px;
+
+      @media only screen and (min-width: $device-lg) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .terms-conditions-description {
+      margin-bottom: 10px;
+
+      @media only screen and (min-width: $device-lg) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+      }
+
+      p {
+        margin-bottom: 10px;
+
+        @media only screen and (min-width: $device-lg) {
+          margin-bottom: 20px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          margin-bottom: 30px;
+        }
+      }
+
+      ul {
+        padding-left: 20px;
+
+        li {
+          list-style: disc;
+        }
+      }
+
+      ol {
+        padding-left: 20px;
+        margin-top: 10px;
+
+        @media only screen and (min-width: $device-lg) {
+          margin-top: 20px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          margin-top: 30px;
+        }
+
+        li {
+          list-style: circle;
+        }
+      }
+    }
+  }
+}

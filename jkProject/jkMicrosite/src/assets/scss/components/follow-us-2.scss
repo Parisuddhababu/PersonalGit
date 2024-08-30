@@ -1,0 +1,74 @@
+@import "../common/mixin-2";
+
+.blog-follow-us {
+    background: var(--data_site_theme_highlight);
+    border: 1px solid var(--data_border_color);
+    padding: 20px;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $device-sm) {
+        margin-bottom: 40px;
+        padding: 30px 30px 40px;
+    }
+
+    h3 {
+        color: var(--data_site_primary_color);
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: $device-lg) {
+            margin-bottom: 20px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            margin-bottom: 30px;
+        }
+    }
+
+    .social-media-menu-list {
+        li {
+            margin: 0;
+            display: inline-block;
+            margin-right: 20px;
+
+            @media screen and (min-width: $device-xl) {
+                margin-right: 30px;
+            }
+
+            a {
+                i {
+                    color: var(--data_site_theme_color);
+                    font-size: 15px;
+                    @include flexCenter;
+                    width: 40px;
+                    height: 40px;
+                    background-color: var(--data_site_text_color);
+                    @include border-radius(50%);
+                    @include box-shadow(0px, 0px, 3px, var(--data_box_shadow_color));
+
+                    @media screen and (min-width: $device-xl) {
+                        width: 50px;
+                        height: 50px;
+                        font-size: 20px;
+                    }
+                }
+
+                &:hover {
+                    .facebook {
+                        background: var(--data_facebook_icon_color);
+                        color: var(--data_site_theme_color);
+                    }
+
+                    .instagram {
+                        background: var(--data_instagram_icon-color);
+                        color: var(--data_site_theme_color);
+                    }
+
+                    .linkedin {
+                        background: var(--data_linkedin_icon_color);
+                        color: var(--data_site_theme_color);
+                    }
+                }
+            }
+        }
+    }
+}

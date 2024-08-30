@@ -1,0 +1,68 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/button";
+@import "../common/common";
+@import "../common/table";
+@import "../layout/formControl";
+
+.my-plans-wrapper{
+    padding: 50px 0;
+    .table-responsive {
+        tbody {
+            position: relative;
+        }
+    }
+}
+.my-plans-card{
+    @include card(sm,true,false);
+    position: relative;
+    overflow: hidden;
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: -28px;
+        right: -20px;
+        height: 50px;
+        width: 80px;
+        transform: rotate(31deg);
+    }
+    &.silver-plan{
+        &::after{
+            background:#bdbdbd;
+        }
+    }
+    &.gold-plan{
+        &::after{
+            background :#EDBD0F;
+        }
+    }
+    &.platinum-plan{
+        &::after{
+            background :#284e74;
+        }
+    }
+
+    .my-plans-list{
+        @include row(1,20px,0px);
+        @include media($device-md){
+            @include row(3,20px,30px);
+        }
+        @include media($device-xl){
+            @include row(5,16px,24px);
+        }
+        li{
+            background: linear-gradient(90deg, rgba($gray-shade-2,0.2),rgba($gray-shade-2,0.7));
+            padding: 20px 24px;
+            border-radius: 10px;
+            .my-plans-list-title{
+                color: $body-text;
+            }
+            &.no-active-plan {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@import "../common/mixin-2";
+
+#tabs {
+  margin-bottom: 30px;
+
+  .nav-tabs {
+    @include flexbox;
+    overflow-x: scroll;
+
+    @media only screen and (min-width: $device-xl) {
+      overflow-x: unset;
+    }
+
+    li {
+      border: 1px solid var(--data_border_color);
+      @include textCenter;
+      padding: 14px 30px;
+      white-space: nowrap;
+
+      @media only screen and (min-width: $device-xl) {
+        width: calc(100% / 7);
+        padding: 14px 0;
+        overflow-x: unset;
+      }
+
+      &.active {
+        background: var(--data_site_primary_color) 0% 0% no-repeat padding-box;
+        border-color: var(--data_site_primary_color);
+
+        a,
+        i {
+          color: var(--data_site_highlight_section_text_color);
+        }
+      }
+
+      &:not(:first-child) {
+        border-left: 0;
+      }
+
+      i {
+        margin-right: 15px;
+      }
+
+      &:first-child {
+        @include border-radius(25px 0px 0px 25px);
+      }
+
+      &:last-child {
+        @include border-radius(0 25px 25px 0);
+      }
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+
+  &.current {
+    display: block;
+    border: 1px solid #dadada;
+    @include border-radius(10px);
+    padding: 20px;
+    margin-bottom: 50px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 100px;
+      padding: 40px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      margin-bottom: 145px;
+    }
+  }
+
+  .d-row {
+    @include row;
+
+    .d-col-2 {
+      @include d-col-2;
+    }
+  }
+}

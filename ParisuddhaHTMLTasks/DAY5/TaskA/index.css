@@ -1,0 +1,99 @@
+body {
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+}
+
+.top-section {
+    background-image: url("https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlY2lwZXxlbnwwfHwwfHx8MA%3D%3D");
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 30vh;
+    background-size:cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.top-section-card {
+    background-color: white;
+    height: 250px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+    left: 3%;
+    margin-top: 10px;
+}
+
+.top-section-img {
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
+button {
+    background-color:rgb(255, 123, 0);
+    color: white;
+    border-style: none;
+}
+
+.top-section-side-img {
+    height: 220px;
+    width: 250px;
+    margin-top: 28px;
+}
+
+.middle-section {
+    width: 70%;
+    height: 35vh;
+    background-color: lightgray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.middle-section-img{
+    height: 160px;
+    width: 250px;
+    position: relative;
+    left:2%;
+    margin-top: 17px;
+}
+.middle-section-card{
+    background-color: rgb(255, 123, 0);
+    height: 160px;
+    width: 300px;
+    padding: 15px;
+   
+}
+.middle-card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.bottom-section{
+    width: 70%;
+    height: 35vh;
+    background-color:white;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-section-img{
+    height: 160px;
+    width: 250px;
+    position: relative;
+    margin-top: 10px;
+    right: 2%;
+}
+.bottom-section-card{
+    background-color: rgb(255, 123, 0);
+    height: 160px;
+    width: 300px;
+    padding: 20px;
+}

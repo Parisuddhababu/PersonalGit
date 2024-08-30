@@ -1,0 +1,101 @@
+.subscription-plan-row{
+    @include row(1,20px,20px);
+    @include media($device-md){
+        @include row(3,20px,20px);
+    }
+    max-height: calc(100vh - 150px);
+    overflow: auto;
+}
+
+.subscription-plan-card {
+    border: 1px solid $billowing-clouds;
+    padding: 18px;
+    @include border-radius(10px);
+    @include transition(all,0.3s);
+    position: relative;
+    overflow: hidden;
+    @include flexbox;
+    flex-direction: column;
+    @include media($device-md){
+        padding: 22px;
+    }
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: -60px;
+        right: -40px;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        opacity: 0.6;
+        @include media($device-md){
+            height: 120px;
+            width: 120px;
+        }
+    }
+    &.silver{
+        &::after{
+            background: linear-gradient(226deg,$white-color,#bdbdbd);
+        }
+    }
+    &.gold{
+        &::after{
+            background:linear-gradient(226deg,$white-color,#EDBD0F);
+        }
+    }
+    &.platinum{
+        &::after{
+            background:linear-gradient(226deg,$white-color,#284e74)
+        }
+    }
+    .subscription-plan-list {
+        font-size: 14px;
+        padding: 20px 0;
+        li{
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 22px;
+            &::after{
+                content: "\e917";
+                width: 14px;
+                height: 14px;
+                background-color: #b3ebb8;
+                color: #0EA612;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "icomoon", Arial, Verdana, Tahoma, sans-serif !important;
+                font-size: 5px;
+                border-radius: 15px;
+                position: absolute;
+                left: 0;
+                top: 5px;
+                font-weight: 700;
+                padding-top: 1px;
+            }
+            &.not-include{
+                &::after{
+                    content: "\e90f";
+                    background-color: #d7dde3;
+                    color: #46464b;
+                }
+            }
+
+        }
+    }
+    .subscription-plan-title{
+        color: $label-color;
+        font-size: 16px;
+    }
+    .subscription-plan-price{
+        font-weight: 700;
+        color: $black-color;
+    }
+    &:hover{
+        background-color: rgba($billowing-clouds,0.3) ;
+    }
+    .btn{
+        margin-top: auto;
+    }
+}

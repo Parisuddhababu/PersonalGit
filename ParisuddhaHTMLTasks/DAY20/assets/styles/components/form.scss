@@ -1,0 +1,90 @@
+/* form-container  */
+.form-container {
+	background-color: $white-color;
+	height: 513px;
+	position: relative;
+	margin-top: 120px;
+	margin-bottom: 160px;
+	.form-tomoto-container {
+		position: absolute;
+		bottom: 250px;
+		right: 1%;
+		@include md {
+			bottom: 250px;
+			right: 1%;
+		}
+		@include lg {
+			bottom: 250px;
+			right: 0%;
+		}
+	}
+
+	.form-button {
+		border-radius: 5px;
+		background-color: $primary-color;
+		font-size: 21px;
+		line-height: 46px;
+		text-transform: uppercase;
+		color: $white-color;
+		font-weight: 700;
+		font-family: $Playfair;
+		@include pointer;
+		height: 67px;
+	}
+	.form-button:hover {
+		background-color: $grey-color;
+		text-shadow: 1px 1px $white-color;
+	}
+
+	input {
+		@include lg {
+			width: 479px;
+		}
+		width: 500px;
+		height: 65px;
+		border-radius: 5px;
+		background-color: rgba(235, 174, 76, 0);
+		border: 1px solid $light-color;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.form-input-card {
+		display: -ms-grid;
+		display: grid;
+		-ms-grid-columns: auto;
+		grid-template-columns: auto;
+		@include justify-content-center;
+		@include align-center;
+		row-gap: 10px;
+		-webkit-column-gap: 30px;
+		-moz-column-gap: 30px;
+		column-gap: 30px;
+		margin-bottom: 140px;
+		margin-top: 50px;
+		@include lg {
+			grid-template-columns: auto auto;
+		}
+	}
+
+	.form-sub-heading {
+		font-size: 29px;
+		letter-spacing: 2px;
+		line-height: 46px;
+		text-transform: uppercase;
+		color: $grey-color;
+		font-weight: 700;
+		font-family: $Playfair;
+		text-align: center;
+	}
+	.form-main-heading {
+		font-size: 55px;
+		@include lg {
+			font-size: 63px;
+		}
+		line-height: 106px;
+		color: $primary-color;
+		font-weight: 700;
+		font-family: $Playfair;
+		text-align: center;
+	}
+}

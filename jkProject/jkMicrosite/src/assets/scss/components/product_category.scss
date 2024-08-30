@@ -1,0 +1,156 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.our-product-category {
+  padding: 0px 0 40px;
+
+  @media screen and (min-width: $device-md) {
+    padding: 0px 0 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    padding: 0px 0 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    padding: 0px 0 80px;
+  }
+
+  h2 {
+    @include textCenter;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $device-md) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+      margin-bottom: 50px;
+    }
+  }
+
+  .row {
+    @include row;
+
+    .d-col {
+      .details-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include border-radius(10px);
+        border: 1px solid var(--data_border_color);
+        overflow: hidden;
+
+        picture {
+          position: relative;
+          padding: 50%;
+          display: block;
+
+          @media screen and (min-width: $device-sm) {
+            padding: 23.65% 50%;
+          }
+
+          img {
+            overflow: hidden;
+            @include border-radius(10px);
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+          }
+        }
+
+        .details {
+          position: absolute;
+          inset: 0;
+          @include flexbox;
+          @include just-center;
+          @include align-item-center;
+          @include flexColumn;
+          color: var(--data_site_highlight_section_text_color);
+          cursor: pointer;
+          @include transition(0.3s);
+          @include opacity(0);
+          z-index: 1;
+
+          h3 {
+            margin-bottom: 15px;
+
+            @media only screen and (min-width: $device-lg) {
+              margin-bottom: 20px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+              margin-bottom: 30px;
+            }
+          }
+
+          &:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: var(--data_site_primary_color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include opacity(0.4);
+            z-index: -1;
+          }
+
+          a,
+          h3 {
+            transition: none;
+          }
+        }
+
+        &:hover {
+          .details {
+            @include opacity(1);
+          }
+        }
+      }
+
+      &.d-col-2 {
+        @include d-col-2;
+        width: 50%;
+
+        @media screen and (min-width: $device-sm) {
+          width: 100%;
+        }
+
+        @media screen and (min-width: $device-lg) {
+          width: 50%;
+        }
+
+        &.mb-0 {
+          margin-bottom: 30px;
+
+          @media screen and (min-width: $device-sm) {
+            margin-bottom: 0;
+          }
+        }
+
+        .row {
+          flex: auto;
+
+          .d-col-2 {
+            // width: 100%;
+            // @media screen and (min-width: $device-sm) {
+            width: 50%;
+
+            // }
+            picture {
+              padding: 50%;
+              position: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}

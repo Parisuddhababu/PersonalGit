@@ -1,0 +1,111 @@
+@import "../common/mixin-2";
+
+.our-product-category {
+  padding: 0px 0 40px;
+
+  @media screen and (min-width: $device-md) {
+    padding: 0px 0 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    padding: 0px 0 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    padding: 0px 0 80px;
+  }
+
+  .row {
+    @include row;
+
+    .d-col {
+      .details-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--data_border_color);
+        overflow: hidden;
+
+        picture {
+          position: relative;
+          padding: 21.7% 50%;
+          display: block;
+
+          img {
+            overflow: hidden;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+          }
+        }
+
+        .details {
+          position: absolute;
+          inset: 0;
+          @include flexbox;
+          @include just-center;
+          @include flexColumn;
+          @include align-item-start;
+          color: var(--data_site_highlight_section_text_color);
+          padding: 20px;
+          z-index: 1;
+
+          @media screen and (min-width: $device-md) {
+            padding: 15px 15px 15px 60px;
+          }
+
+          h3 {
+            margin-bottom: 15px;
+
+            @media screen and (min-width: $device-md) {
+              margin-bottom: 20px;
+            }
+          }
+        }
+
+        .btn {
+          @include font-detail(16px, 19px);
+          max-width: 120px;
+          width: 100%;
+          height: auto;
+          padding: 10px;
+        }
+      }
+
+      &.d-col-2 {
+        @media screen and (min-width: $device-md) {
+          width: 100%;
+        }
+
+        @media screen and (min-width: $device-lg) {
+          width: 50%;
+        }
+      }
+
+      &.full-img {
+        picture {
+          padding: 21.7% 50%;
+
+          @media screen and (min-width: $device-lg) {
+            padding: 13.20% 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.heading {
+  margin-bottom: 30px;
+  @include textCenter;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}

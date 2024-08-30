@@ -1,0 +1,102 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-customer-service {
+    @include jkm-customer-service;
+}
+
+.jkm-magnetism {
+    @include jkm-magnetism;
+}
+
+.jkm-jewellary {
+    @include jkm-jewellary;
+}
+
+.jkm-secure-payment {
+    @include jkm-secure-payment;
+}
+
+.our-benefits {
+    @include textCenter;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    @media screen and (min-width: $container-main) {
+        margin-bottom: 120px;
+    }
+
+    h2 {
+        @include textCenter;
+        margin-bottom: 30px;
+
+        @media screen and (min-width: $device-md) {
+            margin-bottom: 40px;
+        }
+
+        @media screen and (min-width: $device-xl) {
+            margin-bottom: 50px;
+        }
+    }
+
+    .row {
+        @include row;
+        @include just-center;
+
+        .d-col-4 {
+            @include d-col-4;
+        }
+
+        .benefit-wrapper {
+            padding: 20px 15px;
+            border: 1px solid var(--data_border_color);
+            @include border-radius(10px);
+            width: 100%;
+
+            @media screen and (min-width: $device-md) {
+                padding: 30px 20px;
+            }
+
+            @media screen and (min-width: $container-lg) {
+                padding: 40px 28px;
+            }
+
+            i {
+                font-size: 70px;
+                color: var(--data_site_primary_color);
+
+                @media screen and (min-width: $container-lg) {
+                    font-size: 80px;
+                }
+            }
+
+            img {
+                max-height: 200px;
+                max-width: 200px;
+            }
+
+            h3 {
+                font-weight: bold;
+                margin: 10px 0 5px;
+            }
+
+            &:hover {
+                background: var(--data_site_primary_color);
+                border-color: var(--data_site_primary_color);
+                color: var(--data_site_theme_highlight);
+                cursor: pointer;
+
+                i {
+                    color: var(--data_site_theme_highlight);
+                }
+            }
+        }
+    }
+}

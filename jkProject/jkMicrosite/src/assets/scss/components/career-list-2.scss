@@ -1,0 +1,271 @@
+@import "../common/mixin-2";
+
+.jkms2-share {
+    @include jkms2-share;
+}
+
+.jkms2-briefcase {
+    @include jkms2-briefcase;
+}
+
+.jkms2-calendar {
+    @include jkms2-calendar;
+}
+
+.jkms2-contact-location {
+    @include jkms2-contact-location;
+}
+
+.jkms2-time {
+    @include jkms2-time;
+}
+
+.career-wrapper {
+    padding: 10px 0;
+
+    @media only screen and (min-width: $device-md) {
+        padding: 20px 0;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        padding: 30px 0;
+    }
+
+    h4 {
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .career-description,
+    .full-description {
+        background: var(--data_site_theme_highlight);
+        border: 1px solid var(--data_border_color);
+        border-bottom: 2px solid var(--data_site_secondary_color);
+        margin-bottom: 20px;
+        padding: 20px;
+
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 30px;
+        }
+
+        @media only screen and (min-width: $device-lg) {
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        &:hover {
+            @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+        }
+    }
+
+    .top {
+        li {
+            @media only screen and (min-width: $device-md) {
+                display: inline-block;
+            }
+
+            &:not(:last-child) {
+                margin-right: 40px;
+                margin-bottom: 15px;
+
+                @media only screen and (min-width: $device-lg) {
+                    margin-right: 70px;
+                    margin-bottom: 0;
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    margin-right: 140px;
+                }
+            }
+
+            i {
+                margin-right: 12px;
+            }
+        }
+    }
+
+    .seperator {
+        border: 1px solid var(--data_border_color);
+        margin: 20px 0;
+    }
+
+    .bottom {
+        > div {
+            * {
+                all: revert;
+            }
+
+            > *:not(:first-child) {
+                margin: 10px 0 0;
+                display: block;
+
+                @media only screen and (min-width: $device-md) {
+                    margin: 20px 0 0;
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    margin: 30px 0 0;
+                }
+            }
+        }
+    }
+
+    .list-style-decimal {
+        padding-left: 17px;
+
+        li {
+            list-style: decimal;
+        }
+    }
+
+    .list-style-disc {
+        padding-left: 15px;
+
+        li {
+            position: relative;
+
+            &::before {
+                content: "·";
+                font-size: 35px;
+                vertical-align: top;
+                line-height: 20px;
+                position: absolute;
+                left: -15px;
+            }
+        }
+    }
+
+    p {
+        color: var(--data_site_text_color);
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: $device-xl) {
+            margin-bottom: 30px;
+        }
+    }
+
+    .actions {
+        @include flexbox;
+        @include flexColumn;
+        margin: 10px 0 0;
+
+        @media only screen and (min-width: $device-sm) {
+            @include space-between;
+            flex-direction: unset;
+        }
+
+        @media only screen and (min-width: $device-md) {
+            margin: 20px 0 0;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            margin: 30px 0 0;
+        }
+    }
+
+    .share {
+        @include flexbox;
+        @include space-between;
+        margin-top: 15px;
+        width: 210px;
+
+        @media only screen and (min-width: $device-sm) {
+            margin-top: 0;
+            margin-left: auto;
+            width: 220px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            width: 240px;
+        }
+
+        .btn-share {
+            width: 40px;
+            border-radius: 50%;
+            padding-left: 0;
+            padding-right: 0;
+
+            @media only screen and (min-width: $device-xl) {
+                width: 50px;
+            }
+        }
+    }
+}
+
+.share-social-media {
+    @include social-icon-group(15px);
+    margin-bottom: 10px;
+
+    @media only screen and (min-width: $device-md) {
+        @include social-icon-group(20px);
+    }
+
+    .product-social-media {
+        @include just-center;
+    }
+
+    .icon {
+        @include social-icon(var(--data_site_text_color), 20px, 20px);
+        cursor: pointer;
+
+        @media only screen and (min-width: $device-md) {
+            @include font-detail(24px, 24px);
+        }
+
+        &.jkms2-meta {
+            @include jkms2-meta;
+
+            &:hover {
+                color: #1877f2;
+            }
+        }
+
+        &.jkms2-twitter {
+            @include jkms2-twitter;
+
+            &:hover {
+                color: var(--data_twitter_icon_color);
+            }
+        }
+
+        &.jkms2-linkedin {
+            @include jkms2-linkedin;
+
+            &:hover {
+                color: var(--data_linkedin_icon_color);
+            }
+        }
+
+        &.jkms2-instagram {
+            @include jkms2-instagram;
+
+            &:hover {
+                color: #dd2a7b;
+            }
+        }
+
+        &.jkms2-whatsapp {
+            @include jkms2-whatsapp;
+
+            &:hover {
+                color: #25d336;
+            }
+        }
+
+        &.jkms2-mail1 {
+            @include jkms2-mail1;
+            @include font-detail(17px, 17px);
+
+            @media only screen and (min-width: $device-md) {
+                @include font-detail(20px, 24px);
+            }
+
+            &:hover {
+                color: #2151a1;
+            }
+        }
+    }
+}

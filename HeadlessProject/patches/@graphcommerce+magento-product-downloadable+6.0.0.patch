@@ -1,0 +1,25 @@
+diff --git a/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.graphql b/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.graphql
+index c079239..5d8b0df 100644
+--- a/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.graphql
++++ b/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.graphql
+@@ -2,6 +2,8 @@ fragment DownloadableProductOptions on DownloadableProduct {
+   __typename
+   uid
+   ... on DownloadableProduct {
++    links_title
++    sample_links_title
+     downloadable_product_links {
+       price
+       sample_url
+diff --git a/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.tsx b/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.tsx
+index c5bdb28..1da1e2a 100644
+--- a/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.tsx
++++ b/node_modules/@graphcommerce/magento-product-downloadable/components/DownloadableProductOptions/DownloadableProductOptions.tsx
+@@ -24,7 +24,6 @@ export function DownloadableProductOptions(props: DownloadableProductOptionsProp
+         const newItem: ActionCardProps = {
+           value: item.uid,
+           title: item.title,
+-          price: <Money value={item.price} />,
+         }
+         return newItem
+       }),

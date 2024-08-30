@@ -1,0 +1,64 @@
+ 
+@import "../common/mixin";
+// Toggle switch
+
+.ocs-switch {
+	.toggle-switch {
+		@include flexbox;
+		@include align-item-center;
+		cursor: pointer;
+        margin-right: 24px;
+
+		input {
+            position: absolute;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            margin: 0;  
+            @include opacity(0);
+
+			&:checked + .slider {
+				background-color: var(--data_site_primary_color);
+			}
+
+			&:checked + .slider:before {
+				@include transform(translateX(12px));
+			}
+		}
+		.slider {
+			position: relative;
+			width: 24px;
+			height: 12px;
+			background-color: var(--data_site_light_gray1);
+			@include transition(0.3s);
+			@include border-radius(6px);
+
+			&::before {
+				content: "";
+				position: absolute;
+				height: 8px;
+				width: 8px; 
+				left: 2px;
+				bottom: 2px;
+				background-color: var(--data_site_white_color);
+				@include transition(0.3s);
+				@include border-radius(50%);
+			}
+		}
+
+		.toggle-label {
+			user-select: none;
+			@include body-regular;
+            color: var(--data_site_text_color);
+            padding-left: 12px;
+		}
+		input[disabled],
+		input:disabled {
+			& + label {
+				cursor: not-allowed;
+				pointer-events: none;
+				@include opacity(0.5);
+			}
+		}
+	}
+}

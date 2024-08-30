@@ -1,0 +1,242 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+@import "../common/modal";
+@import "../layout/formControl";
+@import "../common/table";
+@import "../layout/button";
+
+.live-schedule-wrapper {
+    padding: 50px 0;
+    .row {
+        @include row-align-items;
+        @include row-justify-center;
+        @include row(1,20px,0px);
+        @include media($device-md){
+            @include row(2,0px,0px);
+        }
+        @include media($device-md) {
+            @include row-space-between;
+        }
+        h1 {
+            text-align: center;
+            @include media($device-md) {
+                text-align: left;
+            }
+        }
+    }
+    .card {
+        @include card(lg,true,false);
+        &.live-schedule {
+            form {
+                max-width: 400px;
+                width: 100%;
+                margin-left: auto;
+            }
+            .search-form-group {
+                .icon-search {
+                    color: $black-color;
+                    font-size: 18px;
+                }
+            }
+            .r-col {
+                @include flexbox();
+                .r-colinner {
+                    @include flexbox();
+                    margin-left: auto;
+                    position: relative;
+                }
+            }
+            .table-responsive {
+                .checkTable {
+                    tr {
+                        th,
+                        td {
+                            &:first-child {
+                                padding-right: 0;
+                                width: 50px;
+                                span {
+                                    color: $title-text;
+                                }
+                            }
+                            &:nth-child(2) {
+                                width: 250px;
+                                @include media($device-lg) {
+                                    width: 400px;
+                                }
+                            }
+                        }
+                        td {
+                            color: $body-text;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.add-user-row {
+    @include row(1,0px,0px);
+    @include media($device-md){
+        @include row(3,0px,30px);
+    }
+}
+
+.ReactModal__Content {
+    .modal-close {    
+        top: 6px;    
+        @include media($device-xl){
+            top: 30px;
+        }
+        @include media($device-xxxl){
+            top: 36px;
+        }
+    }
+}
+
+.file-wrapper {
+    width: 100%;
+    height: 100%;
+    display: block;
+    .fileField {
+        position: relative;
+        .fileField-inner {
+            padding: 15px;
+            @include flexbox;
+            column-gap: 0;
+            flex-wrap: wrap;
+            flex-direction: column;
+            row-gap: 15px;
+            width: 100%;
+            @include media($device-md) {
+                flex-direction: row;
+                column-gap: 20px;
+                row-gap: 0;
+            }
+            @include media($device-lg) {
+                padding: 20px;
+                column-gap: 30px;
+            }
+            .fileField-inner-content {
+                p {
+                    margin-bottom: 15px;
+                    @include media($device-lg) {
+                        margin-bottom: 20px;
+                    }
+                    &.small-text {
+                        margin-bottom: 0;
+                        font-size: 12px;
+                        @include media($device-lg) {
+                            font-size: 14px;
+                        }
+                    }      
+                    .blue {
+                        color: $primary-color;
+                        font-weight: 600;
+                    }              
+                }
+            }  
+            .fileField-inner-img-wrap {
+                line-height: 0;
+                max-width: 80px;
+                flex: 0 0 80px;
+                @include media($device-lg) {
+                    max-width: 104px;
+                    flex: 0 0 104px;
+                }
+                > img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border: 1px solid $border-color-3;
+                    @include border-radius(4px);
+                    @include media($device-lg) {
+                        width: 104px;
+                        height: 104px;
+                    }
+                    &.dummy-img {
+                        border: none;
+                    }
+                    &.original-img {
+                        display: none;
+                    }
+                }
+                .close-btn {
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    cursor: pointer;
+                    display: none;
+                    z-index: 1;
+                    .icon-close {
+                        font-size: 8px;
+                        background-color: $white-color;
+                        width: 20px;
+                        height: 20px;
+                        @include flexCenter;
+                        @include border-radius(50%);
+                    }
+                }
+
+            }               
+        }
+        input {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+}
+
+.scrollbar-sm {
+    max-height: calc(100vh - 200px);
+}
+
+.modal-body-inner {
+    border: 1px solid $billowing-clouds;
+    @include border-radius(4px);
+    padding: 20px;
+    position: relative;
+    @include media($device-md){
+        @include border-radius(8px);
+    } 
+    @include media($device-xxxl){
+        padding: 30px;
+    }
+    h4,
+    p {
+        color: $label-color;
+    }
+}
+.bottomForm-group {
+    label {
+        color: $title-text;
+    }
+    .form-group {
+        line-height: 1;
+        .letter-counts {
+            @include flexbox();
+            justify-content: end;
+            width: 100%;
+            color: $body-text;
+            @include body-font-md;
+            margin-top: 10px;
+        }
+        textarea{
+            resize: none;
+            &.form-control{
+                min-height: 134px;
+            }
+        }
+        
+    }
+}

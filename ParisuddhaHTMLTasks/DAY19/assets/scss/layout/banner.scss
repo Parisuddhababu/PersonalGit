@@ -1,0 +1,47 @@
+@mixin navigation {
+	cursor: pointer;
+	text-transform: uppercase;
+	line-height: 20px;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 13px;
+}
+
+@mixin heading {
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 40px;
+	letter-spacing: 1.8px;
+	text-transform: uppercase;
+}
+
+.main-container {
+	color: white;
+}
+
+.container {
+	top: 0;
+	z-index: 99;
+	position: absolute;
+	margin: 25px 125px;
+}
+
+.contentContainer {
+	padding: 150px 0;
+	text-align: center;
+	h1 {
+		@include heading;
+		margin-bottom: 35px;
+	}
+	p {
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 32px;
+	}
+	@media screen and (max-width: $medium) {
+		.buttonsContainer {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

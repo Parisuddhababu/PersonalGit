@@ -1,0 +1,615 @@
+@import "../common/mixin";
+@import "../common/_variable";
+
+img {
+  @include img-common;
+}
+
+.jkm-arrow-top {
+  @include jkm-arrow-top;
+}
+
+.jkm-mail1 {
+  @include jkm-mail1;
+}
+
+.jkm-meta {
+  @include jkm-meta;
+}
+
+.jkm-instagram {
+  @include jkm-instagram;
+}
+
+.jkm-linkedin {
+  @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+  @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+  @include jkm-youtube;
+}
+
+.jkm-visa {
+  @include jkm-visa;
+}
+
+.jkm-arrow-down {
+  @include jkm-arrow-down;
+}
+
+.jkm-pencil {
+  @include jkm-pencil;
+}
+
+.jkm-trash {
+  @include jkm-trash;
+}
+
+.jkm-check {
+  @include jkm-check;
+}
+
+.jkm-info-circle {
+  @include jkm-info-circle;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+aside,
+section {
+  display: block;
+}
+
+img,
+a,
+input,
+p {
+  @include space-none;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.jkm-check {
+  @include jkm-check;
+}
+
+.jkm-arrow-top {
+  @include jkm-arrow-top;
+}
+
+.jkm-arrow-down {
+  @include jkm-arrow-down;
+}
+
+.jkm-pencil {
+  @include jkm-pencil;
+}
+
+.jkm-trash {
+  @include jkm-trash;
+}
+
+.jkm-close {
+  @include jkm-close;
+}
+
+.breadcrumbs-section {
+  @include breadcrumsection;
+
+  .breadcrumbs-list {
+    @include breadcrumlist;
+  }
+}
+
+.sort-info-conatainer {
+  @include mb-30;
+}
+
+.shipping-info {
+  margin-bottom: 30px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+}
+
+.shopping-cart-sec {
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 134px;
+  }
+}
+
+.sidebar-section {
+  @include float-content-width(32%, right, 992px, var(--data_site_theme_highlight));
+  padding: 20px 15px;
+  background: var(--data_site_theme_highlight);
+
+  @media only screen and (min-width: $device-sm) {
+    padding: 30px;
+  }
+}
+
+.main-content {
+  @include float-content-width(66%, left, 992px, var(--data_site_theme_color));
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.coupon-links {
+  @include linkStyle(underline, var(--data_site_primary_color), bold, capitalize);
+}
+
+.progress-bar {
+  @include progress-bar;
+  @include mb-50;
+  z-index: 1;
+}
+
+.action-toolbar-shopping {
+  @include flexbox;
+  @include just-end;
+  @include align-item-center;
+  @include flexColumn;
+  margin: 20px 0;
+
+  @media only screen and (min-width: 992px) {
+    margin: 40px 0;
+  }
+
+  @media only screen and (min-width: $device-sm) {
+    @include flexrow;
+    margin: 30px 0;
+  }
+
+  button {
+    @include button;
+    @include btn-medium;
+    font-weight: bold;
+
+    a {
+      color: var(--data_site_highlight_section_text_color);
+    }
+
+    &.btn-primary {
+      @include btn-primary;
+      margin-bottom: 15px;
+
+      &:hover {
+        a {
+          color: var(--data_button_primary_color);
+        }
+      }
+
+      @media only screen and (min-width: $device-sm) {
+        margin: 0 39px 0 0;
+      }
+    }
+
+    &.btn-secondary {
+      @include btn-secondary;
+
+      &:hover {
+        a {
+          color: var(--data_button_secondary_color);
+        }
+      }
+    }
+  }
+}
+
+.apply-coupon-sec {
+  @include mb-30;
+
+  .apply-coupon-text {
+    margin-bottom: 10px;
+  }
+
+  form {
+    @include mb-30;
+    position: relative;
+
+    .form-control {
+      @include formcontrol;
+      padding-right: 140px;
+
+      @media only screen and (min-width: $device-sm) {
+        padding-right: 180px;
+      }
+    }
+
+    button {
+      @include button;
+      @include btn-primary;
+      @include btn-small;
+      position: absolute;
+      top: 1px;
+      right: 0;
+      width: 50%;
+
+      @media only screen and (min-width: $device-xl) {
+        top: 0;
+      }
+
+      @media only screen and (min-width: $device-sm) {
+        width: 100%;
+      }
+    }
+  }
+
+  .coupon-links {
+    text-decoration: underline;
+    color: var(--data_site_primary_color);
+  }
+}
+
+.filter-section {
+  @include mb-50;
+
+  form {
+    @include flexbox;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: end;
+
+    @media only screen and (min-width: $device-xl) {
+      gap: 20px;
+    }
+
+    .btn {
+      max-width: 100%;
+      margin-left: auto;
+
+      @media only screen and (min-width: $device-sm) {
+        width: calc(50% - 7px);
+      }
+
+      @media only screen and (min-width: $device-md) {
+        max-width: 160px;
+      }
+    }
+
+    .form-group {
+      width: 100%;
+
+      @media only screen and (min-width: $device-sm) {
+        width: calc(50% - 8px);
+      }
+
+      @media only screen and (min-width: $device-md) {
+        width: calc(33.33% - 10px);
+      }
+
+      @media only screen and (min-width: $device-lg) {
+        width: calc(25% - 12px);
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        width: calc(20% - 16px);
+      }
+
+      label {
+        @include label;
+      }
+
+      .custom-select {
+        @include border-radius(var(--data_site_border_radius));
+        @include font-detail(16px, 20px);
+        @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+        @include bg-arrow(var(--data_site_theme_color), url(../../images/icons/arrow-down.svg), no-repeat, calc(100% - 15px), center);
+        width: 100%;
+
+        &:hover,
+        &:focus {
+          border: 1px solid var(--data_border_primary_color);
+        }
+
+        @media only screen and (min-width: $device-lg) {
+          @include font-detail(18px, 22px);
+        }
+      }
+    }
+  }
+}
+
+// Remark Pop up Design
+.modal.remark-info {
+  .modal-content {
+    padding: 0 20px;
+
+    @media only screen and (min-width: $device-sm) {
+      width: 520px;
+    }
+  }
+
+  .asterisk,
+  .p-error {
+    color: var(--data_error_color);
+  }
+
+  .pop-up-container {
+    max-width: 100%;
+
+    .modal-wrapper {
+      padding: 20px 0;
+      margin: 0;
+
+      @media only screen and (min-width: $device-sm) {
+        padding: 40px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      #remark {
+        padding: 10px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Tooltip button design
+a.jkm-info-circle {
+  background: var(--data_site_theme_highlight);
+  padding: 9px;
+  font-size: 18px;
+  @include border-radius(var(--data_site_border_radius));
+
+  @media only screen and (min-width: $device-sm) {
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+
+.tooltip-wrapper {
+  position: relative;
+  @include flexbox;
+}
+
+a.jkm-info-circle:hover + .tooltip {
+  visibility: visible;
+  @include opacity(1);
+  background: var(--data_site_theme_color);
+  font-size: 14px;
+  z-index: 1;
+  left: calc(50% - 15px);
+  bottom: Calc(100% + 12px);
+  top: auto;
+  line-height: normal;
+  min-width: 200px;
+  margin: auto;
+  @include transform(translateX(-50%));
+  display: block;
+
+  &:after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    position: absolute;
+    top: 100%;
+    border-top-color: var(--data_site_theme_color);
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 10px;
+  }
+
+  & > span {
+    @include border-radius(var(--data_site_border_radius));
+    max-width: 160px;
+    padding: 10px;
+    overflow: auto;
+    display: inline-block;
+
+    @media only screen and (min-width: $device-lg) {
+      max-height: 100px;
+      max-width: 230px;
+    }
+  }
+}
+
+.tooltip {
+  visibility: hidden;
+  @include opacity(0);
+  position: absolute;
+  display: none;
+}
+
+.heading-title {
+  padding: 30px 0;
+}
+
+.wrapper-title {
+  @include textCenter;
+}
+
+.btn-wrapper {
+  @include flexbox;
+  @include just-center;
+
+  .btn {
+    margin: 0 15px;
+    min-width: 80px;
+
+    @media only screen and (min-width: $device-sm) {
+      min-width: 150px;
+
+      & + .btn {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+.summary-section {
+  .table-wrap {
+    @include mb-30;
+
+    table {
+      width: 100%;
+      border-top: 1px solid var(--data_border_color);
+      border-bottom: 1px solid var(--data_border_color);
+      border-collapse: collapse;
+      table-layout: fixed;
+
+      tr {
+        th {
+          border-bottom: 1px solid var(--data_border_color);
+
+          &.product {
+            width: 100px;
+          }
+
+          &.pcs {
+            width: 50px;
+          }
+
+          &.metal-wgt {
+            width: 110px;
+          }
+
+          &.dia-cts {
+            width: 80px;
+          }
+
+          &.clr-cts {
+            width: 80px;
+          }
+        }
+
+        th, td {
+          text-align: left;
+          padding: 5px;
+
+          &:first-child {
+            padding-left: 0;
+          }
+
+          &:last-child {
+            padding-right: 0;
+          }
+
+          &:not(:first-child) {
+            text-align: right;
+          }
+        }
+
+        &.total {
+          td {
+            border-top: 1px solid var(--data_border_color);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .summary-title {
+    margin-bottom: 10px;
+    font-family: var(--data_site_font_primary);
+  }
+}
+
+.enquiry-template {
+  @include form-contain;
+
+  .heading-title {
+    text-align: center;
+  }
+
+  form {
+    max-width: 700px;
+    margin: auto;
+    width: 100%;
+
+    .form-group {
+      @include mb-30;
+    }
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .custom-checkbox {
+      @include checkbox;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form (ngSubmit)="onSuggestionSave()" novalidate #suggestionFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="form-group">
+              <label for="page_title">{{ 'SUGGESTION_CATEGORY' | translate }} <span class="asterisk_input"></span></label>
+              <select [(ngModel)]="model.category" name="category" class="form-control" required #category="ngModel">
+                <option value="">Select Category</option>
+                <option [value]="cat.id" *ngFor="let cat of categoryList">{{ cat.name }}</option>
+              </select>
+              <div class="form-control-feedback text-danger" *ngIf="category.errors && suggestionFrm.submitted">
+                <p *ngIf="category.errors.required">
+                  {{ 'PLEASE_SELECT_CATEGORY' | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="page_title">{{ 'INFORMATION' | translate }} <span class="asterisk_input"></span></label>
+              <textarea
+                [(ngModel)]="model.information"
+                placeholder="{{ 'INFORMATION' | translate }}"
+                name="information"
+                class="form-control"
+                required
+                #information="ngModel"
+              ></textarea>
+              <div class="form-control-feedback text-danger" *ngIf="information.errors && suggestionFrm.submitted">
+                <p *ngIf="information.errors.required">
+                  {{ 'PLEASE_ENTER_INFORMATION' | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input
+                  class="custom-control-input crsr-ptr"
+                  id="anonymously"
+                  name="anonymously"
+                  type="checkbox"
+                  [(ngModel)]="model.anonymously"
+                  #anonymously="ngModel"
+                />
+                <label class="custom-control-label crsr-ptr" for="anonymously">{{ 'POST_ANONYMOUSLY' | translate }}</label>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o fa-lg"></i> {{ 'SAVE' | translate }}</button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/user-suggestion/list']">
+              <i class="fa fa-times"></i>
+              {{ 'CANCEL' | translate }}</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

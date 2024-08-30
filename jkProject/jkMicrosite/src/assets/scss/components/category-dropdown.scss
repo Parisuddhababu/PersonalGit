@@ -1,0 +1,327 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+@mixin margin($margin-top, $margin-x, $margin-bottom) {
+  margin: $margin-top $margin-x $margin-bottom;
+}
+
+@mixin custom-box($border) {
+  border: 1px solid $border;
+  padding: 8px 13px;
+
+  @media only screen and (min-width: $device-md) {
+    padding: 13px;
+  }
+}
+
+@mixin filter-label {
+  @include font-family(--jk-primary-fonts, 400);
+  @include font-detail(20px, 27px);
+  margin-bottom: 10px;
+}
+
+.btn-filter {
+  @include button;
+  @include margin(0, 10px, 10px);
+  max-width: 120px;
+  width: 100%;
+  height: 50px;
+
+  &.btn-clear {
+    @include btn-secondary;
+  }
+
+  &.btn-compare {
+    @include btn-primary;
+  }
+
+  @media only screen and (min-width: $device-md) {
+    max-width: 110px;
+  }
+
+  @media only screen and (min-width: $device-lg) {
+    max-width: 120px;
+  }
+}
+
+.btn-icon-close {
+  margin-left: 5px;
+  background: transparent;
+  border: 0;
+  margin-top: 2px;
+  color: var(--data_button_secondary_color);
+  cursor: pointer;
+
+  .jkm-close {
+    vertical-align: middle;
+  }
+}
+
+.category-dropdown-section {
+  @include flexbox;
+  @include flexwrap;
+  margin-left: -10px;
+  margin-bottom: 20px;
+  position: relative;
+
+  .select-box {
+    @include margin(0, 5px, 15px);
+    max-width: calc(50% - 10px);
+    width: 100%;
+
+    &:nth-child(odd) {
+      .option-box {
+        &.active {
+          & + .option-dropdown-box {
+            border-top-left-radius: 0;
+
+            @media only screen and (min-width: $device-md) {
+              border-top-left-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      .option-box {
+        &.active {
+          & + .option-dropdown-box {
+            border-top-right-radius: 0;
+
+            @media only screen and (min-width: $device-md) {
+              border-top-right-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    @media only screen and (min-width: $device-md) {
+      @include margin(0, 10px, 15px);
+      max-width: unset;
+      width: auto;
+
+      &:first-child {
+        .option-box {
+          &.active {
+            & + .option-dropdown-box {
+              border-top-left-radius: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .option-box {
+      // @include border-radius(5px);
+      @include font-detail(16px, 20px);
+      @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+      width: 100%;
+      position: relative;
+      @include flexbox;
+
+      &:hover,
+      &:focus {
+        border: 1px solid var(--data_border_primary_color);
+      }
+
+      @media only screen and (min-width: $device-lg) {
+        @include font-detail(18px, 22px);
+      }
+
+      &.active {
+        & + .option-dropdown-box {
+          display: block;
+        }
+
+        &:after {
+          content: "";
+          width: calc(100% + 2px);
+          position: absolute;
+          bottom: -12px;
+          height: 13px;
+          left: -1px;
+          background: var(--data_site_theme_color);
+          border-right: 1px solid var(--data_border_color);
+          border-left: 1px solid var(--data_border_color);
+          z-index: 3;
+        }
+
+        color: var(--data_site_secondary_color);
+
+        .count {
+          display: block;
+        }
+
+        .icon {
+          @include transform(translateY(-50%) rotate(180deg));
+        }
+      }
+
+      .count {
+        display: none;
+        margin-left: 5px;
+      }
+
+      .icon {
+        font-size: 6px;
+        vertical-align: middle;
+        margin: 3px 0 0;
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%) rotate(0deg));
+        right: 12px;
+        @include transition(0.4s);
+      }
+    }
+  }
+
+  .option-dropdown-box {
+    width: calc(100% - 10px);
+    background: var(--data_site_theme_color);
+    border: 1px solid var(--data_border_color);
+    padding: 20px 20px 10px;
+    @include border-radius(10px);
+    margin-top: 10px;
+    position: absolute;
+    left: 5px;
+    z-index: 3;
+    display: none;
+
+    @media only screen and (min-width: $device-md) {
+      padding: 30px 40px 30px;
+      left: 10px;
+    }
+
+    .row {
+      @include row;
+    }
+
+    .d-col {
+      &.d-col-4 {
+        @include d-col-4;
+        margin-bottom: 20px;
+      }
+    }
+
+    .cmn-checkbox {
+      @include checkbox;
+
+      input {
+        &:checked {
+          + label {
+            color: var(--data_site_primary_color);
+          }
+        }
+      }
+
+      label {
+        line-height: 22px;
+      }
+    }
+  }
+
+  .btn-more-filter {
+    @include custom-box(var(--data_border_color));
+    @include border-radius(5px);
+    @include margin(0, 10px, 10px);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--data_border_primary_color);
+    }
+
+    p {
+      @include mb-0;
+      @include font-detail(16px, 20px);
+      color: var(--data_site_text_color);
+
+      @media only screen and (min-width: $device-md) {
+        @include font-detail(18px, 22px);
+      }
+    }
+  }
+}
+
+.current-filter-section {
+  width: 100%;
+  margin-bottom: 20px;
+
+  @media only screen and (min-width: $device-md) {
+    @include flexbox;
+    @include align-item-center;
+    @include flexrow;
+  }
+
+  .filter-label {
+    @include filter-label;
+    max-width: 130px;
+    width: 100%;
+  }
+
+  .selected-item {
+    @include flexbox;
+    @include flexwrap;
+    width: 100%;
+    margin-left: -10px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-left: 0;
+    }
+  }
+
+  .selected-box {
+    @include custom-box(var(--data_border_color));
+    @include border-radius(5px);
+    @include margin(0, 10px, 10px);
+    @include flexbox;
+    @include align-item-center;
+    @include font-detail(16px, normal);
+    color: var(--data_site_text_color);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--data_border_primary_color);
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      @include font-detail(18px, normal);
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-left: 5px;
+    }
+  }
+}
+
+.compared-product-section {
+  @include flexbox;
+  @include flexwrap;
+  @include align-item-center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--jk-border-color);
+  border-bottom: 1px solid var(--data_border_color);
+
+  .filter-label {
+    @include filter-label;
+    margin-right: 10px;
+  }
+
+  .selected-item {
+    @include flexbox;
+    @include align-item-center;
+    margin-right: 15px;
+    margin-bottom: 10px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .btn-clear {
+    margin-right: 0;
+  }
+}

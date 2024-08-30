@@ -1,0 +1,119 @@
+{
+  "formTypes": [
+    {
+      "id": "1",
+      "type": "text",
+      "label": "name"
+    },
+    {
+      "id": "2",
+      "type": "email",
+      "label": "email"
+    },
+    {
+      "id": "3",
+      "type": "number",
+      "label": "age",
+      "min": 1,
+      "max": 100
+    },
+    {
+      "id": "4",
+      "type": "password",
+      "label": "password"
+    },
+    {
+      "id": "8",
+      "type": "tel",
+      "label": "phone"
+    },
+    {
+      "id": "20",
+      "type": "url",
+      "label": "url"
+    },
+    {
+      "id": "12",
+      "type": "search",
+      "label": "search"
+    },
+    {
+      "id": "5",
+      "type": "select",
+      "label": "select",
+      "options": [
+        { "id": "a", "value": "vijayawada" },
+        { "id": "b", "value": "guntur" },
+        { "id": "c", "value": "hyderabad" }
+      ]
+    },
+    {
+      "id": "6",
+      "type": "radio",
+      "label": "radio",
+      "options": [
+        {
+          "id": "d",
+          "value": "male"
+        },
+        {
+          "id": "e",
+          "value": "female"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "type": "checkbox",
+      "label": "checkbox",
+      "options": [
+        {
+          "id": "f",
+          "value": "graduate"
+        },
+        {
+          "id": "g",
+          "value": "postGraduate"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "type": "file",
+      "label": "file"
+    },
+    {
+      "id": "16",
+      "type": "date",
+      "label": "date"
+    },
+    {
+      "id": "17",
+      "type": "datetime-local",
+      "label": "datetime-local"
+    },
+
+    {
+      "id": "19",
+      "type": "time",
+      "label": "time"
+    },
+    {
+      "id": "10",
+      "type": "color",
+      "label": "color"
+    },
+    {
+      "id": "11",
+      "type": "range",
+      "label": "range",
+      "min": 1,
+      "max": 5
+    },
+    {
+      "id": "21",
+      "type": "submit",
+      "label": "submit"
+    }
+  ]
+}

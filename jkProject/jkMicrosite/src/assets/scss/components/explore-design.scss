@@ -1,0 +1,72 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.explore-design {
+  background: var(--data_site_theme_highlight);
+  padding: 40px 0 20px;
+  margin-bottom: 40px;
+  @media only screen and (min-width: $device-md) {
+    padding: 60px 0 40px;
+    margin-bottom: 60px;
+  }
+
+  @media only screen and (min-width: $device-lg) {
+    padding: 80px 0 50px;
+    margin-bottom: 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 120px 0 90px;
+    margin-bottom: 120px;
+  }
+
+  .explore-item-group {
+    @include flexbox;
+    @include align-item-center;
+    @include space-between;
+    @include flexwrap;
+
+    @media only screen and (min-width: $device-md) {
+      @include justifyCenter;
+    }
+
+    .item-box {
+      margin: 0 0 10px;
+      max-width: 48%;
+      width: 100%;
+
+      @media only screen and (min-width: $device-md) {
+        margin: 0 10px 20px;
+        max-width: unset;
+        width: auto;
+      }
+
+      @media only screen and (min-width: $device-lg) {
+        margin: 0 15px 30px;
+      }
+
+      a {
+        @include font-detail(16px, 20px);
+        background: var(--data_site_theme_color);
+        padding: 10px 10px;
+        display: inline-block;
+        color: var(--data_site_text_color);
+        border: 1px solid var(--data_border_color);
+        border-radius: var(--data_site_border_radius);
+        overflow: hidden;
+        width: 100%;
+
+        @media only screen and (min-width: $device-md) {
+          @include font-detail(18px, 22px);
+          padding: 13px 28px;
+        }
+
+        &:hover {
+          background: var(--data_site_secondary_color);
+          color: var(--data_site_highlight_section_text_color);
+          border: 1px solid var(--data_site_secondary_color);
+        }
+      }
+    }
+  }
+}

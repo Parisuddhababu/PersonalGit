@@ -1,0 +1,50 @@
+@import "../common/mixin";
+
+.jkm-close {
+  @include jkm-close;
+}
+
+.modal {
+  &.testimonial-popup {
+    .pop-up-container {
+      @media screen and (min-width: $device-xl) {
+        max-width: 1115px;
+      }
+
+      .modal-wrapper {
+        padding: 60px 20px;
+
+        @media screen and (min-width: $device-md) {
+          padding: 60px;
+        }
+
+        @media screen and (min-width: $device-xl) {
+          padding: 120px;
+        }
+      }
+    }
+
+    .testimonial-text {
+      p {
+        @include font-detail(18px, 32px);
+        @include font-family(var(--data_site_font_primary), 400);
+
+        @media screen and (min-width: $device-md) {
+          @include font-detail(24px, 36px);
+        }
+      }
+    }
+
+    .testimonial-img {
+      text-align: right;
+
+      img {
+        width: 100px;
+
+        @media screen and (min-width: $device-md) {
+          width: auto;
+        }
+      }
+    }
+  }
+}

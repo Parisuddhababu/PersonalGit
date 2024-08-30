@@ -1,0 +1,13 @@
+query GetMyDownloadableProducts($customerEmail: String!) {
+  GetMyDownloadableProducts(customerEmail: $customerEmail) {
+    CollectionData {
+      date
+      link
+      linkName
+      order
+      remainingDownloads
+      status
+      title
+    }
+  }
+}

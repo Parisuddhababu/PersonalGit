@@ -1,0 +1,186 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.name" type="text" name="name" class="form-control" placeholder="{{ 'NAME' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.email" type="text" name="email" class="form-control" placeholder="{{ 'EMAIL' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="filter.activity_desc"
+                    type="text"
+                    name="activity_desc"
+                    class="form-control"
+                    placeholder="{{ 'ACTIVITY_DESCRIPTION' | translate }}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group dtePkr">
+                  <input
+                    [(ngModel)]="filter.select_date"
+                    name="select_date"
+                    type="text"
+                    class="form-control"
+                    required
+                    #select_date="ngModel"
+                    placeholder="{{ 'SELECT_DATE' | translate }}"
+                    #DRP="bsDaterangepicker"
+                    placement="top"
+                    [maxDate]="maxDate"
+                    bsDaterangepicker
+                    autocomplete="off"
+                    [bsConfig]="dateRangeConfig"
+                  />
+                  <i class="fa fa-calendar crsr-ptr" (click)="DRP.toggle()"></i>
+                </div>
+              </div>
+              <div class="col-md-8 col-12">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- Activity Tracking List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['ACTIVITY_TRACKING_LIST', 'SUPER_ADMIN']">
+        <div class="card-header"><i class="fa fa-history"></i> {{ 'ACTIVITY_TRACKING_LIST' | translate }}</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="activityList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [externalSorting]="serverSorting"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              [externalPaging]="serverPaging"
+              [count]="totalReords"
+              [offset]="pageNumber"
+              [limit]="size"
+              (page)="setPage($event)"
+              [messages]="dtMessages"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting text-center"
+                prop="srNum"
+                [sortable]="false"
+                [width]="70"
+              >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'NAME' | translate }}" prop="name"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email" [width]="auto"> </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTIVITY' | translate }}"
+                prop="activity_desc"
+                [minWidth]="250"
+                cellClass="text-wrap"
+              ></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'IP_ADDRESS' | translate }}" prop="ip_address"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CREATED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-wrap">{{ value | customDate: momentDateTime24Format }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'ACTIVITY_TRACKING_LIST', 'ACTIVITY_TRACKING_DELETE']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['ACTIVITY_TRACKING_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDeleteActivity, row.uuid)"
+                      title="{{ 'DELETE' | translate }}"
+                      ><i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Activity Tracking List -- Start -->
+</div>
+
+<ng-template #templateDeleteActivity>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteActivityLog()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<app-loader></app-loader>

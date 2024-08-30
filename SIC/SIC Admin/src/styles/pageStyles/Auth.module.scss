@@ -1,0 +1,19 @@
+.auth-wrapper {
+	@apply min-h-screen flex flex-col items-center justify-center p-3;
+	background-image: linear-gradient(180deg, #85d4cd 48%, #009587 48%, #009587 60%, #85d4cd 60%);
+
+	.auth-box {
+		@apply bg-white shadow-md rounded-lg p-8;
+		width: 25vw;
+		@media screen and (max-width: 1200px) {
+			width: 50vw;
+		}
+		@media screen and (max-width: 768px) {
+			width: 100%;
+		}
+	}
+
+	.auth-box-heading {
+		@apply text-gray-800 text-2xl lg:text-3xl font-bold mb-4 md:mb-6 font-primary;
+	}
+}

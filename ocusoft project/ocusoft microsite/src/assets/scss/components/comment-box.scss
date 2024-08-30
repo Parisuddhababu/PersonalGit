@@ -1,0 +1,55 @@
+@import "../common/mixin";
+
+.comment-box-section {
+    @include bottom-margin;
+
+    h3 {
+      @include body-large;
+      margin-bottom: 14px;
+      
+      @include md{
+          margin-bottom: 18px;
+      }
+
+      @include xl{
+          margin-bottom: 20px;
+      }
+    }
+
+    .comment-box-list {
+      @include flexbox;
+      border: 1px solid var(--data_site_dark_gray2);
+      @include border-radius(10px);
+      background-color: var(--data_site_light_gray3);
+      padding: 20px;
+      @include flexColumn;
+      list-style-type: decimal;
+      min-height: 120px;
+
+      @include md {
+        min-height: 150px;
+      }
+
+      @include xl {
+        min-height: 170px;
+      }
+
+      li {
+        @include body-large;
+        margin-left: 20px;
+        margin-bottom: 14px;
+
+        @include md {
+          margin-bottom: 18px;
+        }
+
+        @include xl {
+          margin-bottom: 20px;
+        }
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+      }
+    }
+  }

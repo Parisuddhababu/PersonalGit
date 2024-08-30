@@ -1,0 +1,97 @@
+@import "../common/variable";
+
+@mixin align-item-center {
+  align-items: center;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin flexbox() {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin box-shadow($x-axis,
+  $y-axis,
+  $blur,
+  $color) {
+  -ms-box-shadow: $x-axis $y-axis $blur $color;
+  -o-box-shadow: $x-axis $y-axis $blur $color;
+  -webkit-box-shadow: $x-axis $y-axis $blur $color;
+  -moz-box-shadow: $x-axis $y-axis $blur $color;
+  box-shadow: $x-axis $y-axis $blur $color;
+}
+
+.toasts-wrapper {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 9999999;
+}
+
+.toast {
+  border: 2px solid transparent;
+
+  &.success {
+    background-color: #e4f8f0;
+    border: solid #1ea97c;
+    border-width: 0 0 0 6px;
+    color: #1ea97c;
+  }
+
+  &.warning {
+    background: #fff2e2;
+    border: solid #cc8925;
+    border-width: 0 0 0 6px;
+    color: #cc8925;
+  }
+
+  &.error {
+    background: #ffe7e6;
+    border: solid #ff5757;
+    border-width: 0 0 0 6px;
+    color: #ff5757;
+  }
+
+  @include border-radius(5px);
+  max-width: 480px;
+  @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+  margin-top: 16px;
+  @include flexbox;
+  position: relative;
+  cursor: pointer;
+  @include align-item-center;
+}
+
+.toast__text {
+  padding: 16px 24px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.toast__close-btn {
+  &.success {
+    color: #1ea97c;
+  }
+
+  &.warning {
+    color: #cc8925;
+  }
+
+  &.error {
+    color: #ff5757;
+  }
+
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  // margin-top: 8px; removed due to fixed aligment of cross icon
+  margin-right: 8px;
+  cursor: pointer;
+}

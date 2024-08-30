@@ -1,0 +1,74 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-mission {
+    @include jkm-mission;
+}
+
+.jkm-outline {
+    @include jkm-outline;
+}
+
+.mission_vision {
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $device-md) {
+        margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    .d-row {
+        @include row;
+
+        .d-col-2 {
+            @include d-col-2;
+        }
+    }
+
+    .d-col-2 {
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .box {
+        border: 1px solid #C7C6C3;
+        @include border-radius(10px);
+        @include textCenter;
+        padding: 40px 20px;
+
+        @media only screen and (min-width: $device-md) {
+            padding: 50px 30px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            padding: 60px;
+        }
+
+        &:hover {
+            @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+            border: 1px solid transparent;
+        }
+
+        i.jkm-mission,
+        i.jkm-outline {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--data_site_primary_color);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    h3 {
+        margin-bottom: 20px;
+    }
+}

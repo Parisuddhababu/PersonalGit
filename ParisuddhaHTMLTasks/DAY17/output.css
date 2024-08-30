@@ -1,0 +1,118 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: white; }
+
+header .header-content {
+  width: 68%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto; }
+header .header-heading {
+  color: #fe81cb;
+  font-size: 30px; }
+
+.main-container {
+  width: 60%; }
+  .main-container .top-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 35%;
+    margin-top: -30px;
+    height: 850px; }
+    .main-container .top-container .gradient-card {
+      height: 400px;
+      width: 500px;
+      margin-top: 15%;
+      position: relative; }
+      .main-container .top-container .gradient-card .gradient-card-img {
+        height: 600px;
+        width: 500px; }
+      .main-container .top-container .gradient-card .gradientBackground {
+        background-image: linear-gradient(to right, #fec50e, #fe80c2);
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        top: 45%;
+        z-index: -1;
+        right: -10%; }
+    .main-container .top-container .content-card {
+      margin-left: 94px; }
+      .main-container .top-container .content-card .content-header {
+        color: #488df4;
+        font-size: 50px;
+        font-weight: bold;
+        margin-top: 48%; }
+      .main-container .top-container .content-card .cards-container {
+        display: flex;
+        position: absolute;
+        right: 30%;
+        bottom: 10%;
+        color: white; }
+        .main-container .top-container .content-card .cards-container .card1 {
+          height: 150px;
+          width: 150px;
+          background-color: #38c4c1;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center; }
+        .main-container .top-container .content-card .cards-container .card2 {
+          height: 150px;
+          width: 150px;
+          background-color: #feca02;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px; }
+        .main-container .top-container .content-card .cards-container .card3 {
+          height: 150px;
+          width: 150px;
+          background-color: #fe7ec9;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px; }
+        .main-container .top-container .content-card .cards-container .card4 {
+          height: 150px;
+          width: 150px;
+          background-color: #488df4;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px; }
+  .main-container .aboutus-section {
+    margin-left: 25%; }
+    .main-container .aboutus-section .three-column-section {
+      display: flex;
+      align-items: center; }
+      .main-container .aboutus-section .three-column-section .first-column {
+        margin-top: 20%; }
+        .main-container .aboutus-section .three-column-section .first-column .card {
+          height: auto;
+          width: 350px;
+          padding: 10px; }
+      .main-container .aboutus-section .three-column-section .second-column .about-us-image {
+        width: 400px;
+        height: 600px; }
+      .main-container .aboutus-section .three-column-section .third-column {
+        margin-top: 20%;
+        margin-left: 10px; }
+        .main-container .aboutus-section .three-column-section .third-column .card {
+          height: auto;
+          width: 350px;
+          padding: 10px; }
+
+div h2 {
+  text-align: center; }
+
+h3 {
+  font-weight: bold; }
+
+/*# sourceMappingURL=output.css.map */

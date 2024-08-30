@@ -1,0 +1,101 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-coupon/ApplyCouponForm/ApplyCouponForm.tsx b/node_modules/@graphcommerce/magento-cart-coupon/ApplyCouponForm/ApplyCouponForm.tsx
+index ccb7551..3ae4dca 100644
+--- a/node_modules/@graphcommerce/magento-cart-coupon/ApplyCouponForm/ApplyCouponForm.tsx
++++ b/node_modules/@graphcommerce/magento-cart-coupon/ApplyCouponForm/ApplyCouponForm.tsx
+@@ -2,7 +2,10 @@ import { useFormGqlMutationCart, ApolloCartErrorAlert } from '@graphcommerce/mag
+ import { responsiveVal, Button, extendableComponent } from '@graphcommerce/next-ui'
+ import { Trans } from '@lingui/react'
+ import { Box, FormControl, SxProps, TextField, Theme } from '@mui/material'
++import {useContext, useEffect} from 'react'
+ import { ApplyCouponFormDocument } from './ApplyCouponForm.gql'
++import {UIContext} from "../../../../components/common/contexts/UIContext";
++import {useRouter} from "next/router";
+ 
+ export type ApplyCouponFormProps = { sx?: SxProps<Theme> }
+ 
+@@ -12,10 +15,30 @@ const { classes } = extendableComponent(name, parts)
+ 
+ export function ApplyCouponForm(props: ApplyCouponFormProps) {
+   const { sx = [] } = props
+-  const form = useFormGqlMutationCart(ApplyCouponFormDocument)
+-  const { handleSubmit, muiRegister, formState, required, error } = form
++  const [state, setState] = useContext(UIContext)
++  const router = useRouter()
++  const form = useFormGqlMutationCart(ApplyCouponFormDocument, {
++    onComplete: (data, variables) => {
++      if (data?.data?.applyCouponToCart) {
++        const copounCode = data?.data?.applyCouponToCart?.cart?.applied_coupons?.find((el) => el && el.code === variables.couponCode)?.code
++        setState((prev) => ({
++          ...prev,
++          alerts: [
++            {
++              type: 'success',
++              message: `<span>You used coupon code ${copounCode}.</span>`,
++              timeout: 10000,
++              targetLink: router.pathname,
++            },
++          ],
++        }))
++      }
++    }
++  })
++  const { handleSubmit, muiRegister, formState, required, error, data } = form
+   const submitHandler = handleSubmit(() => {})
+ 
++
+   return (
+     <Box
+       component='form'
+@@ -37,7 +60,10 @@ export function ApplyCouponForm(props: ApplyCouponFormProps) {
+         type='text'
+         error={!!formState.errors.couponCode || !!error}
+         required={required.couponCode}
+-        {...muiRegister('couponCode', { required: required.couponCode })}
++        {...muiRegister('couponCode', { required: {
++          value: true,
++          message: "This field is required."
++          },  })}
+         helperText={formState.errors.couponCode?.message}
+         disabled={formState.isSubmitting}
+       />
+diff --git a/node_modules/@graphcommerce/magento-cart-coupon/RemoveCouponForm/RemoveCouponForm.tsx b/node_modules/@graphcommerce/magento-cart-coupon/RemoveCouponForm/RemoveCouponForm.tsx
+index f2e2c95..eec37e0 100644
+--- a/node_modules/@graphcommerce/magento-cart-coupon/RemoveCouponForm/RemoveCouponForm.tsx
++++ b/node_modules/@graphcommerce/magento-cart-coupon/RemoveCouponForm/RemoveCouponForm.tsx
+@@ -3,6 +3,9 @@ import { extendableComponent } from '@graphcommerce/next-ui'
+ import { Box, SxProps, Theme, Chip } from '@mui/material'
+ import { CouponFragment } from '../Api/Coupon.gql'
+ import { RemoveCouponFormDocument } from './RemoveCouponForm.gql'
++import {useContext} from "react";
++import {UIContext} from "../../../../components/common/contexts/UIContext";
++import {useRouter} from "next/router";
+ 
+ export type RemoveCouponFormProps = CouponFragment & { sx?: SxProps<Theme> }
+ 
+@@ -12,7 +15,25 @@ const { classes } = extendableComponent(name, parts)
+ 
+ export function RemoveCouponForm(props: RemoveCouponFormProps) {
+   const { applied_coupons, sx } = props
+-  const form = useFormGqlMutationCart(RemoveCouponFormDocument)
++    const [state, setState] = useContext(UIContext)
++    const router = useRouter()
++  const form = useFormGqlMutationCart(RemoveCouponFormDocument, {
++      onComplete: (response) => {
++          if (response?.data?.removeCouponFromCart) {
++              setState((prev) => ({
++                  ...prev,
++                  alerts: [
++                      {
++                          type: 'success',
++                          message: `<span>You canceled the coupon code.</span>`,
++                          timeout: 10000,
++                          targetLink: router.pathname,
++                      },
++                  ],
++              }))
++          }
++      }
++  })
+ 
+   const { handleSubmit, error } = form
+   const submitHandler = handleSubmit(() => {})

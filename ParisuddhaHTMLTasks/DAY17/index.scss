@@ -1,0 +1,150 @@
+body {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+}
+
+header {
+	.header-content {
+		width: 68%;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: auto;
+	}
+	.header-heading {
+		color: #fe81cb;
+		font-size: 30px;
+	}
+}
+.main-container {
+	.top-container {
+		display: flex;
+		justify-content: center;
+		margin-left: 35%;
+		margin-top: -30px;
+		height: 850px;
+		.gradient-card {
+			height: 400px;
+			width: 500px;
+			margin-top: 15%;
+			position: relative;
+			.gradient-card-img {
+				height: 600px;
+				width: 500px;
+			}
+			.gradientBackground {
+				background-image: linear-gradient(to right, rgb(254, 197, 14), rgb(254, 128, 194));
+				height: 500px;
+				width: 500px;
+				position: absolute;
+				top: 45%;
+				z-index: -1;
+				right: -10%;
+			}
+		}
+		.content-card {
+			margin-left: 94px;
+			.content-header {
+				color: rgb(72, 141, 244);
+				font-size: 50px;
+				font-weight: bold;
+				margin-top: 48%;
+			}
+			.cards-container {
+				display: flex;
+				position: absolute;
+				right: 30%;
+				bottom: 10%;
+				color: white;
+
+				.card1 {
+					height: 150px;
+					width: 150px;
+					background-color: rgb(56, 196, 193);
+					padding: 10px;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.card2 {
+					height: 150px;
+					width: 150px;
+					background-color: rgb(254, 202, 2);
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					padding: 10px;
+				}
+
+				.card3 {
+					height: 150px;
+					width: 150px;
+					background-color: rgb(254, 126, 201);
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					padding: 10px;
+				}
+
+				.card4 {
+					height: 150px;
+					width: 150px;
+					background-color: rgb(72, 141, 244);
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					padding: 10px;
+				}
+			}
+		}
+	}
+	width: 60%;
+	.aboutus-section {
+		margin-left: 25%;
+		.three-column-section {
+			display: flex;
+			align-items: center;
+			.first-column {
+				margin-top: 20%;
+				.card {
+					height: auto;
+					width: 350px;
+					padding: 10px;
+				}
+			}
+			.second-column {
+				.about-us-image {
+					width: 400px;
+					height: 600px;
+				}
+			}
+			.third-column {
+				margin-top: 20%;
+				margin-left: 10px;
+				.card {
+					height: auto;
+					width: 350px;
+					padding: 10px;
+				}
+			}
+		}
+	}
+}
+
+div {
+	h2 {
+		text-align: center;
+	}
+}
+
+
+h3 {
+	font-weight: bold;
+}

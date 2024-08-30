@@ -1,0 +1,84 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.modal {
+    &.get-invite-link-popup {
+        .pop-up-container {
+            .modal-content {
+                @include textCenter;
+
+                .btn-small {
+                    margin: 10px auto 40px;
+                }
+
+                a {
+                    text-decoration: underline;
+                    color: var(--data_site_primary_color);
+                }
+            }
+
+            .modal-footer {
+                background: var(--data_site_theme_highlight);
+                padding: 30px;
+                @include textCenter;
+                margin-top: 40px;
+
+                > p {
+                    padding: 0;
+
+                    @media only screen and (min-width: $device-md) {
+                        padding: 0 81px;
+                    }
+                }
+
+                h4 {
+                    background: var(--data_site_secondary_color);
+                    width: 73px;
+                    @include border-radius(10px);
+                    color: var(--data_site_theme_color);
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        border-right: 4px dotted var(--data_site_theme_color);
+                        top: 6px;
+                        position: absolute;
+                        right: -1px;
+                        height: 85%;
+                    }
+                }
+
+                .d-row {
+                    @include row;
+
+                    .d-col-2 {
+                        @include d-col-2;
+                    }
+                }
+
+                .benefits {
+                    .d-col.d-col-2 {
+                        margin-bottom: 20px;
+
+                        @media only screen and (min-width: $device-md) {
+                            margin: 0;
+                        }
+                    }
+
+                    p {
+                        background: var(--data_site_theme_color);
+                        width: calc(100% - 73px);
+                        margin: 0;
+                        @include border-radius(10px);
+                        text-align: left;
+                        padding: 10px;
+
+                        @media only screen and (min-width: $device-md) {
+                            padding: 10px 10px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+# Node.js  
+# Build a general Node.js project with npm.  
+# Add steps that analyze code, save build artifacts, deploy, and more:  
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript  
+  
+trigger:  
+- development
+  
+pool:  
+  vmImage: 'ubuntu-latest'  
+  
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.12.1'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run maintenance:dev
+  displayName: 'npm install and build:dev' 
+  
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'jk-demo-micro-10-7'
+    sourceFolder: build
+    contents: '**' 
+    targetFolder: /home/jkdemo_mirco/public_html
+    #cleanTargetFolder: false # Optional
+    overwrite: true
+    #failOnEmptySource: false # Optional
+    #flattenFolders: false # Optional

@@ -1,0 +1,66 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-eye"></i> {{ 'VIEW_ANSWER' | translate }}
+          <a class="btn btn-primary pull-right" [routerLink]="['/user-survey/list']"
+            ><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row form-group">
+                <strong class="col-md-2">{{ 'SURVEY_TITLE' | translate }} </strong>
+                <div class="col-md-10">
+                  {{ model.title }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row form-group">
+                <strong class="col-md-4">{{ 'START_DATE' | translate }} </strong>
+                <div class="col-md-8">
+                  {{ model.survey_start_date }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row form-group">
+                <strong class="col-md-4">{{ 'END_DATE' | translate }} </strong>
+                <div class="col-md-8">
+                  {{ model.survey_end_date }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row form-group">
+                <strong class="col-md-2">{{ 'DESCRIPTION' | translate }} </strong>
+                <div class="col-md-10">
+                  {{ model.description }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <fieldset class="quesFieldset" *ngFor="let ques of questionList; let i = index">
+            <legend>{{ 'QUESTION' | translate }} {{ i + 1 }}</legend>
+            <div class="question-answer-div">
+              <div class="row quesDiv">
+                <div class="col-md-12">
+                  <label>{{ ques.question }} </label>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <b>Ans : </b><label>{{ ques.answer }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

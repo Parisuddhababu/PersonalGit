@@ -1,0 +1,39 @@
+mutation ConfigurableCartUpdate(
+  $cart: String!
+  $item_id: String!
+  $sku: String!
+  $color_option: String!
+  $size_option: String!
+  $qty: String!
+) {
+  EditCartItem(
+    input: {
+      cart: $cart
+      item_id: $item_id
+      sku: $sku
+      color_option: $color_option
+      size_option: $size_option
+      qty: $qty
+    }
+  ) {
+    cart {
+      items {
+        id
+        uid
+        quantity
+        product {
+          id
+          uid
+          sku
+          name
+        }
+        prices {
+          row_total {
+            value
+            currency
+          }
+        }
+      }
+    }
+  }
+}

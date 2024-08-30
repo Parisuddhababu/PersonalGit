@@ -1,0 +1,200 @@
+@import "../common/mixin";
+
+img {
+  @include img-common;
+}
+
+.jkm-mail1 {
+  @include jkm-mail1;
+}
+
+.jkm-meta {
+  @include jkm-meta;
+}
+
+.jkm-instagram {
+  @include jkm-instagram;
+}
+
+.jkm-linkedin {
+  @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+  @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+  @include jkm-youtube;
+}
+
+.jkm-visa {
+  @include jkm-visa;
+}
+
+.jkm-wedding-ring {
+  @include jkm-wedding-ring;
+}
+
+.jkm-delivery-truck {
+  @include jkm-delivery-truck;
+}
+
+.jkm-new-arrival {
+  @include jkm-new-arrival;
+}
+
+.jkm-offer {
+  @include jkm-offer;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+h2 {
+  @include text-clamp(2);
+  margin-bottom: 30px;
+}
+
+.btn {
+  @include button;
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+}
+
+.just-center {
+  @include just-center;
+}
+
+.banner-sec {
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    margin-bottom: 120px;
+  }
+
+  .banner-image-wrap {
+    position: relative;
+    background: transparent linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.4509803922) 100%,
+        var(--data_site_text_color) 100%) 0% 0% no-repeat padding-box;
+
+    .banner-content {
+      max-width: 1560px;
+      padding: 170px 20px 140px;
+      @include align-item-start;
+      color: var(--data_site_highlight_section_text_color);
+
+      .seperator {
+        margin-left: 0;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        text-align: left;
+      }
+
+      h4 {
+        @include font-family(var(--data_site_font_secondary), 400);
+        max-width: 592px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.brand {
+  &:nth-child(odd) {
+    background: var(--data_site_theme_highlight);
+  }
+}

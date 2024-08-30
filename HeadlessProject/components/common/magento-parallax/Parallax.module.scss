@@ -1,0 +1,7 @@
+.parallax-wrapper{
+  align-self: flex-start;
+  transition: transform 1s ease;
+  &.transition-none{
+   transition: opacity 1s ease;
+ }
+}

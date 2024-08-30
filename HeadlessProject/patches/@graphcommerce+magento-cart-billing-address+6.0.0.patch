@@ -1,0 +1,21 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-billing-address/components/EditBillingAddressForm/EditBillingAddressForm.tsx b/node_modules/@graphcommerce/magento-cart-billing-address/components/EditBillingAddressForm/EditBillingAddressForm.tsx
+index f31ef48..928b394 100644
+--- a/node_modules/@graphcommerce/magento-cart-billing-address/components/EditBillingAddressForm/EditBillingAddressForm.tsx
++++ b/node_modules/@graphcommerce/magento-cart-billing-address/components/EditBillingAddressForm/EditBillingAddressForm.tsx
+@@ -41,7 +41,6 @@ export function EditBillingAddressForm(props: EditBillingAddressFormProps) {
+       countryCode: address?.country.code,
+       street: address?.street?.[0] ?? undefined,
+       telephone: address?.telephone,
+-      houseNumber: address?.street?.[1] ?? undefined,
+       addition: address?.street?.[2] ?? undefined,
+       saveInAddressBook: true,
+     },
+@@ -67,7 +66,7 @@ export function EditBillingAddressForm(props: EditBillingAddressFormProps) {
+   return (
+     <>
+       <Form onSubmit={submitHandler} noValidate sx={sx}>
+-        <NameFields form={form} prefix />
++        <NameFields form={form} />
+         <AddressFields form={form} />
+ 
+         <FormRow>

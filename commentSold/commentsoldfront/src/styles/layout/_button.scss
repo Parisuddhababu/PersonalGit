@@ -1,0 +1,148 @@
+.btn {
+    min-height: 46px;
+    @include border-radius(4px);
+    width: auto;
+    background-color: $white-color;
+    color: $title-text;
+    text-align: center;
+    font-family: $primary-font;
+    @include font-detail(14px, 18px, 600, normal);
+    @include transition(all, 0.3s, ease);
+    outline: none;
+    cursor: pointer;
+    border: 1px solid;
+    text-decoration: none;
+    position: relative;
+    @include flexbox();
+    @include flexCenter();
+    max-width: max-content;
+    padding: 10px 20px;    
+    text-transform: capitalize;
+
+    @include media($device-lg) {
+        @include font-detail(16px, 21px, 600, normal);
+    }
+
+    @include media($device-lg) {
+        min-height: 50px;
+        padding: 10px 30px;
+    }
+    
+    @include media($device-xxl) {
+        padding: 10px 40px;
+        min-height: 54px;
+    }
+
+    &:visited {
+        color: $primary-color;
+        background-color: $white-color;
+    }
+
+    &.btn-primary {
+        color: $white-color;
+        background-color: $primary_color;
+        border-color: $primary_color;
+        &:hover {
+            color: $primary_color;
+            background-color: $white-color;
+            border-color: $primary_color;
+        }
+    }
+
+    &.btn-primary-outline {
+        border-color: $primary-color;
+        color: $primary-color;
+    }
+
+    &.btn-white {
+        color: $primary_color;
+        background-color: transparent;
+        &:hover {
+            background: $primary_color;
+            color: $white-color;
+        }
+    }
+
+    &.btn-fullwhite {
+        color: $primary_color;
+        background-color: $white-color;
+        border-color: $white-color;
+        &:hover {
+            background: $primary_color;
+            color: $white-color;
+        }
+    }
+
+    &.btn-secondary {
+        background-color: $title-text;
+        border-color: $title-text;
+        color: $white-color;
+        &:hover {
+            background: $white-color;
+            color: $title-text;
+        }
+        &.btn-secondary-white {
+            background: transparent;
+            color: $title-text;
+            &:hover {
+                background-color: $title-text;
+                color: $white-color;
+            }
+        }
+    }
+
+    &.btn-sm {
+        padding: 8px 15px;
+        min-height: 40px;
+        
+        @include media($device-md) {
+            padding: 8px 20px;
+        }
+
+        @include media($device-lg) {
+            min-height: 42px;
+            padding: 8px 40px;
+        }
+    
+        @include media($device-xl) {
+            min-height: 44px;
+        }
+    }
+    &.btn-icon,&.btn-next{
+        .icon{
+            font-size: 12px;
+            margin-left: 10px;
+            @include media($device-lg) {
+                margin-left: 14px;
+            }
+            @include media($device-lg) {
+                margin-left: 20px;
+            }
+        }
+    }
+    &.btn-prev{
+        .icon{
+            margin-left: 0;
+            margin-right: 10px;
+            @include media($device-lg) {
+                margin-right: 14px;
+            }
+            @include media($device-lg) {
+                margin-right: 20px;
+            }
+        }
+
+    }
+    &.disable {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    &[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    &.btn-full{
+        width: 100%;
+        min-width: 100%;
+    }
+}

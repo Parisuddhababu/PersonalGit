@@ -1,0 +1,120 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.brand-3 {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    background: var(--data_site_theme_highlight);
+
+    @media only screen and (min-width: $device-xl) {
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+
+    .d-row {
+        @include row;
+
+        .d-col-2 {
+            @include d-col-2;
+        }
+
+        .d-col-66 {
+            @include d-col-66;
+        }
+
+        .d-col-33 {
+            @include d-col-33;
+        }
+    }
+
+    .actions {
+        @include flexbox;
+
+        @media only screen and (min-width: $device-xl) {
+            padding-top: 40px;
+        }
+
+        .btn-medium {
+            margin-right: 40px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .bottom {
+        @include flexbox;
+        @include align-item-end;
+    }
+
+    .two_image_box {
+        padding: 0 0 20px;
+        margin-top: 15px;
+
+        @media only screen and (min-width: $device-sm) {
+            margin-top: 0;
+        }
+
+        @media only screen and (min-width: $device-lg) {
+            padding: 0 15px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+            padding: 0 20px;
+        }
+
+        .d-col.d-col-2 {
+            @media only screen and (min-width: $device-sm) {
+                width: 50%;
+            }
+        }
+
+        .top {
+            margin-top: 5px;
+            margin-bottom: 20px;
+
+            @media only screen and (min-width: $device-sm) {
+                margin-top: 0;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    .single_image {
+        position: relative;
+        padding: 63.055% 51.097%;
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+
+    .top,
+    .bottom {
+        position: relative;
+        padding: 25% 51.1%;
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+}
+
+// .brand-4 {
+//     background: var(--data_site_theme_highlight);
+//     .single_image {
+//         margin-top: 5px;
+//         @media only screen and (min-width: $device-sm) {
+//             margin-top: 0;
+//         }
+//     }
+// }

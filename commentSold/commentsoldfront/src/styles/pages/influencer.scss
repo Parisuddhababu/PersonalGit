@@ -1,0 +1,108 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+@import "../layout/formControl";
+@import "../common/table";
+@import "../layout/button";
+@import "../common/modal";
+@import "../components/steps/step1";
+
+.influencer-wrapper {
+    padding: 50px 0;
+    .row {
+        @include row-align-items;
+        @include row-justify-center;
+        @include row(1,20px,0px);
+        @include media($device-md){
+            @include row(2,0px,0px);
+        }
+        @include media($device-md) {
+            @include row-space-between;
+        }
+        h1 {
+            text-align: center;
+            @include media($device-md) {
+                text-align: left;
+            }
+        }
+    }
+    .card {
+        @include card(lg,true,false);
+        &.influencer {
+            form {
+                max-width: 400px;
+                width: 100%;
+                margin-left: auto;
+            }
+            .search-form-group {
+                .icon-search {
+                    color: $black-color;
+                    font-size: 18px;
+                }
+            }
+            .r-col {
+                @include flexbox();
+                .r-colinner {
+                    @include flexbox();
+                    margin-left: auto;
+                    position: relative;
+                }
+            }
+            .table-responsive {
+                tbody {
+                    position: relative;
+                }
+                .checkTable {
+                    tr {
+                        th,
+                        td {
+                            &:first-child {
+                                padding-right: 0;
+                                width: 50px;
+                                .checkbox-tick {
+                                    margin-right: 0;
+                                    border-color: $blue-fantastic;
+                                }
+                            }
+                            &:nth-child(2) {
+                                width: 250px;
+                                @include media($device-lg) {
+                                    width: 400px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.add-user-row {
+    @include row(1,0px,0px);
+    @include media($device-md){
+        @include row(3,0px,30px);
+    }
+}
+.schedule-live-modal-body{
+    border: 0 !important;
+    padding: 0 !important;
+    .live-for-later-email{
+        @include row(2,15px,15px);
+        li {
+            border: 1px solid $billowing-clouds;
+            padding: 8px 15px;
+            @include border-radius(4px);
+            @include flexbox;
+            justify-content: center;
+            flex-direction: column;
+            p {
+                margin: 0;
+            }
+            &.disable{
+                background-color: rgba(140, 140, 140, 0.0509803922);
+            }
+        }
+    }
+}

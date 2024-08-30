@@ -1,0 +1,74 @@
+@import "../common/mixin-2";
+
+.jkms2-arrow-right {
+    @include jkms2-arrow-right;
+}
+
+.product_slider {
+    position: relative;
+
+    .d-row {
+        @include row;
+
+        .d-col-4 {
+            @include d-col-4;
+            margin-bottom: 30px;
+        }
+    }
+
+    .col-box {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 71%;
+        max-height: 248px;
+        @include position(relative);
+
+        picture {
+            width: 100%;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            @include position(absolute);
+            inset: 0
+        }
+    }
+
+    .slider-arrow-btn {
+        @include slider-arrow-btn (50px);
+        @include transform(translateY(-50%));
+    }
+
+    .left {
+        left: 0;
+
+        @media only screen and (min-width: $container-lg) {
+            left: -25px;
+        }
+    }
+
+    .right {
+        right: 0;
+
+        @media only screen and (min-width: $container-lg) {
+            right: -25px;
+        }
+    }
+}
+
+.carousel {
+    h5 {
+        @include font-detail(20px, 24px);
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-weight: 700;
+
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+    }
+}

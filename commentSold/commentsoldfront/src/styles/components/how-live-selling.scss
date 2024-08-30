@@ -1,0 +1,54 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../common/common";
+
+.how-live-selling{
+    @include section-spacing(top);
+    @include section-spacing(bottom);
+
+    .how-live-selling-row{
+        @include row(1,20px,20px);
+
+        @include media($device-md){
+            @include row(3,40px,40px);
+        }
+
+        .how-live-selling-item{
+            .how-live-selling-item-image{
+                @include transition(all,0.5s);
+                border: 1px solid transparent;
+                @include border-radius(4px);
+                aspect-ratio: 2/1;
+                height: 271px;
+                object-fit: contain;
+                width: 100%;
+                
+                @include media($device-md){
+                    height: 171px;
+                }
+                @include media($device-lg){
+                    height: 232px;
+                }
+                @include media($device-xl){
+                    height: 300px;
+                }
+                @include media($device-xxl){
+                    height: 346px;
+                }
+                
+            }
+            &:hover{
+                .how-live-selling-item-image{
+                    border-color: $border-color-2;
+                }
+            }
+            .how-live-selling-item-description{
+                color: $label-color;
+                margin-bottom: 0;
+                @include font-sm;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,26 @@
+.container{
+    width: auto;
+    height:auto;
+    background-color: rgb(232, 240, 237);
+
+}
+
+.input-container{
+    height: 60px;
+    width: 100vw;
+    border-radius: 25px;
+    font-size: 30px;
+    padding: 20px;
+    color: blueviolet;
+    margin: 10px;
+
+}
+.load-text{
+    font-size: 35px;
+    color: blue;
+    text-align: center;
+
+}
+span{
+    color: crimson;
+}

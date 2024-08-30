@@ -1,0 +1,28 @@
+.correct {
+  color: green;
+  font-style: italic;
+}
+.wrong {
+  color: rgb(5, 1, 225);
+}
+h2 {
+  color:darkslategrey;
+}
+
+h1 {
+  color: crimson;
+}
+
+h3 {
+  color: rgb(38, 0, 128);
+}
+.result {
+  font-size: medium;
+  text-align: center;
+}
+.score {
+  font-size: small;
+}
+li {
+  font-size: small;
+}

@@ -1,0 +1,84 @@
+@import "../common/mixin";
+
+.shipping-address-section {
+  @include section-bottom-spacing;
+
+  .shipping-title {
+    @include title-with-border;
+  }
+
+  .btn {
+    @include btn;
+  }
+
+  .btn-border-small {
+    @include btn-border-small;
+  }
+
+  .btn-primary {
+    @include btn-primary;
+  }
+
+  .shipping-address-methods-wrap {
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+
+    @include lg {
+      max-width: calc(100% - 350px);
+      width: 100%;
+    }
+
+    @include container {
+      max-width: calc(100% - 360px);
+      width: 100%;
+    }
+
+    .shipping-address-wrap {
+      margin-bottom: 20px;
+
+      @include md {
+        margin-bottom: 30px;
+      }
+
+      @include xl {
+        margin-bottom: 40px;
+      }
+
+      @include container-md {
+        margin-bottom: 48px;
+      }
+
+      .ocs-checkbox {
+        @include ocs-checkbox;
+      }
+
+      .new-address-btn {
+        margin-top: 18px;
+
+        @include sm {
+          margin-top: 40px;
+        }
+
+        @include xl {
+          margin-top: 51px;
+        }
+      }
+
+      .subtitle {
+        @include body-large-bold;
+        color: var(--data_site_text_color);
+        border-bottom: 1px solid var(--data_site_gray_color);
+        padding: 18px 0 10px;
+
+        @include md {
+          padding: 38px 0 12px;
+        }
+
+        @include xl {
+          padding: 49px 0 16px;
+        }
+      }
+    }
+  }
+}

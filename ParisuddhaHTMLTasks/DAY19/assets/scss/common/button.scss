@@ -1,0 +1,42 @@
+@import './default.scss';
+@mixin button-component {
+	height: 40px;
+	border: 0;
+	border-radius: 5px;
+	margin: 5px;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+	outline: 0;
+	position: relative;
+	padding: 10px 38px;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+.btnBlue {
+	@include button-component;
+	background-color: $primary-color;
+	color: white;
+}
+
+.btnTransparent {
+	@include button-component;
+	background-color: transparent;
+	border-color: white;
+	color: white;
+	border: solid;
+	border-width: 2px;
+	border-radius: 5px;
+	&:hover {
+		background-color: $primary-color;
+		border-width: 2px;
+		border-color: transparent;
+	}
+}
+
+.buttonsContainer {
+	margin-top: 25px;
+}

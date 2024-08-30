@@ -1,0 +1,53 @@
+* {
+	font-family: 'Open Sans', 'sans-serif';
+}
+
+$primary-color: rgb(77, 199, 199);
+$secondary-color: rgb(143, 143, 143);
+$background-color: #f0f0f0;
+
+$small: 300px;
+$medium: 778px;
+$large: 1281px;
+
+html,
+body,
+div,
+li,
+ul,
+img,
+a,
+input,
+nav,
+textarea,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	margin: 0;
+}
+ul,
+ol {
+	list-style: none;
+}
+
+.container {
+	@media screen and (max-width: $small) {
+		padding: 10px 20px;
+	}
+	@media screen and (min-width: $medium) {
+		padding: 10px 70px;
+	}
+	@media screen and (min-width: $large) {
+		padding: 20px 350px;
+	}
+}

@@ -1,0 +1,20 @@
+.card-badge {
+  flex-direction: row;
+  display: flow-root;
+  padding: 4px 8px 8px 8px;
+}
+.badge {
+  width: fit-content;
+  margin-right: 4px;
+  margin-top: 4px;
+  padding: 8px 0 8px 5px;
+  color: #fff;
+  border-radius: 2px;
+  float: left;
+  font-size: 11px;
+  a {
+    color: #fff;
+    padding: 6px 5px;
+    border-left: 1px solid #fff;
+  }
+}

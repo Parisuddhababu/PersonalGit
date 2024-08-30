@@ -1,0 +1,174 @@
+@import "../common/mixin-2";
+
+.jkms2-play-icon {
+  @include jkms2-play-icon;
+}
+
+.our-story {
+  padding: 30px 0;
+  margin-bottom: 30px;
+  background: var(--data_site_theme_fixed_highlight);
+
+  @media screen and (min-width: $device-md) {
+    padding: 60px 0;
+    margin-bottom: 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    padding: 80px 0;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: $container) {
+    padding: 120px 0;
+    margin-bottom: 120px;
+  }
+}
+
+.our-story {
+  .d-row {
+    @include row;
+
+    .d-col-2 {
+      margin-bottom: 0;
+      @include d-col-2;
+      width: 100% !important;
+
+      @media only screen and (min-width: $device-lg) {
+        width: 50% !important;
+        background-color: var(--data_site_theme_color);
+      }
+
+      &.f-img {
+        @media only screen and (min-width: $device-lg) {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+.our-story-wrap {
+  @media only screen and (min-width: $device-lg) {
+    border: 1px solid var(--data_border_color);
+  }
+
+  h2 {
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .box {
+    @include textCenter;
+    background-color: var(--data_site_highlighted_color);
+
+    @media only screen and (min-width: $device-sm) {
+      text-align: left;
+      padding: 20px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      padding: 40px 25px;
+      background: none;
+    }
+
+    @media only screen and (min-width: $container-lg) {
+      padding: 60px 30px;
+    }
+
+    .box-para {
+      margin-bottom: 20px;
+    }
+  }
+
+  .f-img {
+    @include align-item-start;
+
+    .founder-image {
+      position: relative;
+      border: 1px solid var(--data_border_color);
+      padding: 30% 45%;
+      margin: auto;
+      width: 100%;
+
+      @media only screen and (min-width: $device-sm) {
+        padding: 25% 35%;
+      }
+
+      @media only screen and (min-width: $device-lg) {
+        padding: 40% 50%;
+      }
+
+      span {
+        position: absolute;
+        display: inline-block;
+        height: 70px;
+        width: 70px;
+        @include border-radius(50%);
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+        @include flexbox;
+        @include just-center;
+        @include align-item-center;
+        background: rgba($color: #edf2f6, $alpha: .4);
+
+        @media only screen and (min-width: $device-md) {
+          height: 90px;
+          width: 90px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          height: 120px;
+          width: 120px;
+        }
+
+        .icon {
+          color: var(--data_site_primary_color);
+          font-size: 18px;
+          position: relative;
+          z-index: 1;
+          width: 40px;
+          height: 40px;
+          @include border-radius(50%);
+          @include flexCenter;
+          background: rgba($color: #edf2f6, $alpha: .6);
+
+          @media only screen and (min-width: $device-sm) {
+            font-size: 22px;
+          }
+
+          @media only screen and (min-width: $device-md) {
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+          }
+
+          @media only screen and (min-width: $device-xl) {
+            width: 90px;
+            height: 90px;
+            font-size: 36.7px;
+          }
+        }
+      }
+
+      picture {
+        img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

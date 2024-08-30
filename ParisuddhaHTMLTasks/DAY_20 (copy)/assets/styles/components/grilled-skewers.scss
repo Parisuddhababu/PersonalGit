@@ -1,0 +1,132 @@
+//grilled-skewers
+.grilled-skewers {
+  .grilled-skewers-container {
+    background-image: url("./assets/images/webp/banner-image.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    padding-top: 120px;
+    .grilled-skewers-header-container {
+      @include flex-property-col;
+      @include justify-content-center;
+      @include align-center;
+      gap: 9px;
+      color: $white-color;
+      max-width: 1300px;
+      margin: auto auto;
+      padding-top: 40px;
+      @include xl {
+        @include flex-property-row;
+        column-gap: 45px;
+      }
+      .grilled-skewers-row-container {
+        @include flex-property-col;
+        @include justify-content-center;
+        @include align-center;
+        position: relative;
+        .banner-section-image {
+          .white-plate {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .grilled-skewers-header {
+        @include flex-property-col;
+        position: relative;
+        @include content-between;
+        margin-bottom: 10px;
+        @include lg {
+          padding-bottom: 70px;
+        }
+        .banner-left-container {
+          h1 {
+            font-size: 33px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            color: $white-color;
+            font-weight: 700;
+            font-family: $Playfair;
+            text-align: right;
+            max-width: 200px;
+            word-break: break-all;
+            @include lg {
+              font-size: 60px;
+              max-width: 350px;
+            }
+            @include xl {
+              line-height: 67px;
+              max-width:370px;
+            }
+            @include large {
+              font-size: 89px;
+              max-width: 531px;
+
+            }
+            .symbol {
+              color: $primary-color;
+              padding-left: 10px;
+              right: 15px;
+            }
+            .skewers {
+              font-size: 33px;
+              text-transform: uppercase;
+              color: $white-color;
+              text-align:right;
+              @include lg {
+                font-size: 60px;
+              }
+              @include large {
+                font-size: 89px;
+                line-height: 105px;
+              }
+              font-weight: 700;
+              font-family: $Playfair;
+            }
+         
+          }
+          .delecious-container {
+            background-image: url("/assets/images/webp/bg-design.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(0deg);
+            margin: auto;
+            margin-top: -20px;
+            @include lg {
+              width: 291px;
+            }
+            @include large {
+              height: 122px;
+              width: 391px;
+            }
+            width: 200px;
+            .hot-delicious {
+              @include flex-property-row;
+              @include justify-content-center;
+              padding: 20px;
+              @include lg {
+                padding: 29px;
+                font-size: 35px;
+              }
+              @include large {
+                font-size: 52px;
+                margin-top: -30px;
+              }
+              font-size: 20px;
+              color: $white-color;
+              font-family: $surferbay;
+              left: 71px;
+              top: 29px;
+              transform: rotate(-8deg);
+            }
+          }
+       
+        }
+      }
+    }
+  }
+}

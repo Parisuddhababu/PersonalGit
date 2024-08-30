@@ -1,0 +1,323 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-mail1 {
+    @include jkm-mail1;
+}
+
+.jkm-meta {
+    @include jkm-meta;
+}
+
+.jkm-instagram {
+    @include jkm-instagram;
+}
+
+.jkm-linkedin {
+    @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+    @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+    @include jkm-youtube;
+}
+
+.jkm-visa {
+    @include jkm-visa;
+}
+
+.jkm-twitter {
+    @include jkm-twitter;
+}
+
+.row {
+    @include row;
+}
+
+.d-col {
+    &.d-col-3 {
+        @include d-col-3;
+    }
+
+    &.d-col-4 {
+        @include d-col-4;
+    }
+
+    &.d-col-33 {
+        @include d-col-33;
+    }
+
+    &.d-col-66 {
+        @include d-col-66;
+    }
+}
+
+.elfsight-script-custom {
+    width: 100%;
+    display: inline-block;
+}
+footer {
+    width: 100%;
+    display: inline-block;
+    background: var(--data_footer_bg);
+    padding-top: 30px;
+    clear: both;
+
+    @media only screen and (min-width: $device-md) {
+        padding-top: 40px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+        padding-top: 80px;
+    }
+
+    .jkm-pinterest {
+        @include jkm-pinterest;
+
+        &:hover {
+            background: var(--data_pinterest_icon_color);
+        }
+    }
+
+    .jkm-twitter {
+        @include jkm-twitter;
+
+        &:hover {
+            background: var(--data_twitter_icon_color);
+        }
+    }
+
+    .jkm-tumblr {
+        @include jkm-tumblr;
+
+        &:hover {
+            background: var(--data_tumblr_icon_color);
+        }
+    }
+
+    .logo {
+        max-width: 255px;
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 20px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .footer-top {
+        .d-col {
+            &.d-col-4 {
+                width: 50%;
+
+                @media screen and (min-width: $device-md) {
+                    width: 25%;
+                }
+            }
+
+            &.d-col-33 {
+                margin-bottom: 40px;
+
+                @media screen and (min-width: $device-lg) {
+                    margin-bottom: 0;
+                }
+            }
+
+            &.d-col-66 {
+                padding: 0;
+
+                @media screen and (min-width: $device-lg) {
+                    padding: 0 15px;
+                }
+            }
+        }
+    }
+
+    .company-intro-widget {
+        padding-right: 20px;
+
+        p {
+            @include font-detail(18px, 27px);
+            color: var(--data_footer_text);
+            margin-bottom: 20px;
+
+            a {
+                color: var(--data_site_secondary_color);
+                text-decoration: underline;
+            }
+
+            span {
+                color: var(--data_site_secondary_color);
+                display: inline-block;
+            }
+        }
+    }
+
+    .company-footer-contact-list {
+        li {
+            @include font-detail(18px, 34px);
+            display: inline-block;
+            margin-right: 20px;
+
+            @media only screen and (min-width: $device-lg) {
+                display: block;
+                margin-right: 0;
+            }
+        }
+
+        a {
+            color: var(--data_footer_text);
+            word-break: break-all;
+
+            &:hover {
+                color: var(--data_site_secondary_color);
+            }
+        }
+
+        .icon {
+            color: var(--data_footer_text);
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    }
+
+    .widget {
+        .widget-title {
+            @include font-detail(20px, 20px);
+            margin: 0 0 28px;
+            color: var(--data_footer_text);
+
+            @media only screen and (min-width: $device-md) {
+                @include font-detail(18px, 20px);
+                margin: 0 0 22px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                @include font-detail(20px, 20px);
+                margin: 0 0 28px;
+            }
+        }
+
+        .link-list {
+            a {
+                @include font-detail(18px, 36px);
+                color: var(--data_footer_text);
+
+                &:hover {
+                    color: var(--data_site_secondary_color);
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding: 30px 0;
+        border-top: 1px solid var(--data_site_text_color);
+
+        .row {
+            .d-col {
+                margin-bottom: 10px;
+                @include justifyCenter;
+
+                &.d-col-3 {
+                    @media only screen and (min-width: $device-md) {
+                        width: 33.33%;
+                        margin-bottom: 0;
+                        justify-content: unset;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-social-group {
+        @include social-icon-group(8px);
+
+        @media only screen and (min-width: $device-lg) {
+            @include social-icon-group(10px);
+        }
+
+        a {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--data_footer_text);
+            @include border-radius(50%);
+            display: inline-block;
+            @include social-icon(var(--data_footer_text), 14px, normal);
+            @include flexCenter;
+
+            @media only screen and (min-width: $device-lg) {
+                width: 38px;
+                height: 38px;
+            }
+
+            &.jkm-meta {
+                &:hover {
+                    background: var(--data_facebook_icon_color);
+                }
+            }
+
+            &.jkm-instagram {
+                &:hover {
+                    background: var(--data_instagram_icon-color);
+                }
+            }
+
+            &.jkm-linkedin {
+                &:hover {
+                    background: var(--data_linkedin_icon_color);
+                }
+            }
+
+            &.jkm-whatsapp {
+                &:hover {
+                    background: var(--data_whatsapp_icon_color);
+                }
+            }
+
+            &.jkm-youtube {
+                font-size: 10px;
+
+                &:hover {
+                    background: var(--data_youtube_icon_color);
+                }
+            }
+
+            &.jkm-mail1 {
+                font-size: 11px;
+
+                &:hover {
+                    background: var(--data_mail_icon_color);
+                }
+            }
+        }
+    }
+
+    .copyright-section {
+        width: 100%;
+        @include textCenter;
+
+        p {
+            @include font-detail(14px, 36px);
+            color: var(--data_footer_text);
+            margin-bottom: 0;
+        }
+    }
+
+    .payment-options {
+        width: 100%;
+        @include textCenter;
+
+        @media only screen and (min-width: $device-md) {
+            text-align: right;
+        }
+
+        .icon {
+            color: var(--data_footer_text);
+        }
+    }
+}

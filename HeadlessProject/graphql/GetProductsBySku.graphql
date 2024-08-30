@@ -1,0 +1,24 @@
+query getProductsBySku($skus: [String]) {
+  products(filter: { sku: { in: $skus } }) {
+    ...ProductListCount
+    ...ProductListPagination
+    ...ProductListSort
+    items {
+      __typename
+      uid
+      stock_status
+      ...ProductListItem
+    }
+    total_count
+    aggregations {
+      attribute_code
+      count
+      label
+      options {
+        label
+        value
+        count
+      }
+    }
+  }
+}

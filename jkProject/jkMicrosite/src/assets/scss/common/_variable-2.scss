@@ -1,0 +1,45 @@
+:root {
+    //Dynamic variables
+    --data_site_border_radius: 25px;
+    --data_site_primary_color: #052B36;
+    --data_site_secondary_color: #03769A;
+    //--data_site_font_primary_url: 'https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap';
+    //--data_site_font_secondary_url: 'https://fonts.googleapis.com/css2?family=Lato&display=swap';
+    --data_footer_bg: #161616;
+    --data_button_primary_color: #052B36;
+    --data_button_secondary_color: #03769A;
+    --data_site_font_primary: 'Playfair Display';
+    --data_site_font_secondary: "Lato";
+    //Static Varibales 
+    --data_site_text_color: #000000;
+    --data_site_theme_highlight: #EDF2F6;
+    --data_site_theme_fixed_highlight: #EDF2F6;
+    --data_site_highlight_section_text_color: #EDF2F6;
+    --data_border_color: #dadada;
+    --data_product_list_border_color: #dadada;
+    --data_site_theme_color: #ffffff;
+    --data_box_shadow_color: #00000029;
+    --data_border_primary_color: var(--data_site_primary_color);
+    --data_border_secondary_color: var(--data_site_secondary_color);
+    --data_error_color: #EF2D56;
+    --data_disable_color: #F6F6F6;
+    --data_img_border_radius: 0px;
+    --data_linkedin_icon_color: #0E76A8;
+    --data_instagram_icon-color: #DD2A7B;
+    --data_youtube_icon_color: #129184;
+    --data_facebook_icon_color: #1877F2;
+    --data_mail_icon_color: #2151A1;
+    --data_whatsapp_icon_color: #25D336;
+    --data_google_icon_color: #EA4335;
+    --data_twitter_icon_color: #00acee;
+}
+
+$device-xs: 320px;
+$device-sm: 576px;
+$device-md: 768px;
+$device-lg: 1024px;
+$device-xl: 1200px;
+$container: 1560px;
+$container-main: 1560px;
+$container-lg: 1700px;
+$container-xl: 1900px;

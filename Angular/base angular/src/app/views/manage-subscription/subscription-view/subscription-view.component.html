@@ -1,0 +1,75 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-handshake-o"></i>{{ 'SUBSCRIPTION_DETAILS' | translate }}
+          <a routerLink="/manage-subscription/list" class="btn btn-primary pull-right"
+            ><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a
+          >
+        </div>
+        <div class="card-body view-user">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLAN_NAME' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.plan_name || noData }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'DESCRIPTION' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.description || noData }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLAN_VALIDITY' | translate }} </label>
+                <div class="col-md-7">
+                  {{ (plan_validity[model.validity] | translate) || noData }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLAN_PRICE' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.price == '' ? noData : model.price }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLAN_DISCOUNT' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.discount == '' ? noData : model.discount }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PLAN_START_END_DATE' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.start_date != '' ? (model.start_date | customDate: momentDateFormat) : '' }} -
+                  {{ model.end_date != '' ? (model.end_date | customDate: momentDateFormat) : '' }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'IS_TRIAL_PLAN' | translate }} </label>
+                <div class="col-md-7">
+                  {{ (trial_plan_type[model.is_trial_plan] | translate) || noData }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

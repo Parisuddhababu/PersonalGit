@@ -1,0 +1,9 @@
+query GetMoreInformation($sku: String!) {
+  GetMoreInformation(sku: $sku) {
+    allAttributeRecords {
+      label
+      value
+      code
+    }
+  }
+}

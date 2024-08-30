@@ -1,0 +1,90 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form (ngSubmit)="onFaqSave()" novalidate #faqFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="form-group">
+              <label for="page_title">{{ 'FAQ_TOPIC' | translate }} <span class="asterisk_input"></span></label>
+              <select class="form-control" [(ngModel)]="model.faq_topic" name="faq_topic_id" #faq_topic_id="ngModel" required>
+                <option value="" selected>-- {{ 'SELECT_FAQ_TOPIC' | translate }} --</option>
+                <option *ngFor="let topic of topicListData" [value]="topic.uuid">
+                  {{ topic.topic_name }}
+                </option>
+              </select>
+              <div class="form-control-feedback text-danger" *ngIf="faq_topic_id.errors && faqFrm.submitted">
+                <p *ngIf="faq_topic_id.errors.required">{{ 'PLEASE_SELECT_FAQ_TOPIC' | translate }}</p>
+              </div>
+            </div>
+            <div class="form-group" *ngFor="let lan of languages">
+              <label for="meta_keywords">{{ 'QUESTION' | translate }} ({{ lan.name }})<span class="asterisk_input"></span></label>
+              <input
+                [(ngModel)]="model.question[lan.locale]"
+                type="text"
+                name="question_{{lan.locale}}"
+                [style.direction]="lan.text_direction"
+                id="question"
+                class="form-control"
+                placeholder="{{ 'QUESTION' | translate }}"
+                required
+                #quest="ngModel"
+              />
+              <div class="form-control-feedback text-danger" *ngIf="quest.errors && faqFrm.submitted">
+                <p *ngIf="quest.errors.required">{{ 'PLEASE_ENTER_QUESTION' | translate }}</p>
+              </div>
+            </div>
+            <div class="form-group" *ngFor="let lan of languages">
+              <label for="meta_description">{{ 'ANSWER' | translate }} ({{ lan.name }})<span class="asterisk_input"></span></label>
+              <textarea
+                class="form-control"
+                [(ngModel)]="model.answer[lan.locale]"
+                name="answer_{{lan.locale}}"
+                [style.direction]="lan.text_direction"
+                placeholder="{{ 'ANSWER' | translate }}"
+                rows="4"
+                required
+                #answer="ngModel"
+              ></textarea>
+
+              <div class="form-control-feedback text-danger" *ngIf="answer.errors && faqFrm.submitted">
+                <p *ngIf="answer.errors.required">{{ 'PLEASE_ENTER_ANSWER' | translate }}</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="status">{{ 'STATUS' | translate }} <span class="asterisk_input"></span></label>
+              <div class="d-block">
+                <div class="form-check-inline" *ngFor="let status of statusList | keyvalue: orderbyValueAsc; let i = index">
+                  <label class="form-check-label"
+                    >{{ status.value | translate }}
+                    <input
+                      [(ngModel)]="model.status"
+                      name="faq_status"
+                      class="form-check-input"
+                      type="radio"
+                      id="status_{{ i }}"
+                      [value]="status.key"
+                      #faq_status="ngModel"
+                      required
+                    />
+                    <span class="radio-span"></span>
+                  </label>
+                </div>
+                <div class="form-control-feedback text-danger" *ngIf="(faqFrm?.controls)['faq_status']?.errors && faqFrm.submitted">
+                  <p *ngIf="(faqFrm?.controls)['faq_status']?.errors.required">{{ 'PLEASE_SELECT_STATUS' | translate }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o fa-lg"></i> {{ 'SAVE' | translate }}</button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/faq/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

@@ -1,0 +1,26 @@
+// Default Variables
+$slick-arrow-color: black !default;
+
+.root {
+    :global {
+        .slick-slide {
+            padding-left: 0.25rem;
+            // @apply pl-1 md:p-2;
+        }
+        .slick-prev,
+        .slick-next {
+            &:before {
+                color: $slick-arrow-color;
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+
+    }
+}
+
+.root :global .slick-slide img {
+    display: block;
+    width: 100%;
+    position: relative !important;
+}

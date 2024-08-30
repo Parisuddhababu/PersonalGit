@@ -1,0 +1,79 @@
+@import "../common/mixin";
+
+.account-information-section {
+  @include section-bottom-spacing;
+
+  .form-group {
+    @include form-group;
+  }
+
+  .p-error {
+    @include error;
+  }
+
+  .row {
+    @include row;
+  }
+
+  .password-field {
+    @include password-field;
+  }
+
+  .account-right-content-wrap {
+    @include account-right-content-wrap;
+
+    .account-content-title {
+      @include account-content-title;
+    }
+
+    .account-information-content {
+      .account-information-form {
+        .d-col {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        @include md {
+          max-width: 678px;
+          width: 100%;
+        }
+
+        .change-email-pass-title {
+          h3 {
+            @include body-large-bold2;
+          }
+        }
+
+        .change-checkboxes {
+          .ocs-checkbox {
+            @include ocs-checkbox;
+          }
+          @include flexbox;
+          @include flexColumn;
+          gap: 10px;
+
+          @include md {
+            gap: 16px;
+          }
+
+          @include xl {
+            gap: 20px;
+          }
+        }
+      }
+
+      .btn {
+        @include btn;
+      }
+      .btn-primary {
+        @include btn-primary;
+
+        width: 100%;
+        @include sm {
+          width: fit-content;
+        }
+      }
+    }
+  }
+}

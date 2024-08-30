@@ -1,0 +1,52 @@
+@import "../common/mixin";
+@import "../common/variable";
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+.listing-wrapper {
+  margin-top: 30px;
+
+  @media only screen and (min-width: $device-lg) {
+    margin-top: 50px;
+  }
+}

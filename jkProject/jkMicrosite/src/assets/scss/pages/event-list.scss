@@ -1,0 +1,236 @@
+@import "../common/mixin";
+
+.jkm-arrow-right {
+  @include jkm-arrow-right;
+}
+
+.jkm-calendar {
+  @include jkm-calendar;
+}
+
+.jkm-folder {
+  @include jkm-folder;
+}
+
+.jkm-contact-location {
+  @include jkm-contact-location;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+    margin: 0 auto;
+  }
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.btn {
+  @include button;
+}
+
+.form-control {
+  @include formcontrol;
+}
+
+.just-center {
+  @include just-center;
+}
+
+.dropdown {
+  position: relative;
+
+  h2 {
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-xl) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .form-control {
+    width: 100%;
+
+    @media only screen and (min-width: $device-md) {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 220px;
+    }
+  }
+
+  .custom-select {
+    @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+    @include bg-arrow(transparent, url(../../images/icons/arrow-down-gray.svg), no-repeat, 95%, center);
+  }
+}
+
+main .banner-sec {
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}
+
+.page-title {
+  margin-bottom: 40px;
+  @include textCenter;
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}
+
+.date-category-info {
+  @include date-category-info;
+}
+
+.banner-sec {
+  .banner-image-wrap img {
+    height: 100%;
+  }
+
+  .banner-slider-wrap {
+    @media only screen and (min-width: $device-sm) {
+      // margin-top: -195px;
+    }
+  }
+}
+
+.event_list {
+  .d-row {
+    @include row;
+
+    .d-col-3 {
+      @include d-col-3;
+    }
+  }
+
+  .post-card {
+    .post-card-title {
+      margin-bottom: 20px;
+    }
+
+    .post-card-body {
+      border: 1px solid var(--data_border_color);
+    }
+  }
+}
+
+.event-wrapper {
+
+  // margin-bottom: 40px;
+  // @media screen and (min-width: $device-md) {
+  //   margin-bottom: 60px;
+  // }
+  // @media screen and (min-width: $device-xl) {
+  //   margin-bottom: 80px;
+  // }
+  // @media screen and (min-width: $container-main) {
+  //   margin-bottom: 105px;
+  // }
+  .post-card:hover {
+    .post-card-body {
+      @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+    }
+  }
+
+  .event_list {
+    .post-card {
+      @include flexbox;
+      @include flexColumn;
+      border: 0;
+
+      .post-card-body {
+        width: calc(100% - 40px);
+        margin: -50px auto 0;
+        background: var(--data_site_theme_color);
+        position: relative;
+        flex: 1;
+        @include border-radius(10px);
+        padding: 15px;
+
+        @media only screen and (min-width: $device-md) {
+          padding: 30px;
+        }
+      }
+    }
+  }
+}
+
+.blog-list-content-footer {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 15px;
+
+  @media screen and (min-width: $device-md) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    padding-top: 40px;
+    padding-bottom: 145px;
+  }
+}
+
+.post-card {
+  .post-card-category-info {
+    @include font-detail(16px, 36px);
+  }
+}

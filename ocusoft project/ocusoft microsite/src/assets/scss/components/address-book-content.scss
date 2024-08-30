@@ -1,0 +1,117 @@
+@import "../common/mixin";
+
+.account-information-section {
+  @include section-bottom-spacing;
+
+  .btn {
+    @include btn;
+  }
+
+  .btn-primary {
+    @include btn-primary;
+  }
+
+  .p-error {
+    @include error;
+  }
+
+  .address-book-content-wrap {
+    @include account-right-content-wrap;
+
+    .account-content-title {
+      @include account-content-title;
+    }
+
+    .order-information-section {
+      .order-shipping-table-wrapper {
+        @include bottom-margin;
+
+        .order-shipping-table-box {
+          @include lg {
+            max-width: 315px;
+          }
+
+          @include container {
+            max-width: 335px;
+          }
+        }
+      }
+    }
+
+    .address-entries-section {
+      h2 {
+        @include body-large-bold3;
+        margin-bottom: 14px;
+
+        @include lg {
+          margin-bottom: 18px;
+        }
+
+        @include container {
+          margin-bottom: 20px;
+        }
+      }
+
+      .new-address-and-filter {
+        @include flexbox;
+        @include flexColumnReverse;
+        @include align-item-start;
+        gap: 14px;
+
+        @include md {
+          @include flexrow;
+          @include align-item-center;
+          @include space-between;
+        }
+
+        .address-entries-filter {
+          @include flexbox;
+          @include align-item-center;
+          @include body-large;
+          color: var(--data_site_gray_color);
+          gap: 10px;
+
+          .form-group {
+            @include form-group;
+          }
+
+          .number-dropdown {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .add-new-address-form-wrap {
+      .row {
+        @include row;
+      }
+
+      .add-new-address-form {
+        .form-group {
+          @include form-group;
+        }
+
+        .add-new-address-bottom {
+          .checkboxes-wrap {
+            @include flexbox;
+            @include flexColumn;
+            @include bottom-margin;
+            gap: 12px;
+            margin-bottom: 5px;
+
+            @include md {
+              gap: 16px;
+              margin-bottom: 5px;
+            }
+
+            @include container {
+              gap: 20px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+diff --git a/node_modules/@graphcommerce/react-hook-form/src/useFormGql.tsx b/node_modules/@graphcommerce/react-hook-form/src/useFormGql.tsx
+index a6b38ca..93dda33 100644
+--- a/node_modules/@graphcommerce/react-hook-form/src/useFormGql.tsx
++++ b/node_modules/@graphcommerce/react-hook-form/src/useFormGql.tsx
+@@ -28,7 +28,7 @@ export type UseFormGqlMethods<Q, V extends FieldValues> = Omit<
+   UseGqlDocumentHandler<V>,
+   'encode' | 'type'
+ > &
+-  Pick<UseFormReturn<V>, 'handleSubmit'> & { data?: Q | null; error?: ApolloError }
++  Pick<UseFormReturn<V>, 'handleSubmit'> & { data?: Q | null; error?: ApolloError; }
+ 
+ /**
+  * Combines useMutation/useLazyQuery with react-hook-form's useForm:
+diff --git a/node_modules/@graphcommerce/react-hook-form/src/useFormGqlMutation.tsx b/node_modules/@graphcommerce/react-hook-form/src/useFormGqlMutation.tsx
+index a48eba7..3215d92 100644
+--- a/node_modules/@graphcommerce/react-hook-form/src/useFormGqlMutation.tsx
++++ b/node_modules/@graphcommerce/react-hook-form/src/useFormGqlMutation.tsx
+@@ -10,7 +10,7 @@ export type UseFormGqlMutationReturn<
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   V extends FieldValues = FieldValues,
+ > = UseFormGqlMethods<Q, V> &
+-  UseFormReturn<V> & { muiRegister: UseMuiFormRegister<V>; valid: UseFormValidReturn<V> }
++  UseFormReturn<V> & { muiRegister: UseMuiFormRegister<V>; valid: UseFormValidReturn<V>; loading?: any }
+ 
+ export function isFormGqlOperation<
+   V extends FieldValues,
+@@ -36,9 +36,10 @@ export function useFormGqlMutation<Q extends Record<string, unknown>, V extends
+ ): UseFormGqlMutationReturn<Q, V> {
+   const form = useForm<V>(options)
+   const tuple = useMutation(document, operationOptions)
++  const [_, {loading}] = tuple
+   const operation = useFormGql({ document, form, tuple, ...options })
+   const muiRegister = useFormMuiRegister(form)
+   const valid = useFormValidFields(form, operation.required)
+ 
+-  return { ...form, ...operation, valid, muiRegister }
++  return { ...form, ...operation, valid, muiRegister, loading }
+ }
+diff --git a/node_modules/@graphcommerce/react-hook-form/src/useFormGqlQuery.tsx b/node_modules/@graphcommerce/react-hook-form/src/useFormGqlQuery.tsx
+index 11ee50b..5bb1966 100644
+--- a/node_modules/@graphcommerce/react-hook-form/src/useFormGqlQuery.tsx
++++ b/node_modules/@graphcommerce/react-hook-form/src/useFormGqlQuery.tsx
+@@ -8,7 +8,7 @@ import { useFormValidFields } from './useFormValidFields'
+ export type UseFormGqlQueryReturn<
+   Q extends Record<string, unknown>,
+   V extends FieldValues,
+-> = UseFormGqlMutationReturn<Q, V>
++> = UseFormGqlMutationReturn<Q, V> & {refetch: any}
+ 
+ export function useFormGqlQuery<Q extends Record<string, unknown>, V extends FieldValues>(
+   document: TypedDocumentNode<Q, V>,
+@@ -17,9 +17,10 @@ export function useFormGqlQuery<Q extends Record<string, unknown>, V extends Fie
+ ): UseFormGqlQueryReturn<Q, V> {
+   const form = useForm<V>(options)
+   const tuple = useLazyQuery(document, operationOptions)
++  const [_, {loading, refetch}] = tuple
+   const operation = useFormGql({ document, form, tuple, ...options })
+   const muiRegister = useFormMuiRegister(form)
+   const valid = useFormValidFields(form, operation.required)
+ 
+-  return { ...form, ...operation, valid, muiRegister }
++  return { ...form, ...operation, valid, muiRegister, loading, refetch }
+ }
+diff --git a/node_modules/@graphcommerce/react-hook-form/src/validationPatterns.tsx b/node_modules/@graphcommerce/react-hook-form/src/validationPatterns.tsx
+index 9ed3afb..3f90f12 100644
+--- a/node_modules/@graphcommerce/react-hook-form/src/validationPatterns.tsx
++++ b/node_modules/@graphcommerce/react-hook-form/src/validationPatterns.tsx
+@@ -4,3 +4,4 @@ export const phonePattern =
+   /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
+ 
+ export const houseNumberPattern = /^\d+([-\\/]\d+)*$/
++export const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d|.*[!@#$%^&*()\-_=+{};:,<.>])[A-Za-z\d!@#$%^&*()\-_=+{};:,<.>]{8,}$/
+\ No newline at end of file

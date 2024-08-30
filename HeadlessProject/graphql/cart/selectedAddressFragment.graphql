@@ -1,0 +1,17 @@
+fragment SelectedAddressOnCartQueryFragment on Cart @injectable {
+  selectedData {
+    selectedCountryId
+    selectedPostcode
+    selectedRegionId
+  }
+  shipping_selected_methods {
+      carrierTitle
+      carrierCode
+      methodTitle
+      methodCode
+      code
+      amount{
+        ...Money
+      }
+    }
+}

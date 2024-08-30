@@ -1,0 +1,142 @@
+@import '../../common/nav';
+
+.golive-card{
+	@include border-radius(8px);
+	border: 1px solid $billowing-clouds;
+	padding: 20px;
+
+	@include media($device-md) {
+		padding: 30px;
+
+	}
+}
+
+.select-in-grid-list {
+	ul {
+		@include flexbox;
+		flex-wrap: wrap;
+		gap: 15px;
+		@include media($device-md) {
+			gap: 20px;
+		}
+
+		.select-in-grid-list-item {
+			flex: 0 0 calc(50% - 10px);
+			cursor: pointer;
+			@include transition(all,0.3s);
+			position: relative;
+
+			@include media($device-md) {
+				flex: 0 0 130px;
+
+			}
+
+			@include media($device-lg) {
+				flex: 0 0 150px;
+			}
+			&.active{
+				.round-check{
+					background-color: $primary-color;
+				}
+			}
+			.check{
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				@include border-radius(2px);
+				background-color: $white-color;
+				border: 1px solid $body-text;
+				@include flexCenter;
+				font-size: 9px;
+				color: $white-color;
+				@include border-radius(50%);
+				.round-check{
+					height: 10px;
+					width: 10px;
+					@include border-radius(50%);
+				}
+			}
+
+			.select-in-grid-list-item-image {
+				margin-bottom: 10px;
+				height: 120px;
+				width: 100%;
+				border-radius: 8px;
+				object-fit: contain;
+
+				@include media($device-md) {
+					height: 130px;
+					width: 130px;
+				}
+
+				@include media($device-lg) {
+					height: 150px;
+					width: 150px;
+				}
+
+			}
+			.select-in-grid-list-item-title {
+				margin-bottom: 0;
+				@include body-font-md;
+			}
+
+		}
+		.select-in-grid-list-number{
+			align-self: center;
+
+			@include media($device-md) {
+				padding-bottom: 36px;
+			}
+
+			h3{
+				color: $gray-shade-7;
+			}
+		}
+
+
+	}
+}
+
+
+.select-in-dropdown-list {
+	.dropdown-box {
+		max-width: 810px;
+		background: $secondary-color;
+		border: 1px solid $border-color-2;
+		@include border-radius(4px);
+		padding: 18px;
+		@include media($device-md) {
+			padding: 25px;
+		}
+		@include media($device-xl) {
+			padding: 35px 40px;
+		}
+	}
+	.title {
+		@include font-sm;
+		color: $primary-color;
+		margin-bottom: 8px;
+	}
+	.sub-title {
+		color: $body-text;
+	}
+}
+.influencer-product-row{
+	@include row(1,0px,0px);
+	@include media($device-md) {
+		@include row(2,20px,40px);
+	}
+	@include media($device-xl) {
+		@include row(3,20px,40px);
+	}
+}
+.add-influencer-btn-group{
+	@include flexbox;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+.add-prodct-for-go-live {
+	margin-left: auto;
+}

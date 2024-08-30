@@ -1,0 +1,106 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/formControl";
+@import "../common/table";
+@import "../layout/button";
+@import "../common/common";
+
+.replay-history-wrapper {
+    padding: 50px 0;
+    .table-responsive {
+        tbody {
+            position: relative;
+        }
+    }
+    .card {
+        @include card(lg,true,false);
+        &.historyCard {
+            .row {
+                @include row(1, 0px, 0px);
+                @include row-align-items;
+                @include media($device-lg) {
+                    @include row(2, 0px, 0px);
+                }
+                .search-form-group {
+                    max-width: 500px;
+                    .icon-search {
+                        color: $black-color;
+                        font-size: 18px;
+                    }
+                }
+                .r-col {
+                    @include flexbox();
+                    .r-colinner {
+                        @include flexbox();
+                        position: relative;
+                        flex-direction: column;  
+                        margin-top: 20px;                           
+                        @include media($device-lg) {
+                            margin-top: 0;
+                                margin-left: auto;
+                                flex-direction: row;
+                            }
+                        .shortByFilter {
+                            @include flexbox();   
+                            flex-direction: row;
+                            li {
+                                padding: 5px 10px;
+                                @include media($device-lg) {
+                                    padding: 0 16px;
+                                }
+                                &:last-child {
+                                    padding-right: 0;
+                                }
+                                &:first-child {
+                                    padding-left: 0;
+                                }
+                                a {
+                                    cursor: pointer;
+                                    @include font-md;
+                                    color: $body-text;
+                                    position: relative;
+                                    display: block;
+                                    &::after {
+                                        @include media($device-lg) {
+                                            @include position-0(9);
+                                            content: '';
+                                            height: 4px;
+                                            top: unset;
+                                            bottom: -12px;
+                                            width: 0;
+                                            background-color: $primary-color;
+                                        }
+                                    }
+                                    &:hover {
+                                        color: $primary-color;
+                                        &::after {
+                                            @include media($device-lg) {
+                                                width: 100%;  
+                                                @include transition(width, 0.3s, ease-in-out);
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        color: $primary-color;
+                                        &::after {
+                                            @include media($device-lg) {
+                                                width: 100%;  
+                                                @include transition(width, 0.3s, ease-in-out);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        h3 {
+                            color: $body-text;
+                            margin-right: 29px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

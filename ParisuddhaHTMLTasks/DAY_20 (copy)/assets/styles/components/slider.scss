@@ -1,0 +1,125 @@
+// slider
+.slider {
+  .slider-slider-container {
+    position: relative;
+    max-width: 1440px;
+    margin: auto auto;
+    padding-top: 80px;
+    @include xl {
+      padding: 135px 0px 125px 0px;
+    }
+    @include lg {
+      .nextArrow {
+        position: absolute;
+        top: 39%;
+        right: 31%;
+        @include pointer;
+        z-index: 99;
+      }
+      .prevArrow {
+        position: absolute;
+        top: 39%;
+        left: 32%;
+        @include pointer;
+        z-index: 99;
+      }
+    }
+    .slider-image-card {
+      text-align: center;
+      margin: auto auto;
+      padding: 20px;
+      span {
+        margin-top: 25px;
+        font-size: 17px;
+        @include lg {
+          font-size: 21px;
+        }
+        letter-spacing: 3px;
+        line-height: 100px;
+        color: $light-grey;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-family: $Playfair;
+      }
+      img {
+        margin: auto;
+        height: 170px;
+        width: 200px;
+        object-fit: contain;
+        filter: drop-shadow(18.656px 24.758px 21.5px rgba(0, 0, 0, 0.54));
+        @include large {
+          height: 302px;
+          width: 335px;
+        }
+      }
+    }
+  }
+
+  .slider-top-container {
+    background-image: url("./assets/images/webp/background_image.webp");
+    color: $white-color;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    min-height: 265px;
+    @include flex-property-col;
+    @include justify-content-center;
+    @include align-center;
+    padding:10px 0px 70px 0px;
+    .arrow {
+      bottom: 0;
+      height: 40px;
+      position: absolute;
+      width: 100%;
+    }
+    .arrow:before,
+    .arrow:after {
+      display: block;
+      height: 0px;
+      top: 0;
+      width: 50%;
+      position: absolute;
+      border-bottom: 41px solid white;
+      box-sizing: border-box;
+      content: "";
+    }
+    .arrow:before {
+      left: 0;
+      border-left: 0;
+      border-right: 45px solid transparent;
+    }
+    .arrow:after {
+      right: 0;
+      border-right: 0;
+      border-left: 45px solid transparent;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: $Playfair;
+      max-width: 882px;
+      color: $white-color;
+      text-align: center;
+      padding: 30px 10px 0px 10px;
+      @include lg {
+        font-size: 21px;
+      }
+    }
+    h2 {
+      font-size: 21px;
+      font-weight: 700;
+      font-family: $Playfair;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: $white-color;
+      @include lg {
+        font-size: 33px;
+        letter-spacing: 5px;
+        font-weight: 700;
+        font-family: $Playfair;
+      }
+    }
+  }
+}

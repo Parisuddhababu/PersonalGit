@@ -1,0 +1,18 @@
+self.__RSC_CSS_MANIFEST={
+  "cssImports": {
+    "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/layout.tsx": [
+      "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/globals.css"
+    ]
+  },
+  "cssModules": {
+    "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/page": [
+      "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/globals.css"
+    ],
+    "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/cars/page": [
+      "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/globals.css"
+    ],
+    "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/products/page": [
+      "/home/parisuddha_pedapudi/Desktop/ParisuddhaTrainingPracticals/50 projectTasks/car task/app/globals.css"
+    ]
+  }
+}

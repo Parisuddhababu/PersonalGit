@@ -1,0 +1,387 @@
+@import "../common/mixin";
+
+// @import "../components/address-details";
+// @import "../components/payment_method";
+// @import "../components/order_summary_info";
+// @import "../components/summary_section_details";
+// @import "../components/page-wrapper-ttile";
+// @import "../components/modal";
+// @import "../components/add-new-address-popup";
+// @import "../components/header";
+// @import "../components/footer";
+.jkm-mail1 {
+    @include jkm-mail1;
+}
+
+.jkm-meta {
+    @include jkm-meta;
+}
+
+.jkm-instagram {
+    @include jkm-instagram;
+}
+
+.jkm-linkedin {
+    @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+    @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+    @include jkm-youtube;
+}
+
+.jkm-visa {
+    @include jkm-visa;
+}
+
+img {
+    @include img-common;
+}
+
+.jkm-check {
+    @include jkm-check;
+}
+
+.jkm-gift {
+    @include jkm-gift;
+}
+
+.jkm-pencil {
+    @include jkm-pencil;
+}
+
+.jkm-trash {
+    @include jkm-trash;
+}
+
+.jkm-credit-card {
+    @include jkm-credit-card;
+}
+
+.jkm-debit-card {
+    @include jkm-debit-card;
+}
+
+.jkm-net-banking {
+    @include jkm-net-banking;
+}
+
+.jkm-bhim-upi {
+    @include jkm-bhim-upi;
+}
+
+.jkm-wallet {
+    @include jkm-wallet;
+}
+
+.jkm-close {
+    @include jkm-close;
+}
+
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.btn-medium {
+        @include btn-medium;
+    }
+
+    &.btn-icon {
+        @include btn-icon;
+    }
+}
+
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+main,
+aside,
+section {
+    display: block;
+}
+
+img,
+a,
+input,
+textarea,
+p {
+    @include space-none;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+img {
+    @include img-common;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+.breadcrumbs-section {
+    @include breadcrumsection;
+
+    .breadcrumbs-list {
+        @include breadcrumlist;
+    }
+}
+
+.sort-info-conatainer {
+    @include mb-30;
+}
+
+.sidebar-section {
+    @include float-content-width(32%, right, 992px, var(--data_site_theme_highlight));
+    padding: 20px 15px;
+    background: var(--data_site_theme_highlight);
+
+    @media only screen and (min-width: $device-sm) {
+        padding: 30px;
+    }
+}
+
+.main-content {
+    @include float-content-width(66%, left, 992px, var(--data_site_theme_color));
+}
+
+.progress-bar {
+    @include progress-bar;
+    @include mb-50;
+    z-index: 1;
+}
+
+.order-summary-info-top {
+    @include flexbox;
+    @include flexwrap;
+    @include space-between;
+    margin-bottom: 20px;
+
+    .sort-info-title {
+        margin: 0;
+    }
+
+    .coupon-links {
+        padding-top: 10px;
+    }
+}
+
+.coupon-links {
+    @include linkStyle(underline, var(--data_site_primary_color), bold, capitalize);
+}
+
+.apply-coupon-sec {
+    .apply-coupon_text {
+        margin-bottom: 10px;
+    }
+
+    form {
+        position: relative;
+
+        .form-control {
+            @include formcontrol;
+            padding-left: 50px !important;
+            padding-right: 15px !important;
+            color: var(--data_site_text_color);
+            @include opacity(0.5);
+        }
+
+        .applied {
+            background: var(--data_whatsapp_icon_color);
+            @include border-radius(50%);
+            color: var(--data_site_highlight_section_text_color);
+            width: 20px;
+            height: 20px;
+            @include textCenter;
+            @include flexbox;
+            @include just-center;
+            @include align-item-center;
+            font-size: 9px;
+            position: absolute;
+            top: 30%;
+            left: 20px;
+        }
+    }
+}
+
+.checkout-wrap {
+    margin-bottom: 50px;
+
+    @media only screen and (min-width: $device-md) {
+        margin-bottom: 80px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        margin-bottom: 134px;
+    }
+}
+
+.main-content {
+    .heading-title-content {
+        @include space-none;
+        background: var(--data_site_theme_highlight);
+        padding: 11.5px 20px;
+        font-weight: bold;
+        @include common-font-size;
+        @include mb-30;
+    }
+
+    .mode-section {
+        @include flexbox;
+        @include space-between;
+        @include flexwrap;
+        @include mb-30;
+
+        .mode-section-content {
+            .mode-section-title {
+                margin-bottom: 20px;
+            }
+
+            .cmn-checkbox {
+                width: 100%;
+                @include checkbox;
+            }
+
+            label {
+                @include label;
+            }
+        }
+
+        .gift-wrap a {
+            color: var(--data_site_secondary_color);
+            @include flexbox;
+            @include align-item-center;
+            text-decoration: underline;
+
+            .gift-icon {
+                margin-right: 11.5px;
+                font-size: 18px;
+
+                @media only screen and (min-width: $device-md) {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+.wrapper-title {
+    @include textCenter;
+}
+
+.btn-wrapper {
+    @include flexbox;
+    @include just-center;
+
+    .btn {
+        margin: 0 15px;
+        min-width: 80px;
+
+        @media only screen and (min-width: $device-sm) {
+            min-width: 150px;
+
+            & + .btn {
+                margin-top: 0px;
+            }
+        }
+    }
+}
+
+.checkout-gst-main {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+
+    .gst-checkbox {
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+        cursor: pointer;
+        zoom: 1.85;
+    }
+
+    .checkout-gst-details {
+        display: flex;
+        align-items: center;
+
+        .checkout-gst-details-fields {
+            .field-span {
+                display: flex;
+                margin-bottom: -20px;
+
+                .field-name {
+                    width: 8rem;
+                }
+            }
+
+            margin-right: 3rem;
+        }
+
+        .gst-edit-icon {
+            opacity: 1;
+            padding: 15px 18px;
+            background: var(--data_site_theme_highlight);
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .gst-edit-icon:hover {
+            opacity: 9;
+            transition: opacity 0.4s ease;
+            background: var(--data_site_secondary_color);
+            color: var(--data_site_highlight_section_text_color);
+        }
+    }
+
+    .checkout-gst-label {
+        display: flex;
+        margin-top: 30px;
+
+        .gst-label {
+            font-size: 21px;
+        }
+    }
+}

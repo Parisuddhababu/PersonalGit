@@ -1,0 +1,121 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.jkm-calendar {
+  @include jkm-calendar;
+}
+
+.jkm-time {
+  @include jkm-time;
+}
+
+.jkm-file-upload {
+  @include jkm-file-upload;
+}
+
+.modal {
+  &.book-appointment-popup {
+    .pop-up-container {
+      @include form-contain;
+
+      .d-row {
+        @include row;
+
+        .d-col-2 {
+          @include d-col-2;
+          @include mb-30;
+        }
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        color: transparent;
+        background: transparent;
+      }
+
+      input[type="time"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        color: transparent;
+        background: transparent;
+      }
+
+      .input-box {
+        position: relative;
+
+        .icon {
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          @include transform(translateY(-50%));
+        }
+      }
+
+      form {
+        .file-upload {
+          i {
+            color: var(--data_site_text_color);
+          }
+        }
+
+        .btn-wrapper {
+          @include just-center;
+          margin-bottom: 0;
+          @include flexColumn;
+
+          @media only screen and (min-width: $device-sm) {
+            @include flexrow;
+          }
+
+          .btn {
+            margin: auto;
+            max-width: 160px;
+
+            & + .btn {
+              margin-top: 15px;
+            }
+
+            @media only screen and (min-width: $device-sm) {
+              margin: 0 15px;
+
+              & + .btn {
+                margin-top: 0px;
+              }
+            }
+
+            @media only screen and (min-width: $device-xl) {
+              max-width: 250px;
+            }
+          }
+        }
+      }
+
+      .btn.btn-primary {
+        @include btn-primary;
+        @include btn-small;
+        margin: auto;
+      }
+
+      .custom-select {
+        @include border-radius(5px);
+        @include font-detail(16px, 20px);
+        @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+        @include bg-arrow(var(--data_site_theme_color), url(../../images/icons/arrow-down.svg), no-repeat, 95%, center);
+        width: 100%;
+      }
+    }
+  }
+}
+
+.p-error {
+  color: var(--data_error_color);
+}

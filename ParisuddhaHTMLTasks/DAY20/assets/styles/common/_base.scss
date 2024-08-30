@@ -1,0 +1,47 @@
+@import './variable';
+@import './mixins';
+@import './font';
+// default css
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+ul,
+li,
+form,
+input,
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font-weight: normal;
+	font-style: normal;
+	font-family: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+	list-style: none;
+	background: transparent;
+}
+body {
+	min-width: $device-md;
+	@include lg {
+		min-width: $device-xl;
+		margin: 0 auto;
+	}
+	@include sm {
+		max-width: $device-sm;
+	}
+	@include md {
+		max-width: $device-md;
+	}
+}

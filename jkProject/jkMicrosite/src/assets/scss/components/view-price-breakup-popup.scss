@@ -1,0 +1,136 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.modal {
+  &.view-price-breakup-modal {
+    .pop-up-container {
+      max-width: 90%;
+
+      @media screen and (min-width: $container-lg) {
+        max-width: 1640px;
+      }
+
+      .modal-wrapper {
+        padding: 60px 20px;
+
+        @media screen and (min-width: $device-lg) {
+          padding: 60px 30px;
+        }
+
+        @media screen and (min-width: $device-xl) {
+          padding: 60px;
+        }
+      }
+    }
+
+    .pt-1 {
+      td {
+        padding-top: 8px;
+        @media screen and (min-width: $device-md) {
+          padding-top: 15px;
+        }
+      }
+    }
+    .pb-1 {
+      td {
+        padding-bottom: 8px;
+        @media screen and (min-width: $device-md) {
+          padding-bottom: 15px;
+        }
+      }
+    }
+
+    .py-1 {
+      td {
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        @media screen and (min-width: $device-md) {
+          padding-top: 15px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+
+    .modal-content {
+      overflow-x: auto;
+    }
+
+    thead th,
+    .top-content td,
+    .middle-content td,
+    .bottom-content td,
+    tfoot td {
+      &:first-child {
+        padding-left: 20px;
+
+        @media screen and (min-width: $device-md) {
+          padding-left: 40px;
+        }
+      }
+      &:last-child {
+        padding-right: 20px;
+
+        @media screen and (min-width: $device-md) {
+          padding-right: 40px;
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      white-space: nowrap;
+    }
+    thead {
+      background: var(--data_site_secondary_color);
+      color: var(--data_site_highlight_section_text_color);
+
+      th {
+        padding: 8px 10px;
+        text-align: left;
+
+        @media screen and (min-width: $device-md) {
+          padding: 16px 10px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &.label {
+          td {
+            font-weight: 700;
+            padding: 8px 20px;
+            border-top: 1px solid var(--data_border_color);
+            border-bottom: 1px solid var(--data_border_color);
+            color: var(--data_site_secondary_color);
+
+            @media screen and (min-width: $device-md) {
+              padding: 15px 40px;
+            }
+          }
+        }
+        &.top-content,
+        &.middle-content,
+        &.bottom-content {
+          td {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+
+    tfoot {
+      background: var(--data_site_theme_highlight);
+      tr {
+        td {
+          font-weight: 700;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,324 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/formControl";
+@import "../layout/button";
+@import "../common/table";
+@import "../common/common";
+@import "../components/date-picker-coreui.scss";
+
+.insights-card{
+    background-color: $white-color;
+    box-shadow: 0px 0px 50px rgba($black-color, 0.04);
+    @include border-radius(4px);
+    padding: 20px;
+    margin-bottom: 20px;
+    @include media($device-md){
+        padding: 30px;
+        @include border-radius(8px);
+    }
+    @include media($device-lg){
+        padding: 40px;
+    }
+    &.insights-card-sticky{
+        @include media($device-lg){
+            position: sticky;
+            top: 50px;
+            z-index: 91;
+        }
+        @include media($device-xxxl){
+            top: 57px;
+        }
+    }
+    .insights-card-row{
+        @include row(1,20px,20px);
+        @include media($device-lg){
+            @include row(3,20px,20px)
+        }
+        @include media($device-xl){
+            @include row(3,20px,40px)
+        }
+    }
+    .insights-inner-card{
+        @include border-radius(4px);
+        background: $gradient1;
+        color: $white-color;
+        @include media($device-md){
+            @include border-radius(8px);
+        }
+        &.insights-bg{
+            background: #2650BA
+        }
+        &.insights-bg-2{
+            background: $gradient2;
+        }
+    }
+    .insights-inner-title {
+        @include flexbox;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 20px 15px;
+        @include media($device-md){
+            padding: 30px 20px;
+        }
+        &.small{
+            padding: 15px;
+            @include media($device-md){
+                padding: 20px;
+            }
+        }
+    }
+    
+    .insights-social{
+        border-top: 1px solid $white-color;
+        padding: 0 20px 5px;
+        background: rgba($black-color, 0.1);
+        @include media($device-md){
+            padding: 0 20px 10px;
+        }
+        li{
+            padding: 10px 0;
+            @include flexbox;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid $white-color;
+            &:first-child {
+                border-top: 0;
+            }
+            h6 {
+                margin-left: auto;
+            }
+            .icon{
+                font-size: 16px;
+                flex-basis: 20px;
+                text-align: center;
+                @include media($device-md){
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .data-range-row {
+        @include flexbox;
+        align-items: flex-end;
+        flex-direction: column;
+        @include media($device-md){
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+        .data-range-col{
+            width: 100%;
+            @include media($device-md){
+                width: auto;
+
+            }
+        }
+        .btn-refresh {
+            height: 40px;
+            width: 40px;
+            padding: 0;
+            min-width: 40px;
+            min-height: 40px;
+            font-size: 22px;
+            margin-left: auto;
+            margin-top: 20px;
+            @include media($device-md){
+                margin: 0;
+            }
+        }
+    }
+    
+    .data-range-form {
+        @include flexbox;
+        align-items: center;
+        background: $secondary-color;
+        padding: 15px;
+        @include border-radius(8px);
+        gap: 5px;
+        border: 1px solid $border-color-2;
+        flex-direction: column;
+        @include media($device-md){
+            padding: 7px 10px;
+            gap: 15px;
+            flex-direction: row;
+
+        }
+
+        .form-control {
+            height: 40px;
+            min-height: 40px;
+            padding: 8px 20px;
+            min-width: 181px;
+            position: relative;
+            z-index: 1;
+            background: transparent;                     
+        }
+
+        label {
+            color: $title-text;
+            width: 100%;
+            @include media($device-md){
+                width: auto;
+            }
+        }
+        .date-control {
+            position: relative;
+            background: $white-color;
+            @include border-radius(4px);
+            width: 100%;
+            margin-bottom: 10px;
+            &:last-child{
+                margin-bottom: 5px;
+            }
+            @include media($device-md){
+                margin-bottom: 0;
+                width: auto;
+            }
+            .date-picker-input-group{
+                height: 40px;
+            }
+            .icon {
+                right: 16px;
+                position: absolute;
+                z-index: 0;
+                height: 100%;
+                bottom: 0;
+                @include flexCenter;
+            }
+    
+        }
+    }
+}
+.insights-table-row{
+    @include row(1,20px,40px);
+    @include media($device-xxl){
+        @include row(2,20px,40px);
+    }
+
+}
+.table-responsive {
+    tbody {
+        position: relative;
+    }
+    &.insights-table{
+        tr{
+            .icon-facebook{
+                color: rgb(68, 110, 217);
+            }
+            td{
+                color: $body-text;
+                background: $white-color;
+                &:first-child{
+                    color: $body-text;
+                }
+                &.date{
+                    white-space: nowrap;
+                }               
+            }
+            th{
+                &:last-child{
+                    width: 100px;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+}
+.insights-table-with-scroll{
+    table{
+        max-width: 690px;
+        @include media($device-md){
+            width: 100%;
+            max-width: 100%;
+        }
+        tr{
+            display: flex;
+        }
+        th,td{
+            &:nth-child(1){
+                width: 25%;
+                max-width: 25%;
+                min-width: 25%;
+            }
+            &:nth-child(2){
+                width: 20%;
+                max-width: 20%;
+                min-width: 20%;
+            }
+            &:nth-child(3){
+                width: 10%;
+                max-width: 10%;
+                min-width: 10%;
+            }
+            &:nth-child(4){
+                width: 10%;
+                max-width: 10%;
+                min-width: 10%;
+            }
+            &:nth-child(5){
+                width: 10% !important;
+                max-width: 10% !important;
+                min-width: 10% !important;            
+            }
+            &:nth-child(6){
+                width: 10% !important;
+                max-width: 10% !important;
+                min-width: 10% !important;            
+            }
+            &:nth-child(7){
+                width: 15% !important;
+                max-width: 15% !important;
+                min-width: 15% !important;            
+            }
+            &.insight-table-col-full{
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 100% !important;        
+            }
+            .btn-arrow-up{
+                height: 30px;
+                width: 30px;
+                min-height: 30px;
+                padding: 0;
+                min-width: 30px;
+            }
+        }
+        thead{
+            display: block;
+            padding-right: 6px;
+            background: $secondary-color;
+        }
+        tbody{
+            display: block;
+            overflow: auto;
+            @include media($device-md){
+                max-height: 354px;
+            }
+        }
+    }
+    &.top-five{
+        table{
+            th,td{
+                &:nth-child(1){
+                    width: 60%;
+                    max-width: 60%;
+                    min-width: 60%;
+                }
+                &:nth-child(2){
+                    width: 40%;
+                    max-width: 40%;
+                    min-width: 40%;
+                }
+            }
+        }
+    }
+}
+.insights-table-loader{
+    text-align: center;
+    margin: 10px 0;
+    img{
+        height: 30px;
+    }
+}

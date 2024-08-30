@@ -1,0 +1,73 @@
+@import "../common/mixin";
+
+.registration-section{
+    @include section-bottom-spacing;
+
+    .row{
+        @include row;
+    }
+
+    .password-field{
+        @include password-field;
+    }
+    
+    .container{
+        h2{
+            @include h2;
+            color: var(--data_site_text_color);
+            text-align: center;
+            margin-bottom: 20px;
+
+            @include md{
+                margin-bottom: 30px;
+            }
+
+            @include xl{
+                margin-bottom: 40px;
+            }
+        }
+
+        .registration-form{
+
+            .form-group {
+                @include form-group;
+            }
+
+            .sign-up-newsletter{
+                margin-bottom: 20px;
+                @include md{
+                    margin-bottom: 30px;
+                }
+                @include xl{
+                    margin-bottom: 40px;
+                }
+
+                .ocs-checkbox{
+                    @include ocs-checkbox;
+                }
+            }
+
+            .button-center{
+                @include flexbox;
+                @include just-center;
+                width: 100%;
+
+                .btn{
+                    @include btn;
+                }
+                
+                .btn-primary-large{
+                    @include btn-primary-large;
+                }                
+            }
+        }
+
+        h3{
+            @include h3;
+        }
+    }
+
+    .p-error {
+        @include error;
+    }
+}

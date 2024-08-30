@@ -1,0 +1,71 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+.our_founder {
+    background: var(--data_button_primary_color);
+    color: var(--data_site_highlight_section_text_color);
+    padding: 50px 0;
+    margin-bottom: 40px;
+    @media screen and (min-width: $device-md) {
+        padding: 120px 0 80px;
+        margin-bottom: 60px;
+    }
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: $container-main) {
+        margin-bottom: 120px;
+    }
+    h2 {
+        margin-bottom: 25px;
+        @media only screen and (min-width: $device-md) {
+            margin-bottom: 30px;
+        }
+        @media only screen and (min-width: $device-xl) {
+            margin-bottom: 50px;
+        }
+    }
+    .d-row {
+        @include row;
+        .d-col-2 {
+            @include d-col-2;
+        }
+    }
+    .box {
+        p {
+            @media only screen and (min-width: $device-xl) {
+                padding-right: 60px;
+            }
+        }
+        .btn-small {
+            display: inline-block;
+        }
+    }
+    .founder_image {
+        margin-top: 35px;
+        position: relative;
+        padding: 27.029% 37.838%;
+        cursor: pointer;
+        @media only screen and (min-width: $device-md) {
+            margin-top: 0;
+        }
+        img {
+            @include border-radius(10px);
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+        }
+    }
+}
+
+
+
+.align-item-center {
+    @include align-item-center;
+}
+
+.just-center {
+    @include just-center;
+}

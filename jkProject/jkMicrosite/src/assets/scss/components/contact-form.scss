@@ -1,0 +1,71 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.d-row {
+  @include row;
+}
+
+.d-col {
+  width: 100%;
+
+  &.d-col-2 {
+    @include d-col-2;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.form-control {
+  @include formcontrol;
+}
+
+.form-group {
+  @include formgroup;
+}
+
+.error-message {
+  @include errormessage;
+}
+
+label {
+  @include label;
+}
+
+.contact-form {
+  margin-bottom: 40px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 80px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 120px;
+  }
+
+  h3 {
+    @include textCenter;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .button-section {
+    @include justifyCenter;
+    @include mb-0;
+  }
+
+  .btn-submit {
+    @include button;
+    @include btn-primary;
+    @include btn-small;
+    margin: auto;
+  }
+
+  .p-error {
+    color: var(--data_error_color);
+  }
+}

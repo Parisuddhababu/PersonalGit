@@ -1,0 +1,122 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  min-height: calc(100% - (1.75rem * 2));
+  -webkit-overflow-scrolling: touch;
+
+  @media only screen and (max-width: 767px) {
+    min-height: 100vh;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  .modal-center {
+    @include flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    @include align-item-center;
+    min-height: calc(100% - (0.5rem * 2));
+    @include just-center;
+    padding: 50px 70px;
+    width: 100%;
+
+    @media only screen and (max-width: 1370px) {
+      padding: 30px 70px;
+    }
+
+    @media only screen and (max-width: 1279px) {
+      padding: 50px;
+    }
+
+    @media only screen and (max-width: 767px) {
+      padding: 50px 15px;
+    }
+  }
+
+  .modal-content {
+    // width: 100%;
+    background-color: #ffff;
+    padding: 0;
+    // max-width: 1300px;
+    //height: 730px;
+    position: relative;
+
+    @media only screen and (max-width: 1520px) {
+      //height: 500px;
+      max-width: 900px;
+    }
+
+    @media only screen and (max-width: 1199px) {
+      //height: 440px;
+      max-width: 90%;
+    }
+
+    @media only screen and (max-width: 991px) {
+      //height: 330px;
+    }
+
+    @media only screen and (max-width: 767px) {
+      //height: 300px;
+    }
+  }
+
+  .close {
+    position: fixed;
+    right: 16px;
+    top: 16px;
+    border: 0;
+    color: white;
+    background-color: var(--data_button_primary_color);
+    padding: 10px;
+    height: 40px;
+    outline: none;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    width: 40px;
+    @include flexbox;
+    @include align-item-center;
+    @include just-center;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 999999;
+
+    @media only screen and (max-width: 1400px) {
+      width: 28px;
+      height: 28px;
+    }
+
+    // @media only screen and (max-width: 1279px) {
+    //   position: fixed;
+    //   right: 20px;
+    //   top: 20px;
+    // }
+    // &::before {
+    //   content: "\f00d";
+    //   font-size: 22px;
+    //   line-height: 2px;
+    //   @media only screen and (max-width: 1400px) {
+    //     font-size: 18px;
+    //   }
+    // }
+  }
+}

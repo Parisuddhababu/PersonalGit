@@ -1,0 +1,268 @@
+<app-header [fixed]="true" [navbarBrandFull]="{
+    src: logoImg,
+    width: 100,
+    height: 25,
+    alt: 'Angular Logo'
+  }" [navbarBrandMinimized]="{
+    src: favImg,
+    width: 30,
+    height: 30,
+    alt: 'Angular Logo'
+  }" [sidebarToggler]="'lg'" [asideMenuToggler]="false">
+  <ul class="nav navbar-nav d-md-down-none" *ngxPermissionsOnly="['CONFIG_LIST', 'SUPER_ADMIN']">
+    <li class="nav-item px-3">
+      <a class="nav-link" [routerLink]="['/settings']">{{ 'SETTINGS' | translate }}</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item dropdown" dropdown placement="bottom right" *ngIf="languageOption">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="(false)">
+        {{ Language | uppercase }}
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <a class="dropdown-item" (click)="changeLanguage('en')">EN</a>
+        <a class="dropdown-item" (click)="changeLanguage('gj')">GJ</a>
+      </div>
+    </li>
+    <li class="nav-item d-none d-sm-block" id="headerName">{{ fullname }}</li>
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="(false)">
+        <img src="assets/default-user-image.png" class="img-avatar" alt="admin@bootstrapmaster.com" />
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <a class="dropdown-item" [routerLink]="['/profile']"><i class="fa fa-user"></i> {{ 'PROFILE' | translate }}</a>
+        <a class="dropdown-item" href="javascript:void(0);" (click)="openModal(logoutTemplate)"><i
+            class="fa fa-lock"></i> {{ 'LOGOUT' | translate }}</a>
+      </div>
+    </li>
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar class="sidebar" [fixed]="true" [display]="'lg'">
+    <nav class="sidebar-nav" [perfectScrollbar] [disabled]="sidebarMinimized">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">
+            <i class="nav-icon icon-home"></i> {{ 'DASHBOARD' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUB_ADMIN_LIST', 'SUPER_ADMIN']">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/subadmin']">
+            <i class="nav-icon icon-user"></i>
+            {{ 'MANAGE_SUB_ADMIN' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['USER_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-user']">
+            <i class="nav-icon icon-user"></i> {{ 'MANAGE_USER' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['CMS_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/cms']">
+            <i class="nav-icon fa fa-file-o"></i>
+            {{ 'CMS_MANAGEMENT' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['CATEGORY_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/category']">
+            <i class="nav-icon fa fa-list"></i>
+            {{ 'MANAGE_CATEGORY' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['EMAIL_TEMP_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/email']">
+            <i class="nav-icon icon-envelope"></i>
+            {{ 'EMAIL_TEMPLATE' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['FAQ_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/faq']">
+            <i class="nav-icon icon-question"></i>
+            {{ 'FAQ_MANAGEMENT' | translate }}
+          </a>
+        </li>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+          <a *ngxPermissionsOnly="['SUPER_ADMIN', 'COUNTRY_LIST', 'STATE_LIST', 'CITY_LIST']"
+            class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="nav-icon fa fa-map-marker"></i>
+            {{ 'MANAGE_LOCATION' | translate }}</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link menu-pl" routerLinkActive="active"
+                *ngxPermissionsOnly="['SUPER_ADMIN', 'COUNTRY_LIST']" [routerLink]="['/location/country']"><i
+                  class="nav-icon fa fa-arrow-right"></i> {{ 'MANAGE_COUNTRY' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link menu-pl" routerLinkActive="active" *ngxPermissionsOnly="['SUPER_ADMIN', 'STATE_LIST']"
+                [routerLink]="['/location/state']"><i class="nav-icon fa fa-arrow-right"></i> {{ 'MANAGE_STATE' |
+                translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link menu-pl" routerLinkActive="active" *ngxPermissionsOnly="['SUPER_ADMIN', 'CITY_LIST']"
+                [routerLink]="['/location/city']"><i class="nav-icon fa fa-arrow-right"></i> {{ 'MANAGE_CITY' |
+                translate }}</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Display Chunk Video upload menu in sidebar
+        Author : Harsha Prajapati
+        Date : 28-07-2020 -->
+        <!-- <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a
+            routerLinkActive="active"
+            class="nav-link"
+            [routerLink]="['/video-upload']"
+           
+          >
+            <i class="nav-icon fa fa-file-video-o"></i>
+            {{ "VIDEO_UPLOAD" | translate }}
+          </a>
+        </li> -->
+        <li class="nav-item" *ngxPermissionsOnly="['CONTACT_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/enquiry']">
+            <i class="nav-icon icon-phone"></i>
+            {{ 'MANAGE_CONTACT' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['USER_SUGGESTION_LIST']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/user-suggestion']">
+            <i class="nav-icon fa fa-comments-o"></i>
+            {{ 'USER_SUGGESTION' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['ADMIN_LIST_SUGGESTION', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/suggestion']">
+            <i class="nav-icon fa fa-comments-o"></i>
+            {{ 'SUGGESTION' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SURVEY_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-survey']">
+            <i class="nav-icon fa fa-address-book-o"></i>
+            {{ 'MANAGE_SURVEY' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['USER_SURVEY_LIST']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/user-survey']">
+            <i class="nav-icon fa fa-address-book-o"></i>
+            {{ 'USER_SURVEY' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-announcement']">
+            <i class="nav-icon fa fa-bullhorn"></i>
+            {{ 'ANNOUNCEMENT' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/activity-tracking']">
+            <i class="nav-icon fa fa-history"></i>
+            {{ 'ACTIVITY_TRACKING' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-banner']">
+            <i class="nav-icon fa fa-file-image-o"></i>
+            {{ 'MANAGE_BANNER' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-subscription']">
+            <i class="nav-icon fa fa-handshake-o"></i>
+            {{ 'MANAGE_SUBSCRIPTION' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN', 'OFFER_LIST']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/manage-offer']">
+            <i class="nav-icon fa fa-gift"></i>
+            {{ 'MANAGE_OFFER' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['REVIEW_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/review']">
+            <i class="nav-icon fa fa-star"></i>
+            <span>{{ 'REVIEW' | translate }}</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['REPORT_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/user-report']">
+            <i class="nav-icon fa fa-bar-chart"></i>
+            <span>{{ 'REPORT' | translate }}</span>
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN', 'RULESETS_LIST']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/rulesets']">
+            <i class="nav-icon fa fa-ban"></i>
+            {{ 'MANAGE_RULESETS' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN', 'EVENT_LIST']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/event']">
+            <i class="nav-icon fa fa-calendar"></i>
+            {{ 'MANAGE_EVENT' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/role-permissions']">
+            <i class="nav-icon icon-lock"></i>
+            {{ 'ROLE_PERMISSION' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/bs-media']">
+            <i class="nav-icon fa fa-clipboard"></i>
+            {{ 'BS_MEDIA' | translate }}
+          </a>
+        </li>
+        <li class="nav-item" *ngxPermissionsOnly="['CONFIG_LIST', 'SUPER_ADMIN']">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/settings']">
+            <i class="nav-icon icon-settings"></i> {{ 'SETTINGS' | translate }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- <app-sidebar-minimizer></app-sidebar-minimizer> -->
+  </app-sidebar>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+      <!-- <app-breadcrumb></app-breadcrumb> -->
+      <app-multi-lang-breadcrumb></app-multi-lang-breadcrumb>
+    </ol>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+<app-footer>
+  <span><a [routerLink]="['/dashboard']" id="appTitle">{{ appTitle }}</a> &copy; {{ currYear }}</span>
+  <span class="ml-auto">{{ 'POWERED_BY' | translate }} <a href="https://www.brainvire.com/" target="_blank">Brainvire
+      Infotech Inc.</a></span>
+</app-footer>
+<ng-template #logoutTemplate>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_LOGOUT' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="onLogout()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>

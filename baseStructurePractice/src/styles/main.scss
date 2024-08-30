@@ -1,0 +1,36 @@
+// Custom Variable File
+@charset "utf-8";
+@import './common/variable';
+
+// Font family and Icons File
+@import './common/fonts';
+
+// Reset CSS and Base CSS File
+@import './common/base';
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+// Custom Mixin File
+@import './common/mixin';
+
+// Component Files
+@import './layouts/button';
+@import './layouts/badge';
+@import './layouts/table';
+
+
+.rct-node-icon {
+  display: inline-block;
+}
+
+/* Modify the specificity of the disabled-input class */
+.disabled-input {
+  background-color: #E4E7EA !important;
+  /* Use !important if necessary */
+  color: black !important;
+  cursor: not-allowed !important;
+}

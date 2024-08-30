@@ -1,0 +1,108 @@
+.osicon-cheveron-down:before {
+  content: "\e956";
+}
+
+.pagination-wrap {
+  padding-top: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .pagination-wrap {
+    padding-top: 40px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .pagination-wrap {
+    padding-top: 60px;
+  }
+}
+.pagination-wrap .product-pagination {
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+@media only screen and (min-width: 768px) {
+  .pagination-wrap .product-pagination {
+    gap: 16px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .pagination-wrap .product-pagination {
+    gap: 20px;
+  }
+}
+.pagination-wrap .product-pagination li {
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination-wrap .product-pagination li a {
+  font-family: var(--data_site_font_primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--data_site_gray_color);
+  font-weight: 700;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  background-color: var(--data_site_border_color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 1024px) {
+  .pagination-wrap .product-pagination li a {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .pagination-wrap .product-pagination li a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .pagination-wrap .product-pagination li a {
+    height: 40px;
+    width: 40px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .pagination-wrap .product-pagination li a {
+    height: 46px;
+    width: 46px;
+  }
+}
+.pagination-wrap .product-pagination li a em {
+  font-size: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .pagination-wrap .product-pagination li a em {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .pagination-wrap .product-pagination li a em {
+    font-size: 14px;
+  }
+}
+.pagination-wrap .product-pagination li a.active, .pagination-wrap .product-pagination li a:hover {
+  background-color: var(--data_site_primary_color);
+  color: var(--data_site_white_color);
+}
+.pagination-wrap .product-pagination li a.dots {
+  background-color: transparent;
+  width: 25px;
+}
+.pagination-wrap .product-pagination li.prev a em {
+  transform: rotate(90deg);
+}
+.pagination-wrap .product-pagination li.next a em {
+  transform: rotate(-90deg);
+}

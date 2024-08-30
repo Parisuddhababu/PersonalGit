@@ -1,0 +1,162 @@
+.no-items-found-section {
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .no-items-found-section {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .no-items-found-section {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .no-items-found-section {
+    margin-bottom: 60px;
+  }
+}
+.no-items-found-section .no-items-found-wrap {
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+}
+.no-items-found-section .no-items-found-wrap figure {
+  display: block;
+  position: relative;
+  padding: 24%;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    padding: 22%;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    padding: 20%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    padding: 18%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .no-items-found-section .no-items-found-wrap figure {
+    padding: 12%;
+  }
+}
+.no-items-found-section .no-items-found-wrap figure picture img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+.no-items-found-section .no-items-found-wrap h2 {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  margin-bottom: 20px;
+  color: var(--data_site_text_color);
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .no-items-found-section .no-items-found-wrap h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .no-items-found-section .no-items-found-wrap h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .no-items-found-section .no-items-found-wrap h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .no-items-found-section .no-items-found-wrap h2 {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .no-items-found-section .no-items-found-wrap h2 {
+    margin-bottom: 40px;
+  }
+}
+.no-items-found-section .no-items-found-wrap a {
+  font-family: var(--data_site_font_primary);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: normal;
+  border-radius: var(--data_site_border_radius);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 6px 20px;
+  background-color: var(--data_button_primary_color);
+  color: var(--data_site_white_color);
+  border: 1px solid var(--data_button_primary_color);
+}
+@media only screen and (min-width: 1430px) {
+  .no-items-found-section .no-items-found-wrap a {
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+.no-items-found-section .no-items-found-wrap a:hover {
+  -ms-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  -o-box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  box-shadow: 0px 2px 5px 0px rgba(51, 51, 51, 0.3);
+  transition: all 0.3s ease;
+}
+@media only screen and (min-width: 1430px) {
+  .no-items-found-section .no-items-found-wrap a:hover {
+    -ms-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    -o-box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+    box-shadow: 0px 4px 10px 0px rgba(51, 51, 51, 0.3);
+  }
+}
+.no-items-found-section .no-items-found-wrap a.disabled {
+  background-color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+.no-items-found-section .no-items-found-wrap a.disabled:hover {
+  color: var(--data_site_disable_color);
+  border-color: var(--data_site_disable_color);
+}
+@media only screen and (min-width: 1024px) {
+  .no-items-found-section .no-items-found-wrap a {
+    padding: 8px 25px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .no-items-found-section .no-items-found-wrap a {
+    padding: 8px 30px;
+  }
+}
+.no-items-found-section .no-items-found-wrap a:hover {
+  background-color: var(--data_site_white_color);
+  color: var(--data_button_primary_color);
+  border-color: var(--data_button_primary_color);
+}

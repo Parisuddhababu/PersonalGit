@@ -1,0 +1,19 @@
+fragment GroupProductOptions on GroupedProduct {
+  uid
+  name
+  sku
+  items {
+    qty
+    position
+    product {
+      id
+      uid
+      sku
+      name
+      stock_status
+      __typename
+      url_key
+      ...ProductPagePrice
+    }
+  }
+}

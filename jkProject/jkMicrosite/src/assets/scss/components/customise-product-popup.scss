@@ -1,0 +1,350 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-close {
+  @include jkm-close;
+}
+
+h6 {
+  margin-bottom: 10px;
+}
+
+.row {
+  @include row;
+
+  .d-col {
+    margin-bottom: 15px;
+  }
+}
+
+.d-col {
+  width: 100%;
+
+  &.d-col-2 {
+    @include d-col-2;
+  }
+}
+
+.d-space-between {
+  @include space-between;
+}
+
+.item {
+  @include flexbox;
+  @include flexwrap;
+  width: 100%;
+  margin: 0 -5px;
+
+  @media screen and (min-width: $device-lg) {
+    margin: 0 -10px;
+  }
+}
+
+.item-radio {
+  display: inline-block;
+  margin: 0 5px 10px;
+
+  @media screen and (min-width: $device-lg) {
+    margin: 0 10px 15px;
+    cursor: pointer;
+  }
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:checked {
+      + label {
+        border-color: var(--data_site_primary_color);
+      }
+    }
+  }
+
+  label {
+    color: rgba(64, 64, 64, 0.5);
+    border: 1px solid var(--data_border_color);
+    margin-bottom: 0;
+    cursor: pointer;
+    display: inline-block;
+    @include transition(0.3s);
+    @include flexbox;
+    @include align-item-center;
+    @include flexwrap;
+    padding: 5px 10px;
+
+    @media screen and (min-width: $device-sm) {
+      padding: 8px 12px;
+    }
+
+    @media screen and (min-width: $device-lg) {
+      padding: 12px 14px;
+    }
+
+    &:hover {
+      border-color: var(--data_site_primary_color);
+    }
+  }
+
+  picture {
+    border: 1px solid transparent;
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .selected + picture {
+    border: 1px solid var(--data_site_primary_color);
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.certified-section {
+  .item-radio {
+    width: calc(25% - 20px);
+  }
+}
+
+.modal {
+  .btn.btn-primary {
+    @include btn-primary;
+    @include btn-small;
+    margin: 10px auto 0;
+  }
+
+  &.customise-product-modal {
+    .pop-up-container {
+      max-width: 90%;
+
+      @media screen and (min-width: $container) {
+        max-width: 1500px;
+      }
+
+      .modal-wrapper {
+        padding: 60px 20px;
+
+        @media screen and (min-width: $device-md) {
+          padding: 60px 40px;
+        }
+
+        .custom-select {
+          @include border-radius(5px);
+          @include font-detail(16px, 20px);
+          @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+          @include bg-arrow(var(--data_site_theme_color), url(../../images/icons/arrow-down.svg), no-repeat, 95%, center);
+          width: 100%;
+        }
+      }
+    }
+
+    .item {
+      // @include flexbox;
+      // @include flexwrap;
+      width: 100%;
+
+      // margin: 0 -5px;
+      @media screen and (min-width: $device-lg) {
+        // margin: 0 -15px;
+        // @include space-between;
+      }
+    }
+
+    .item-radio {
+      display: inline-block;
+      margin: 0 5px 10px;
+      max-width: 85px;
+      width: 100%;
+
+      @media screen and (min-width: $device-lg) {
+        margin: 0 10px 15px;
+        cursor: pointer;
+      }
+
+      input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        @include opacity(0);
+      }
+
+      label {
+        color: rgba(64, 64, 64, 0.5);
+        border: 1px solid var(--data_border_color);
+        margin-bottom: 0;
+        cursor: pointer;
+        display: inline-block;
+        @include transition(0.3s);
+      }
+
+      picture {
+        border: 1px solid transparent;
+        display: inline-block;
+        width: 100%;
+        padding: 5px;
+      }
+
+      .selected + picture {
+        border: 1px solid var(--data_site_primary_color);
+        width: 100%;
+        display: inline-block;
+      }
+    }
+
+    .option-metal {
+      .item-radio {
+        input {
+          padding: 0;
+          // min-width: 75px;
+          // height: 50px;
+          @include flexCenter;
+
+          &:checked {
+            + label {
+              border-color: #eb1933;
+            }
+          }
+        }
+
+        label {
+          padding: 12px 14px;
+          @include flexbox;
+          @include align-item-center;
+          @include flexwrap;
+
+          &:hover {
+            border-color: #eb1933;
+          }
+        }
+
+        .item-color {
+          padding: 13px;
+          @include border-radius(50%);
+          display: inline-block;
+          margin-right: 10px;
+
+          &.color-rose {
+            background: #f3876e;
+          }
+
+          &.color-white {
+            background: #cdcdcd;
+          }
+
+          &.color-yellow {
+            background: #f7bc5b;
+          }
+        }
+      }
+    }
+
+    .option-diamond,
+    .hallmark-section {
+      input {
+        padding: 0;
+        min-width: 75px;
+        height: 50px;
+
+        &:checked {
+          + label {
+            border-color: #eb1933;
+            color: #eb1933;
+          }
+        }
+      }
+
+      label {
+        padding: 10px;
+        width: 100%;
+
+        @media screen and (min-width: $device-md) {
+          padding: 11px 20px;
+          width: auto;
+        }
+
+        &:hover {
+          border-color: #eb1933;
+          color: #eb1933;
+        }
+      }
+    }
+
+    .inner-group {
+      @include flexbox;
+      @include align-item-center;
+      @include space-between;
+      @include flexwrap;
+      width: 100%;
+
+      .hallmark-section {
+        width: 100%;
+
+        @media screen and (min-width: $device-md) {
+          width: 30%;
+        }
+      }
+    }
+
+    .certified-section {
+      width: 100%;
+
+      // @media screen and (min-width: $device-md) {
+      //   width: 70%;
+      // }
+      input {
+        padding: 0;
+        min-width: 75px;
+        height: 50px;
+        @include flexCenter;
+
+        &:checked {
+          + label {
+            border-color: #eb1933;
+          }
+        }
+      }
+
+      label {
+        padding: 0;
+        min-width: 75px;
+        height: 50px;
+        display: block;
+
+        &:hover {
+          border-color: #eb1933;
+        }
+      }
+
+      .item-radio {
+        width: 25%;
+      }
+    }
+
+    .option-stamping {
+      h6 {
+        margin-bottom: 0;
+      }
+
+      .form-control {
+        height: 50px;
+        @include border-radius(0);
+      }
+    }
+
+    .option-remark {
+      .form-control {
+        height: 50px;
+        @include border-radius(0);
+      }
+
+      textarea {
+        resize: none;
+      }
+    }
+
+    .form-group {
+      @include form-contain;
+    }
+  }
+}

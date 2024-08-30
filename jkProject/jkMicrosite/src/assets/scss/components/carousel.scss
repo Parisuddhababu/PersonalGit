@@ -1,0 +1,109 @@
+@import "../common/mixin";
+
+.jkm-arrow-right {
+  @include jkm-arrow-right;
+}
+
+.carousel {
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 30px;
+  }
+
+  h5 {
+    @include font-detail(20px, 24px);
+    margin-bottom: 20px;
+    font-weight: 700;
+    margin-top: 0;
+
+    @media screen and (min-width: $device-md) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.product_slider {
+  position: relative;
+  @include row;
+
+  .d-col-4 {
+    @include d-col-4;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $device-sm) {
+      width: 50%;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      width: 33.33%;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      width: 25%;
+      margin-bottom: 20px;
+    }
+  }
+
+  img {
+    @include border-radius(10px);
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--data_border_color);
+  }
+
+  .slider-arrow-btn {
+    @include slider-arrow-btn(50px);
+    @include translate-y(-50%);
+  }
+
+  .col-box {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 71%;
+    max-height: 248px;
+    @include position(relative);
+
+    picture {
+      width: 100%;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      @include position(absolute);
+      inset: 0
+    }
+  }
+
+  .left {
+    left: 15px;
+
+    @media only screen and (min-width: $device-xl) {
+      left: 20px;
+    }
+
+    @media only screen and (min-width: $container-lg) {
+      left: -50px;
+    }
+  }
+
+  .right {
+    right: 15px;
+
+    @media only screen and (min-width: $device-xl) {
+      right: 20px;
+    }
+
+    @media only screen and (min-width: $container-lg) {
+      right: -50px;
+    }
+  }
+}
+
+.product_slider .slider-arrow-btn {
+  @media only screen and (min-width: $device-sm) {
+    @include transform(translateY(-50%));
+    top: 45%;
+  }
+}

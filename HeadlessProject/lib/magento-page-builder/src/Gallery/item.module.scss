@@ -1,0 +1,73 @@
+.root {
+    :global {
+        .item-name {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            line-height: 1.25;
+            text-align: left;
+            margin: 0.5rem 0;
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+        .item-price {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 600;
+        }
+    }
+}
+
+.images {
+    display: grid;
+    grid-template-areas: 'main';
+    margin-bottom: 0.65rem;
+    min-height: 204px;
+}
+
+.imageContainer {
+    grid-area: main;
+}
+
+.image {
+    display: block;
+    height: auto;
+    opacity: 1;
+    transition-duration: 512ms;
+    transition-property: opacity, visibility;
+    transition-timing-function: ease-out;
+    visibility: visible;
+    width: 100%;
+}
+
+.imagePlaceholder {
+    composes: image;
+    background-color: rgb(var(--venia-grey));
+}
+
+/* state: pending */
+
+.root_pending {
+    // composes: root;
+}
+
+.image_pending {
+    background-color: rgb(var(--venia-grey));
+}
+
+.images_pending {
+    // composes: images;
+}
+
+.name_pending {
+    background-color: rgb(var(--venia-grey));
+}
+
+.price_pending {
+    background-color: rgb(var(--venia-grey));
+    width: 3rem;
+}

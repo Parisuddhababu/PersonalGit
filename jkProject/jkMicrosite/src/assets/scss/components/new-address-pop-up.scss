@@ -1,0 +1,34 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+.p-error {
+    color: var(--data_error_color)
+}
+.modal{
+  &.add-new-address-popup{
+      .pop-up-container {
+          @include form-contain;
+          .d-row {
+              @include row;
+              .d-col-2 {
+                  @include d-col-2;
+                  @include mb-30;
+              }
+          }
+          .form-content {
+              @include mb-50;
+          }
+          .btn.btn-primary {
+              @include btn-primary;
+              @include btn-small;
+              margin: auto;
+          }
+          .custom-select {
+              @include border-radius(5px);
+              @include font-detail(16px,20px);
+              @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+              @include bg-arrow(var(--data_site_theme_color),url(../../images/icons/arrow-down.svg), no-repeat, 95%,center);
+              width: 100%;
+          }
+      }
+  }
+}

@@ -1,0 +1,95 @@
+<div class="main-container">
+  <h1>Banner Page</h1>
+  <h3 routerLink="/dashboard">Go to Dashboard</h3>
+  <div class="table-container">
+    <div class="top-container">
+      <form [formGroup]="form">
+        <input
+          placeholder="search banner..."
+          type="text"
+          id="bannerTitle"
+          formControlName="bannerTitleControl"
+        />
+      </form>
+      <button routerLink="/banner/add">+Create New</button>
+    </div>
+    @if(bannerData){
+    <table>
+      <tr>
+        <th>Banner Image</th>
+        <th
+          [ngClass]="{
+            asc: sortBy === 'banner_title' && sortOrder === 'asc',
+            desc: sortBy === 'banner_title' && sortOrder === 'desc'
+          }"
+          onKeyPress=""
+          (click)="toggleSorting('banner_title')"
+        >
+          Banner Title
+        </th>
+        <th
+          [ngClass]="{
+            asc: sortBy === 'banner_title_arabic' && sortOrder === 'asc',
+            desc: sortBy === 'banner_title_arabic' && sortOrder === 'desc'
+          }"
+          onKeyPress=""
+          (click)="toggleSorting('banner_title_arabic')"
+        >
+          Banner Arabic Title
+        </th>
+        <th>First Name</th>
+        <th
+          [ngClass]="{
+            asc: sortBy === 'status' && sortOrder === 'asc',
+            desc: sortBy === 'status' && sortOrder === 'desc'
+          }"
+          onKeyPress=""
+          (click)="toggleSorting('status')"
+        >
+          Status
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      @for (banner of bannerData; track banner?.uuid){
+      <tr>
+        <td>
+          <img [src]="banner.banner_image" alt="banner" class="banner-image" />
+        </td>
+        <td>{{ banner?.banner_title }}</td>
+        <td>{{ banner?.banner_title_arabic }}</td>
+        <td>{{ banner?.User?.first_name }}</td>
+        <td>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              [checked]="banner.status"
+              (change)="toggleActive(banner)"
+            />
+            <span class="slider round"></span>
+          </label>
+        </td>
+
+        <td onkeydown="" class="edit" (click)="onEditBanner(banner?.uuid!)">
+          <i class="fas fa-edit edit-icon"></i>
+        </td>
+        <td onkeydown="" class="delete" (click)="onDeleteBanner(banner?.uuid!)">
+          <i class="fas fa-trash delete-icon"></i>
+        </td>
+      </tr>
+      }
+    </table>
+  <p>Total Records {{bannerCount}}</p>
+
+    } @if(bannerCount==0){
+    <div class="error">No Records Found</div>
+    }
+  </div>
+
+  @if(bannerCount!=0){
+  <app-pagination
+    [bannerData]="bannerCount"
+    (pageChanged)="onPageChanged($event)"
+  ></app-pagination>
+  }
+</div>

@@ -1,0 +1,123 @@
+@import "../common/mixin-2";
+
+.banner-with-title {
+  position: relative;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    margin-bottom: 120px;
+  }
+
+  .banner-wrapper {
+    color: var(--data_site_highlight_section_text_color);
+    @include flexbox;
+    @include align-item-center;
+    overflow: hidden;
+
+    .banner-item {
+      width: 100%;
+
+      img {
+        width: 100%;
+
+        @media only screen and (min-width: $device-md) {
+          min-height: 400px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          min-height: 559px;
+        }
+      }
+
+      .container {
+        margin: auto;
+        z-index: 1;
+        position: absolute;
+        inset: 0;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0 90px;
+
+        h1 {
+          max-width: 300px;
+          margin: 0 auto 20px;
+          @include textCenter;
+
+          @media only screen and (min-width: $device-md) {
+            max-width: 400px;
+            margin: 0 auto 40px;
+          }
+
+          @media only screen and (min-width: $device-xl) {
+            max-width: 601px;
+          }
+        }
+
+        .btn {
+          margin: 0 auto;
+          max-width: initial;
+          width: auto;
+          min-height: 40px;
+          height: auto;
+
+          @media only screen and (min-width: $device-xl) {
+            min-height: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15px;
+    @include textCenter;
+
+    li {
+      display: inline-block;
+      margin: 0 5px;
+
+      &.active {
+        button {
+          width: 26px;
+          background-color: var(--data_site_secondary_color);
+        }
+      }
+
+      button {
+        height: 6px;
+        width: 18px;
+        background-color: var(--data_site_theme_color);
+        @include border-radius(5px);
+        border: 2px solid var(--data_site_theme_color);
+        padding: 0;
+        @include box(content-box);
+        vertical-align: middle;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.heading {
+  margin-bottom: 30px;
+  @include textCenter;
+
+  @media screen and (min-width: $device-md) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: $device-xl) {
+    margin-bottom: 50px;
+  }
+}

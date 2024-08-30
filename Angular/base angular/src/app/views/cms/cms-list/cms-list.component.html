@@ -1,0 +1,156 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['CMS_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="fa fa-file-o"></i> {{ 'CMS_LIST' | translate }}
+          <a *ngxPermissionsOnly="['CMS_CREATE', 'SUPER_ADMIN']" routerLink="/cms/add" class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                [(ngModel)]="global_search"
+                (keyup)="filterDatatable()"
+                type="text"
+                name="global_search"
+                class="form-control col-md-6 pull-right"
+                placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="cmsList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [messages]="dtMessages"
+              [limit]="size"
+              (sort)="onSort($event)"
+              [sorts]="[{ prop: sortParam, dir: sortOrder }]"
+              (page)="setPage($event)"
+              [offset]="pageNumber"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting"
+                [sortable]="false"
+                [width]="70"
+                headerClass="text-center"
+              >
+                <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  <div class="text-center">{{ rowIndex + 1 }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'CONTENT_PAGE_TITLE' | translate }}" prop="page_title"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+                *ngxPermissionsOnly="['CMS_UPDATE', 'SUPER_ADMIN', 'CMS_STATUS', 'PAGE_BUILDER_CREATE', 'PAGE_BUILDER_LOAD']"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a
+                      *ngxPermissionsOnly="['CMS_UPDATE', 'SUPER_ADMIN']"
+                      routerLink="/cms/edit/{{ row.id }}"
+                      title="{{ 'EDIT' | translate }}"
+                      ><i class="fa fa-pencil-square-o fa-lg"></i></a
+                    >&nbsp;
+                    <a
+                      *ngxPermissionsOnly="['CMS_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(template, row.id, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive'
+                        }"
+                        class="fa fa-lg"
+                      ></i></a
+                    >&nbsp;
+                    <!-- routerLink="/cms/page-builder/{{ row.id }}" -->
+                    <a
+                      *ngxPermissionsOnly="['PAGE_BUILDER_CREATE', 'SUPER_ADMIN']"
+                      (click)="gotoPageBuilder(row.id, row.slug)"
+                      title="{{ 'CMS_PAGE_BUILDER' | translate }}"
+                      ><i class="fa fa-file-o"></i></a
+                    >&nbsp;
+                    <ng-container *ngIf="!isEmpty(row.cms_page_name)">
+                      <a
+                        *ngxPermissionsOnly="['PAGE_BUILDER_LOAD', 'SUPER_ADMIN']"
+                        routerLink="/cms/view-template/{{ row.id }}"
+                        title="{{ 'VIEW_PAGE_BUILDER' | translate }}"
+                        ><i class="fa fa-eye fa-lg"></i></a
+                      >&nbsp;
+                      <a
+                        *ngxPermissionsOnly="['PAGE_BUILDER_LOAD', 'SUPER_ADMIN']"
+                        routerLink="/cms/view-component-template/{{ row.id }}"
+                        title="{{ 'VIEW_COMPONENT_BUILDER' | translate }}"
+                        ><i class="fa fa-th-list"></i
+                      ></a>
+                    </ng-container>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">{{ 'CONFIRMATION' | translate }}</h5>
+      <button type="button" class="close" (click)="decline()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="confirm()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

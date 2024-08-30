@@ -1,0 +1,21 @@
+mutation removeProductsFromCompareList($uid: ID!, $products: [ID!]!) {
+  removeProductsFromCompareList(input: { uid: $uid, products: $products }) {
+    uid
+    item_count
+    attributes {
+      code
+      label
+    }
+    items {
+      uid
+      product {
+        uid
+        sku
+        name
+        description {
+          html
+        }
+      }
+    }
+  }
+}

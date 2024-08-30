@@ -1,0 +1,268 @@
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img,
+a,
+input,
+nav,
+textarea,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+figure {
+  margin: 0;
+  display: inherit;
+}
+
+ul,
+ol,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+// body {
+//   margin: 0;
+//   font-size: 16px;
+//   font-family: $font-family;
+//   color: $text-color;
+//   line-height: 19px;
+//   letter-spacing: 0;
+// }
+
+// .container {
+//   max-width: 1320px;
+//   width: 100%;
+//   margin: auto;
+// }
+
+// .main-title {
+//   font-size: 42px;
+//   line-height: 36px;
+// }
+
+// .main-wrapper {
+//   display: grid;
+//   height: 100svh;
+//   grid-template-areas: 'head head' 'nav content';
+//   grid-template-rows: auto 1fr;
+//   grid-template-columns: 350px 1fr;
+
+//   &::after {
+//     content: '';
+//     @include box-shadow(0px, 3px, 8px, #0000001a);
+//     position: absolute;
+//     bottom: 0;
+//     width: 350px;
+//     height: 100%;
+//     top: 0;
+//   }
+
+//   @include large {
+//     grid-template-columns: 300px 1fr;
+
+//     &::after {
+//       width: 300px;
+//     }
+//   }
+
+//   @include xl {
+//     grid-template-columns: 280px 1fr;
+
+//     &::after {
+//       width: 280px;
+//     }
+//   }
+
+//   @include lg {
+//     grid-template-columns: 1fr;
+//     grid-template-areas: 'head' 'content';
+
+//     &::after {
+//       display: none;
+//     }
+
+//     nav {
+//       padding: 15px;
+
+//       .MuiList-root {
+//         padding: 0;
+//       }
+//     }
+
+//     header {
+//       background-color: $white-color;
+//       z-index: 16;
+//     }
+//   }
+
+//   aside {
+//     z-index: 15;
+//   }
+
+//   &.active {
+//     @include lg {
+//       &::after {
+//         visibility: visible;
+//       }
+
+//       header {
+//         @include transition(0.3s, linear);
+
+//         .left-section {
+//           .menu-open {
+//             .open {
+//               display: none;
+//             }
+
+//             .close {
+//               display: block;
+//             }
+//           }
+//         }
+//       }
+
+//       aside {
+//         @include transform(translateX(0));
+//         @include box-shadow(0px, 0px, 25px, #4d4d4d);
+//         @include transition(0.3s, linear);
+//       }
+
+//       main {
+//         .menu-overlay {
+//           visibility: visible;
+//           @include opacity(1);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// header {
+//   grid-area: head;
+// }
+
+// aside {
+//   grid-area: nav;
+//   overflow: auto;
+//   z-index: 1;
+// }
+
+// main {
+//   grid-area: content;
+//   padding: 22px 50px 25px 35px;
+//   overflow: auto;
+
+//   @include xl {
+//     padding: 20px 30px 20px 25px;
+//   }
+
+//   @include lg {
+//     padding: 18px 20px 15px 20px;
+//   }
+
+//   @include md {
+//     padding: 15px 15px 15px 15px;
+//   }
+
+//   .menu-overlay {
+//     position: absolute;
+//     height: 100%;
+//     inset: 0;
+//     background-color: #00000063;
+//     @include opacity(0);
+//     visibility: hidden;
+//     @include transition(0.3s, linear);
+//     z-index: 14;
+//   }
+// }
+
+// ul {
+//   &.list-content {
+//     li {
+//       list-style: none;
+//       font-size: 16px;
+//       line-height: 23px;
+//       color: #071b34;
+//       position: relative;
+
+//       @include lg {
+//         font-size: 14px;
+//         line-height: 21px;
+//       }
+
+//       &:before {
+//         content: '';
+//         width: 4px;
+//         height: 4px;
+//         position: relative;
+//         left: 0px;
+//         top: -3px;
+//         margin-right: 8px;
+//         display: inline-block;
+//         background: $text-color;
+//         @include border-radius(100%);
+//       }
+//     }
+//   }
+// }
+
+// ul.list-unstyled {
+//   li {
+//     margin: 0px;
+//     padding: 0px;
+
+//     &:before {
+//       content: normal;
+//     }
+//   }
+// }
+
+// .interview-site-wrapper {
+//   .candidate-main-wrapper {
+//     min-height: calc(100vh - 170px);
+//     padding-top: 30px;
+//     padding-bottom: 54px;
+
+//     @include xl {
+//       min-height: calc(100vh - 124px);
+//       padding-top: 25px;
+//       padding-bottom: 45px;
+//     }
+
+//     @include lg {
+//       min-height: calc(100vh - 115px);
+//       padding-top: 20px;
+//       padding-bottom: 35px;
+//     }
+//   }
+
+//   .interviewer-flow-footer {
+//     button {
+//       @include sm {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }

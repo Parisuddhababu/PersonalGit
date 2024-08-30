@@ -1,0 +1,196 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSurveySave(surFrm)" novalidate #surFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <div class="pull-left" *ngIf="model.is_started">
+              <strong>Note: </strong><span class="text-danger">Update only End date when survey started</span>
+            </div>
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'SURVEY_TITLE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.title"
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    placeholder="{{ 'SURVEY_TITLE' | translate }}"
+                    required
+                    #title="ngModel"
+                    [disabled]="model.is_started"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="title.errors && surFrm.submitted">
+                    <p *ngIf="title.errors.required">
+                      {{ 'PLEASE_ENTER_SURVEY_TITLE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'DEPARTMENT' | translate }} <span class="asterisk_input"></span></label>
+                  <ng-multiselect-dropdown
+                    placeholder="{{ 'SELECT_DEPARTMENT' | translate }}"
+                    [data]="departmentList"
+                    [(ngModel)]="model.department_ids"
+                    [settings]="departmentSettings"
+                    name="department_ids"
+                    #department_ids="ngModel"
+                    required
+                    [disabled]="model.is_started"
+                  >
+                  </ng-multiselect-dropdown>
+                  <div class="form-control-feedback text-danger" *ngIf="department_ids.errors && surFrm.submitted">
+                    <p *ngIf="department_ids.errors.required">
+                      {{ 'PLEASE_SELECT_DEPARTMENT' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'LOCATION' | translate }} <span class="asterisk_input"></span></label>
+                  <ng-multiselect-dropdown
+                    placeholder="{{ 'SELECT_LOCATION' | translate }}"
+                    [data]="locationList"
+                    [(ngModel)]="model.location_ids"
+                    [settings]="locationSettings"
+                    name="location_ids"
+                    #location_ids="ngModel"
+                    required
+                    [disabled]="model.is_started"
+                  >
+                  </ng-multiselect-dropdown>
+                  <div class="form-control-feedback text-danger" *ngIf="location_ids.errors && surFrm.submitted">
+                    <p *ngIf="location_ids.errors.required">
+                      {{ 'PLEASE_SELECT_LOCATION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'DESCRIPTION' | translate }} <span class="asterisk_input"></span></label>
+                  <textarea
+                    [(ngModel)]="model.description"
+                    rows="5"
+                    name="description"
+                    class="form-control"
+                    placeholder="{{ 'DESCRIPTION' | translate }}"
+                    required
+                    [disabled]="model.is_started"
+                    #description="ngModel"
+                  ></textarea>
+                  <div class="form-control-feedback text-danger" *ngIf="description.errors && surFrm.submitted">
+                    <p *ngIf="description.errors.required">
+                      {{ 'PLEASE_ENTER_DESCRIPTION' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="!editSurveyId">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      class="custom-control-input crsr-ptr"
+                      id="startNow"
+                      name="startNow"
+                      type="checkbox"
+                      [(ngModel)]="model.start_now"
+                      #startNow="ngModel"
+                      (change)="surveyStartNow(model.start_now)"
+                    />
+                    <label class="custom-control-label crsr-ptr" for="startNow">{{ 'START_NOW' | translate }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'START_DATE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="model.survey_start_date"
+                      [disabled]="model.start_now || model.is_started"
+                      name="survey_start_date"
+                      type="text"
+                      class="form-control"
+                      #survey_start_date="ngModel"
+                      required
+                      placeholder="MM/DD/YYYY"
+                      #sDate="bsDatepicker"
+                      [minDate]="minDate"
+                      placement="top"
+                      bsDatepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="sDate.toggle()"></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="survey_start_date.errors && surFrm.submitted">
+                    <p *ngIf="survey_start_date.errors.required">
+                      {{ 'PLEASE_SELECT_START_DATE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'END_DATE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="model.survey_end_date"
+                      [disabled]="!model.survey_start_date"
+                      name="survey_end_date"
+                      type="text"
+                      class="form-control"
+                      #survey_end_date="ngModel"
+                      required
+                      placeholder="MM/DD/YYYY"
+                      #eDate="bsDatepicker"
+                      [minDate]="maxEndDate(model.survey_start_date)"
+                      placement="top"
+                      bsDatepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="eDate.toggle()"></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="survey_end_date.errors && surFrm.submitted">
+                    <p *ngIf="survey_end_date.errors.required">
+                      {{ 'PLEASE_SELECT_END_DATE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-survey/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a
+            >&nbsp;
+            <a *ngIf="editSurveyId" class="btn btn-success" routerLink="/manage-survey/add-questions/{{ editSurveyId }}"
+              ><i class="fa fa-question-circle-o"></i> {{ 'NEXT' | translate }}</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

@@ -1,0 +1,710 @@
+// Here you can add other styles
+.btn-warning {
+  color: #ffffff;
+}
+
+.btn-warning:hover {
+  color: #ffffff;
+}
+
+.asterisk_input:before {
+  content: '*';
+  font-size: 15px;
+  color: #e85656;
+}
+
+.divider {
+  margin-top: 30px;
+}
+
+.btn.disabled,
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.divider-md {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  cursor: not-allowed;
+}
+
+.error-message {
+  font-size: 15px;
+  line-height: 14px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  opacity: 1;
+  margin-top: 0;
+  padding-top: 5px;
+  color: #d50000;
+}
+
+.dataTables_filter input[type='search'] {
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.dataTables_filter input {
+  margin-bottom: 8px;
+}
+
+div.dataTables_length select {
+  width: 75px;
+  height: 30px;
+  border: 1px solid #dcdcdc !important;
+  padding-left: 8px;
+  border-radius: 5px;
+}
+
+a:not([href]):not([tabindex]) {
+  color: $primary;
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: #167495;
+  cursor: pointer;
+}
+
+div.dataTables_info,
+div.dataTables_paginate {
+  margin-top: 10px;
+}
+
+table.dataTable.no-footer {
+  border: 1px solid #c8ced3 !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+  border-bottom: 1px solid #c8ced3 !important;
+}
+
+table.table-bordered.dataTable td,
+table.table-bordered.dataTable th {
+  border-left-width: 0;
+}
+
+table.table-bordered.dataTable {
+  border-collapse: separate !important;
+}
+
+.modal .modal-footer {
+  border: none;
+  padding-top: 0;
+}
+
+.table-actions {
+  text-align: center;
+  min-width: 100px;
+}
+
+.card-header > i {
+  margin-top: 10px;
+}
+
+.sidebar .nav {
+  margin-top: 15px;
+}
+
+.no-data-available {
+  text-align: center;
+}
+
+// .dataTables_empty {
+//     display: none;
+// }
+.table-status {
+  min-width: 80px;
+  text-align: center;
+}
+
+.modal-content {
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.node-content-wrapper,
+.tree-children {
+  position: relative;
+}
+
+.node-content-wrapper::before,
+.tree-children::after {
+  content: '';
+  position: absolute;
+}
+
+.node-content-wrapper::before {
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  height: 28px;
+  top: -17px;
+  width: 20px;
+  left: -28px;
+}
+
+.tree-node-level-1 > tree-node-wrapper > .node-wrapper > .node-content-wrapper::before {
+  display: none;
+}
+
+.tree-node-leaf > .node-wrapper > .node-content-wrapper::before {
+  width: 25px;
+}
+
+.tree-children::after {
+  border-left: 1px solid lightgrey;
+  height: 100%;
+  top: -15px;
+  left: -15px;
+}
+
+tree-node:last-child > .tree-node > .tree-children::after {
+  border-left: none;
+}
+
+.toggle-children {
+  z-index: 1;
+}
+
+.angular-tree-component .node-wrapper {
+  line-height: 12px;
+  cursor: pointer;
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+  margin: 3px;
+  padding: 8px;
+}
+
+.node-content-wrapper,
+.tree-children {
+  width: 100%;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper.node-content-wrapper-active:hover,
+.node-content-wrapper-active.node-content-wrapper-focused,
+.node-content-wrapper-focused {
+  background: transparent;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper-focused,
+.node-content-wrapper:hover {
+  box-shadow: none;
+}
+
+.node-content-wrapper span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/******  28-01 *****/
+a,
+a:focus,
+a:hover,
+.outer-head-text,
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):hover {
+  color: $primary;
+}
+
+button:focus {
+  outline: none;
+}
+
+// .app-header , .sidebar {background: #262626}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: $primary;
+}
+
+.sidebar .nav-link.active .nav-icon {
+  color: #fff;
+}
+
+.btn-primary,
+.card.bg-primary {
+  background: $primary !important;
+  border-color: $primary;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  background: $primary;
+}
+
+header ul.nav + .navbar-toggler {
+  display: none;
+}
+
+.chart-wrapper i.fa {
+  font-size: 40px;
+  opacity: 0.3;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+// .md-drppicker.shown.drops-down-right {width:600px;}
+
+.dtePkr {
+  position: relative;
+}
+
+.dtePkr input {
+  padding-right: 40px;
+  // pointer-events: none;
+}
+
+.dtePkr i.fa {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+}
+
+.app-header .navbar-toggler:nth-child(3n + 2),
+.app-header .navbar-toggler:nth-child(4n + 2) {
+  display: none;
+}
+
+.outer-body {
+  background-color: #e5f3ec;
+}
+
+.toast {
+  opacity: 1;
+}
+
+.crsr-ptr {
+  cursor: pointer;
+}
+
+.middle-content {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.md-drppicker .ranges ul li button.active {
+  background-color: $primary !important;
+}
+
+.md-drppicker.shown.show-ranges.double {
+  width: 610px;
+}
+
+.md-drppicker td.active,
+.md-drppicker td.active:hover,
+.md-drppicker .btn {
+  background-color: $primary !important;
+}
+
+tree-select .dropdown-menu {
+  display: block;
+}
+
+tree-select .dropdown-menu .item > a:hover,
+tree-select .dropdown-menu .item.active {
+  background-color: $primary !important;
+}
+
+tree-select span.btn-secondary,
+tree-select span.btn-secondary:hover {
+  color: #000;
+  background-color: white;
+  border-color: #ced4da;
+  border-radius: 4px !important;
+  text-align: left;
+}
+
+tree-select .btn-secondary:focus,
+tree-select .btn-secondary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.dropdown-width {
+  .dropdown-menu.show {
+    width: 90%;
+    max-height: 300px;
+    overflow: auto;
+  }
+}
+
+.sidebar .menu-pl {
+  padding-left: 1.5rem;
+}
+
+button.close {
+  color: red;
+  opacity: 1;
+}
+
+button.close:hover {
+  color: red;
+}
+
+.datatable-responsive table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.dt-without-range .md-drppicker.shown.double {
+  width: 500px !important;
+}
+
+.dt-without-range .md-drppicker .buttons .clear {
+  vertical-align: super;
+}
+
+.dt-without-range .md-drppicker .buttons .btn {
+  margin-right: 5px;
+}
+
+.filter-sec {
+  display: none;
+}
+
+.display-none {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .app-body {
+    margin-top: 0;
+    padding-top: 55px;
+  }
+}
+
+/* Material Design */
+.mat-form-field-suffix {
+  font-size: 30px;
+}
+
+.mat-calendar-body-selected {
+  background-color: $primary;
+}
+
+.mat-input-element {
+  &:focus {
+    border: 0px;
+    box-shadow: none;
+  }
+
+  color: #5c6873 !important;
+  margin-left: 10px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none;
+}
+
+.mat-form-field-infix {
+  padding: 0 !important;
+}
+
+.mat-datepicker-toggle {
+  .mat-icon-button {
+    height: auto !important;
+  }
+}
+
+.mat-form-field-flex {
+  border: 1px solid #e4e7ea;
+  border-radius: 0.25rem;
+  padding: 0;
+  height: 35px !important;
+  align-items: end !important;
+}
+
+.mat-datepicker-toggle-default-icon {
+  width: 20px !important;
+  margin: 0;
+  padding: 0;
+  margin-top: -3px;
+  margin-right: -7px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.card-header > i {
+  display: inline-block;
+}
+
+@media (max-width: 991.98px) {
+  .app-body {
+    margin-top: 0;
+    padding-top: 55px;
+  }
+}
+
+/* Custom radio button design -- START */
+.d-block .form-check-inline {
+  /* The container */
+  .form-check-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default radio button */
+  .form-check-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .form-check-label:hover input ~ .radio-span {
+    background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .form-check-label input:checked ~ .radio-span {
+    background-color: $primary;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .radio-span:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .form-check-label input:checked ~ .radio-span:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .form-check-label .radio-span:after {
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+  }
+}
+
+/* Custom radio button design -- END */
+.custom-control-label::before {
+  background-color: #fff;
+  border: 1px solid #8f9ba6;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: $primary;
+}
+
+.ngx-datatable.material .empty-row {
+  padding: 10px 0;
+}
+
+.ngx-datatable.material .datatable-header {
+  width: 100% !important;
+}
+
+.white-space-normal {
+  white-space: normal;
+}
+
+.ngx-datatable.material .datatable-footer .page-count {
+  white-space: nowrap;
+}
+
+.link-is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.link-is-enable {
+  pointer-events: unset;
+  opacity: 1;
+}
+
+.wrap-datatable .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
+  white-space: normal;
+}
+
+.survey-bg-green,
+.box-green {
+  background-color: #c4efc4;
+}
+
+.survey-bg-red,
+.box-red {
+  background-color: #f5cfcf;
+}
+
+.survey-bg-yellow,
+.box-yellow {
+  background-color: #f6fd90;
+}
+
+.note {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.question-answer-div {
+  border: 2px solid #e2e2e2;
+  padding-top: 28px;
+  padding-right: 20px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  border-radius: 4px;
+}
+
+.quesFieldset {
+  position: relative;
+  margin: 20px 0;
+
+  legend {
+    position: absolute;
+    top: -10px;
+    font-size: 20px;
+    background: #fff;
+    width: max-content;
+    margin-left: 30px;
+    padding: 0 8px;
+  }
+}
+
+.modal-body.overflow {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-rel .processing {
+  position: absolute;
+  z-index: 99;
+  top: 20%;
+  left: 50%;
+  width: 100%;
+  height: 40px;
+  margin-left: -50%;
+  margin-top: -25px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: #fff;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.9) 25%,
+    rgba(255, 255, 255, 0.9) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.open-top .dropdown-list {
+  bottom: 30px;
+  overflow: hidden;
+}
+
+.theme-color {
+  color: $primary;
+}
+
+// date time picker css -start
+.cdk-overlay-container {
+  z-index: 9999;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-selected,
+.owl-dt-timer-hour12 .owl-dt-timer-hour12-box:focus .owl-dt-control-button-content,
+.owl-dt-timer-hour12 .owl-dt-timer-hour12-box:hover .owl-dt-control-button-content {
+  background-color: $primary;
+}
+
+.owl-dt-timer-hour12,
+.owl-dt-container-buttons {
+  color: $primary;
+}
+
+// date time picker css -end
+.ng2-tag-input .progress-bar {
+  display: none !important;
+}
+
+.bootstrap.ng2-tag-input,
+.bootstrap.ng2-tag-input.ng2-tag-input--focused {
+  border: 1px solid #ced4da !important;
+  border-radius: 4px;
+  padding: 0px 5px !important;
+}
+
+.ng2-dropdown-menu {
+  z-index: 1051 !important;
+}
+
+.ng2-dropdown-menu .ng2-menu-item {
+  padding: 10px 10px !important;
+  line-height: normal !important;
+  height: auto !important;
+}
+
+.ng2-dropdown-menu .ng2-menu-item p {
+  margin-bottom: 0px !important;
+}
+
+.error-messages span {
+  color: #f86c6b !important;
+  font-size: 0.875rem;
+}
+
+.bootstrap tag {
+  background: $primary !important;
+}
+
+.ng2-tag-input__text-input {
+  margin: 2px 0;
+  height: 32px !important;
+}
+
+.view-page label {
+  font-weight: bold;
+}
+
+.card-border-left {
+  border-left: 5px solid $primary;
+  border-radius: 8px;
+}

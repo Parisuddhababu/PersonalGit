@@ -1,0 +1,26 @@
+diff --git a/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/PasswordRepeatElement.tsx b/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/PasswordRepeatElement.tsx
+index 813bac6..f8c4e98 100644
+--- a/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/PasswordRepeatElement.tsx
++++ b/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/PasswordRepeatElement.tsx
+@@ -16,7 +16,7 @@ export function PasswordRepeatElement<TFieldValues extends FieldValues>({
+       {...rest}
+       validation={{
+         validate: (value: string) =>
+-          value === pwValue || i18n._(/* i18n */ "Passwords don't match"),
++          value === pwValue || i18n._(/* i18n */ "Please enter the same value again."),
+       }}
+     />
+   )
+diff --git a/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/TextFieldElement.tsx b/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/TextFieldElement.tsx
+index 78e5236..7da4268 100644
+--- a/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/TextFieldElement.tsx
++++ b/node_modules/@graphcommerce/ecommerce-ui/components/FormComponents/TextFieldElement.tsx
+@@ -28,7 +28,7 @@ export function TextFieldElement<TFieldValues extends FieldValues>({
+   ...rest
+ }: TextFieldElementProps<TFieldValues>): JSX.Element {
+   if (required && !validation.required) {
+-    validation.required = i18n._(/* i18n */ 'This field is required')
++    validation.required = i18n._(/* i18n */ 'This is a required field.')
+   }
+ 
+   if (type === 'email' && !validation.pattern) {

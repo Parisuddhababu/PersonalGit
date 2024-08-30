@@ -1,0 +1,41 @@
+@import "variables";
+
+
+.micro-site .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: $primary-base;
+  color: $white;
+  border-bottom: $white;
+  font-weight: bold;
+  padding: 10px 10px;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  padding: 10px 10px;
+}
+
+.fieldset .legend {
+  font-size: 1rem;
+}
+.custom-inputgroup .p-inputgroup-addon {
+  background-color: #ced4da;
+}
+
+.p-colorpicker-preview {
+  width: 100%;
+}
+.p-colorpicker {
+  width: 85%;
+}
+
+// .p-colorpicker-overlay {
+//   width: 98%;
+//   opacity: 0.8;
+// }
+// .p-colorpicker-color {
+//   width: 100%;
+// }
+// .text-color-pic.p-inputtext {
+//   color: black;
+//   font-weight: bolder;
+//   text-align: center;
+// }

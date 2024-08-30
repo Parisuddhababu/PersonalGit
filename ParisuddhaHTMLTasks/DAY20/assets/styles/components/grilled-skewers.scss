@@ -1,0 +1,215 @@
+//grilled-skewers
+.grilled-skewers {
+	background-image: url('./assets/images/webp/headerBackground.webp');
+	background-size: cover;
+	background-repeat: no-repeat;
+	.grilled-skewers-container {
+		position: relative;
+		.grilled-skewers-header-container {
+			@include flex-property-col;
+			@include justify-content-center;
+			@include align-center;
+			gap: 9px;
+			padding-left: 128px;
+			padding-right: 51px;
+			color: $white-color;
+			@include sm {
+				@include flex-property-col;
+				@include justify-content-center;
+				@include align-center;
+				gap: 9px;
+				padding-left: 128px;
+				padding-right: 51px;
+				color: $white-color;
+			}
+			@include md {
+				@include flex-property-col;
+				@include justify-content-center;
+				@include align-center;
+				gap: 9px;
+				padding-left: 128px;
+				padding-right: 51px;
+				color: $white-color;
+			}
+			@include lg {
+				@include flex-property-row;
+				justify-content: space-around;
+			}
+			.grilled-skewers-row-container {
+				@include flex-property-col;
+				@include justify-content-center;
+				@include align-center;
+				position: relative;
+				@include sm {
+					@include flex-property-col;
+					@include justify-content-center;
+					@include align-center;
+					position: relative;
+				}
+				@include md {
+					@include flex-property-col;
+					@include justify-content-center;
+					@include align-center;
+					position: relative;
+				}
+				.white-plate {
+					position: relative;
+					width: 619px;
+					height: 634px;
+					margin-bottom: 20px;
+				}
+				.sauce-image {
+					position: absolute;
+					z-index: 9;
+					left: 0%;
+					top: 15%;
+					width: 173px;
+					height: 170px;
+				}
+			}
+			.grilled-skewers-header {
+				@include flex-property-col;
+				position: relative;
+				@include content-between;
+				@include sm {
+					@include flex-property-col;
+					position: relative;
+					@include content-between;
+				}
+				@include md {
+					@include flex-property-col;
+					position: relative;
+					@include content-between;
+				}
+				.grilled-skewers-element {
+					margin-bottom: 10px;
+					position: relative;
+					.skewers {
+						margin-left: 180px;
+						font-size: 49px;
+						font-family: $Playfair;
+						@include lg {
+							font-size: 85px;
+						}
+						@include xl {
+							font-size: 89px;
+						}
+						text-transform: uppercase;
+						color: $white-color;
+						font-weight: 700;
+						margin-top: 0%;
+					}
+					.delecious-container {
+						@include lg {
+							margin-left: 22%;
+						}
+						.hot-delicious {
+							font-size: 32px;
+							font-family: $surferbay;
+							@include lg {
+								font-size: 50px;
+								margin-right: 133px;
+							}
+							@include xl {
+								font-size: 52px;
+							}
+							color: $white-color;
+							opacity: 0.858;
+							background-image: url('./assets/images/webp/bg-design.webp');
+							background-repeat: no-repeat;
+							text-align: center;
+							padding: 28px 49px;
+							margin-bottom: 25px;
+							height: 122px;
+							width: 391px;
+							transform: rotate(-8deg);
+						}
+					}
+
+					h1 {
+						font-size: 49px;
+						font-family: $Playfair;
+						@include sm {
+							font-size: 49px;
+							font-family: $Playfair;
+						}
+						@include md {
+							font-size: 49px;
+							font-family: $Playfair;
+						}
+						@include lg {
+							font-size: 89px;
+						}
+						text-transform: uppercase;
+						color: $white-color;
+						font-weight: 700;
+						margin-bottom: 0%;
+						span {
+							color: $primary-color;
+						}
+					}
+				}
+			}
+		}
+		.grilled-skewers-top-container {
+			@include flex-property-col;
+			@include justify-content-center;
+			@include align-center;
+			padding: 50px;
+			.header-Logo {
+				@include pointer;
+			}
+			@include sm {
+				@include justify-content-center;
+				@include align-center;
+				padding: 50px;
+			}
+			@include md {
+				@include justify-content-center;
+				@include align-center;
+			}
+			@include lg {
+				@include content-between;
+				@include flex-property-row;
+			}
+			color: $white-color;
+			.grilled-skewers-heading-container {
+				@include flex-property-row;
+				@include justify-content-center;
+				@include align-center;
+				gap: 9px;
+				p {
+					font-size: 18px;
+					line-height: 70px;
+					font-weight: 600;
+					text-align: right;
+					font-family: $Montserret;
+				}
+				p :hover {
+					color: $white-color;
+					transition: 2s;
+					transition-property: color;
+				}
+			}
+
+			nav ul {
+				@include flex-property-row;
+				@include content-between;
+				gap: 31px;
+				list-style-type: none;
+				li a {
+					text-decoration: none;
+					color: $white-color;
+					font-size: 17px;
+					letter-spacing: 3px;
+					font-weight: 700;
+					font-family: $Playfair;
+				}
+				li a:hover {
+					text-decoration: underline;
+					color: $primary-color;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.seperator {
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: var(--data_site_theme_color);
+
+  margin: 15px 0px 10px;
+  max-width: 120px;
+  height: 3px;
+
+  @media only screen and (min-width: $device-sm) {
+    margin: 20px 0 10px;
+  }
+
+  @media only screen and (min-width: $device-lg) {
+    margin: 30px auto;
+  }
+}

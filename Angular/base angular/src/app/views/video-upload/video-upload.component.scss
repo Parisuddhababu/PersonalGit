@@ -1,0 +1,165 @@
+.video-box.has-upload {
+  border: 2px dashed #92b0b3;
+}
+.video-box {
+  font-size: 1.25rem;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  display: flex;
+  height: 300px;
+  align-items: center;
+}
+.video-box .upload-area {
+  margin-right: auto;
+  margin-left: auto;
+}
+.video-box i {
+  position: absolute;
+  font-size: 32px;
+  background: #fff;
+  cursor: pointer;
+  color: #ffa200;
+  top: -11px;
+  right: -11px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 9999;
+}
+#fileSelect {
+  display: none;
+}
+#mainVideo {
+  width: 100%;
+  max-height: 300px;
+}
+.video-box label {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 32.34px;
+  color: #868686;
+}
+.video-box strong {
+  color: #ffa200;
+}
+.video-box span {
+  display: inline;
+}
+.videoUploadProgress {
+  display: flex;
+  margin: 20px 0px;
+  width: 100%;
+  height: 30px;
+  background-color: #d8e6df;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.videoUploadProgress .progressBarDiv {
+  display: flex;
+  height: 100%;
+  padding: 2px;
+  max-width: 100%;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+.videoUploadProgress .progressBarDiv .progress {
+  width: 0%;
+  background-color: #ffa200;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+}
+.videoUploadProgress .progressBarDiv span {
+  position: relative;
+  color: black;
+  font-weight: 500;
+  line-height: 30px;
+  z-index: 99;
+}
+.videoUploadProgress .progressBarDiv span.cancleUpload {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  cursor: pointer;
+  width: 30px;
+  text-align: center;
+}
+
+// video thumbnails
+.listVideoThumb ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.listVideoThumb ul li {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  width: 150px;
+}
+.listVideoThumb ul li label.thumbList {
+  display: flex;
+  height: 100px;
+  align-items: center;
+}
+.listVideoThumb ul li label.thumbList input {
+  visibility: hidden;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+}
+.listVideoThumb ul li label.thumbList figure {
+  margin: 0px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+.listVideoThumb ul li label.thumbList figure img {
+  width: 100%;
+  height: 100%;
+}
+.listVideoThumb ul li label.thumbList input:checked + figure:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0px;
+  left: 0px;
+}
+.listVideoThumb ul li label.thumbList input:checked + figure:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: none;
+  background-image: url('../../../assets/rightTick.png');
+  background-position: center;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  background-repeat: no-repeat;
+}
+.listVideoThumb ul li label.thumbList.customThumb {
+  background-color: #333;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.listVideoThumb ul li label.thumbList.customThumb div span {
+  font-weight: 500;
+  font-size: 11px;
+  color: #fff;
+  display: block;
+  line-height: normal;
+}

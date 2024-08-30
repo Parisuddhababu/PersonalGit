@@ -1,0 +1,131 @@
+button.current {
+  min-width: 100px;
+}
+/*
+  .profile {
+    border: 1px dashed #b8b8b8;
+    width: 202px;
+    height: 202px;
+    position: relative;
+    cursor: pointer;
+    .profile-wrapper {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    .change-profile {
+      display: none;
+      width: 202px;
+      background: #bb3f42;
+      transition: all .2s ease-in-out;
+      color: #FFF;
+      text-decoration: none;
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+      line-height: 32px;
+      text-align: center;
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      top: 0px;
+      height: 100%;
+      width: 200px;
+      z-index: 999;
+      cursor: pointer;
+    }
+    i {
+      display: none;
+      position: absolute;
+      font-size: 32px;
+      background: #fff;
+      cursor: pointer;
+      color: #bb3f42;
+      top: -11px;
+      right: -11px;
+      height: 26px;
+      border-radius: 50%;
+      z-index: 9999;
+    }
+    &:hover {
+      i, .change-profile {
+        display: block;
+      }
+  
+    }
+  }
+   */
+
+/*Image Upload New CSS*/
+.image-box.has-upload {
+  border: 2px dashed #92b0b3;
+}
+.image-box {
+  font-size: 1.25rem;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  display: flex;
+  height: 300px;
+  align-items: center;
+  input {
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    height: 100%;
+    width: 200px;
+    z-index: 999;
+    cursor: pointer;
+  }
+}
+
+.image-box .upload-area {
+  margin-right: auto;
+  margin-left: auto;
+}
+.image-box i {
+  position: absolute;
+  font-size: 32px;
+  background: #fff;
+  cursor: pointer;
+  color: #ffa200;
+  top: -11px;
+  right: -11px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 9999;
+}
+#banner_picture {
+  display: none;
+}
+#mainVideo {
+  width: 100%;
+  max-height: 300px;
+}
+.image-box label {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 32.34px;
+  color: #868686;
+}
+.image-box strong {
+  color: #ffa200;
+}
+.image-box span {
+  display: inline;
+}

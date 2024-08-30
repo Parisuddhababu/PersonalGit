@@ -1,0 +1,792 @@
+diff --git a/node_modules/@graphcommerce/magento-customer/components/AccountSignInUpForm/AccountSignInUpForm.tsx b/node_modules/@graphcommerce/magento-customer/components/AccountSignInUpForm/AccountSignInUpForm.tsx
+index ff2c0fe..5b77e98 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/AccountSignInUpForm/AccountSignInUpForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/AccountSignInUpForm/AccountSignInUpForm.tsx
+@@ -8,7 +8,7 @@ import {
+ } from '@graphcommerce/next-ui'
+ import { emailPattern } from '@graphcommerce/react-hook-form'
+ import { Trans } from '@lingui/react'
+-import { Box, CircularProgress, Link, SxProps, TextField, Theme, Typography } from '@mui/material'
++import { Box, CircularProgress, Link, SxProps, TextField, Theme, Typography ,Snackbar,Alert, SnackbarContent} from '@mui/material'
+ import router from 'next/router'
+ import { CustomerDocument, useFormIsEmailAvailable } from '../../hooks'
+ import { useCustomerQuery } from '../../hooks/useCustomerQuery'
+@@ -16,6 +16,7 @@ import { ApolloCustomerErrorAlert } from '../ApolloCustomerError'
+ import { SignInForm } from '../SignInForm/SignInForm'
+ import { SignUpForm } from '../SignUpForm/SignUpForm'
+ 
++
+ export type AccountSignInUpFormProps = { sx?: SxProps<Theme> }
+ 
+ const parts = ['root', 'titleContainer'] as const
+@@ -29,7 +30,6 @@ const titleContainerSx: SxProps<Theme> = (theme) => ({
+ export function AccountSignInUpForm(props: AccountSignInUpFormProps) {
+   const { sx = [] } = props
+   const customerQuery = useCustomerQuery(CustomerDocument)
+-
+   const { email, firstname = '' } = customerQuery.data?.customer ?? {}
+   const { mode, form, autoSubmitting, submit } = useFormIsEmailAvailable({ email })
+   const { formState, muiRegister, required, watch, error } = form
+@@ -71,7 +71,9 @@ export function AccountSignInUpForm(props: AccountSignInUpFormProps) {
+       )}
+ 
+       {mode === 'signedin' && (
++        
+         <Box className={classes.titleContainer} sx={titleContainerSx}>
++        
+           <LayoutTitle variant='h2' gutterBottom={false}>
+             <Trans id='Hi {firstname}! You’re now logged in!' values={{ firstname }} />
+           </LayoutTitle>
+@@ -87,6 +89,7 @@ export function AccountSignInUpForm(props: AccountSignInUpFormProps) {
+             </Button>
+           </FormActions>
+         </Box>
++      
+       )}
+ 
+       {mode === 'session-expired' && (
+diff --git a/node_modules/@graphcommerce/magento-customer/components/AddressFields/AddressFields.tsx b/node_modules/@graphcommerce/magento-customer/components/AddressFields/AddressFields.tsx
+index ac8ffae..ced82c3 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/AddressFields/AddressFields.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/AddressFields/AddressFields.tsx
+@@ -13,7 +13,6 @@ import React, { useMemo } from 'react'
+ 
+ export type AddressFieldValues = {
+   street?: string
+-  houseNumber?: string
+   addition?: string
+   countryCode?: string
+   regionId?: string
+@@ -70,25 +69,6 @@ export function AddressFields(props: AddressFieldsProps) {
+             endAdornment: <InputCheckmark show={valid.street} />,
+           }}
+         />
+-        <TextFieldElement
+-          control={control}
+-          name='houseNumber'
+-          required={required.houseNumber}
+-          validation={{
+-            pattern: {
+-              value: houseNumberPattern,
+-              message: i18n._(/* i18n */ 'Please provide a valid house number'),
+-            },
+-          }}
+-          variant='outlined'
+-          type='text'
+-          label={<Trans id='Housenumber' />}
+-          autoComplete='address-line2'
+-          InputProps={{
+-            readOnly,
+-            endAdornment: <InputCheckmark show={valid.houseNumber} />,
+-          }}
+-        />
+         <TextFieldElement
+           control={control}
+           name='addition'
+diff --git a/node_modules/@graphcommerce/magento-customer/components/ChangeNameForm/ChangeNameForm.tsx b/node_modules/@graphcommerce/magento-customer/components/ChangeNameForm/ChangeNameForm.tsx
+index b18fd0b..3866326 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/ChangeNameForm/ChangeNameForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/ChangeNameForm/ChangeNameForm.tsx
+@@ -31,7 +31,7 @@ export function ChangeNameForm(props: ChangeNameFormProps) {
+   return (
+     <>
+       <Form onSubmit={submit} noValidate>
+-        <NameFields form={form} prefix />
++        <NameFields form={form}/>
+         <FormDivider />
+         <FormActions>
+           <Button
+diff --git a/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddress.graphql b/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddress.graphql
+index 5e9f8b7..b2a0473 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddress.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddress.graphql
+@@ -6,7 +6,6 @@ mutation CreateCustomerAddress(
+   $suffix: String
+   $telephone: String!
+   $street: String!
+-  $houseNumber: String!
+   $addition: String
+   $city: String!
+   $postcode: String!
+@@ -25,7 +24,7 @@ mutation CreateCustomerAddress(
+       lastname: $lastname
+       telephone: $telephone
+       suffix: $suffix
+-      street: [$street, $houseNumber, $addition]
++      street: [$street, $addition]
+       city: $city
+       postcode: $postcode
+       region: $region
+diff --git a/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddressForm.tsx b/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddressForm.tsx
+index 8a765b9..c5bb2f4 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddressForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/CreateCustomerAddressForm/CreateCustomerAddressForm.tsx
+@@ -59,7 +59,7 @@ export function CreateCustomerAddressForm() {
+   return (
+     <>
+       <Form onSubmit={submitHandler} noValidate>
+-        <NameFields form={form} prefix />
++        <NameFields form={form} />
+         <AddressFields form={form} />
+ 
+         <FormRow>
+diff --git a/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/EditAddressForm.tsx b/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/EditAddressForm.tsx
+index a141077..dff6b80 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/EditAddressForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/EditAddressForm.tsx
+@@ -45,9 +45,6 @@ export function EditAddressForm(props: EditAddressFormProps) {
+         city: address?.city,
+         countryCode: address?.country_code,
+         telephone: address?.telephone,
+-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+-        // @ts-ignore
+-        houseNumber: address?.street?.[1],
+         addition: address?.street?.[2],
+       },
+       onBeforeSubmit: (formData) => {
+@@ -80,7 +77,7 @@ export function EditAddressForm(props: EditAddressFormProps) {
+   return (
+     <>
+       <Form onSubmit={submitHandler} noValidate sx={sx}>
+-        <NameFields form={form} prefix />
++        <NameFields form={form} />
+         <AddressFields form={form} />
+ 
+         <FormRow>
+diff --git a/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/UpdateCustomerAddress.graphql b/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/UpdateCustomerAddress.graphql
+index 01c223b..25af189 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/UpdateCustomerAddress.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/EditAddressForm/UpdateCustomerAddress.graphql
+@@ -7,7 +7,6 @@ mutation UpdateCustomerAddress(
+   $suffix: String
+   $telephone: String
+   $street: String!
+-  $houseNumber: String!
+   $addition: String
+   $city: String
+   $postcode: String
+@@ -27,7 +26,7 @@ mutation UpdateCustomerAddress(
+       lastname: $lastname
+       telephone: $telephone
+       suffix: $suffix
+-      street: [$street, $houseNumber, $addition]
++      street: [$street, $addition]
+       city: $city
+       postcode: $postcode
+       region: $region
+diff --git a/node_modules/@graphcommerce/magento-customer/components/ForgotPasswordForm/ForgotPasswordForm.tsx b/node_modules/@graphcommerce/magento-customer/components/ForgotPasswordForm/ForgotPasswordForm.tsx
+index a68eee4..c868e7e 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/ForgotPasswordForm/ForgotPasswordForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/ForgotPasswordForm/ForgotPasswordForm.tsx
+@@ -2,66 +2,67 @@ import { Button, Form, FormActions, FormRow } from '@graphcommerce/next-ui'
+ import { emailPattern, useFormGqlMutation } from '@graphcommerce/react-hook-form'
+ import { i18n } from '@lingui/core'
+ import { Trans } from '@lingui/react'
+-import { TextField, Alert, SxProps, Theme } from '@mui/material'
++import { TextField,SxProps, Theme } from '@mui/material'
+ import { ApolloCustomerErrorAlert } from '../ApolloCustomerError/ApolloCustomerErrorAlert'
+ import {
+   ForgotPasswordDocument,
+   ForgotPasswordMutation,
+   ForgotPasswordMutationVariables,
+ } from './ForgotPassword.gql'
++import { useRouter } from 'next/router'
+ 
+ export function ForgotPasswordForm(props: { sx?: SxProps<Theme> }) {
+-  const { sx = [] } = props
++   const { sx = [] } = props
++   const router = useRouter();
+   const form = useFormGqlMutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>(
+     ForgotPasswordDocument,
+   )
+-  const { muiRegister, handleSubmit, required, data, formState, error } = form
++  const { muiRegister, handleSubmit, required, data, formState, error,watch } = form
+   const submitHandler = handleSubmit(() => {})
+ 
+   if (formState.isSubmitSuccessful && data) {
+-    return (
+-      <Alert
+-        severity='success'
+-        variant='standard'
+-        sx={(theme) => ({
+-          marginTop: theme.spacings.md,
+-          marginBottom: theme.spacings.sm,
+-        })}
+-      >
+-        <Trans id='We’ve send a password reset link to your email address!' />
+-      </Alert>
+-    )
++    router.push({
++      pathname: '/account/signin',
++      query: {data:watch('email')},
++    });
+   }
+ 
+   return (
+     <Form onSubmit={submitHandler} noValidate sx={sx}>
+       <FormRow>
++
+         <TextField
++          sx={{width:'200%'}}
+           variant='outlined'
+           type='text'
+-          error={!!formState.errors.email}
++          autoFocus
+           label={<Trans id='Email' />}
++          error={!!formState.errors.email}
+           required={required.email}
+           {...muiRegister('email', {
+             required: required.email,
+             pattern: { value: emailPattern, message: i18n._(/* i18n */ 'Invalid email address') },
+           })}
+           helperText={formState.errors.email?.message}
+-          disabled={formState.isSubmitting}
++          disabled={error ? !formState.isSubmitting : (formState.isSubmitting)}
++         
+         />
+       </FormRow>
+ 
+       <ApolloCustomerErrorAlert error={error} />
+ 
+-      <FormActions>
++      <FormActions sx={{display: 'flex',
++        flexDirection: 'column',
++        alignItems: 'flex-start'}} >
+         <Button
+           type='submit'
+-          loading={formState.isSubmitting}
++          loading={error ? false :(formState.isSubmitting)}
+           color='primary'
+           variant='pill'
+-          size='large'
++          size='medium'
++          sx={{position:'relative',bottom:'30px'}}
+         >
+-          <Trans id='Send password reset email' />
++          <Trans id='Reset My Password' />
+         </Button>
+       </FormActions>
+     </Form>
+diff --git a/node_modules/@graphcommerce/magento-customer/components/NameFields/NameFields.tsx b/node_modules/@graphcommerce/magento-customer/components/NameFields/NameFields.tsx
+index 20037ec..d22a10e 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/NameFields/NameFields.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/NameFields/NameFields.tsx
+@@ -1,69 +1,29 @@
+ import { TextFieldElement } from '@graphcommerce/ecommerce-ui'
+ import { FormRow, InputCheckmark } from '@graphcommerce/next-ui'
+-import { assertFormGqlOperation, Controller, UseFormReturn } from '@graphcommerce/react-hook-form'
+-import { i18n } from '@lingui/core'
++import { assertFormGqlOperation, UseFormReturn } from '@graphcommerce/react-hook-form'
+ import { Trans } from '@lingui/react'
+-import { MenuItem, TextField } from '@mui/material'
+-import React from 'react'
++
+ 
+ type NameFieldValues = {
+   firstname?: string
+   lastname?: string
+-  prefix?: string
+ }
+ 
+ type NameFieldProps = {
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   form: UseFormReturn<any>
+   readOnly?: boolean
+-  prefix?: boolean
+-  prefixes?: string[]
++  
+ }
+ 
+ export function NameFields(props: NameFieldProps) {
+-  const mr = i18n._(/* i18n */ 'Mr')
+-  const mrs = i18n._(/* i18n */ 'Mrs')
+-  const other = i18n._(/* i18n */ 'Other')
+-
+-  const { prefix, form, readOnly, prefixes = [mr, mrs, other] } = props
++  const { form, readOnly } = props
+   assertFormGqlOperation<NameFieldValues>(form)
+ 
+-  const { control, formState, muiRegister, required, valid } = form
++  const {required, valid } = form
+ 
+   return (
+     <>
+-      {prefix && (
+-        <FormRow>
+-          <Controller
+-            defaultValue={prefixes[0]}
+-            control={control}
+-            name='prefix'
+-            render={({ field: { ref, onChange, ...field }, fieldState }) => (
+-              <TextField
+-                variant='outlined'
+-                select
+-                error={!!fieldState.error}
+-                label={<Trans id='Prefix' />}
+-                required={!!required?.prefix}
+-                helperText={fieldState.error?.message}
+-                onChange={(e) => onChange(e.target.value)}
+-                inputRef={ref}
+-                InputProps={{
+-                  readOnly,
+-                  endAdornment: <InputCheckmark show={valid.prefix} select />,
+-                }}
+-                {...field}
+-              >
+-                {prefixes.map((option) => (
+-                  <MenuItem key={option} value={option}>
+-                    {option}
+-                  </MenuItem>
+-                ))}
+-              </TextField>
+-            )}
+-          />
+-        </FormRow>
+-      )}
+ 
+       <FormRow>
+         <TextFieldElement
+diff --git a/node_modules/@graphcommerce/magento-customer/components/OrderCard/OrderCard.graphql b/node_modules/@graphcommerce/magento-customer/components/OrderCard/OrderCard.graphql
+index 6685e76..4f01106 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/OrderCard/OrderCard.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/OrderCard/OrderCard.graphql
+@@ -1,5 +1,6 @@
+ fragment OrderCard on CustomerOrder {
+   number
++  status
+   shipments {
+     tracking {
+       ...TrackingLink
+diff --git a/node_modules/@graphcommerce/magento-customer/components/OrderCardItem/OrderCardItem.graphql b/node_modules/@graphcommerce/magento-customer/components/OrderCardItem/OrderCardItem.graphql
+index 0d1ec2f..3b3d0c2 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/OrderCardItem/OrderCardItem.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/OrderCardItem/OrderCardItem.graphql
+@@ -1,4 +1,5 @@
+ fragment OrderCardItem on OrderItemInterface {
+   product_sku
++  product_name
+   product_url_key
+ }
+diff --git a/node_modules/@graphcommerce/magento-customer/components/OrderDetails/OrderDetails.graphql b/node_modules/@graphcommerce/magento-customer/components/OrderDetails/OrderDetails.graphql
+index a67b27f..814522e 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/OrderDetails/OrderDetails.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/OrderDetails/OrderDetails.graphql
+@@ -74,4 +74,53 @@ fragment OrderDetails on CustomerOrder {
+       ...Money
+     }
+   }
++  items {
++          id
++          discount_amount{
++            value
++            currency
++          }
++          row_total{
++            value
++            currency
++          }
++          product_sku
++          product_url_key
++          product_name
++          gift_card_options{
++            custom_giftcard_amount
++            giftcard_sender_name
++            giftcard_recipient_name
++            giftcard_message
++            giftcard_sender_email
++            giftcard_recipient_email
++          }
++          downloadable_options
++          bundle_options_data{
++            bundle_data{
++            option_id
++            label
++            title
++            qty
++            price
++            }
++          }
++          selected_options {
++            label
++            value
++            __typename
++          }
++          quantity_ordered
++          product_sale_price {
++            currency
++            value
++            __typename
++          }
++          quantity_shipped
++          quantity_canceled
++          quantity_invoiced
++          quantity_refunded
++          quantity_returned
++          __typename
++        }
+ }
+diff --git a/node_modules/@graphcommerce/magento-customer/components/ResetPasswordForm/ResetPasswordForm.tsx b/node_modules/@graphcommerce/magento-customer/components/ResetPasswordForm/ResetPasswordForm.tsx
+index 117942c..9016a77 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/ResetPasswordForm/ResetPasswordForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/ResetPasswordForm/ResetPasswordForm.tsx
+@@ -3,10 +3,9 @@ import {
+   PasswordRepeatElement,
+   TextFieldElement,
+ } from '@graphcommerce/ecommerce-ui'
+-import { Button, Form, FormActions, FormRow } from '@graphcommerce/next-ui'
++import { Button, Form, FormActions, FormRow, FullPageMessage } from '@graphcommerce/next-ui'
+ import { useFormGqlMutation } from '@graphcommerce/react-hook-form'
+ import { Trans } from '@lingui/react'
+-import { TextField } from '@mui/material'
+ import { useRouter } from 'next/router'
+ import { ApolloCustomerErrorAlert } from '../ApolloCustomerError/ApolloCustomerErrorAlert'
+ import {
+@@ -14,13 +13,16 @@ import {
+   ResetPasswordMutation,
+   ResetPasswordMutationVariables,
+ } from './ResetPassword.gql'
++import { passRegex } from '../../../../../config/constants'
++import { i18n } from '@lingui/core'
+ 
+ type ResetPasswordFormProps = {
+-  token: string
++  email?: string |string[]
++  token?: string | string[]
+ }
+ 
+ export function ResetPasswordForm(props: ResetPasswordFormProps) {
+-  const { token } = props
++  const { token, email } = props
+ 
+   const form = useFormGqlMutation<
+     ResetPasswordMutation,
+@@ -30,7 +32,7 @@ export function ResetPasswordForm(props: ResetPasswordFormProps) {
+     {
+       onBeforeSubmit: (formData) => ({
+         ...formData,
+-        resetPasswordToken: token,
++        resetPasswordToken: token as string,
+       }),
+     },
+     { errorPolicy: 'all' },
+@@ -42,31 +44,43 @@ export function ResetPasswordForm(props: ResetPasswordFormProps) {
+ 
+   if (formState.isSubmitSuccessful && data && !error) {
+     // eslint-disable-next-line @typescript-eslint/no-floating-promises
+-    router.replace(`${window.location.href.split('?')[0]}?success=1`)
++    router.push({
++      pathname: '/account/signin',
++      query: {data:'updatedSuccessfully'},
++    });
+   }
+ 
+   return (
+     <Form onSubmit={submitHandler} noValidate>
+-      <FormRow>
++      
+         <TextFieldElement
++         sx={{marginTop:'1rem'}}
+           control={control}
+           name='email'
+           variant='outlined'
+           type='email'
+           label={<Trans id='Email' />}
+-          required
+-          disabled={formState.isSubmitting}
+-        />
+-      </FormRow>
+-      <FormRow>
++          defaultValue={email as string}
++          disabled={true}
++         
++          />
++      
+         <PasswordElement
+           control={control}
+           name='newPassword'
+           variant='outlined'
+           type='password'
++          validation={{
++            pattern: {
++              value: passRegex,
++              message: i18n._(/* i18n */ 'Minimum of 8 characters and Minimum of different classes of characters in password is 3 . classes of characters: Lower case ,upper case , digits,special characters ')
++            },      
++          }}
+           label={<Trans id='New password' />}
+           required
+           disabled={formState.isSubmitting}
++          sx={{marginTop:'1rem'}}
++
+         />
+         <PasswordRepeatElement
+           control={control}
+@@ -77,18 +91,22 @@ export function ResetPasswordForm(props: ResetPasswordFormProps) {
+           label={<Trans id='Confirm password' />}
+           required
+           disabled={formState.isSubmitting}
+-        />
+-      </FormRow>
++          sx={{marginTop:'1rem'}}
+ 
++        />
++      <FormRow>
+       <ApolloCustomerErrorAlert error={error} />
++      </FormRow>
+ 
+-      <FormActions>
++      <FormActions sx={{display: 'flex',
++        flexDirection: 'column',
++        alignItems: 'flex-start'}}>
+         <Button
+           type='submit'
+           loading={formState.isSubmitting}
+           color='primary'
+           variant='pill'
+-          size='large'
++          size='medium'
+         >
+           <Trans id='Save new password' />
+         </Button>
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignInForm/SignInForm.tsx b/node_modules/@graphcommerce/magento-customer/components/SignInForm/SignInForm.tsx
+index 1e730ac..049046b 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignInForm/SignInForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/SignInForm/SignInForm.tsx
+@@ -3,16 +3,23 @@ import { graphqlErrorByCategory } from '@graphcommerce/magento-graphql'
+ import { Button, FormRow, FormActions } from '@graphcommerce/next-ui'
+ import { useFormGqlMutation } from '@graphcommerce/react-hook-form'
+ import { Trans } from '@lingui/react'
+-import { Box, FormControl, Link, SxProps, TextField, Theme } from '@mui/material'
++import { Box, FormControl, IconButton, InputAdornment, Link, SxProps, TextField, Theme } from '@mui/material'
++import { useState } from 'react'
+ import { CustomerDocument } from '../../hooks'
+ import { ApolloCustomerErrorAlert } from '../ApolloCustomerError/ApolloCustomerErrorAlert'
+ import { SignInDocument } from './SignIn.gql'
++import {EyeOpen, EyeClose} from '../../../../../components/Icons/index'
++import {emailPattern} from '@graphcommerce/react-hook-form'
++import {passRegex} from '../../../../../config/constants'
+ 
+ type SignInFormProps = { email: string; sx?: SxProps<Theme> }
+ 
+ export function SignInForm(props: SignInFormProps) {
+   const { email, sx } = props
+ 
++  const [showPassword, setShowPassword] = useState(false);
++  const handleClickShowPassword = () => setShowPassword(!showPassword);
++
+   const client = useApolloClient()
+   const form = useFormGqlMutation(
+     SignInDocument,
+@@ -29,12 +36,14 @@ export function SignInForm(props: SignInFormProps) {
+     { errorPolicy: 'all' },
+   )
+ 
+-  const { muiRegister, handleSubmit, required, formState, error } = form
++  const { muiRegister, handleSubmit,watch, required, formState, error } = form
+   const [remainingError, authError] = graphqlErrorByCategory({
+     category: 'graphql-authentication',
+     error,
+   })
+   const submitHandler = handleSubmit(() => {})
++  const isValidPassword = passRegex.test(watch('password'))
++  const isValidEmail = emailPattern.test(watch('email'))
+ 
+   return (
+     <Box component='form' onSubmit={submitHandler} noValidate sx={sx}>
+@@ -42,8 +51,8 @@ export function SignInForm(props: SignInFormProps) {
+         <TextField
+           key='password'
+           variant='outlined'
+-          type='password'
+-          error={!!formState.errors.password || !!authError}
++          type={showPassword ? 'text':'password'}
++          error={!!formState.errors.password || !!authError || ((watch('password') && !isValidPassword) ? true : false)}
+           label={<Trans id='Password' />}
+           autoFocus
+           autoComplete='current-password'
+@@ -52,9 +61,20 @@ export function SignInForm(props: SignInFormProps) {
+           {...muiRegister('password', { required: required.password })}
+           InputProps={{
+             endAdornment: (
++              <>
++              <InputAdornment position="end">
++                <IconButton
++                  aria-label="toggle password visibility"
++                  onClick={handleClickShowPassword}
++                  onMouseDown={handleClickShowPassword}
++                >
++                  {showPassword ? <EyeOpen /> : <EyeClose />}
++                </IconButton>
++              </InputAdornment>
+               <Link href='/account/forgot-password' underline='hover' sx={{ whiteSpace: 'nowrap' }}>
+                 <Trans id='Forgot password?' />
+               </Link>
++              </>
+             ),
+           }}
+           helperText={formState.errors.password?.message || authError?.message}
+@@ -72,6 +92,7 @@ export function SignInForm(props: SignInFormProps) {
+             color='primary'
+             variant='pill'
+             size='large'
++            disabled={!(isValidPassword && isValidEmail)}
+           >
+             <Trans id='Log in' />
+           </Button>
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUp.graphql b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUp.graphql
+index 8063d2a..cdeb2d1 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUp.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUp.graphql
+@@ -1,7 +1,6 @@
+ mutation SignUp(
+   $email: String!
+   $password: String!
+-  $prefix: String!
+   $firstname: String!
+   $middlename: String
+   $lastname: String!
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpConfirm.graphql b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpConfirm.graphql
+index 23be949..00f53fd 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpConfirm.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpConfirm.graphql
+@@ -1,7 +1,6 @@
+ mutation SignUpConfirm(
+   $email: String!
+   $password: String!
+-  $prefix: String!
+   $firstname: String!
+   $middlename: String
+   $lastname: String!
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpForm.tsx b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpForm.tsx
+index 9ac6e11..3a934e5 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpForm.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpForm.tsx
+@@ -5,11 +5,14 @@ import { Button, FormActions, FormRow } from '@graphcommerce/next-ui'
+ import { useFormGqlMutation, useFormPersist } from '@graphcommerce/react-hook-form'
+ import { i18n } from '@lingui/core'
+ import { Trans } from '@lingui/react'
+-import { Alert, FormControlLabel, Switch, TextField } from '@mui/material'
++import { Alert, FormControlLabel, Switch, TextField, InputAdornment, IconButton} from '@mui/material'
+ import { ApolloCustomerErrorSnackbar } from '../ApolloCustomerError/ApolloCustomerErrorSnackbar'
+ import { NameFields } from '../NameFields/NameFields'
+ import { SignUpDocument, SignUpMutation, SignUpMutationVariables } from './SignUp.gql'
+ import { SignUpConfirmDocument } from './SignUpConfirm.gql'
++import React from 'react'
++import {EyeOpen , EyeClose} from '../../../../../components/Icons/index'
++
+ 
+ type SignUpFormProps = { email: string }
+ 
+@@ -17,6 +20,8 @@ const requireEmailValidation = process.env.BUILD_FLAG_CUSTOMER_REQUIRE_EMAIL_CON
+ 
+ export function SignUpForm(props: SignUpFormProps) {
+   const { email } = props
++  const [showPassword, setShowPassword] = React.useState<boolean>(false);
++  const [showConfirmPassword, setShowConfirmPassword] = React.useState<boolean>(false);
+ 
+   const storeConfig = useQuery(StoreConfigDocument).data?.storeConfig
+ 
+@@ -52,7 +57,7 @@ export function SignUpForm(props: SignUpFormProps) {
+       <FormRow>
+         <TextField
+           variant='outlined'
+-          type='password'
++          type={showPassword? 'text':'password'}
+           error={!!formState.errors.password || !!inputError}
+           label={<Trans id='Password' />}
+           autoFocus
+@@ -67,10 +72,23 @@ export function SignUpForm(props: SignUpFormProps) {
+           })}
+           helperText={formState.errors.password?.message || inputError?.message}
+           disabled={formState.isSubmitting}
++          InputProps={{
++            endAdornment: (
++              <InputAdornment position="end">
++                <IconButton
++                  onClick={() => setShowPassword((prevShowPassword) => !prevShowPassword)}
++                  edge="end"
++                >
++                  {showPassword ? <EyeClose /> : <EyeOpen />}
++                </IconButton>
++              </InputAdornment>
++            ),
++          }}
++          
+         />
+         <TextField
+           variant='outlined'
+-          type='password'
++          type={showConfirmPassword? 'text':'password'}
+           error={!!formState.errors.confirmPassword}
+           label={<Trans id='Confirm password' />}
+           autoComplete='new-password'
+@@ -82,10 +100,23 @@ export function SignUpForm(props: SignUpFormProps) {
+           })}
+           helperText={formState.errors.confirmPassword?.message}
+           disabled={formState.isSubmitting}
++          InputProps={{
++            endAdornment: (
++              <InputAdornment position="end">
++                <IconButton
++                  onClick={() => setShowConfirmPassword((prevShowPassword) => !prevShowPassword)}
++                  edge="end"
++                >
++                  {showConfirmPassword ? <EyeClose /> : <EyeOpen />}
++                </IconButton>
++              </InputAdornment>
++            ),
++          }}
++          
+         />
+       </FormRow>
+ 
+-      <NameFields form={form} prefix />
++      <NameFields form={form} />
+ 
+       <FormControlLabel
+         control={<Switch color='primary' />}
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpFormInline.tsx b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpFormInline.tsx
+index 5743b35..5910e26 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpFormInline.tsx
++++ b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpFormInline.tsx
+@@ -36,7 +36,6 @@ export function SignUpFormInline({
+     // todo(paales): This causes dirty data to be send to the backend.
+     defaultValues: {
+       email,
+-      prefix: '-',
+       firstname: firstname ?? '-',
+       lastname: lastname ?? '-',
+     },
+diff --git a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpMutationFragment.graphql b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpMutationFragment.graphql
+index 36bdb84..2db6384 100644
+--- a/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpMutationFragment.graphql
++++ b/node_modules/@graphcommerce/magento-customer/components/SignUpForm/SignUpMutationFragment.graphql
+@@ -3,7 +3,6 @@ fragment CreateCustomerMutationFragment on Mutation {
+     input: {
+       email: $email
+       password: $password
+-      prefix: $prefix
+       firstname: $firstname
+       middlename: $middlename
+       lastname: $lastname
+diff --git a/node_modules/@graphcommerce/magento-customer/hooks/CustomerInfo.graphql b/node_modules/@graphcommerce/magento-customer/hooks/CustomerInfo.graphql
+index f0f9b51..822a309 100644
+--- a/node_modules/@graphcommerce/magento-customer/hooks/CustomerInfo.graphql
++++ b/node_modules/@graphcommerce/magento-customer/hooks/CustomerInfo.graphql
+@@ -5,8 +5,6 @@ fragment CustomerInfo on Customer {
+     ...CustomerAddress
+   }
+   email
+-
+-  prefix
+   firstname
+   middlename
+   lastname
+@@ -17,4 +15,8 @@ fragment CustomerInfo on Customer {
+ 
+   date_of_birth
+   taxvat
++  compare_list {
++    uid
++  }
++
+ }

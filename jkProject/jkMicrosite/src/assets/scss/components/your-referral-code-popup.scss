@@ -1,0 +1,136 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.modal {
+    &.referral-code-popup {
+        .pop-up-container {
+            .modal-content {
+                @include textCenter;
+
+                .form-group {
+                    position: relative;
+                    max-width: 500px;
+                    width: 100%;
+                    margin: 44px auto 50px;
+
+                    .jkm-copy {
+                        position: absolute;
+                        right: 15px;
+                        top: 50%;
+                        @include transform(translateY(-50%));
+                        color: var(--data_site_secondary_color);
+                    }
+                }
+
+                .form-control {
+                    @include formcontrol;
+                }
+
+                .social_icons {
+                    @include flexbox;
+                    margin: 30px auto 50px;
+                    @include justifyCenter;
+
+                    li {
+                        margin-right: 30px;
+                        @include textCenter;
+                        font-size: 30px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        &.facebook a:hover {
+                            color: var(--data_facebook_icon_color);
+                        }
+
+                        &.instagram a:hover {
+                            color: var(--data_instagram_icon-color);
+                        }
+
+                        &.linkedin a:hover {
+                            color: var(--data_linkedin_icon_color);
+                        }
+
+                        &.whatsapp a:hover {
+                            color: var(--data_whatsapp_icon_color);
+                        }
+
+                        &.mail a:hover {
+                            color: var(--data_mail_icon_color);
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: var(--data_site_text_color);
+                        }
+                    }
+                }
+            }
+
+            .modal-footer {
+                background: var(--data_site_theme_highlight);
+                padding: 30px;
+                @include textCenter;
+                margin-top: 40px;
+
+                > p {
+                    padding: 0;
+
+                    @media only screen and (min-width: $device-md) {
+                        padding: 0 81px;
+                    }
+                }
+
+                h4 {
+                    background: var(--data_site_secondary_color);
+                    width: 73px;
+                    @include border-radius(10px);
+                    color: var(--data_site_theme_color);
+                    // border-right: 3px dotted var(--data_site_theme_color);
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        border-right: 4px dotted var(--data_site_theme_color);
+                        top: 6px;
+                        position: absolute;
+                        right: -1px;
+                        height: 85%;
+                    }
+                }
+
+                .d-row {
+                    @include row;
+
+                    .d-col-2 {
+                        @include d-col-2;
+                    }
+                }
+
+                .benefits {
+                    .d-col.d-col-2 {
+                        margin-bottom: 20px;
+
+                        @media only screen and (min-width: $device-md) {
+                            margin: 0;
+                        }
+                    }
+
+                    p {
+                        background: var(--data_site_theme_color);
+                        width: calc(100% - 73px);
+                        margin: 0;
+                        @include border-radius(10px);
+                        text-align: left;
+                        padding: 10px;
+
+                        @media only screen and (min-width: $device-md) {
+                            padding: 10px 10px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

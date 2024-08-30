@@ -1,0 +1,8 @@
+{
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "prettier.bracketSpacing": true,
+    "prettier.bracketSameLine": true,
+    "prettier.embeddedLanguageFormatting": "auto",
+    "prettier.jsxSingleQuote": true
+}

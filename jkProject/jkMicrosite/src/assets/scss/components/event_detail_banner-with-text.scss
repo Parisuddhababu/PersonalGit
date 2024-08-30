@@ -1,0 +1,100 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.btn {
+    @include button;
+
+    @media only screen and (min-width: $device-lg) {
+        white-space: nowrap;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+}
+
+.banner-sec {
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $device-xl) {
+        margin-bottom: 50px;
+    }
+
+    .banner-image-wrap {
+        position: relative;
+        background: transparent linear-gradient(180deg, #00000000 0%, #00000073 66%, var(--data_site_text_color) 100%) 0% 0% no-repeat padding-box;
+        background-color: #00000099;
+
+        a {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .banner-content {
+            padding: 0 15px 20px;
+            @include textCenter;
+            color: var(--data_site_highlight_section_text_color);
+            max-width: 1224px;
+            @include flexCenter;
+            @include flexColumn;
+            margin: 0 auto;
+            position: relative;
+            @include just-end;
+            min-height: 370px;
+
+            @media only screen and (min-width: $device-sm) {
+                padding: 0 20px 30px;
+                min-height: 430px;
+            }
+
+            @media only screen and (min-width: $device-md) {
+                padding: 0 20px 40px;
+                min-height: 560px;
+            }
+
+            @media only screen and (min-width: $device-lg) {
+                padding: 0 20px 50px;
+                min-height: 670px;
+            }
+
+            @media only screen and (min-width: $device-xl) {
+                // padding: 500px 20px 60px;
+                min-height: 880px;
+                padding: 0 20px 60px;
+            }
+
+            h2 {
+                margin-bottom: 15px;
+                z-index: 2;
+
+                @media only screen and (min-width: $device-xl) {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .date-category-info,
+            p,
+            button {
+                z-index: 2;
+            }
+        }
+    }
+}

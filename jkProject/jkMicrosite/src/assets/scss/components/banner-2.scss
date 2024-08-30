@@ -1,0 +1,58 @@
+@import "../common/mixin-2";
+
+.banner-sec {
+    .banner-image-wrap {
+        position: relative;
+        @include flexCenter;
+        padding: 15px;
+        min-height: 160px;
+        background-color: #00000099;
+
+        @media only screen and (min-width: $device-md) {
+            min-height: 330px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .banner-content {
+            color: var(--data_site_theme_color);
+            @include textCenter;
+
+            // text-transform: uppercase;
+            h2 {
+                margin-bottom: 15px;
+
+                @media only screen and (min-width: $device-md) {
+                    margin-bottom: 20px;
+                }
+
+                @media only screen and (min-width: $device-xl) {
+                    margin-bottom: 30px;
+                }
+            }
+
+            .btn-secondary {
+                @include btn-secondary;
+                margin: 0 auto;
+                max-width: initial;
+                width: auto;
+                min-height: 40px;
+                height: auto;
+
+                @media only screen and (min-width: $device-xl) {
+                    min-height: 50px;
+                }
+            }
+        }
+    }
+}

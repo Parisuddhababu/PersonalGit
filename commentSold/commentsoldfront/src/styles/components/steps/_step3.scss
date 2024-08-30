@@ -1,0 +1,78 @@
+.golive-card {
+    @include border-radius(8px);
+    border: 1px solid $billowing-clouds;
+    padding: 20px;
+    @include media($device-md) {
+        padding: 30px;
+
+    }
+}
+
+.step-social-list {
+    .step-social-item {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid $billowing-clouds;
+        @include flexbox;
+        align-items: flex-start;
+        justify-content: flex-start;
+        column-gap: 0;
+        row-gap: 15px;
+        flex-direction: column;
+        @include media($device-md) {
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            column-gap: 20px;
+            row-gap: 0;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @include media($device-xl) {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            column-gap: 30px;
+        }
+        &:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .step-social-item-left {
+            @include flexbox;
+            align-items: center;
+            column-gap: 15px;
+            flex: 1;
+            width: 100%;
+            @include media($device-md) {
+                column-gap: 20px;
+                width: auto;
+            }
+            @include media($device-xl) {
+                column-gap: 30px;
+            }
+            i {
+                background-color: $title-text;
+                max-width: 40px;
+                height: 40px;
+                flex: 0 0 40px;
+                @include flexCenter;
+                color: $white-color;
+                @include border-radius(50%);
+                font-size: 18px;
+                @include media($device-md) {
+                    max-width: 48px;
+                    height: 48px;
+                    flex: 0 0 48px;
+                    font-size: 21px;
+                }
+                @include media($device-xl) {
+                    max-width: 56px;
+                    height: 56px;
+                    flex: 0 0 56px;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

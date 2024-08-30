@@ -1,0 +1,10 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.banner-sec {
+  background: var(--data_site_primary_color);
+  padding: 100px 0;
+  @media only screen and (min-width: $device-sm) {
+    padding: 140px 0;
+  }
+}

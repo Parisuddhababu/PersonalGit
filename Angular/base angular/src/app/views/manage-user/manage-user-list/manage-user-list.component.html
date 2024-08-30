@@ -1,0 +1,375 @@
+<div class="animated fadeIn">
+  <!-- Filter -- Start -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="searchApply()" novalidate #searchFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.fullname" type="text" name="fullname" class="form-control"
+                    placeholder="{{ 'FULL_NAME' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.email" type="text" name="email" class="form-control"
+                    placeholder="{{ 'EMAIL' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.status" name="status">
+                    <option value="">{{ 'SELECT_STATUS' | translate }}</option>
+                    <option *ngFor="let status of statusList | keyvalue: orderbyValueAsc" [value]="status.key">{{
+                      status.value | translate
+                      }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="filter.gender" name="gender">
+                    <option value="">{{ 'SELECT_GENDER' | translate }}</option>
+                    <option value="Male">{{ 'GENDER_LIST.MALE' | translate }}</option>
+                    <option value="Female">{{ 'GENDER_LIST.FEMALE' | translate }}</option>
+                    <option value="Other">{{ 'GENDER_LIST.OTHER' | translate }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <input [(ngModel)]="filter.phone_number" type="text" name="phone_number" class="form-control"
+                    placeholder="{{ 'PHONE_NUMBER' | translate }}" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pull-right">
+                  <button type="submit" class="btn btn-primary mr-10"><i class="fa fa-search"></i> {{ 'SEARCH' |
+                    translate }}</button>
+                  <button type="button" class="btn btn-warning" (click)="resetSearch()">
+                    <i class="fa fa-refresh"></i> {{ 'RESET' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -- End -->
+  <!-- User List -- Start -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['USER_LIST', 'SUPER_ADMIN']">
+        <div class="card-header">
+          <i class="icon-user"></i> {{ 'USERS_LIST' | translate }}
+          <a *ngxPermissionsOnly="['USER_CREATE', 'SUPER_ADMIN']" routerLink="/manage-user/add"
+            class="btn btn-primary pull-right"><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a>
+          <div class="pull-right" *ngxPermissionsOnly="['USER_IMPORT_CSV', 'SUPER_ADMIN']">
+            <div class="mr-5">
+              <button (click)="downloadSampleFile()" type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-download"></i>
+                {{ 'DOWNLOAD_SAMPLE_FILE_FOR_IMPORT' | translate }}</button>&nbsp;
+              <ng-container *ngIf="!fileName">
+                <label>{{ 'IMPORT_CSV_FILE' | translate }}</label>&nbsp; <button class="btn btn-info"
+                  (click)="openFile()">{{ 'BROWSE' | translate }}</button>&nbsp;
+                <input type="file" accept=".csv, application/vnd.ms-excel" (change)="changeFile($event)" class="d-none"
+                  id="importCSV" #importCSV />
+              </ng-container>
+            </div>
+            <div *ngIf="fileName" class="mr-5">
+              <strong><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ fileName }}</strong>&nbsp;
+              <button type="button" (click)="importCSVFile()" class="btn btn-success btn-sm">
+                <i class="fa fa-download"></i>
+                Import</button>&nbsp;
+              <button class="btn btn-warning btn-sm" (click)="cancelImport()">
+                <i class="fa fa-times"></i> {{ 'CANCEL' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label>{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="pull-right">
+                <button (click)="downloadData(FileType.EXCEL)" title="{{ 'EXPORT_TO_EXCEL' | translate }}"
+                  class="btn btn-success mr-10">
+                  <i class="fa fa-file-excel-o fa-lg"></i>
+                </button>
+                <button (click)="downloadData(FileType.PDF)" title="{{ 'EXPORT_TO_PDF' | translate }}"
+                  class="btn btn-success mr-10">
+                  <i class="fa fa-file-pdf-o fa-lg"></i>
+                </button>
+                <button (click)="downloadData(FileType.CSV)" title="{{ 'EXPORT_TO_CSV' | translate }}"
+                  class="btn btn-success">
+                  <i class="fa fa-file-text-o fa-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable [rows]="ManageuserList" class="material fullscreen" headerHeight="headerHeight"
+              footerHeight="footerHeight" rowHeight="rowHeight" [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force" #datatable [scrollbarH]="scrollbarH" [externalSorting]="serverSorting"
+              (sort)="onSort($event)" [sorts]="[{ prop: sortParam, dir: sortOrder }]" [externalPaging]="serverPaging"
+              [count]="totalReords" [offset]="pageNumber" [limit]="size" (page)="setPage($event)"
+              [messages]="dtMessages">
+              <ngx-datatable-column name="{{ 'SR_NO' | translate }}" headerClass="no-sorting text-center" prop="srNum"
+                [sortable]="false" [width]="70">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">{{ value }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'FULL_NAME' | translate }}">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <ng-template [ngxPermissionsOnly]="['USER_VIEW', 'SUPER_ADMIN']" [ngxPermissionsOnlyThen]="thenBlock"
+                    [ngxPermissionsOnlyElse]="elseBlock">
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <div>{{ row.fullname }}</div>
+                  </ng-template>
+                  <ng-template #thenBlock>
+                    <a routerLink="/manage-user/view/{{ row.id }}" title="View">{{ row.fullname }}</a>
+                  </ng-template>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'USER_NAME' | translate }}" prop="username"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email" [width]="auto">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'GENDER' | translate }}" prop="gender"> </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'DOB' | translate }}" prop="date_of_birth">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateFormat }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PHONE_NUMBER' | translate }}" headerClass="no-sorting" prop="phone_number"
+                [sortable]="false">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'REGISTRATION_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateTime24Format }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'LAST_UPDATED_AT' | translate }}" prop="updated_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateTime24Format }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'ACTION' | translate }}" prop="id" [frozenRight]="piningRight"
+                [sortable]="false" headerClass="text-center no-sorting" *ngxPermissionsOnly="[
+                  'SUPER_ADMIN',
+                  'USER_UPDATE',
+                  'USER_STATUS',
+                  'USER_CHANGE_PASSWORD',
+                  'USER_DELETE',
+                  'USER_VIEW',
+                  'UNLOCK_RECORD'
+                ]">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a *ngxPermissionsOnly="['USER_VIEW', 'SUPER_ADMIN']" routerLink="/manage-user/view/{{ row.id }}"
+                      title="{{ 'VIEW' | translate }}"><i class="fa fa-eye fa-lg"></i></a>&nbsp;
+                    <ng-container *ngIf="row.is_locked != 1">
+                      <a *ngxPermissionsOnly="['USER_UPDATE', 'SUPER_ADMIN']" (click)="lockManageUser(row.id)"
+                        routerLink="/manage-user/edit/{{ row.id }}" title="{{ 'EDIT' | translate }}"><i
+                          class="fa fa-pencil-square-o fa-lg"></i></a>
+                    </ng-container>
+                    &nbsp;
+                    <ng-container *ngIf="row.is_locked == 1">
+                      <a *ngxPermissionsOnly="['UNLOCK_RECORD', 'SUPER_ADMIN']"
+                        (click)="openModal(templateUnlockUser, row.id)" title="{{ 'UNLOCK_RECORD' | translate }}"><i
+                          class="fa fa-unlock fa-lg"></i></a>&nbsp;
+                    </ng-container>
+                    <a *ngxPermissionsOnly="['USER_STATUS', 'SUPER_ADMIN']"
+                      (click)="openModal(templateStatus, row.id, row.status)"
+                      title="{{ 'CHANGE_STATUS' | translate }}"><i [ngClass]="{
+                          'fa-toggle-on': row.status == 'Active',
+                          'fa-toggle-off': row.status == 'Inactive' || row.status == 'Pending'
+                        }" class="fa fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['USER_CHANGE_PASSWORD', 'SUPER_ADMIN']"
+                      (click)="openModal(templateChangePassword, row.id, row.status)"
+                      title="{{ 'CHANGE_PASSWORD' | translate }}"><i class="fa fa-key fa-lg"></i></a>&nbsp;
+                    <a *ngxPermissionsOnly="['USER_DELETE', 'SUPER_ADMIN']"
+                      (click)="openModal(templateDeleteManageUser, row.id)" title="{{ 'DELETE' | translate }}"><i
+                        class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User List -- Start -->
+</div>
+
+<ng-template #templateStatus>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeStatus()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateDeleteManageUser>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_DELETE_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="deleteManageUser()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateUnlockUser>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h5 class="modal-title">
+        <i class="fa fa-info-circle modal-icon"></i>
+        {{ 'CONFIRMATION' | translate }}
+      </h5>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p>{{ 'CONFIRM_UNLOCK_MSG' | translate }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="unlockManageUser()">
+        {{ 'YES' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'NO' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateChangePassword>
+  <div class="modal-content">
+    <div class="modal-header bg-primary">
+      <h4 class="modal-title">
+        <i class="fa fa-info-circle"></i><span class="ml-2">{{ 'CHANGE_PASSWORD' | translate }}</span>
+      </h4>
+      <button type="button" class="close" (click)="decline()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form novalidate #changePassFrm="ngForm" class="">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="newpass">{{ 'NEW_PASSWORD' | translate }} <span class="asterisk_input"></span></label>
+              <div class="view-pass">
+                <input [type]="showPass ? 'text' : 'password'" class="form-control" [(ngModel)]="newpass"
+                  #newpassword="ngModel" (change)="checkPass()" placeholder="{{ 'NEW_PASSWORD' | translate }}"
+                  name="newpass" required [pattern]="CommonRegx.PasswordRegx" />
+                <i class="fa fa-lg" [ngClass]="showPass ? 'fa-eye' : 'fa-eye-slash'" (click)="showPass = !showPass"
+                  aria-hidden="true"></i>
+              </div>
+              <div *ngIf="newpassword.invalid && submitted" class="">
+                <span *ngIf="newpassword.errors.required" class="text-danger">
+                  {{ 'PLEASE_ENTER_PASSWORD' | translate }}
+                </span>
+                <span *ngIf="newpassword.errors.pattern" class="text-danger">
+                  {{ 'PLEASE_ENTER_PASSWORD_VALIDATION' | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="confirmpass">
+                {{ 'CONFIRM_PASSWORD' | translate }}
+                <span class="asterisk_input"></span></label>
+              <div class="view-pass">
+                <input [type]="showConfPass ? 'text' : 'password'" class="form-control" id="confirmpass"
+                  [(ngModel)]="confirmpass" #confirmPassword="ngModel"
+                  placeholder=" {{ 'CONFIRM_PASSWORD' | translate }}" name="confirmpass" required
+                  [pattern]="conf_pass_match" />
+                <i class="fa fa-lg" [ngClass]="showConfPass ? 'fa-eye' : 'fa-eye-slash'"
+                  (click)="showConfPass = !showConfPass" aria-hidden="true"></i>
+              </div>
+              <div *ngIf="confirmPassword.invalid && submitted" class="">
+                <span *ngIf="confirmPassword.errors.required" class="text-danger">
+                  {{ 'PLEASE_ENTER_CONFIRM_PASSWORD' | translate }}
+                </span>
+                <span *ngIf="confirmPassword.errors.pattern" class="text-danger">
+                  {{ 'PLEASE_ENTER_CONFIRM_PASSWORD_VALIDATION' | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changePassword(changePassFrm)">
+        {{ 'SUBMIT' | translate }}
+      </button>
+      <button type="button" class="btn btn-warning" (click)="decline()">
+        {{ 'CLOSE' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<app-loader></app-loader>

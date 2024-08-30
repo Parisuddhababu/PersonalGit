@@ -1,0 +1,49 @@
+mutation GiftCardCartUpdate(
+  $cart: String!
+  $item_id: String!
+  $sku: String!
+  $qty: String!
+  $amount: String
+  $senderName: String
+  $recipientName: String
+  $senderEmail: String
+  $recipientEmail: String
+  $message: String
+) {
+  EditCartItem(
+    input: {
+      cart: $cart
+      item_id: $item_id
+      sku: $sku
+      qty: $qty
+      gift_card_options: {
+        amount: $amount
+        senderName: $senderName
+        recipientName: $recipientName
+        senderEmail: $senderEmail
+        recipientEmail: $recipientEmail
+        message: $message
+      }
+    }
+  ) {
+    cart {
+      items {
+        id
+        uid
+        quantity
+        product {
+          id
+          uid
+          sku
+          name
+        }
+        prices {
+          row_total {
+            value
+            currency
+          }
+        }
+      }
+    }
+  }
+}

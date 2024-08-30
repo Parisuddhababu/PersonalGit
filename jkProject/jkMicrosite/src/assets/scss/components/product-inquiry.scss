@@ -1,0 +1,70 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.form-control {
+  @include formcontrol;
+}
+
+.form-group {
+  @include formgroup;
+}
+
+.p-error {
+  color: var(--data_error_color);
+}
+
+.d-row {
+  @include row;
+
+  .d-col-2 {
+    @include d-col-2;
+  }
+}
+
+.product-inquiry-wrapper {
+  .inquiry-heading {
+    margin: 40px 0;
+
+    @media only screen and (max-width: $device-md) {
+      margin: 20px 0;
+    }
+  }
+
+  .inquiry-section {
+    @include flexbox;
+    @include space-between;
+
+    @media only screen and (max-width: $device-md) {
+      @include flexwrap;
+    }
+  }
+
+  .left-section {
+    width: 55%;
+
+    @media screen and (max-width: $device-md) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  .right-section {
+    width: 39%;
+
+    @media screen and (max-width: $device-md) {
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+
+      .p-inputtextarea {
+        resize: vertical;
+      }
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+}

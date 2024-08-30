@@ -1,0 +1,208 @@
+@import "../common/mixin";
+@import "../components/breadcrumb";
+
+.jkm-plus {
+  @include jkm-plus;
+}
+
+.jkm-minus {
+  @include jkm-minus;
+}
+
+.jkm-check {
+  @include jkm-check;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.jkm-check {
+  @include jkm-check;
+}
+
+.jkm-info-circle {
+  @include jkm-info-circle;
+}
+
+.jkm-plus {
+  @include jkm-plus;
+}
+
+.jkm-minus {
+  @include jkm-minus;
+}
+
+.btn {
+  @include button;
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+    width: auto;
+  }
+
+  &.mr-10 {
+    margin-right: 10px;
+  }
+
+  &.mr-40 {
+    margin-right: 10px;
+
+    @media only screen and (min-width: $device-md) {
+      margin-right: 40px;
+    }
+  }
+
+  &.btn-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+
+    i {
+      font-weight: 700;
+    }
+  }
+}
+
+h3 {
+  color: var(--data_site_secondary_color);
+  margin-bottom: 20px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 0;
+  }
+
+  .jkm-info-circle {
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: super;
+    margin-left: 5px;
+  }
+}
+
+.align-item-center {
+  @include align-item-center;
+}
+
+.just-end {
+  @media only screen and (min-width: $device-md) {
+    @include just-end;
+  }
+}
+
+.page-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+//
+//  Progress Bar
+//  -------------------------
+.progress_bar {
+  @include progress-bar;
+}
+
+.design_display .d-row .d-col.mb-0 {
+  @include mb-0;
+}
+
+.design_display {
+  padding: 20px 30px;
+  @include box-shadow(0, 0, 15px, var(--data_box_shadow_color));
+  margin-top: 50px;
+  margin-bottom: 134px;
+
+  .d-row {
+    @include row;
+
+    .d-col-2 {
+      @include d-col-2;
+    }
+  }
+
+  .first:after {
+    content: "";
+    height: 1px;
+    display: block;
+    width: calc(100% - 40px);
+    background: #ccc;
+    margin: 20px auto 30px;
+  }
+
+  .second {
+    .info_details {
+      @include info_details;
+    }
+
+    .jkm-info-circle {
+      color: var(--data_site_secondary_color);
+      margin-left: 5px;
+    }
+  }
+
+  .image {
+    position: relative;
+    padding: 23.664% 37.606%;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+  }
+}

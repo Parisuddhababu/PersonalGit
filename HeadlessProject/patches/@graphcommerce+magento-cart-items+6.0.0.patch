@@ -1,0 +1,42 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-items/Api/CartItem.graphql b/node_modules/@graphcommerce/magento-cart-items/Api/CartItem.graphql
+index e1aba9c..0fa860e 100644
+--- a/node_modules/@graphcommerce/magento-cart-items/Api/CartItem.graphql
++++ b/node_modules/@graphcommerce/magento-cart-items/Api/CartItem.graphql
+@@ -5,13 +5,25 @@ fragment CartItem on CartItemInterface @injectable {
+     uid
+     ...ProductLink
+     sku
++    id
+     name
+     url_key
+     sku
+     thumbnail {
+       ...ProductImage
+     }
++    price {
++      regularPrice {
++        amount {
++          ...Money
++        }
++      }
++    }
+   }
++  option{
++        code
++        value
++      }
+ 
+   prices {
+     discounts {
+diff --git a/node_modules/@graphcommerce/magento-cart-items/Api/CartItems.graphql b/node_modules/@graphcommerce/magento-cart-items/Api/CartItems.graphql
+index 7b17aca..cfa2cfe 100644
+--- a/node_modules/@graphcommerce/magento-cart-items/Api/CartItems.graphql
++++ b/node_modules/@graphcommerce/magento-cart-items/Api/CartItems.graphql
+@@ -2,6 +2,7 @@ fragment CartItems on Cart @injectable {
+   id
+   items {
+     uid
++    id
+     __typename
+     ...CartItem
+   }

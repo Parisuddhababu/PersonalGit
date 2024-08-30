@@ -1,0 +1,455 @@
+diff --git a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCard.tsx b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCard.tsx
+index 9ba7837..dc5f566 100644
+--- a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCard.tsx
++++ b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCard.tsx
+@@ -116,28 +116,30 @@ export function ActionCard(props: ActionCardProps) {
+       disabled={disabled}
+       sx={[
+         (theme) => ({
+-          ...breakpointVal(
+-            'borderRadius',
+-            theme.shape.borderRadius * 1.5,
+-            theme.shape.borderRadius * 3,
+-            theme.breakpoints.values,
+-          ),
++          // ...breakpointVal(
++          //   'borderRadius',
++          //   theme.shape.borderRadius * 1.5,
++          //   theme.shape.borderRadius * 3,
++          //   theme.breakpoints.values,
++          // ),
++
++
+ 
+           '&.sizeSmall': {
+-            px: responsiveVal(8, 12),
+-            py: responsiveVal(4, 6),
++            // px: responsiveVal(8, 12),
++            // py: responsiveVal(4, 6),
+             display: 'flex',
+             typography: 'body2',
+           },
+           '&.sizeMedium': {
+-            px: responsiveVal(10, 14),
+-            py: responsiveVal(10, 12),
++            // px: responsiveVal(10, 14),
++            // py: responsiveVal(10, 12),
+             typography: 'body2',
+             display: 'block',
+           },
+           '&.sizeLarge': {
+-            px: responsiveVal(12, 16),
+-            py: responsiveVal(12, 14),
++            // px: responsiveVal(12, 16),
++            // py: responsiveVal(12, 14),
+             display: 'block',
+           },
+ 
+@@ -187,11 +189,54 @@ export function ActionCard(props: ActionCardProps) {
+             },
+           },
+ 
++
+           '&.variantOutlined': {
+             backgroundColor: theme.palette.background.paper,
+-            boxShadow: `inset 0 0 0 1px ${theme.palette.divider}`,
+-            '&:not(:last-of-type)': {
+-              marginBottom: '-1px',
++            // border: '1px solid #dadada',
++
++            '&.image': {
++              padding: '0.125rem',
++              border: '0',
++              '&:hover': {
++                outline: '2px solid #c34000',
++              },
++              '&.selected': {
++                borderColor: 'transparent',
++                outline: '2px solid #c34000',
++              },
++              '&.selected:focus': {
++                borderColor: 'transparent',
++                outline: '2px solid #c34000',
++              },
++            },
++            // boxShadow: `inset 0 0 0 1px ${theme.palette.divider}`,
++
++            // '&:not(:last-of-type)': {
++            //   marginBottom: '-1px',
++            // },
++
++            '& .ActionCard-title': {
++              border: '1px solid #dadada',
++              '&:hover': {
++                borderColor: '#ffffff',
++                color: '#333333',
++                outline: '2px solid #999999',
++              },
++              '&.selected': {
++                backgroundColor: '#ffffff',
++                borderColor: '#ffffff',
++                color: '#000000',
++                outline: '2px solid #ff5501',
++              },
++              '&.selected:focus': {
++                backgroundColor: '#ffffff',
++                borderColor: 'transparent',
++                color: '#000000',
++                outline: '2px solid #ff5501',
++              },
++              '&:focus': {
++
++              },
+             },
+ 
+             '&.layoutList': {
+@@ -227,21 +272,30 @@ export function ActionCard(props: ActionCardProps) {
+             },
+ 
+             '&.selected': {
+-              borderColor: 'transparent',
+-              boxShadow: `inset 0 0 0 2px ${theme.palette[color].main}`,
++              // borderColor: 'transparent',
++              // boxShadow: `inset 0 0 0 2px ${theme.palette[color].main}`,
++              // boxShadow: `inset 0 0 0 2px #1979c3`,
++              // color: '#000000',
++              // outline: '1px solid #999',
+             },
+             '&.selected:focus': {
+-              borderColor: 'transparent',
+-              boxShadow: `inset 0 0 0 2px ${theme.palette[color].main}, 0 0 0 4px ${alpha(
+-                theme.palette[color].main,
+-                theme.palette.action.hoverOpacity,
+-              )}`,
++              // borderColor: 'transparent',
++              // color: '#000000',
++              // outline: '1px solid #999',
++              // boxShadow: `inset 0 0 0 2px ${theme.palette[color].main}, 0 0 0 4px ${alpha(
++              //   theme.palette[color].main,
++              //   theme.palette.action.hoverOpacity,
++              // )}`,
++              // boxShadow: `inset 0 0 0 2px #1979c3, 0 0 0 4px ${alpha(
++              //   theme.palette[color].main,
++              //   theme.palette.action.hoverOpacity,
++              // )}`,
+             },
+             '&:focus': {
+-              boxShadow: `inset 0 0 0 1px ${theme.palette.divider},0 0 0 4px ${alpha(
+-                theme.palette[color].main,
+-                theme.palette.action.hoverOpacity,
+-              )}`,
++              // boxShadow: `inset 0 0 0 1px ${theme.palette.divider},0 0 0 4px ${alpha(
++              //   theme.palette[color].main,
++              //   theme.palette.action.hoverOpacity,
++              // )}`,
+             },
+ 
+             '&.error': {
+@@ -281,7 +335,7 @@ export function ActionCard(props: ActionCardProps) {
+           {image && (
+             <Box
+               className={classes.image}
+-              sx={{ display: 'flex', pr: '15px', alignSelf: 'center' }}
++              sx={{ display: 'flex', alignSelf: 'center' }}
+             >
+               {image}
+             </Box>
+@@ -301,6 +355,15 @@ export function ActionCard(props: ActionCardProps) {
+                 sx={{
+                   typography: 'subtitle2',
+                   '&.sizeLarge': { typography: 'h6' },
++                  fontSize: '0.75rem !important',
++                  lineHeight: '1.25rem',
++                  minWidth: '2.5rem',
++                  padding: '0.25rem 0.5rem',
++                  backgroundColor: '#f0f0f0',
++                  color: '#949494',
++                  textAlign: 'center',
++                  fontWeight: '700',
++                  fontVariationSettings: "'wght' 700",
+                 }}
+               >
+                 {title}
+diff --git a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardLayout.tsx b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardLayout.tsx
+index 2eec20b..dbfd235 100644
+--- a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardLayout.tsx
++++ b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardLayout.tsx
+@@ -40,9 +40,12 @@ export const ActionCardLayout = React.forwardRef<HTMLDivElement, ActionCardLayou
+               pt: '1px',
+             },
+             '&.layoutGrid': {
+-              display: 'grid',
+-              gridTemplateColumns: 'repeat(2, 1fr)',
+-              gap: theme.spacings.xxs,
++              // display: 'grid',
++              // gridTemplateColumns: 'repeat(2, 1fr)',
++              // gap: theme.spacings.xxs,
++              display: 'flex',
++              gap: '0.625rem',
++              // gridAutoColumns: 'auto',
+             },
+             '&.layoutInline': {
+               display: 'flex',
+diff --git a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardListForm.tsx b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardListForm.tsx
+index 2d8c370..3d3c474 100644
+--- a/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardListForm.tsx
++++ b/node_modules/@graphcommerce/next-ui/ActionCard/ActionCardListForm.tsx
+@@ -17,6 +17,7 @@ export type ActionCardListFormProps<A, F extends FieldValues = FieldValues> = Om
+   Omit<ControllerProps<F>, 'render'> & {
+     items: A[]
+     render: React.FC<ActionCardItemRenderProps<A>>
++    checkoutForm?: boolean
+   }
+ 
+ export function ActionCardListForm<
+@@ -33,6 +34,7 @@ export function ActionCardListForm<
+     errorMessage,
+     defaultValue,
+     multiple,
++    checkoutForm,
+     ...other
+   } = props
+   const RenderItem = render as React.FC<ActionCardItemRenderProps<ActionCardItemBase>>
+@@ -55,7 +57,7 @@ export function ActionCardListForm<
+           {...other}
+           multiple={multiple}
+           required={required}
+-          value={value}
++          value={!checkoutForm ? value : null}
+           ref={ref}
+           onChange={(_, incomming) => onChange(incomming)}
+           error={formState.isSubmitted && !!fieldState.error}
+diff --git a/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarGallery.tsx b/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarGallery.tsx
+index 5f021e9..2a5da3c 100644
+--- a/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarGallery.tsx
++++ b/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarGallery.tsx
+@@ -208,7 +208,7 @@ export function SidebarGallery(props: SidebarGalleryProps) {
+                   src={image.src}
+                   width={image.width}
+                   height={image.height}
+-                  loading={idx === 0 ? 'eager' : 'lazy'}
++                  loading='eager'
+                   sx={{ display: 'block', objectFit: 'contain' }}
+                   sizes={{
+                     0: '100vw',
+diff --git a/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarSlider.tsx b/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarSlider.tsx
+index 4c6fb19..9514287 100644
+--- a/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarSlider.tsx
++++ b/node_modules/@graphcommerce/next-ui/FramerScroller/SidebarSlider.tsx
+@@ -2,7 +2,6 @@ import {
+   Scroller,
+   ScrollerButton,
+   ScrollerButtonProps,
+-  ScrollerPageCounter,
+   ScrollerProvider,
+ } from '@graphcommerce/framer-scroller'
+ import { Box, SxProps, Theme } from '@mui/material'
+@@ -33,15 +32,12 @@ export type SidebarSliderProps = {
+ 
+ export function SidebarSlider(props: SidebarSliderProps) {
+   const { children, sidebar, sx, buttonSize } = props
+-
+   return (
+     <Row maxWidth={false} disableGutters className={classes.root} sx={sx}>
+       <ScrollerProvider scrollSnapAlign='start'>
+         <Box
+           className={classes.grid}
+           sx={{
+-            display: 'grid',
+-            gridTemplateColumns: 'minmax(150px, 25%) 1fr',
+             maxWidth: '100%',
+           }}
+         >
+@@ -54,7 +50,6 @@ export function SidebarSlider(props: SidebarSliderProps) {
+             })}
+           >
+             <Box>{sidebar}</Box>
+-            <ScrollerPageCounter />
+           </Box>
+ 
+           <Box className={classes.scrollerContainer} sx={{ position: 'relative', minWidth: 1 }}>
+diff --git a/node_modules/@graphcommerce/next-ui/FullPageMessage/FullPageMessage.tsx b/node_modules/@graphcommerce/next-ui/FullPageMessage/FullPageMessage.tsx
+index c1c75a2..ddec12f 100644
+--- a/node_modules/@graphcommerce/next-ui/FullPageMessage/FullPageMessage.tsx
++++ b/node_modules/@graphcommerce/next-ui/FullPageMessage/FullPageMessage.tsx
+@@ -41,7 +41,7 @@ export function FullPageMessage(props: FullPageMessageProps) {
+       ]}
+     >
+       <Container
+-        maxWidth='md'
++        maxWidth='lg'
+         className={classes.innerContainer}
+         sx={{
+           display: 'grid',
+diff --git a/node_modules/@graphcommerce/next-ui/Layout/components/LayoutHeader.tsx b/node_modules/@graphcommerce/next-ui/Layout/components/LayoutHeader.tsx
+index 1b4ceae..487042c 100644
+--- a/node_modules/@graphcommerce/next-ui/Layout/components/LayoutHeader.tsx
++++ b/node_modules/@graphcommerce/next-ui/Layout/components/LayoutHeader.tsx
+@@ -1,7 +1,7 @@
+ import { Box, SxProps, Theme } from '@mui/material'
+ import React from 'react'
+ import { extendableComponent } from '../../Styles'
+-import { LayoutHeaderBack, useShowBack } from './LayoutHeaderBack'
++// import { LayoutHeaderBack, useShowBack } from './LayoutHeaderBack'
+ import { LayoutHeaderClose, useShowClose } from './LayoutHeaderClose'
+ import { LayoutHeaderContent, LayoutHeaderContentProps } from './LayoutHeaderContent'
+ import { FloatingProps } from './LayoutHeadertypes'
+@@ -53,7 +53,7 @@ export function LayoutHeader(props: LayoutHeaderProps) {
+     size = 'responsive',
+     sx = [],
+   } = props
+-  const showBack = useShowBack()
++  // const showBack = useShowBack()
+   const showClose = useShowClose()
+ 
+   const floatFallback = !children
+@@ -65,12 +65,12 @@ export function LayoutHeader(props: LayoutHeaderProps) {
+   if (divider || primary || secondary) floatingSm = false
+ 
+   const close = showClose && <LayoutHeaderClose />
+-  const back = showBack && <LayoutHeaderBack breakpoint={floatingSm ? 'xs' : undefined} />
++  // const back = showBack && <LayoutHeaderBack breakpoint={floatingSm ? 'xs' : undefined} />
+ 
+   let left = secondary
+   let right = primary
+ 
+-  if (back && !secondary) left = back
++  // if (back && !secondary) left = back
+ 
+   if (!right) right = close
+   else if (!left) left = close
+diff --git a/node_modules/@graphcommerce/next-ui/Navigation/components/NavigationProvider.tsx b/node_modules/@graphcommerce/next-ui/Navigation/components/NavigationProvider.tsx
+index 49101df..8e314ee 100644
+--- a/node_modules/@graphcommerce/next-ui/Navigation/components/NavigationProvider.tsx
++++ b/node_modules/@graphcommerce/next-ui/Navigation/components/NavigationProvider.tsx
+@@ -11,7 +11,7 @@ import {
+ } from '../hooks/useNavigation'
+ 
+ export type NavigationProviderProps = {
+-  items: (NavigationNode | React.ReactElement)[]
++  items: any
+   hideRootOnNavigate?: boolean
+   closeAfterNavigate?: boolean
+   children?: React.ReactNode
+diff --git a/node_modules/@graphcommerce/next-ui/Row/ColumnTwoWithTop/ColumnTwoWithTop.tsx b/node_modules/@graphcommerce/next-ui/Row/ColumnTwoWithTop/ColumnTwoWithTop.tsx
+index 283f6f7..7235850 100644
+--- a/node_modules/@graphcommerce/next-ui/Row/ColumnTwoWithTop/ColumnTwoWithTop.tsx
++++ b/node_modules/@graphcommerce/next-ui/Row/ColumnTwoWithTop/ColumnTwoWithTop.tsx
+@@ -6,7 +6,6 @@ import { Row } from '../Row'
+ export type ColumnTwoWithTopProps = ContainerProps & {
+   top: React.ReactNode
+   left: React.ReactNode
+-  right: React.ReactNode
+ }
+ 
+ const compName = 'ColumnTwoWithTop' as const
+@@ -14,7 +13,7 @@ const parts = ['root', 'colOne', 'colTwo'] as const
+ const { classes } = extendableComponent(compName, parts)
+ 
+ export function ColumnTwoWithTop(props: ColumnTwoWithTopProps) {
+-  const { left, right, top, sx = [], ...containerProps } = props
++  const { left, sx = [], ...containerProps } = props
+ 
+   return (
+     <Row
+@@ -35,15 +34,9 @@ export function ColumnTwoWithTop(props: ColumnTwoWithTopProps) {
+       ]}
+       {...containerProps}
+     >
+-      <Box className={classes.colOne} gridArea='top'>
+-        {top}
+-      </Box>
+       <Box className={classes.colOne} gridArea='left'>
+         {left}
+       </Box>
+-      <Box className={classes.colTwo} gridArea='right'>
+-        {right}
+-      </Box>
+     </Row>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/next-ui/SectionHeader/SectionHeader.tsx b/node_modules/@graphcommerce/next-ui/SectionHeader/SectionHeader.tsx
+index 68d283e..13233fa 100644
+--- a/node_modules/@graphcommerce/next-ui/SectionHeader/SectionHeader.tsx
++++ b/node_modules/@graphcommerce/next-ui/SectionHeader/SectionHeader.tsx
+@@ -41,7 +41,8 @@ export function SectionHeader(props: SectionHeaderProps) {
+           justifyContent: 'space-between',
+           alignItems: 'center',
+           marginTop: theme.spacings.sm,
+-          marginBottom: theme.spacings.xxs,
++          // marginBottom: theme.spacings.xxs,
++          marginBottom: '0.65rem'
+         }),
+         usePadding === true &&
+           ((theme) => ({
+@@ -56,6 +57,13 @@ export function SectionHeader(props: SectionHeaderProps) {
+         variant={variantLeft}
+         color='textSecondary'
+         component='div'
++        sx={{
++          color: '#333333',
++          textTransform: 'capitalize',
++          letterSpacing: '0',
++          fontWeight: '700',
++          fontVariationSettings: "'wght' 700",
++        }}
+       >
+         {labelLeft}
+       </Typography>
+diff --git a/node_modules/@graphcommerce/next-ui/TextInputNumber/TextInputNumber.tsx b/node_modules/@graphcommerce/next-ui/TextInputNumber/TextInputNumber.tsx
+index 5f25737..3ecb4e6 100644
+--- a/node_modules/@graphcommerce/next-ui/TextInputNumber/TextInputNumber.tsx
++++ b/node_modules/@graphcommerce/next-ui/TextInputNumber/TextInputNumber.tsx
+@@ -23,6 +23,7 @@ export type TextInputNumberProps = Omit<TextFieldProps, 'type'> & {
+   DownProps?: IconButtonPropsOmit
+   UpProps?: IconButtonPropsOmit
+   sx?: SxProps<Theme>
++  defaultValue?: any
+ }
+ 
+ type OwnerState = { size?: 'small' | 'medium' }
+@@ -37,6 +38,7 @@ export function TextInputNumber(props: TextInputNumberProps) {
+     inputProps = {},
+     inputRef,
+     sx = [],
++    defaultValue = 1,
+     ...textFieldProps
+   } = props
+ 
+@@ -44,6 +46,7 @@ export function TextInputNumber(props: TextInputNumberProps) {
+ 
+   const ref = useRef<HTMLInputElement>(null)
+   const forkRef = useForkRef(ref, inputRef as Ref<HTMLInputElement>)
++  const [value, setValue] = useState(defaultValue) // Set the default value to '1'
+ 
+   const [direction, setDirection] = useState<'up' | 'down' | 'runUp' | 'runDown' | null>(null)
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+@@ -95,7 +98,8 @@ export function TextInputNumber(props: TextInputNumberProps) {
+       className={`${textFieldProps.className ?? ''} ${classes.quantity}`}
+       sx={[
+         {
+-          width: responsiveVal(80, 120),
++          width:
++              responsiveVal(80, 120),
+         },
+         ...(Array.isArray(sx) ? sx : [sx]),
+       ]}
+@@ -135,7 +139,10 @@ export function TextInputNumber(props: TextInputNumberProps) {
+           </IconButton>
+         ),
+       }}
++      value={value}
++
+       onChange={(e: ChangeEvent<HTMLInputElement>) => {
++        setValue(e.target.value)
+         if (textFieldProps.onChange) textFieldProps.onChange(e)
+         updateDisabled(e.target)
+       }}
+@@ -151,6 +158,7 @@ export function TextInputNumber(props: TextInputNumberProps) {
+           },
+         ],
+         className: `${inputProps?.className ?? ''} ${classes.quantityInput}`,
++
+       }}
+     />
+   )

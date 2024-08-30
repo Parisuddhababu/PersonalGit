@@ -1,0 +1,88 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card" *ngxPermissionsOnly="['USER_SUGGESTION_LIST']">
+        <div class="card-header">
+          <i class="fa fa-comments-o"></i> {{ 'SUGGESTION_LIST' | translate }}
+          <a *ngxPermissionsOnly="['USER_SUGGESTION_CREATE']" routerLink="/user-suggestion/add" class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                [(ngModel)]="global_search"
+                (keyup)="filterDatatable($event)"
+                type="text"
+                name="global_search"
+                class="form-control col-md-6 pull-right"
+                placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="wrap-datatable">
+            <ngx-datatable
+              [rows]="suggestionList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [messages]="dtMessages"
+              [limit]="size"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting"
+                [sortable]="false"
+                [width]="70"
+                headerClass="text-center"
+              >
+                <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  <div class="text-center">{{ rowIndex + 1 }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'SUGGESTION_CATEGORY' | translate }}" prop="category_name"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'INFORMATION' | translate }}" prop="information" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center white-space-normal">
+                    <div *ngIf="value?.length >= 50">
+                      <span [innerHTML]="value | slice: 0:49"></span>...
+                      <a href="javascript:void(0)" class="text-nowrap" (click)="openDescriptionModal(value)">{{
+                        'SHOW_MORE' | translate
+                      }}</a>
+                    </div>
+                    <div *ngIf="value?.length < 50"><span [innerHTML]="value"></span></div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'POSTED_AT' | translate }}" prop="created_at">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{ value | customDate: momentDateTime24Format }}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
+<app-loader></app-loader>

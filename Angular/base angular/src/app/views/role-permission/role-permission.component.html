@@ -1,0 +1,223 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- Permission list -- Start -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <div class="pull-left mt-8px">
+            <select class="form-control" id="roleName" [(ngModel)]="currRoleId" (change)="getRolePermissions(currRoleId)">
+              <option [ngValue]="null">{{ 'SELECT_ROLE' | translate }}</option>
+              <option *ngFor="let role of roleList; let i = index" [ngValue]="role.id">{{ role.name }}</option>
+            </select>
+          </div>
+          <div class="pull-right mt-8px">
+            <button [disabled]="isPermissionSub" type="submit" (click)="savePermission()" class="btn btn-primary btn-with-icon">
+              <i class="ion-android-checkmark-circle"></i><i class="fa fa-check-circle-o fa-lg"></i> {{ 'SAVE' | translate }}
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <ngx-treeview
+            [config]="config"
+            [items]="items"
+            (filterChange)="onFilterChange($event)"
+            (selectedChange)="onSelectedChange($event, treeView)"
+            #treeView
+            [itemTemplate]="itemTemplate"
+          >
+          </ngx-treeview>
+
+          <ng-template #itemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand" let-onCheckedChange="onCheckedChange">
+            <div class="form-inline row-item">
+              <i
+                *ngIf="item.children"
+                (click)="onCollapseExpand()"
+                aria-hidden="true"
+                class="fa"
+                [class.fa-caret-right]="item.collapsed"
+                [class.fa-caret-down]="!item.collapsed"
+              ></i>
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  [(ngModel)]="item.checked"
+                  (ngModelChange)="onCheckedChange()"
+                  [disabled]="item.disabled"
+                  [indeterminate]="item.indeterminate"
+                />
+
+                <label class="form-check-label">
+                  <i class="fa fa-folder-open" aria-hidden="true"></i>
+                </label>
+                <label class="form-check-label" (click)="item.checked = !item.checked; onCheckedChange()">
+                  {{ item.text }}
+                </label>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <!-- Permission list -- End -->
+    <!-- Role list -- Start -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>{{ 'ROLE_LIST' | translate }}
+          <a href="javascript: void(0);" (click)="addRole()" class="btn btn-primary pull-right"
+            ><i class="fa fa-plus-circle fa-lg"></i> {{ 'ADD_NEW' | translate }}</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                [(ngModel)]="global_search"
+                (keyup)="filterDatatable($event)"
+                type="text"
+                name="global_search"
+                class="form-control pull-right"
+                placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div>
+            <ngx-datatable
+              [rows]="roleList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [messages]="dtMessages"
+              [limit]="size"
+            >
+              <ngx-datatable-column name="{{ 'SR_NO' | translate }}" headerClass="no-sorting text-center" [sortable]="false" [width]="70">
+                <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  <div class="text-center">{{ rowIndex + 1 }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'TITLE' | translate }}" prop="name"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <span [ngClass]="getStatusClass(value)" class="badge">{{ value }}</span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column
+                name="{{ 'ACTION' | translate }}"
+                prop="id"
+                [frozenRight]="piningRight"
+                [sortable]="false"
+                headerClass="text-center no-sorting"
+              >
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    <a (click)="editRole(row.id, row.name, row.status)" href="javascript: void(0);" title="{{ 'EDIT' | translate }}"
+                      ><i class="fa fa-pencil-square-o fa-lg"></i
+                    ></a>
+                    &nbsp;
+                    <a (click)="openModal(template, row.id, row.status)" title="{{ 'CHANGE_STATUS' | translate }}"
+                      ><i
+                        [ngClass]="{ 'fa-toggle-on': row.status == 'Active', 'fa-toggle-off': row.status == 'Inactive' }"
+                        class="fa fa-lg"
+                      ></i
+                    ></a>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+
+      <div
+        bsModal
+        #myModal="bs-modal"
+        (onHidden)="onHidden()"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <h4 class="modal-title">
+                <i class="ion-information-circled modal-icon"></i><span>{{ roleModalTitle }}</span>
+              </h4>
+              <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form (ngSubmit)="saveRole()" novalidate #roleForm="ngForm">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="role">{{ 'ROLE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    type="text"
+                    [(ngModel)]="model.name"
+                    name="name"
+                    class="form-control"
+                    id="role"
+                    placeholder="{{ 'ROLE_NAME' | translate }}"
+                    required
+                    #name="ngModel"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="name.errors && roleForm.submitted">
+                    <p *ngIf="name.errors.required">{{ 'PLEASE_ENTER_ROLE_NAME' | translate }}</p>
+                  </div>
+                </div>
+                <input type="hidden" [(ngModel)]="model.status" name="status" />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">{{ 'SUBMIT' | translate }}</button>
+                <button type="button" class="btn btn-secondary" (click)="myModal.hide()">{{ 'CLOSE' | translate }}</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      <ng-template #template>
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title"><i class="fa fa-info-circle modal-icon"></i> {{ 'CONFIRMATION' | translate }}</h5>
+            <button type="button" class="close" (click)="decline()" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>{{ 'CONFIRM_STATUS_MSG' | translate }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="confirm()">{{ 'YES' | translate }}</button>
+            <button type="button" class="btn btn-warning" (click)="decline()">{{ 'NO' | translate }}</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <!-- Role list -- End -->
+  </div>
+</div>

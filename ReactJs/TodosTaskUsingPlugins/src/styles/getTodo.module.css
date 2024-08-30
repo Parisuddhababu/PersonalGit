@@ -1,0 +1,40 @@
+h1 {
+  color: blue;
+  font-size: 45px;
+  font-style: italic;
+  text-align: center;
+  padding: 15px;
+}
+label {
+  color: darkred;
+  font-size: 18px;
+  padding: 5px;
+  margin: 4px;
+}
+.container {
+  text-align: center;
+}
+input {
+  height: 30px;
+  width: auto;
+  border-color: darkgreen;
+  border-style: dashed;
+  margin: 5px;
+}
+
+button {
+  background-color: rgb(6, 241, 18);
+  color: black;
+  height: 40px;
+  width: 90px;
+  margin: 10px;
+}
+form{
+  text-align: center;
+  background-color: burlywood;
+  padding: 10px;
+  margin: 60px;
+}
+.error{
+  color: red;
+}

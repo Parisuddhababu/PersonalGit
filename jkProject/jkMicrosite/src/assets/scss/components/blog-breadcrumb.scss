@@ -1,0 +1,59 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.breadcrumbs-section {
+    background-color: var(--data_site_theme_highlight);
+    padding: 8px 0px;
+
+    .breadcrumbs-list {
+        @include flexbox;
+        @include align-item-center;
+        justify-content: flex-start;
+
+        @media only screen and (min-width: $device-xs) {
+            @include flexwrap;
+        }
+
+        li {
+            font-family: var(--data_site_font_secondary);
+            letter-spacing: 0px;
+            color: var(--data_site_text_color);
+            margin-right: 35px;
+            position: relative;
+            @include font-detail(14px, 24px);
+
+            @media only screen and (min-width: $device-xl) {
+                @include font-detail(16px, 19px);
+            }
+
+            > a {
+                color: var(--data_site_text_color);
+            }
+
+            &::after {
+                content: ">>";
+                position: absolute;
+                right: -26px;
+                color: var(--data_site_text_color);
+                font-size: 16px;
+                height: 100%;
+            }
+
+            &:last-child {
+                margin-right: 0px;
+
+                &::after {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: $device-md) {
+        padding: 15px 0px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        padding: 30px 0px;
+    }
+}

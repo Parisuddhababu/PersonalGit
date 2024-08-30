@@ -1,0 +1,153 @@
+@import "../common/mixin-2";
+
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+aside,
+main,
+section {
+    display: block;
+}
+
+img,
+a,
+p {
+    @include space-none;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+.flex-column {
+    @include flexColumn;
+}
+
+img {
+    @include img-common;
+}
+
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+        margin: 0 auto
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+        margin: 0 auto;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.btn-medium {
+        @include btn-medium;
+    }
+}
+
+.d-row {
+    @include row;
+
+    .d-col-2 {
+        @include d-col-2;
+    }
+
+    .d-col-66 {
+        @include d-col-66;
+    }
+
+    .d-col-33 {
+        @include d-col-33;
+    }
+}
+
+.blog-wrapper {
+    margin-top: 40px;
+
+    @media screen and (min-width: $device-lg) {
+        margin-top: 60px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        margin-top: 80px;
+    }
+
+    .post-card-body {
+        .btn {
+            margin-left: 0;
+        }
+    }
+}
+
+.blog-list-content-footer {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 15px;
+    @include flexCenter;
+
+    @media screen and (min-width: $device-md) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        padding-top: 40px;
+        padding-bottom: 145px;
+    }
+
+    .btn {
+        margin: 0 auto;
+    }
+}
+
+.jkms2-arrow-right {
+    @include jkms2-arrow-right;
+}
+
+.jkms2-meta {
+    @include jkms2-meta;
+}
+
+.jkms2-instagram {
+    @include jkms2-instagram;
+}
+
+.jkms2-linkedin {
+    @include jkms2-linkedin;
+}
+
+aside.flex-column {
+    flex-flow: column !important;
+}

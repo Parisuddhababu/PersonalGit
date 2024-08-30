@@ -1,0 +1,360 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.d-flex {
+  @include flexbox;
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+}
+
+.jkm-arrow-down {
+  @include jkm-arrow-down;
+}
+
+.jkm-share {
+  @include jkm-share;
+}
+
+.jkm-briefcase {
+  @include jkm-briefcase;
+}
+
+.jkm-calendar {
+  @include jkm-calendar;
+}
+
+.jkm-contact-location {
+  @include jkm-contact-location;
+}
+
+.jkm-time {
+  @include jkm-time;
+}
+
+.career-wrapper {
+  margin-bottom: 40px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 60px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: $container-main) {
+    margin-bottom: 145px;
+  }
+
+  .career-description {
+    padding: 15px;
+    border: 1px solid var(--data_border_color);
+    @include border-radius(10px);
+    @include flexbox;
+    @include flexwrap;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $device-md) {
+      padding: 20px;
+      flex-wrap: nowrap;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      padding: 30px;
+    }
+
+    &:hover {
+      @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+    }
+
+    .career-description-left {
+      width: 100%;
+      max-width: 100%;
+
+      @media only screen and (min-width: $device-md) {
+        width: calc(100% - 250px);
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        width: calc(100% - 350px);
+      }
+
+      h4 {
+        margin-bottom: 10px;
+
+        @media only screen and (min-width: $device-md) {
+          margin-bottom: 20px;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          margin-bottom: 30px;
+        }
+      }
+
+      > *:not(:first-child) {
+        margin: 10px 0 0;
+        display: block;
+
+        @media only screen and (min-width: $device-md) {
+          margin: 20px 0 0;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          margin: 30px 0 0;
+        }
+      }
+    }
+
+    .career-description-right {
+      width: 100%;
+      max-width: 100%;
+
+      @media only screen and (min-width: $device-md) {
+        width: 250px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        width: 350px;
+      }
+    }
+
+    p {
+      color: var(--data_site_text_color);
+      margin-bottom: 5px;
+
+      @media only screen and (min-width: $device-md) {
+        margin-bottom: 15px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin-bottom: 30px;
+      }
+    }
+
+    ul {
+      padding: 20px 0 0 0px;
+
+      @media only screen and (min-width: $device-md) {
+        padding: 0 0 0 20px;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        padding: 0 0 0 40px;
+      }
+
+      &.list-style-disc {
+        margin: 30px 0;
+        padding: 0 0 0 17px;
+
+        li {
+          margin-bottom: 0;
+          @include ul-disc-style;
+        }
+      }
+
+      li {
+        margin: 0 0 5px 0;
+        position: relative;
+
+        @media only screen and (min-width: $device-md) {
+          margin: 0 0 10px 0;
+        }
+
+        @media only screen and (min-width: $device-xl) {
+          margin: 0 0 15px 0;
+        }
+
+        &.action-li {
+          margin: 0 0 15px 0;
+
+          @media only screen and (min-width: $device-md) {
+            margin: 0 0 20px 0;
+          }
+
+          @media only screen and (min-width: $device-xl) {
+            margin: 0 0 30px 0;
+          }
+        }
+
+        > i {
+          color: var(--data_site_primary_color);
+          position: absolute;
+          left: 0px;
+          top: 4px;
+        }
+
+        span {
+          display: inline-block;
+          padding-left: 32px;
+        }
+
+        .btn-share {
+          margin: 0 0 0 15px;
+
+          @media only screen and (min-width: $device-xl) {
+            margin: 0 0 0 30px;
+          }
+
+          i {
+            color: var(--data_site_highlight_section_text_color);
+            margin-right: 0;
+          }
+
+          &:hover i {
+            color: var(--data_site_secondary_color);
+          }
+        }
+      }
+    }
+
+    ol {
+      margin: 15px 0;
+      padding-left: 17px;
+
+      @media only screen and (min-width: $device-md) {
+        margin: 20px 0;
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        margin: 30px 0;
+      }
+
+      li {
+        @include ol-decimal-style;
+      }
+    }
+
+    .read-more {
+      color: var(--data_site_secondary_color);
+      font-weight: bold;
+      cursor: pointer;
+
+      span {
+        position: relative;
+
+        &:after {
+          content: "";
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          bottom: -3px;
+          background: var(--data_button_secondary_color);
+          left: 0;
+        }
+      }
+
+      i {
+        vertical-align: middle;
+        font-size: 7px;
+        margin-left: 5px;
+        font-weight: bold;
+        display: inline-block;
+
+        @media only screen and (min-width: $device-xl) {
+          font-size: 9px;
+          margin-left: 8px;
+        }
+      }
+
+      &.less {
+        i {
+          @include transform(rotate(180deg));
+        }
+      }
+    }
+  }
+}
+
+.share-social-media {
+  @include social-icon-group(15px);
+  margin-bottom: 10px;
+  @include just-center;
+
+  @media only screen and (min-width: $device-md) {
+    @include social-icon-group(20px);
+  }
+
+  .product-social-media {
+    @include just-center;
+  }
+
+  .icon {
+    @include social-icon(var(--data_site_text_color), 20px, 20px);
+    cursor: pointer;
+
+    @media only screen and (min-width: $device-md) {
+      @include font-detail(24px, 24px);
+    }
+
+    &.jkm-meta {
+      @include jkm-meta;
+
+      &:hover {
+        color: #1877f2;
+      }
+    }
+
+    &.jkm-twitter {
+      @include jkm-twitter;
+
+      &:hover {
+        color: var(--data_twitter_icon_color);
+      }
+    }
+
+    &.jkm-linkedin {
+      @include jkm-linkedin;
+
+      &:hover {
+        color: var(--data_linkedin_icon_color);
+      }
+    }
+
+    &.jkm-instagram {
+      @include jkm-instagram;
+
+      &:hover {
+        color: #dd2a7b;
+      }
+    }
+
+    &.jkm-whatsapp {
+      @include jkm-whatsapp;
+
+      &:hover {
+        color: #25d336;
+      }
+    }
+
+    &.jkm-mail1 {
+      @include jkm-mail1;
+      @include font-detail(17px, 17px);
+
+      @media only screen and (min-width: $device-md) {
+        @include font-detail(20px, 24px);
+      }
+
+      &:hover {
+        color: #2151a1;
+      }
+    }
+  }
+}

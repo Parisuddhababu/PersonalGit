@@ -1,0 +1,4 @@
+export const displayQuickViewSKUActionType = {
+  SET_SHOW_DATA_QUICK_VIEW_SKU: "SET_SHOW_DATA_QUICK_VIEW_SKU",
+  INITIAL_ADD_DATA: "INITIAL_ADD_DATA",
+};

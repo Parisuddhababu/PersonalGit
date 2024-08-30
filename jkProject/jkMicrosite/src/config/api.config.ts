@@ -1,0 +1,168 @@
+import APPCONFIG from "@config/app.config";
+
+const BaseURL_V1 = APPCONFIG.baseURL.v1;
+
+const APICONFIG = {
+  // Static endpint
+  PAGE_API: `${BaseURL_V1}/`,
+  HEADER_API: `${BaseURL_V1}/menu`,
+  HEADERTOP: `${BaseURL_V1}/header`,
+  FOOTER: `${BaseURL_V1}/footer`,
+  FEATURE_FOOTER: `${BaseURL_V1}/quick_link`,
+  DEFAULT_STYLE_API: `${BaseURL_V1}/get-style-theme`,
+  SITEMAP_API: `${BaseURL_V1}/sitemap/sitemap-xml`,
+  GET_CITY_NAME_API: `${BaseURL_V1}/city/get_all_city`,
+  GET_ALL_COUNTRIES_LIST: `${BaseURL_V1}/country/get_all_country`,
+  GET_ALL_STATE_LIST: `${BaseURL_V1}/state/get_all_states`,
+  HOMEPAGE_FIRST: `${BaseURL_V1}home-first`,
+  HOMEPAGE_TWO: `${BaseURL_V1}home-second`,
+  HOMEPAGE_API: `${BaseURL_V1}/home`,
+  DEFAULT_STYLE_FIRST: `${BaseURL_V1}default-style-first`,
+  DEFAULT_STYLE_SECOND: `${BaseURL_V1}default-style-second`,
+  DEFAULT_FONT_FIRST: `${BaseURL_V1}default-font-first`,
+  DEFAULT_FONT_SECOND: `${BaseURL_V1}default-font-second`,
+  DEFAULT_DARK_THEME: `${BaseURL_V1}default-dark-theme`,
+  DEFAULT_LIGHT_THEME: `${BaseURL_V1}default-light-theme`,
+  MAINTENANCE_MODE: `${BaseURL_V1}maintenance-mode`,
+  SUBSCRIBE_REQUEST: `${BaseURL_V1}/subscribe_request/create`,
+  GET_EVENT_LIST: `${BaseURL_V1}/event`,
+  GENDER: `${BaseURL_V1}/gender`,
+  SIGNUP_API: `${BaseURL_V1}/register`,
+  SINGIN_API: `${BaseURL_V1}/oauth/signin`,
+  LOGOUT_LOG: `${BaseURL_V1}/oauth/logout_logs`,
+  CART_PAGE: `cart/list`,
+  CUSTOMIZATION_OPTIONS: `${BaseURL_V1}/cart/b2b-customization-options`,
+  CART_ITEAM_COMBINATION: `${BaseURL_V1}/cart-item-combination`,
+  CART_ITEAM_PRICE_BREAKUP: `${BaseURL_V1}/cart/cart-item-price-breakup`,
+
+  CAREERPAGE_TITLE_LOCATION_API: `${BaseURL_V1}/career/get_title_location`,
+  GET_CAREEER_DATA: `${BaseURL_V1}/career`,
+  UPDATE_PROFILE_DATA: `${BaseURL_V1}/my-profile/profileUpdate`,
+  PROFILE_IMAGE_API: `${BaseURL_V1}/my-profile/updateImage`,
+  CHANGE_PASSWORD: `${BaseURL_V1}/oauth/changepassword`,
+
+  GET_BLOG_LIST: `${BaseURL_V1}/blog`,
+  PRODUCT_BANNER_IMAGE: `${BaseURL_V1}/categoryImage`,
+  GET_LEFT_FILTER_LIST: `${BaseURL_V1}/left_filters`,
+  PRODUCT_LIST: `${BaseURL_V1}/jewellery`,
+  SEARCH_GET_SLUG_VALUE: `${BaseURL_V1}/search/get-slug-value`,
+  QUICK_VIEW: `${BaseURL_V1}/product/quickview/`,
+  GET_PRODUCT_REVIEW: `${BaseURL_V1}/product/reviews/`,
+  SOCIAL_LOGIN_API: `${BaseURL_V1}/oauth/sociallogin`,
+  DELETE_REVIEW: `${BaseURL_V1}/product_review/delete/`,
+
+  CONTACTUS_CREATE: `${BaseURL_V1}/contactUs/create`,
+  GET_COUNTRY: `${BaseURL_V1}/country/get_all_country`,
+  GET_ACTIVE_COUNTRY_LIST: `${BaseURL_V1}/country_dropdown`,
+
+
+  GET_TESTIMONIAL_LIST: `${BaseURL_V1}/testimonials`,
+  GET_PURITY_COLOR_LIST: `${BaseURL_V1}/customise-design/get_color_purity`,
+  CUSTOMISE_CREATE: `${BaseURL_V1}/customise-design/create`,
+
+  FORGOT_PASSWORD: `${BaseURL_V1}/oauth/password/forgot`,
+
+  RESET_PASSWORD: `${BaseURL_V1}/oauth/password/reset`,
+  SIMILAR_PRODUCT_LIST_BY_ID: `${BaseURL_V1}/product/similar-product`,
+  RECENT_PRODUCT_LIST_BY_ID: `${BaseURL_V1}/recently_view/list`,
+  PRODUCT_MATCH_SET_LIST: `${BaseURL_V1}/product/product-match-set`,
+  PRODUCT_SET_LIST: `${BaseURL_V1}/product/product-set`,
+  PRODUCT_REVIEW_CREATE: `${BaseURL_V1}/product_review/create`,
+  PRODUCT_REVIEW_UPDATE: `${BaseURL_V1}/product_review/update`,
+  PRODUCT_REVIEW_SHOW: `${BaseURL_V1}/product_review/edit/`,
+  PRODUCT_ASK_QUESTION: `${BaseURL_V1}/productQuestions/create`,
+  AVAILABLITY_BY_PINCODE: (id: string) =>
+    `${BaseURL_V1}/check_delivery_by_pincode/${id}`,
+  PRICE_BREAKUP: `${BaseURL_V1}/product/price-breakup`,
+  ORDER_SETTING_DATA: `${BaseURL_V1}/order/order-setting-data`,
+  MY_ORDER_LIST: `${BaseURL_V1}/my-orders`,
+
+  CART_LIST: `${BaseURL_V1}/cart/list`,
+  ADDTOCART: `${BaseURL_V1}/cart/store`,
+  UPDATE_CART: `${BaseURL_V1}/cart/update/`,
+  CART_DELETE: `${BaseURL_V1}/cart/delete`,
+  COUPON_LIST: `${BaseURL_V1}/coupons/list`,
+  APPLY_COUPON: `${BaseURL_V1}/cart/apply_coupon`,
+  COUPON_DELETE: `${BaseURL_V1}/cart/remove_coupon/`,
+
+  OFFER_POPUP: `${BaseURL_V1}/pop-up`,
+
+  WISHLIST: `${BaseURL_V1}/wishlist/wishlist_user_product`,
+  WISHLIST_PRODUCT: `${BaseURL_V1}/wishlist/user_wishlist_product_list`,
+  CREATE_WISHLIST: `${BaseURL_V1}/wishlist/create`,
+  DELETE_WISHLIST: `${BaseURL_V1}/wishlist/delete`,
+
+  CART_QUOTATION_DOWNLOAD: `${BaseURL_V1}/cart/quotation_pdf`,
+  CART_CHECKOUT: `${BaseURL_V1}/cart/checkout_list`,
+  GIFT_PERSONALISATION: `${BaseURL_V1}/cart/gift_message`,
+  DELETE_GIFT_WRAP: `${BaseURL_V1}/cart/gift_remove/`,
+  SHOW_GIFT_WRAP: `${BaseURL_V1}/cart/gift_show`,
+
+  GET_COLLECTION_LIST: `${BaseURL_V1}/collection/list`,
+  GET_CART_CHECKOUT_LIST: `${BaseURL_V1}/cart/checkout_list`,
+  GUEST_ADD_TO_CART: `${BaseURL_V1}/guest-add-to-cart`,
+
+  CREATE_ADDRESS_BOOK: `${BaseURL_V1}/user-address-book/create`,
+  DELETE_ADDRESS_BOOK: (id: string) => `${BaseURL_V1}/user-address-book/delete/${id}`,
+  UPDATE_ADDRESS_BOOK: (id: string) => `${BaseURL_V1}/user-address-book/update/${id}`,
+  SHOW_ADDRESS_BOOK: (id: string) => `${BaseURL_V1}/user-address-book/show/${id}`,
+  GET_ACCOUNT_SHOW_LIST: `${BaseURL_V1}/account/show`,
+  PRODUCT_INQUIRY: `${BaseURL_V1}/product/store/enquiry`,
+  DOWNLOAD_ORDER_INVOICE: `${BaseURL_V1}/my-orders/order-invoice/`,
+  CANCEL_ORDER: `${BaseURL_V1}/order/order_cancel`,
+  METAL_RATE_API : `${BaseURL_V1}/metal/today-rate`,
+  GUEST_USER_SIGNUP : `${BaseURL_V1}/generate-otp-guestuser`,
+  GUEST_USER_OTP_VERIFY: `${BaseURL_V1}/guestuser-otp-verify`,
+
+
+  SEARCH_AUTO_SUGGEST: `${BaseURL_V1}/search/auto-suggest`,
+  GUEST_CART_LIST_DATA: `${BaseURL_V1}/guest_user_produt_details/cart_list`,
+  GUEST_USER_WISHLIST: `${BaseURL_V1}/guest_user_produt_details/wishlist_list`,
+  GUEST_USER_MIN_QTY: `${BaseURL_V1}/qty-info`,
+  CHECK_CART_ITEAMS: `${BaseURL_V1}/cart/check-cartitems`,
+  // Dynamic endpoint
+  PageSlugAPI: (slug: string) => `${BaseURL_V1}/${slug}`,
+
+  BookDamo : `${BaseURL_V1}/book-a-demo/create`,
+  PAYMENT_GATEWAT_KEYS: `${BaseURL_V1}/get-payment-gateway-keys`,
+
+  CHECKOUT_PLACE_ORDER: `${BaseURL_V1}/order/place_order`,
+  Interested : `${BaseURL_V1}/event/interested`,
+
+  REMOVE_IMAGES :`${BaseURL_V1}/product_review/delete/doc`,
+  COMPARE_PRODUCT_LIST: `${BaseURL_V1}/compare_product/list`,
+  RAZORPAY_CART_PAYMENT: `${BaseURL_V1}/cart/payment_gateway`,
+  RAZORPAYMENT_RESPONSE: `${BaseURL_V1}/order/payment_detail/`,
+  ORDER_PAYMENT_SUCCESS: `${BaseURL_V1}/order/payment_success`,
+  ORDER_PAYMENT_FAILED: `${BaseURL_V1}/order/payment_fail`,
+  ORDER_PAYMENT_CANCEL: `${BaseURL_V1}/order/payment_cancel`,
+
+  CAREER_APPLICATION : `${BaseURL_V1}/career_application/create`,
+  MOBILE_VERIFY_OTP_SEND: `${BaseURL_V1}/my-profile/phone-update-otp-send`,
+  MOBILE_OTP_VERIFY: `${BaseURL_V1}/my-profile/phone-update-otp-verify`,
+  RESEND_OTP: `${BaseURL_V1}/oauth/send-opt`,
+  VERIFY_OTP: `${BaseURL_V1}/oauth/validate-otp-code`,
+  VERIFY_EMAIL: `${BaseURL_V1}/oauth/verifyemail/`,
+  METAL_TYPE: `${BaseURL_V1}/menu_type`,
+  GET_ACCOUNT_COUNTRY_LIST: `${BaseURL_V1}/account-country`,
+  STRIPE_CREATE_CHECKOUT: "/api/stripe/create-stripe-session/",
+  STRIPE_PAYMENT_STATUS: "/api/stripe/retrive-stripe-session/",
+  CCAVENUERESPONSE: "/api/ccavenue/ccavenue-response",
+  GET_SHOW_SKU_QUICK_VIEW: `${BaseURL_V1}/product-configuration`,
+  PHONEPAY_CREATE_CHECKOUT: "/api/phonepay/create-phonepay-payment/",
+  PHONEPAY_PAYMENT_STATUS: "/api/phonepay/phonepay-payment-status/",
+  PHONEPE_TEST_URL_FOR_PAY: "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay",
+  PHONEPE_TEST_URL_FOR_STATUS: "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status",
+  PHONEPE_PROD_URL_FOR_PAY: "https://api.phonepe.com/apis/hermes/pg/v1/pay",
+  PHONEPE_PROD_URL_FOR_STATUS: "https://api.phonepe.com/apis/hermes/pg/v1/status",
+  
+  GET_SLUG_INFO : `${BaseURL_V1}/slug-info`,
+  POST_PRODUCT_DETAIL_COUNT : `${BaseURL_V1}/productdetails-count `,
+  POPUP_API: `${BaseURL_V1}/pop-up/popup_master_enquiry`,
+  SINGIN_WITH_MULTIPLE_OPTIONS_API: `${BaseURL_V1}/oauth/login`,
+  GET_OTP_IN_MOBILE_OR_EMAIL : `${BaseURL_V1}/oauth/signinwithotp`,
+  BLUE_DART_REGISTARTION : `${BaseURL_V1}/bluedart/register`,
+  BLUE_DART_TRACKING : `${BaseURL_V1}/bluedart/tracking`
+};
+
+export default APICONFIG;

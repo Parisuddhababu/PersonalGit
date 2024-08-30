@@ -1,0 +1,90 @@
+diff --git a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueColor/ConfigurableOptionValueColor.tsx b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueColor/ConfigurableOptionValueColor.tsx
+index 0ebc02f..9fc6f96 100644
+--- a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueColor/ConfigurableOptionValueColor.tsx
++++ b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueColor/ConfigurableOptionValueColor.tsx
+@@ -18,15 +18,18 @@ export function ConfigurableOptionValueColor(props: ConfigurableOptionValueColor
+       image={
+         <Box
+           sx={{
+-            width: swatchSizes[size],
+-            height: swatchSizes[size],
++            // width: swatchSizes[size],
++            // height: swatchSizes[size],
++            width: '2.25rem',
++            height: '1.5rem',
++            // margin: '2px',
+             backgroundColor: swatch_data.value,
+-            borderRadius: '50%',
++            // borderRadius: '50%',
+           }}
+         />
+       }
+-      title={store_label}
+-      size={size}
++      // title={store_label}
++      // size={size}
+     />
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueText/ConfigurableOptionValueText.tsx b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueText/ConfigurableOptionValueText.tsx
+index c613a94..6ecadba 100644
+--- a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueText/ConfigurableOptionValueText.tsx
++++ b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableOptionValueText/ConfigurableOptionValueText.tsx
+@@ -15,7 +15,7 @@ export function ConfigurableOptionValueText(props: ConfigurableOptionValueTextPr
+       {...actionCardProps}
+       size={size}
+       title={swatch_data?.value ?? store_label}
+-      details={size !== 'small' && store_label}
++      // details={size !== 'small' && store_label}
+     />
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableProductOptions/ConfigurableProductOptions.tsx b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableProductOptions/ConfigurableProductOptions.tsx
+index a774340..3ca3c1c 100644
+--- a/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableProductOptions/ConfigurableProductOptions.tsx
++++ b/node_modules/@graphcommerce/magento-product-configurable/components/ConfigurableProductOptions/ConfigurableProductOptions.tsx
+@@ -8,7 +8,7 @@ import {
+   ActionCardListForm,
+ } from '@graphcommerce/next-ui/ActionCard/ActionCardListForm'
+ import { i18n } from '@lingui/core'
+-import { Alert, Box, SxProps, Theme } from '@mui/material'
++import { Box, SxProps, Theme } from '@mui/material'
+ import { useRouter } from 'next/router'
+ import React, { useEffect, useMemo } from 'react'
+ import { ConfigurableOptionsFragment } from '../../graphql/ConfigurableOptions.gql'
+@@ -17,6 +17,7 @@ import { ConfigurableOptionValue } from '../ConfigurableOptionValue/Configurable
+ import { ConfigurableOptionValueFragment } from '../ConfigurableOptionValue/ConfigurableOptionValue.gql'
+ 
+ export type ConfigurableProductOptionsProps = {
++  setOutOfStock: (stockStatus:string|undefined) => void
+   optionEndLabels?: Record<string, React.ReactNode>
+   sx?: SxProps<Theme>
+   render?: typeof ConfigurableOptionValue
+@@ -31,6 +32,7 @@ export function ConfigurableProductOptions(props: ConfigurableProductOptionsProp
+     render = ConfigurableOptionValue,
+     product,
+     index = 0,
++    setOutOfStock,
+     ...other
+   } = props
+   const { control, setError, clearErrors } = useFormAddProductsToCart()
+@@ -38,7 +40,7 @@ export function ConfigurableProductOptions(props: ConfigurableProductOptionsProp
+ 
+   const options = useMemo(
+     () =>
+-      filterNonNullableKeys(product.configurable_options, ['attribute_code', 'label']).map(
++      filterNonNullableKeys(product.configurable_options, ['attribute_code', 'label']).reverse().map(
+         (option) => ({
+           ...option,
+           values: filterNonNullableKeys(option.values, ['uid']).map((ov) => ({
+@@ -66,8 +68,9 @@ export function ConfigurableProductOptions(props: ConfigurableProductOptionsProp
+       setError(`cartItems.${index}.sku`, {
+         message: i18n._(/* i18n */ 'Product not available in {allLabels}', { allLabels }),
+       })
++      setOutOfStock('NotAvailable')
+     }
+-    if (!unavailable) clearErrors(`cartItems.${index}.sku`)
++    if (!unavailable){ clearErrors(`cartItems.${index}.sku`); setOutOfStock('Available')}
+   }, [allLabels, clearErrors, index, setError, unavailable])
+ 
+   return (

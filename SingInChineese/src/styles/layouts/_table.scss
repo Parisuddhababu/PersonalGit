@@ -1,0 +1,31 @@
+table {
+	@apply w-full text-sm text-left text-gray-500 mb-3;
+	thead {
+		@apply text-xs text-gray-700 uppercase bg-gray-100;
+		tr {
+			th {
+				@apply px-4 py-3 font-bold whitespace-nowrap border border-slate-200;
+			}
+		}
+	}
+	tbody {
+		@apply text-gray-700;
+		tr {
+			@apply border-b border-gray-100 transition-all;
+			th {
+				@apply font-bold;
+			}
+			td,
+			th {
+				@apply px-4 py-3 border border-slate-200 max-md:px-3 max-md:py-2;
+			}
+		}
+	}
+	&:not(.no-hover) {
+		tbody {
+			tr {
+				@apply hover:bg-gray-50;
+			}
+		}
+	}
+}

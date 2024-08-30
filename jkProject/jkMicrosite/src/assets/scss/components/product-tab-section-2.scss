@@ -1,0 +1,202 @@
+@import "../common/mixin-2";
+
+.product-tab-section {
+    margin-bottom: 30px;
+
+    @media only screen and(min-width: $device-md) {
+        margin-bottom: 60px;
+    }
+
+    @media only screen and(min-width: $device-xl) {
+        margin-bottom: 120px;
+    }
+
+    .product-tab-wrap {
+        border: 1px solid var(--data_border_color);
+        padding: 51px 40px 65px;
+    }
+
+    .nav-tabs {
+        display: none;
+
+        @media only screen and(min-width: $device-md) {
+            @include flexbox;
+        }
+
+        .nav-item {
+            &:not(:first-child) {
+                margin-left: 40px;
+            }
+        }
+
+        .nav-link {
+            padding-bottom: 10px;
+            color: var(--data_site_text_color);
+            display: inline-block;
+            @include font-family(var(--data_site_font_primary), bold);
+            @include opacity(30%);
+            @include font-detail(18px, 24px);
+
+            &:hover,
+            &.active {
+                color: var(--data_site_secondary_color);
+                border-bottom: 1px solid var(--data_site_secondary_color);
+                @include opacity(100%);
+            }
+        }
+    }
+
+    .tab-content {
+        @media only screen and (min-width: $device-md) {
+            padding: 40px 0 0;
+            border-top: 1px solid var(--data_border_color);
+        }
+
+        & > .tab-pane {
+            display: block;
+            margin-top: 20px;
+
+            @media only screen and (min-width: $device-md) {
+                display: none;
+                margin-top: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            .collapse {
+                display: none;
+
+                @media only screen and (min-width: $device-md) {
+                    display: block;
+                }
+            }
+        }
+
+        & > .active {
+            display: block;
+
+            .collapse {
+                display: block;
+
+                @media only screen and (min-width: $device-md) {
+                    display: block;
+                }
+            }
+
+            .collapse-heading {
+                a {
+                    color: var(--data_site_secondary_color);
+                }
+
+                @include opacity(100%);
+            }
+        }
+
+        .collapse-heading {
+            display: block;
+            padding-bottom: 10px;
+            @include opacity(30%);
+
+            a {
+                font-weight: bold;
+            }
+
+            @media only screen and (min-width: $device-md) {
+                display: none;
+            }
+        }
+
+        .collapse {
+            border-top: 1px solid var(--data_border_color);
+            display: none;
+            padding-top: 20px;
+
+            @media only screen and (min-width: $device-md) {
+                padding: 0;
+                border: 0;
+            }
+
+            .details-wrap-section {
+                @include flexbox;
+                overflow-x: auto;
+                @include flexwrap;
+            }
+
+            .item-box {
+                width: 100%;
+                margin-bottom: 15px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                h6 {
+                    @include font-detail(18px, 22px);
+                    color: var(--data_site_secondary_color);
+                    @include space-none;
+                }
+
+                .col-td {
+                    width: 50%;
+                    display: inline-table;
+                    padding-right: 10px;
+                    padding-top: 5px;
+                    vertical-align: top;
+
+                    @media only screen and (min-width: $device-sm) {
+                        width: 25%;
+                    }
+
+                    @media only screen and (min-width: $device-lg) {
+                        width: 20%;
+                    }
+                }
+
+                .col-td-shipping {
+                    width: 100%;
+                    display: inline-table;
+                    padding-right: 10px;
+                    padding-top: 5px;
+
+                    @media only screen and (min-width: $device-sm) {
+                        width: 50%;
+                    }
+
+                    @media only screen and (min-width: $device-lg) {
+                        width: 33.33%;
+                    }
+                }
+
+                table {
+                    width: 100%;
+                    border-spacing: 0;
+                }
+
+                .left-data {
+                    font-weight: 600;
+                }
+
+                .left-data,
+                .right-data {
+                    @include font-detail(16px, normal);
+                    color: var(--data_site_text_color);
+
+                    @media only screen and (min-width: $device-md) {
+                        @include font-detail(18px, normal);
+                    }
+                }
+            }
+        }
+    }
+    .inherit-ul-li {
+        ul li {
+            list-style: initial;
+        }
+
+        ol li {
+            list-style: inherit;
+        }
+    }
+}

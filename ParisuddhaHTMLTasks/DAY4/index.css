@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?ri3abq');
+    src: url('fonts/icomoon.eot?ri3abq#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?ri3abq') format('truetype'),
+        url('fonts/icomoon.woff?ri3abq') format('woff'),
+        url('fonts/icomoon.svg?ri3abq#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sphere:before {
+    content: "\e9c9";
+}
+
+body {
+    background-color: rgb(206, 199, 199);
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    background-color: darkgray;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+    margin: 25px;
+}
+
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 80px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.container {
+    margin-right: 80px;
+}

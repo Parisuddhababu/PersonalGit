@@ -1,0 +1,9 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+.heading-title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @media screen and (min-width: $device-md) {
+        margin-top: 50px;
+    }
+}

@@ -1,0 +1,24 @@
+fragment StoreCreditFragment on Customer {
+  store_credit {
+    enabled
+    balance_history(pageSize: 10) {
+      items {
+        action
+        actual_balance {
+          currency
+          value
+        }
+        balance_change {
+          currency
+          value
+        }
+        date_time_changed
+      }
+      total_count
+    }
+    current_balance {
+      currency
+      value
+    }
+  }
+}

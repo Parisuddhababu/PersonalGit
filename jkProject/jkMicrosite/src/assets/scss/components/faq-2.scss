@@ -1,0 +1,175 @@
+@import "../common/mixin-2";
+
+.jkms2-plus {
+    @include jkms2-plus;
+}
+
+.jkms2-minus {
+    @include jkms2-minus;
+}
+
+img {
+    @include img-common;
+}
+
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.btn-medium {
+        @include btn-medium;
+    }
+}
+
+.faq-section {
+    margin-top: 50px;
+
+    .accordion {
+        .item-que {
+            @include border-radius(40px);
+            background: var(--data_site_theme_highlight);
+            padding: 14px 45px 14px 20px;
+            cursor: pointer;
+            @include position(relative);
+            @include transition(0.3s);
+
+            @media only screen and (min-width: $device-md) {
+                padding: 24px 70px 24px 40px;
+            }
+
+            .jkms2-minus {
+                display: none;
+            }
+
+            &.active {
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                background: transparent;
+                border: 1px solid var(--data_border_color);
+                border-bottom: 0;
+
+                .accordion-title {
+                    color: var(--data_site_text_color);
+
+                    &::after {
+                        content: '';
+                        height: 1px;
+                        background: var(--data_border_color);
+                        width: calc(100% - 40px);
+                        display: inline-block;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        @include textCenter;
+                        margin: 0 auto;
+
+                        @media only screen and (min-width: $device-md) {
+                            width: calc(100% - 80px);
+                        }
+                    }
+                }
+
+                .jkms2-minus {
+                    display: block;
+                }
+
+                .jkms2-plus {
+                    display: none;
+                }
+
+                & + .accordion-content {
+                    @include opacity(1);
+                    max-height: unset;
+                }
+            }
+
+            &:hover {
+                background-color: var(--data_button_secondary_color);
+
+                .accordion-title {
+                    color: var(--data_site_theme_color);
+
+                    &::after {
+                        border-bottom: 1px solid transparent;
+                        width: 100%;
+                    }
+                }
+
+                .toggle-icon {
+                    color: var(--data_site_theme_color);
+                }
+            }
+        }
+
+        .accordion-title {
+            @include font-family(var(--data_site_font_primary), normal);
+            @include font-detail(16px, 26px);
+
+            @media only screen and (min-width: $device-md) {
+                @include font-detail(24px, 36px);
+            }
+        }
+
+        .toggle-icon {
+            @include position-align-center;
+            @include positon-right(20px);
+            @include font-detail(20px, 20px);
+            @include transition(0.3s);
+            font-weight: 700;
+
+            @media only screen and (min-width: $device-md) {
+                @include positon-right(40px);
+                @include font-detail(24px, 24px);
+            }
+        }
+    }
+
+    .accordion-item {
+        margin-bottom: 20px;
+    }
+
+    .accordion-content {
+        border: 1px solid var(--data_border_color);
+        border-top: 0;
+        max-height: 0;
+        @include opacity(0);
+        overflow: hidden;
+        transition: opacity 200ms ease-in-out, max-height 200ms ease-in-out;
+        will-change: opacity, max-height;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+
+        .content-wrap {
+            padding: 14px 20px;
+
+            @media only screen and (min-width: $device-md) {
+                padding: 24px 40px;
+            }
+        }
+
+        p {
+            @include mb-0;
+            @include font-detail(15px, 26px);
+
+            @media only screen and (min-width: $device-md) {
+                @include font-detail(18px, 36px);
+            }
+        }
+    }
+}

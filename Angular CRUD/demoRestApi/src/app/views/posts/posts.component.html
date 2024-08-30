@@ -1,0 +1,36 @@
+<div class="main-container">
+    <h1>Users Posts</h1>
+    <div class="table-container">
+        <form class="top-container" [formGroup]="form">
+        <input type="text" formControlName="title" placeholder="search posts ................"/>
+        <button type="button" (click)="createPost()">+ Create New Post</button>
+        </form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th (click)="toggleSorting('userId')" onkeypress="" [ngClass]="{'asc': sortColumn === 'userId' && sortOrder === 'asc', 'desc': sortColumn === 'userId' && sortOrder === 'desc'}">User ID</th>
+                <th (click)="toggleSorting('title')" onkeypress="" [ngClass]="{'asc': sortColumn === 'title' && sortOrder === 'asc', 'desc': sortColumn === 'title' && sortOrder === 'desc'}">Title</th>
+                <th (click)="toggleSorting('body')" onkeypress="" [ngClass]="{'asc': sortColumn === 'body' && sortOrder === 'asc', 'desc': sortColumn === 'body' && sortOrder === 'desc'}">Body</th>
+                <th  onkeypress="">Edit</th>
+                <th  onkeypress="">Delete</th>
+            </tr>
+            <tr *ngFor="let post of displayedPosts;track post?.userId">
+                <td>{{ post?.id }}</td>
+                <td>{{ post?.userId }}</td>
+                <td>{{ post?.title.slice(0,20)}}</td>
+                <td>{{ post?.body.slice(0,40) }}</td>
+                <td onkeydown="" class="edit" (click)="editPost(post?.id)">
+                    <i class="fas fa-edit edit-icon"></i>
+                  </td>
+                  <td onkeydown="" class="delete" (click)="deletePost(post?.id)">
+                    <i class="fas fa-trash delete-icon"></i>
+                  </td>
+            </tr>
+        </table>
+    </div>
+ @if(displayedPosts.length>0 ) {<app-pagination [bannerData]="filteredPosts.length" (pageChanged)="onPageChanged($event)"></app-pagination>}
+ @else{
+  <p class="error">no records found</p>
+ }
+</div>
+

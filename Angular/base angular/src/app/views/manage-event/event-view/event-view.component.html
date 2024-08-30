@@ -1,0 +1,149 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-calendar"></i>{{ 'EVENT_DETAILS' | translate }}
+          <a routerLink="/event" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a>
+        </div>
+        <div class="card-body view-page">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'EVENT_NAME' | translate }} </label>
+                <div class="col-md-8">
+                  {{ model.eventname }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'EMAIL' | translate }} </label>
+                <div class="col-md-8">
+                  {{ model.organizer_email_id }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <label class="col-md-2">{{ 'DESCRIPTION' | translate }} </label>
+                <div class="col-md-10">
+                  {{ model.description }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'START_DATE_TIME' | translate }}</label>
+                <div class="col-md-8">
+                  {{ model.start_datetime | customDate: momentDateTime24Format }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'END_DATE_TIME' | translate }} </label>
+                <div class="col-md-8">
+                  {{ model.end_datetime | customDate: momentDateTime24Format }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'REPEATED' | translate }} </label>
+                <div class="col-md-8">
+                  {{ repeated[model.repeated] ? repeated[model.repeated] : '' }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'GOOGLE_MEET_LINK' | translate }} </label>
+                <div class="col-md-8">
+                  <a href="{{ model.google_meet_link }}" target="_blank" title="{{ 'GOOGLE_MEET_LINK' | translate }}">{{
+                    model.google_meet_link
+                  }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-4">{{ 'CALENDAR_LINK' | translate }} </label>
+                <div class="col-md-8">
+                  <a href="{{ model.calendar_link }}" target="_blank" title="{{ 'CALENDAR_LINK' | translate }}">{{
+                    model.calendar_link
+                  }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><i class="icon-user"></i>{{ 'PARTICIPATNS_DETAILS' | translate }}</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group show-select">
+                <label
+                  >{{ 'SHOW' | translate }}
+                  <select name="showRecords" [(ngModel)]="size" (change)="changeLimit(size)" class="form-control">
+                    <option [value]="limit" *ngFor="let limit of limitList">{{ limit }}</option>
+                  </select>
+                  {{ 'ENTRIES' | translate }}
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                [(ngModel)]="global_search"
+                (keyup)="filterDatatable()"
+                type="text"
+                name="global_search"
+                class="form-control col-md-6 pull-right"
+                placeholder="{{ 'SEARCH' | translate }}..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="pos-rel">
+            <div *ngIf="loadingIndicator" class="processing">{{ 'PROCESSING' | translate }}</div>
+            <ngx-datatable
+              [rows]="participantsList"
+              class="material fullscreen"
+              headerHeight="headerHeight"
+              footerHeight="footerHeight"
+              rowHeight="rowHeight"
+              [reorderable]="reorderable"
+              [columnMode]="ColumnMode.force"
+              #datatable
+              [scrollbarH]="scrollbarH"
+              [messages]="dtMessages"
+              [limit]="size"
+            >
+              <ngx-datatable-column
+                name="{{ 'SR_NO' | translate }}"
+                headerClass="no-sorting"
+                [sortable]="false"
+                [width]="70"
+                headerClass="text-center"
+              >
+                <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  <div class="text-center">{{ rowIndex + 1 }}</div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'PARTICIPATNS_EMAIL' | translate }}" prop="email"></ngx-datatable-column>
+              <ngx-datatable-column name="{{ 'STATUS' | translate }}" prop="status" headerClass="text-center">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div class="text-center">
+                    {{ value }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.form-page{
+   
+    text-align: center;
+    height: 600px;
+    width:500px;
+}
+h1{
+    color: blue;
+    font-size: 45px;
+}
+input{
+    height: 60px;
+    width: 400px;
+}
+label{
+    color: blueviolet;
+    font-size: large;
+}
+h3{
+    color: darkred;
+}

@@ -1,0 +1,8 @@
+query Layout {
+  menu: categories {
+    __typename
+  }
+  ...MenuQueryFragment
+  ...FooterQueryFragment
+  ...GetMegaMenuFragment
+}

@@ -1,0 +1,205 @@
+
+.table-responsive {
+    overflow-x: auto;
+    table {
+        border: 1px solid $billowing-clouds;
+        @include border-radius(7px);
+        overflow: hidden;
+        border-spacing: 0;
+        width: 1000px;
+        @include media($device-xl) {
+            width: 100%;
+        }
+        &.table-col3 {
+            tr {
+                td,
+                th {
+                    width: 33.33%;
+                }
+            }
+        }
+        tr {
+            @include border-radius(7px);
+            td,
+            th {
+                padding: 20px;
+                position: relative;
+                @include media($device-xl) {
+                    padding: 24px 50px;
+                }
+            }
+            td {
+                border-bottom: 1px solid $billowing-clouds;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                vertical-align: top;
+                @include media($device-lg) {
+                    padding-top: 29px;
+                    padding-bottom: 29px;
+                }
+                &:first-child {
+                    color: $primary-color;
+                    &.no-data {
+                        color: $label-color;
+                    }
+                }
+                .date {
+                    margin-right: 35px;
+                }
+                .action-row {
+                    @include flexbox();
+                    gap: 20px;
+                    @include media($device-xl){
+                        gap: 60px;
+                    }
+                    .actionIcon {
+                        font-size: 14px;
+                        cursor: pointer;
+                        @include media($device-md){
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            th {
+                text-align: left;
+                background-color: $secondary-color;
+                text-transform: uppercase;
+                font-weight: 600;
+                position: relative;
+                .sorting {
+                    position: absolute;
+                    right: 15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    span {
+                        display: block;
+                        font-size: 8px;
+                        cursor: pointer;
+                        &.up-arrow {
+                            @include transform(rotate(180deg));
+                            margin-bottom: 3px;
+                        }
+                    }
+                }
+            }
+            &:last-child {
+                td {
+                    border-bottom: 0;
+                }
+            }
+            &:nth-child(odd) {
+                td{
+                    background-color: #FAFCFF;
+                }
+            }
+        }
+    }
+    &.table-md{
+        tr{
+            th{
+                padding: 10px 15px;
+                @include media($device-md){
+                    padding: 20px 30px 20px 20px;
+                }
+            }
+            td{
+                padding: 10px 15px;
+                @include media($device-md){
+                    padding: 20px 30px 20px 20px;
+                }
+            }
+        }
+    }
+    &.bg-white{
+        td{
+            background-color: $white-color;
+        }
+    }
+    &.vertical-align-middle{
+        td,tr,th{
+            vertical-align: middle
+        }
+    }
+}
+
+
+.table-pagination {
+    @include row(1,20px,0px);
+    @include media($device-md){
+        @include row(2,0px,0px);
+    }
+    .form-group-page {
+        @include flexbox();
+        @include row-align-items;
+        .select-group {
+            max-width: 80px;
+            margin-right: 10px;
+        }
+        span {
+            color: $label-color;
+            &.pageText {
+                padding-right: 28px;
+            }
+        }
+    }
+    .PaginationNav {
+        @include flexbox();
+        .pageNav {
+            margin-left: 0;
+            background: $white-color;
+            border: 1px solid $border-color-1;
+            @include border-radius(4px);
+            @include flexbox();
+            @include media($device-lg) {
+                margin-left: auto;
+            }
+            .arrowIcon {
+                padding: 11px 22px;
+                font-size: 12px;
+                line-height: 18px;
+                color: $gray-shade-10;
+                cursor: pointer;
+                &.disabled{
+                    opacity: 0.3;
+                    cursor: not-allowed;
+                }
+            }
+            .pageNum {
+                background: $gray-shade-4;
+                padding: 6px 18px;
+                color: $gray-shade-11;
+                display: block;
+            }
+            a {
+                display: block;
+            }
+        }
+    }
+    &.table-pagination-with-button{
+        gap:30px;   
+        > .paginationList{
+            @include media($device-md){
+            flex: auto;
+            width: auto;
+            }
+            
+        }
+        > .btn{
+            @include media($device-md){
+            flex: 1;
+            width: auto;
+            }
+            
+        }
+        > .PaginationNav{
+            align-items: flex-start;
+            @include media($device-md){
+            flex: 1;
+            max-width: max-content;
+            }
+           
+        }
+    }
+}
+

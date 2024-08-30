@@ -1,0 +1,27 @@
+# Pipeline to automatically mirror
+# an Azure DevOps repository in CLIENT_GITHUB  
+# Trigger on all branches
+trigger:
+- '*'
+# Use latest Ubuntu image
+pool:
+  vmImage: 'ubuntu-latest'
+# Pipeline
+steps:
+- checkout: none
+- script: |
+      # Install urlencode function to encode reserved characters in passwords
+      sudo apt-get install gridsite-clients
+      # Create local mirror of Azure DevOps repository
+      git clone --bare https://${AZURE_GIT_USERNAME}:$(urlencode ${AZURE_GIT_PASSWORD})@${AZURE_REPO_URL} repo-mirror
+      # Sync CLIENT_GITHUB repository
+      cd repo-mirror
+      git push --mirror https://${CLIENT_GITHUB_GIT_USERNAME}:$(urlencode ${CLIENT_GITHUB_GIT_PASSWORD})@${CLIENT_GITHUB_REPO_URL}
+  displayName: 'Sync repository with CLIENT_GITHUB'
+  env:
+    AZURE_REPO_URL: $(AZURE_REPO_URL)
+    AZURE_GIT_USERNAME: $(AZURE_GIT_USERNAME)
+    AZURE_GIT_PASSWORD: $(AZURE_GIT_PASSWORD)
+    CLIENT_GITHUB_REPO_URL: $(CLIENT_GITHUB_REPO_URL)
+    CLIENT_GITHUB_GIT_USERNAME: $(CLIENT_GITHUB_GIT_USERNAME)
+    CLIENT_GITHUB_GIT_PASSWORD: $(CLIENT_GITHUB_GIT_PASSWORD)

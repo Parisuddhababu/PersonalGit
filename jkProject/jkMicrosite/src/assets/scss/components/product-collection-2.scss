@@ -1,0 +1,59 @@
+@import "../common/mixin-2";
+
+.row {
+    @include row;
+
+    .d-col {
+        &.d-col-3 {
+            @include d-col-3;
+        }
+    }
+}
+
+.product-collection-section {
+    margin-bottom: 15px;
+
+    @media only screen and (min-width: $device-md) {
+        margin-bottom: 40px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+        margin-bottom: 60px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+        margin-bottom: 80px;
+    }
+
+    .card {
+        border: 1px solid var(--data_border_color);
+
+        .card-head {
+            display: block;
+        }
+
+        .card-body {
+            background-color: var(--data_site_theme_highlight);
+            padding: 10px;
+            @include textCenter;
+            margin: 0;
+
+            @media screen and (min-width: $device-md) {
+                padding: 18px;
+            }
+
+            .collection-name {
+                @include font-detail(22px, 32px);
+                @include font-family(var(--data_site_font_primary), 400);
+
+                @media screen and (min-width: $device-md) {
+                    @include font-detail(28px, 40px);
+                }
+
+                @media screen and (min-width: $device-xl) {
+                    @include font-detail(32px, 43px);
+                }
+            }
+        }
+    }
+}

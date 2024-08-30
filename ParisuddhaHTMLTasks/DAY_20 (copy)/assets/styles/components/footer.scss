@@ -1,0 +1,127 @@
+/* footer */
+.footer-section {
+  background-color: $white-color;
+  margin: 0px 15px 15px 15px;
+  .footer-top-img {
+    position: absolute;
+    top: -97px;
+    left: -24px;
+    height: 189px;
+    width: 178px;
+    @include large {
+      height: 389px;
+      width: 378px;
+      top: -207px;
+      left: -68px;
+    }
+  }
+  .footer-container {
+    background-image: url("./assets/images/webp/footer.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: auto auto;
+    max-width: 1300px;
+    margin-bottom: 30px;
+    @include flex-property-col;
+    @include justify-content-center;
+    .footer-middle-cont {
+      @include flex-property-col;
+      @include justify-content-center;
+      @include align-center;
+      .footer-logo {
+        @include pointer;
+        height: auto;
+        width: 159px;
+        margin-top: 100px;
+        @include xl {
+          margin-top: 0px;
+        }
+        @include md {
+          height: 74px;
+          width: 259px;
+        }
+      }
+      @include lg {
+        @include justify-content-center;
+        @include align-center;
+      }
+      @include xl {
+        @include flex-property-row;
+        @include content-between;
+        padding: 225px 30px 130px 44px;
+      }
+      .footer-address-cont {
+        @include flex-property-row;
+        @include align-center;
+        padding-top: 15px;
+        @include md {
+          padding-top: 10px;
+        }
+        a {
+          color: $white-color;
+          text-decoration: none;
+        }
+        a:hover{
+          color:$grey-color;
+        }
+        .footer-address {
+          line-height: 38px;
+          color: $white-color;
+          font-weight: 400;
+          font-family: $Playfair;
+          padding-left: 10px;
+          font-size: 13px;
+          @include lg {
+            font-size: 16px;
+            padding-left: 35px;
+          }
+          @include md {
+            font-size: 21px;
+            padding-bottom: 5px;
+          }
+          @include pointer;
+          text-shadow: 0px 0px $white-color;
+        }
+      }
+    }
+    .footer-bottom-cont {
+      @include flex-property-col;
+      @include justify-content-center;
+      @include align-center;
+      .social-icons :hover {
+        @include pointer;
+        transition-property: background-color;
+        transition-duration: 3s;
+        background-color: $primary-color;
+      }
+      .social-icons {
+        @include flex-property-row;
+        column-gap: 12px;
+      }
+      @include md {
+        @include justify-content-center;
+        @include align-center;
+      }
+      @include xl {
+        @include flex-property-row;
+        @include content-between;
+        @include align-end;
+        padding: 0px 30px 30px 30px;
+      }
+      .footer-copyright {
+        font-size: 13px;
+        color: $white-color;
+        font-weight: 400;
+        font-family: $Playfair;
+        padding: 30px 0px;
+        @include lg {
+          font-size: 17px;
+        }
+        @include xl {
+          padding: 0px 0px;
+        }
+      }
+    }
+  }
+}

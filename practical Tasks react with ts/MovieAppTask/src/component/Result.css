@@ -1,0 +1,15 @@
+.cards{
+    height: 250px;
+    width: auto;
+}
+.title-rating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.cards-container{
+    height:400px;
+    width: auto;
+}

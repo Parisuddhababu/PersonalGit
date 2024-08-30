@@ -1,0 +1,20 @@
+.form-group {
+	& > label {
+		@apply block text-gray-700 text-sm font-bold mb-0.5;
+	}
+
+	.form-control {
+		&[type='text'],
+		&[type='number'],
+		&[type='password'],
+		&[type='date'],
+		&[type='file'],
+		&[type='password'],
+		&[type='radio'] &.password-shown {
+			@apply pr-1;
+		}
+		&.radio-color {
+			@apply text-red-500;
+		}
+	}
+}

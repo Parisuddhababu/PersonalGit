@@ -1,0 +1,81 @@
+.bg-container{
+    background-color: cornsilk;
+    padding: 20px;
+}
+span{
+    font-weight: 600;
+}
+h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+p{
+    color: blue;
+    padding-top: 15px;
+}
+::placeholder{
+color: crimson;
+}
+input{
+    height: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.editBtn{
+  margin: 10px;
+}
+button{
+    color: white;
+    background-color:rgb(95, 170, 72);
+    height: 30px;
+    width: 50px;
+    border-radius: 10px;
+}
+.label-container {
+    background-color: #e6f6ff;
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #096f92;
+    border-radius: 1px;
+    margin-bottom: 10px;
+  }
+  .todo-item-container{
+    margin: 0px;
+    padding: 0px;
+
+  }
+  .checkbox-input {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+    margin-right: 12px;
+  }
+  .delete-icon-container {
+    text-align: right;
+    width: 18%;
+  }
+  .delete-icon {
+    padding: 15px;
+  }
+  .checked {
+   text-decoration: line-through;
+  }
+
+.checkbox-label {
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 400;
+    width: 82%;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+  #TodosItemsContainer{
+    background-color:darkgrey;
+    text-align: center;
+    padding: 10px;
+  }

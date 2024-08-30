@@ -1,0 +1,91 @@
+.ReactModal__Body--open{
+    overflow: hidden;
+}
+.ReactModal__Overlay{
+    background: rgba($title-text, 0.3) !important;
+    z-index: 999;
+    padding: 15px;
+}
+.ReactModal__Content{
+    max-width: 1700px;
+    margin: auto;
+    height: max-content;
+    padding: 10px !important;
+    @include border-radius(4px !important);
+    box-shadow: 0px 0px 50px rgba($black-color, 0.16);
+    inset: 15px !important;
+    
+    @include media($device-md){
+        @include border-radius(8px !important);
+        padding: 20px !important; 
+    }
+
+    @include media($device-xl){
+        padding: 30px !important;
+    }
+
+    @include media($device-xxxl){
+        padding: 40px !important;
+    }
+
+    .modal-close{
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        padding: 8px;
+        font-size: 14px;
+        z-index: 9;
+        color: $title-text;
+
+        @include media($device-md){
+            right: 30px;
+            top: 30px;
+            font-size: 16px;
+        }
+        
+        @include media($device-xl){
+            right: 50px;
+            top: 50px;
+            font-size: 18px;
+        }
+        
+        @include media($device-xxxl){
+            right: 60px;
+            top: 60px;
+        }
+
+    }
+
+    .modal-body{
+        @include border-radius(4px);
+        padding: 10px;
+        position: relative;
+        max-height: calc(100vh - 200px);
+
+        @include media($device-md){
+            @include border-radius(8px);
+            border: 1px solid $billowing-clouds;
+            padding: 20px;
+        }
+        
+        @include media($device-xxxl){
+            padding: 30px;
+        }
+        &.modal-sm {
+            @include flexCenter;
+            min-height: 300px;
+            text-align: center;
+        }
+
+    }
+}
+
+.bottom-buttons {
+    @include flexbox();
+    @include row-justify-center;
+    gap: 0 20px;
+    margin-top: 30px;
+}

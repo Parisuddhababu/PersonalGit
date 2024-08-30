@@ -1,0 +1,62 @@
+@import "../common/mixin-2";
+
+.social_icons {
+    @include flexbox;
+    margin-bottom: 30px;
+
+    li {
+        margin: 0;
+        display: inline-block;
+        margin-right: 10px;
+
+        a {
+            span {
+                color: var(--data_site_theme_color);
+                font-size: 12px;
+                @include flexCenter;
+                width: 30px;
+                height: 30px;
+                background-color: var(--data_site_text_color);
+                @include border-radius(50%);
+                @include box-shadow(0px, 0px, 3px, var(--data_box_shadow_color));
+            }
+
+            .youtube,
+            .mail {
+                font-size: 10px;
+            }
+
+            &:hover {
+                .facebook {
+                    background: var(--data_facebook_icon_color);
+                    color: var(--data_site_theme_color);
+                }
+
+                .instagram {
+                    background: var(--data_instagram_icon-color);
+                    color: var(--data_site_theme_color);
+                }
+
+                .linkedin {
+                    background: var(--data_linkedin_icon_color);
+                    color: var(--data_site_theme_color);
+                }
+
+                .whatsapp {
+                    background: var(--data_whatsapp_icon_color);
+                    color: var(--data_site_theme_color);
+                }
+
+                .youtube {
+                    background: var(--data_youtube_icon_color);
+                    color: var(--data_site_theme_color);
+                }
+
+                .mail {
+                    background: var(--data_mail_icon_color);
+                    color: var(--data_site_theme_color);
+                }
+            }
+        }
+    }
+}

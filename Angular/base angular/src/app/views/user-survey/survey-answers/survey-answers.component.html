@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSurveyAnswerDataSave(ansFrm)" novalidate #ansFrm="ngForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="badge badge-primary p-2">{{ 'TOTAL_QUESTION' | translate }} : {{ questionList?.length }}</label
+                >&nbsp;
+              </div>
+              <p class="col-sm-6 text-right requiredLabel">
+                <span [innerHTML]="'FORM_NOTE' | translate"></span>
+              </p>
+            </div>
+            <fieldset class="quesFieldset" *ngFor="let ques of questionList; let i = index">
+              <legend>{{ 'QUESTION' | translate }} {{ i + 1 }}</legend>
+              <div class="question-answer-div">
+                <div class="row quesDiv">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>{{ ques.question }} <span class="asterisk_input"></span></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="ques.answer_type == 'text'">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="{{ 'ANSWER' | translate }}"
+                        required
+                        [(ngModel)]="ques.text_answer"
+                        name="text-{{ i }}"
+                        #textans="ngModel"
+                      />
+                      <div class="form-control-feedback text-danger" *ngIf="textans.errors && ansFrm.submitted">
+                        <p *ngIf="textans.errors.required">{{ 'PLEASE_ENTER_ANSWER' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="ques.answer_type == 'single_check'">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="d-block">
+                        <div class="form-check-inline" *ngFor="let ans of ques.answer_options; let j = index">
+                          <label class="form-check-label"
+                            >{{ ans.answer }}
+                            <input
+                              type="radio"
+                              class="form-check-input"
+                              name="singlecheck-{{ i }}"
+                              value="{{ ans.id }}"
+                              [(ngModel)]="ques.single_answer"
+                              #singlecheckans="ngModel"
+                              id="singleCheck_{{ i }}_{{ j }}"
+                              required
+                            />
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="!ques.single_answer && ansFrm.submitted">
+                        <p>{{ 'PLEASE_ENTER_ANSWER' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="ques.answer_type == 'multi_check'">
+                  <div class="col-md-12">
+                    <div class="form-group" ngModelGroup="checkboxes_{{ i }}" #chks="ngModelGroup" appMultiCheckboxValidation>
+                      <div class="custom-control custom-checkbox" *ngFor="let ans of ques.answer_options; let k = index">
+                        <input
+                          class="custom-control-input crsr-ptr"
+                          type="checkbox"
+                          name="multicheck-{{ i }}-{{ k }}"
+                          value="{{ ans.id }}"
+                          [(ngModel)]="ans.multi_answer"
+                          #multicheckans="ngModel"
+                          id="multiCheck_{{ i }}_{{ k }}"
+                        />
+                        <label class="custom-control-label crsr-ptr" for="multiCheck_{{ i }}_{{ k }}">{{ ans.answer }}</label>
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="chks.errors && ansFrm.submitted">
+                        <p *ngIf="chks.errors.checkboxRequired">{{ 'PLEASE_ENTER_ANSWER' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/user-survey/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

@@ -1,0 +1,65 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-close {
+  @include jkm-close;
+}
+
+.jkm-star {
+  @include jkm-star;
+}
+
+.jkm-star-fill {
+  @include jkm-star-fill;
+}
+
+.modal {
+  &.ask-question-popup {
+    .pop-up-container {
+      @include form-contain;
+
+      @media screen and (min-width: $device-xl) {
+        max-width: 1080px;
+      }
+
+      .d-row {
+        @include row;
+        .d-col {
+          width: 100%;
+        }
+        .d-col-2 {
+          @include d-col-2;
+          @include mb-30;
+        }
+
+        .d-col-3 {
+          @include d-col-3;
+          @include mb-30;
+        }
+      }
+
+      .btn.btn-primary {
+        @include btn-primary;
+        @include btn-small;
+        margin: auto;
+      }
+
+      .custom-select {
+        @include border-radius(5px);
+        @include font-detail(16px, 20px);
+        @include custom-selectbox(var(--data_site_text_color),
+          var(--data_border_color));
+        @include bg-arrow(var(--data_site_theme_color),
+          url(../../images/icons/arrow-down.svg),
+          no-repeat,
+          95%,
+          center);
+        width: 100%;
+      }
+    }
+  }
+}
+
+.p-error {
+  color: var(--data_error_color);
+}

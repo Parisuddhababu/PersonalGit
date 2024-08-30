@@ -1,0 +1,38 @@
+diff --git a/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodButton/PaymentMethodButton.tsx b/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodButton/PaymentMethodButton.tsx
+index 755cef1..8a3021a 100644
+--- a/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodButton/PaymentMethodButton.tsx
++++ b/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodButton/PaymentMethodButton.tsx
+@@ -29,12 +29,6 @@ function PaymentMethodButtonRenderer(
+           loading={buttonState.isSubmitting || (buttonState.isSubmitSuccessful && !error)}
+         >
+           {buttonProps.children}
+-          {selectedMethod?.title && (
+-            <>
+-              {' '}
+-              (<em>{selectedMethod?.title}</em>)
+-            </>
+-          )}
+         </LinkOrButton>
+       ) : (
+         <PaymentButton
+diff --git a/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodOptionsNoop/PaymentMethodOptionsNoop.graphql b/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodOptionsNoop/PaymentMethodOptionsNoop.graphql
+index e2d01d4..83a03e5 100644
+--- a/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodOptionsNoop/PaymentMethodOptionsNoop.graphql
++++ b/node_modules/@graphcommerce/magento-cart-payment-method/PaymentMethodOptionsNoop/PaymentMethodOptionsNoop.graphql
+@@ -1,5 +1,14 @@
+-mutation PaymentMethodOptionsNoop($cartId: String!, $code: String!) {
+-  setPaymentMethodOnCart(input: { cart_id: $cartId, payment_method: { code: $code } }) {
++mutation PaymentMethodOptionsNoop($cartId: String!, $code: String!, $payer_id: String!, $token: String!) {
++  setPaymentMethodOnCart(input: { 
++    cart_id: $cartId,
++    payment_method: { 
++      code: $code 
++      payflow_express: {
++          payer_id: $payer_id
++          token: $token
++        }
++    }
++  }) {
+     cart {
+       ...PaymentMethodUpdated
+     }

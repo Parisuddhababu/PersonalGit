@@ -1,0 +1,74 @@
+@import "../common/mixin";
+@import "../components/breadcrumb";
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+.no-products-content {
+  margin-bottom: 134px;
+  @include box-shadow(0, 0, 15px, #0000001a);
+  .details {
+    padding: 142px 15px 152px;
+    margin: 0 auto;
+    @include textCenter;
+    max-width: 460px;
+    .image {
+      margin-bottom: 30px;
+      img {
+        width: 192px;
+        height: 158px;
+      }
+    }
+  }
+}
+h2 {
+  margin: 30px 0;
+}
+h3 {
+  margin-bottom: 30px;
+}
+
+.btn {
+  @include button;
+  @include btn-secondary;
+  &.btn-small {
+    @include btn-small;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,78 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-border-left">
+        <div class="card-body pb-0">
+          <div class="text-value">
+            <h5 class="text-muted">{{ 'TODAY_INSTALLATION' | translate }}</h5>
+            <h3 class="fa-2x">{{ todayInstallCount }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-border-left">
+        <div class="card-body pb-0">
+          <div class="text-value">
+            <h5 class="text-muted">{{ 'TODAY_UNINSTALLATION' | translate }}</h5>
+            <h3 class="fa-2x">{{ todayUninstallCount }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group pull-right">
+        <button type="button" class="btn btn-danger" (click)="refreshData()"><i class="fa fa-refresh"></i>
+          {{ 'REFRESH' | translate }}</button>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <div class="dtePkr">
+          <input [(ngModel)]="count_date" name="count_date" type="text" class="form-control"
+            placeholder="MM/DD/YYYY To MM/DD/YYYY" #countDate="bsDaterangepicker" placement="top" bsDaterangepicker
+            autocomplete="off" [bsConfig]="dateRangeConfig" />
+          <i class="fa fa-calendar crsr-ptr" (click)="countDate.toggle()"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <button type="button" class="btn btn-success" (click)="searchApplyCount()"><i class="fa fa-search"></i> {{
+          'APPLY' | translate }}</button>&nbsp;
+        <button type="button" class="btn btn-warning" (click)="resetSearchCount()"><i class="fa fa-refresh"></i> {{
+          'RESET' | translate }}</button>
+      </div>
+    </div>
+  </div>
+  <!--/.row-->
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="text-value text-center">
+            <h3 class="fa-2x">{{ installCount }}</h3>
+          </div>
+        </div>
+        <div class="chart-wrapper text-center mt-3 mb-3">
+          <h4>{{ 'NO_OF_INSTALLATION' | translate }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="text-value text-center">
+            <h3 class="fa-2x">{{ uninstallCount }}</h3>
+          </div>
+        </div>
+        <div class="chart-wrapper text-center mt-3 mb-3">
+          <h4>{{ 'NO_OF_UNINSTALLATION' | translate }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

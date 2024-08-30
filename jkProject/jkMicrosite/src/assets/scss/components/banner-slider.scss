@@ -1,0 +1,159 @@
+@import "../common/_variable";
+@import "../common/_mixin";
+
+.jkm-arrow-right {
+  @include jkm-arrow-right;
+}
+
+.jkm-calendar {
+  @include jkm-calendar;
+}
+
+.jkm-folder {
+  @include jkm-folder;
+}
+
+.jk-card {
+  @include jk-card;
+}
+
+.banner-sec {
+  .banner-image-wrap {
+    img {
+      width: 100%;
+    }
+  }
+
+  .banner-slider-wrap {
+    @include flexCenter;
+    margin-top: 20px;
+    padding: 0 20px;
+    margin-top: -112px;
+    max-width: 1710px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (min-width: $device-md) {
+      margin-top: -130px;
+      padding: 0 15px;
+    }
+
+    @media only screen and (min-width: $device-lg) {
+      margin-top: -139px;
+      padding: 0 15px;
+    }
+
+    @media only screen and (min-width: $device-xl) {
+      margin-top: -212px;
+    }
+
+    .slider-arrow-btn {
+      @include box-shadow(0, 0, 4px, var(--data_box_shadow_color));
+      border: none;
+      background: var(--data_site_theme_color);
+      @include slider-arrow-btn(50px);
+      position: relative;
+      @include transform(none);
+
+      &.left {
+        i {
+          @include transform(rotate(180deg));
+          display: inline-block;
+        }
+      }
+
+      i {
+        color: var(--data_site_text_color);
+      }
+    }
+
+    .slider-content-wrapper {
+      background: var(--data_site_theme_color);
+      width: 100%;
+      padding: 20px 35px;
+      margin: 0 20px;
+      @include position(relative);
+
+      @media screen and (min-width: $device-sm) {
+        margin: 0 60px;
+        padding: 20px;
+      }
+
+      @media screen and (min-width: $device-md) {
+        padding: 30px;
+      }
+
+      @media screen and (min-width: $device-xl) {
+        padding: 50px;
+        margin: 0 80px;
+      }
+
+      h2 {
+        @include h2;
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: $device-xl) {
+          margin-bottom: 20px;
+        }
+      }
+
+      .btn-icon {
+        @include position(absolute);
+
+        &.right {
+          @include positon-right(-20px);
+
+          @media screen and (min-width: $device-sm) {
+            @include positon-right(-60px);
+          }
+
+          @media screen and (min-width: $device-xl) {
+            @include positon-right(-80px);
+          }
+        }
+
+        &.left {
+          @include positon-left(-20px);
+
+          @media screen and (min-width: $device-sm) {
+            @include positon-left(-60px);
+          }
+
+          @media screen and (min-width: $device-xl) {
+            @include positon-left(-80px);
+          }
+        }
+      }
+
+      .slider-content {
+        max-width: 848px;
+        margin: auto;
+        @include textCenter;
+        @include flexCenter;
+        @include flexColumn;
+
+        h2 {
+          @include text-clamp(2);
+        }
+
+        p {
+          @include text-clamp(1);
+        }
+      }
+
+      .date-category-info {
+        @include just-center;
+        margin-bottom: 10px;
+
+        @media only screen and (min-width: $device-xl) {
+          margin-bottom: 0px;
+        }
+
+        .date,
+        .category {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}

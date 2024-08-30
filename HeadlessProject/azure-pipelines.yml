@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+    - '*'
+
+steps:
+# Prepare Analysis Configuration task
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'sonar-graph-commerce-headless'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'React_Headless_PWA__TNT__graph-commerce-headless_AYeTM0t_laY5DL-SS8Ti'
+    cliSources: '.'
+
+# Run Code Analysis task
+- task: SonarQubeAnalyze@5
+
+# Publish Quality Gate Result task
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'

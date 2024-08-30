@@ -1,0 +1,20 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/button";
+@import "../common/common";
+
+body{
+    background-color: $white-color;
+}
+.page-not-found-section{
+    @include flexCenter;
+    flex-direction: column;
+    padding: 50px 20px;
+    .page-not-found-image{
+        max-height: 120px;
+        @include media($device-md){
+            max-height: none;
+        }
+    }
+}

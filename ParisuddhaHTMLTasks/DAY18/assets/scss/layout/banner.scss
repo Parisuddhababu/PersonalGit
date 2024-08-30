@@ -1,0 +1,87 @@
+@mixin navigation {
+	cursor: pointer;
+	text-transform: uppercase;
+	line-height: 20px;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 13px;
+}
+
+@mixin heading {
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 40px;
+	letter-spacing: 1.8px;
+	text-transform: uppercase;
+}
+
+.main-container {
+	background-image: url("https://www.shutterstock.com/image-photo/belgian-royal-palace-brussels-260nw-2159570113.jpg");
+	color: white;
+	width: 100%;
+	background-size: cover;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navbar {
+	margin-top: auto;
+	height: 100%;
+	ul {
+		display: flex;
+		justify-content: space-between;
+		@media screen and (max-width: $medium) {
+			li {
+				a {
+					display: none;
+				}
+			}
+		}
+		li {
+			@include navigation;
+
+			&::before {
+				margin-left: 25px;
+				content: '';
+			}
+			&::after {
+				margin-right: 25px;
+				content: '';
+			}
+			span {
+				&:hover {
+					color: $primary-color;
+				}
+				&::before {
+					margin-left: 25px;
+				}
+				&::after {
+					margin-right: 25px;
+				}
+			}
+		}
+	}
+}
+
+.contentContainer {
+	padding: 150px 0;
+	text-align: center;
+	h1 {
+		@include heading;
+		margin-bottom: 35px;
+	}
+	p {
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 32px;
+	}
+	@media screen and (max-width: $medium) {
+		.buttonsContainer {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

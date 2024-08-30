@@ -1,0 +1,37 @@
+@import "../common/fonts";
+@import "../common/variable";
+@import "../common/mixin";
+@import "../layout/formControl";
+@import "../layout/button";
+@import "../common/common";
+
+body{
+    background-color: $white-color;
+}
+
+.cms-section{
+    .cms-title{
+        padding: 30px 0;
+        min-height: 100px;
+        background: $gradient1;
+        color: $white-color;
+        @include flexbox;
+        align-items: center;
+        @include media($device-md){
+            padding: 50px 0;
+            min-height: 150px;
+        }
+    }
+    .cms-content{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        @include media($device-md){
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        h1,h2,h3,h4,h5,h6{
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    }
+}

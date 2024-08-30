@@ -1,0 +1,101 @@
+query OrdersAndReturns(
+  $orderId: String!
+  $billingLastName: String!
+  $findOrderBy: String!
+  $email: String
+  $zipCode: String
+) {
+  GetOrdersAndReturns(
+    orderId: $orderId
+    billingLastName: $billingLastName
+    findOrderBy: $findOrderBy
+    email: $email
+    zipCode: $zipCode
+  ) {
+    orderStatus
+    orderDate
+    discount {
+      value
+      currency
+    }
+    grandTotal {
+      value
+      currency
+    }
+    tax {
+      value
+      currency
+    }
+    shippingAndHandling {
+      value
+      currency
+    }
+    subTotal {
+      value
+      currency
+    }
+    incrementId
+    storeCredit {
+      value
+      currency
+    }
+    refundStoreCredit {
+      value
+      currency
+    }
+    shippingMethod
+    hasInvoices
+    hasShipments
+    hasRefunds
+    billing {
+      city
+      company
+      country
+      fax
+      name
+      postcode
+      region
+      street
+      telephone
+    }
+
+    items {
+      price {
+        value
+        currency
+      }
+      productId
+      urlKey
+      sku
+      name
+      discount {
+        value
+        currency
+      }
+      qty_ordered
+      qty_invoiced
+      qty_refunded
+      qty_shipped
+      row_total {
+        value
+        currency
+      }
+      optionsData {
+        label
+        value
+      }
+    }
+    paymentMethod
+    shipping {
+      city
+      company
+      country
+      fax
+      name
+      postcode
+      region
+      street
+      telephone
+    }
+  }
+}

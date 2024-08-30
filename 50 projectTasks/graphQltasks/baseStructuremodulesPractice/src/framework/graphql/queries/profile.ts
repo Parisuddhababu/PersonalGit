@@ -1,0 +1,39 @@
+import { gql } from "@apollo/client";
+export const GET_PROFILE_INFORMATION = gql`
+query GetProfileInformation {
+    getProfileInformation {
+      data {
+        id
+        uuid
+        first_name
+        middle_name
+        last_name
+        user_name
+        email
+        gender
+        date_of_birth
+        phone_no
+        phone_country_id
+        role
+        profile_img
+        device_type
+        status
+        user_role_id
+        created_at
+        updated_at
+      }
+      meta {
+        message
+        messageCode
+        statusCode
+        status
+        type
+        errors {
+          errorField
+          error
+        }
+        errorType
+      }
+    }
+  }
+`;

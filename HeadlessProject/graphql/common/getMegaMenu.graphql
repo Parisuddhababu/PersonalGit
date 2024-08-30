@@ -1,0 +1,5 @@
+fragment GetMegaMenuFragment on Query {
+  GetMegaMenu{
+    content
+  }
+}

@@ -1,0 +1,123 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onSurveyQuestionDataSave(queFrm)" novalidate #queFrm="ngForm"
+          InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="badge badge-primary p-2">{{ 'TOTAL_QUESTION' | translate }} : {{ questionList?.length
+                  }}</label>&nbsp;
+              </div>
+              <p class="col-sm-6 text-right requiredLabel">
+                <span [innerHTML]="'FORM_NOTE' | translate"></span>
+              </p>
+            </div>
+            <fieldset class="quesFieldset" *ngFor="let ques of questionList; let i = index">
+              <legend>{{ 'QUESTION' | translate }} {{ i + 1 }}</legend>
+              <div class="question-answer-div">
+                <div class="row quesDiv">
+                  <div class="col-md-10 col-12">
+                    <div class="form-group">
+                      <label>{{ 'QUESTION' | translate }} <span class="asterisk_input"></span></label>
+                      <input appSpaceRemove type="text" class="form-control questions"
+                        placeholder="{{ 'QUESTION' | translate }}" required [(ngModel)]="ques.question"
+                        name="que-{{ i }}" #que="ngModel" />
+                      <div class="form-control-feedback text-danger" *ngIf="que.errors && queFrm.submitted">
+                        <p *ngIf="que.errors.required">{{ 'PLEASE_ENTER_QUESTION' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-12">
+                    <div class="form-group">
+                      <label>&nbsp;</label><br />
+                      <button type="button" (click)="addMoreQuestions()" class="btn btn-success hidden"
+                        popover="Add more questions" triggers="mouseenter:mouseleave">
+                        <i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+                      <button type="button" *ngIf="questionList.length > 1" (click)="removeQuestions(ques.question_no)"
+                        class="btn btn-danger removeQues" popover="Remove questions" triggers="mouseenter:mouseleave">
+                        <i class="fa fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-12">
+                    <div class="form-group mb-0">
+                      <label>{{ 'ANSWER_TYPE' | translate }} <span class="asterisk_input"></span></label>
+                      <div class="d-block">
+                        <div class="form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="ans_type-{{ i }}" required
+                              [(ngModel)]="ques.answer_type" value="single_check"
+                              (change)="onAnsTypeChange($event, ques)" />
+                            Single Choice
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                        <div class="form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="ans_type-{{ i }}" required
+                              [(ngModel)]="ques.answer_type" value="multi_check"
+                              (change)="onAnsTypeChange($event, ques)" />
+                            Multi Choice
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                        <div class="form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="ans_type-{{ i }}" required
+                              [(ngModel)]="ques.answer_type" value="text" (change)="onAnsTypeChange($event, ques)" />
+                            Textbox
+                            <span class="radio-span"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="ques.answer_type != 'text'">
+                  <div class="row" *ngFor="let ans of ques.answers; let j = index">
+                    <div class="col-md-10 col-12">
+                      <div class="form-group">
+                        <label>{{ 'ANSWER' | translate }} {{ j + 1 }}:<span class="asterisk_input"></span></label>
+                        <input appSpaceRemove type="text" class="form-control answers"
+                          placeholder="{{ 'ANSWER' | translate }} {{ j + 1 }}" required [(ngModel)]="ans.answer"
+                          name="answer-{{ i }}-{{ j }}" #answer="ngModel" />
+                        <div class="form-control-feedback text-danger" *ngIf="answer.errors && queFrm.submitted">
+                          <p *ngIf="answer.errors.required">{{ 'PLEASE_ENTER_ANSWER' | translate }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-12">
+                      <div class="form-group">
+                        <label>&nbsp;</label><br />
+                        <button type="button" class="btn btn-success" (click)="addMoreAnswer(ques.question_no)"
+                          popover="Add more answers" triggers="mouseenter:mouseleave" containerClass="customPopover">
+                          <i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger removeAns" *ngIf="ques.answers.length > 1"
+                          (click)="removeExistAnswer(ques.question_no, j)" popover="Remove answer"
+                          triggers="mouseenter:mouseleave" containerClass="customPopover">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-survey/list']"><i class="fa fa-times"></i> {{ 'CANCEL' |
+              translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

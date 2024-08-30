@@ -1,0 +1,205 @@
+@import "../common/mixin-2";
+
+.jkms2-arrow-right {
+    @include jkms2-arrow-right
+}
+
+.jkms2-calendar {
+    @include jkms2-calendar;
+}
+
+.jkms2-contact-location {
+    @include jkms2-contact-location;
+}
+
+*,
+*::before,
+*::after {
+    @include box(border-box);
+}
+
+body {
+    @include body-common;
+}
+
+main,
+section {
+    display: block;
+}
+
+img,
+a,
+p {
+    @include space-none;
+}
+
+ul,
+li {
+    @include order-unoderlist;
+}
+
+a {
+    @include anchor-link-common;
+}
+
+img {
+    @include img-common;
+}
+
+main {
+    @include main;
+}
+
+.container {
+    @include container;
+}
+
+section {
+    @include section;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+img {
+    @include img-common;
+}
+
+.btn {
+    @include button;
+
+    &.btn-primary {
+        @include btn-primary;
+    }
+
+    &.btn-secondary {
+        @include btn-secondary;
+    }
+
+    &.btn-small {
+        @include btn-small;
+    }
+
+    &.btn-medium {
+        @include btn-medium;
+    }
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.form-control {
+    @include formcontrol;
+}
+
+.just-center {
+    @include just-center;
+}
+
+.dropdown {
+    position: relative;
+
+    .form-control {
+        width: 100%;
+
+        @media only screen and (min-width: $device-md) {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 220px;
+        }
+    }
+
+    .custom-select {
+        @include custom-selectbox(var(--data_site_text_color), var(--data_border_color));
+        @include bg-arrow(transparent, url(../../images/icons/arrow-down-gray.svg), no-repeat, 95%, center);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: $device-xl) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.page-title {
+    margin-top: 40px;
+    @include textCenter;
+
+    @media screen and (min-width: $device-xl) {
+        margin-top: 50px;
+    }
+}
+
+.event_list {
+    .d-row {
+        @include row;
+
+        .d-col-3 {
+            @include d-col-3;
+        }
+    }
+
+    .post-card {
+        .post-card-title {
+            margin-bottom: 20px;
+        }
+
+        .post-image {
+            padding: 27.097% 50%;
+        }
+    }
+}
+
+.event-wrapper {
+    margin-top: 25px;
+
+    @media screen and (min-width: $device-xl) {
+        margin-top: 20px;
+    }
+}
+
+.blog-list-content-footer {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 15px;
+
+    @media screen and (min-width: $device-md) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    @media screen and (min-width: $device-xl) {
+        padding-top: 40px;
+        padding-bottom: 145px;
+    }
+
+    .btn {
+        margin: 0 auto;
+    }
+}
+
+.post-card {
+    .post-image {
+        position: relative;
+
+        .date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 0;
+            background: var(--data_site_primary_color);
+            color: var(--data_site_theme_color);
+            @include border-radius(10px);
+            padding: 10px 15px;
+        }
+    }
+
+    .post-card-category-info {
+        @include font-detail(16px, 22px);
+    }
+}

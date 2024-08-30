@@ -1,0 +1,156 @@
+@import "../common/mixin";
+
+.jkm-mail1 {
+  @include jkm-mail1;
+}
+
+.jkm-meta {
+  @include jkm-meta;
+}
+
+.jkm-instagram {
+  @include jkm-instagram;
+}
+
+.jkm-linkedin {
+  @include jkm-linkedin;
+}
+
+.jkm-whatsapp {
+  @include jkm-whatsapp;
+}
+
+.jkm-youtube {
+  @include jkm-youtube;
+}
+
+.jkm-visa {
+  @include jkm-visa;
+}
+
+img {
+  @include img-common;
+}
+
+.jkm-diamond-icon {
+  @include jkm-diamond-icon;
+}
+
+.jkm-dollor-icon {
+  @include jkm-dollor-icon;
+}
+
+.jkm-cart-icon {
+  @include jkm-cart-icon;
+}
+
+.jkm-file-upload {
+  @include jkm-file-upload;
+}
+
+.jkm-call-icon {
+  @include jkm-call-icon;
+}
+
+.jkm-diamond-ring-icon {
+  @include jkm-diamond-ring-icon;
+}
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+.btn {
+  @include button;
+
+  &.btn-primary {
+    @include btn-primary;
+  }
+
+  &.btn-secondary {
+    @include btn-secondary;
+  }
+
+  &.btn-small {
+    @include btn-small;
+  }
+
+  &.btn-medium {
+    @include btn-medium;
+  }
+
+  &.btn-icon {
+    @include btn-icon;
+  }
+}
+
+body {
+  @include body-common;
+}
+
+main,
+aside,
+section {
+  display: block;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+img,
+a,
+input,
+textarea,
+p {
+  @include space-none;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.stepper-wrap {
+  @include mb-50;
+}
+
+.stepper-wrap {
+  background-image: url('../../images/custom-desgin-bg-img.jpg');
+  height: auto;
+  @include bg-cmn;
+}
+
+.contact-sec-wrap {
+  margin-bottom: 60px;
+
+  @media only screen and (min-width: $device-md) {
+    margin-bottom: 90px;
+  }
+
+  @media only screen and (min-width: $device-xl) {
+    margin-bottom: 145px;
+  }
+
+  .stepper-content-container {
+    background-color: hsl(0deg 0% 0% / 50%);
+  }
+}

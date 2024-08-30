@@ -1,0 +1,233 @@
+@import "../common/mixin-2";
+
+.jkms2-add-to-cart {
+  @include jkms2-add-to-cart;
+}
+
+.jkms2-compare {
+  @include jkms2-compare;
+}
+
+.jkms2-trash {
+  @include jkms2-trash;
+}
+
+.jkms2-eye {
+  @include jkms2-eye;
+}
+
+.card {
+  border: 1px solid var(--data_border_color);
+  position: relative;
+  width: 100%;
+  @include flexbox;
+  @include flexColumn;
+
+  &:hover {
+    background-color: var(--data_site_theme_highlight);
+
+    .product-overlay {
+      visibility: visible;
+    }
+
+    .product-name {
+      color: var(--data_site_primary_color);
+      text-decoration: underline;
+    }
+  }
+
+  .card-head {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid var(--data_border_color);
+    @include border-radius(10px 10px 0 0);
+    padding: 50.26%;
+    @include position(relative);
+
+    .wishlist-link {
+      @include position(absolute);
+      @include positon-top(10px);
+      @include positon-right(15px);
+      @include transition(0.3s);
+      cursor: pointer;
+      z-index: 2;
+
+      @media only screen and (min-width: $device-sm) {
+        @include positon-top(20px);
+        @include positon-right(30px);
+      }
+
+      .jkm-heart.active {
+        color: var(--data_site_primary_color);
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -o-object-fit: cover;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+    }
+  }
+
+  .product-overlay {
+    @include position(absolute);
+    @include positon-left(50%);
+    @include flexbox;
+    @include align-item-center;
+    @include just-center;
+    @include transform(translateX(-50%));
+    visibility: hidden;
+    @include transition(0.3s);
+    z-index: 1;
+    bottom: 30px;
+
+    .overlay-link {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      padding: 13px 12px;
+      @include flexCenter;
+      background-color: var(--data_site_theme_color);
+      @include box-shadow(0, 0, 10px, var(--data_box_shadow_color));
+      @include border-radius(50%);
+
+      &:hover,
+      &.active {
+        background-color: var(--data_site_secondary_color);
+        color: var(--data_site_theme_color);
+      }
+
+      i {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .card-body {
+    padding: 10px;
+    @include box(border-box);
+    @include position(relative);
+    border-bottom: 1px solid var(--data_border_color);
+    text-align: left;
+    flex: 1;
+
+    @media only screen and (min-width: $device-md) {
+      padding: 20px 15px 24px;
+      @include textCenter;
+    }
+  }
+
+  .sort-desc {
+    padding: 10px 15px;
+    @include flexbox;
+    @include flexColumn;
+    @include flexwrap;
+    row-gap: 5px;
+
+    @media only screen and (min-width: $device-md) {
+      @include flexrow;
+      justify-content: space-around;
+      @include align-item-center;
+    }
+
+    .border-right {
+      padding: 0 5px;
+
+      &:after {
+        @media only screen and (min-width: $device-md) {
+          content: '';
+          background: var(--data_border_color);
+          width: 1px;
+          height: 28px;
+          line-height: 28px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    span {
+      @include font-detail(14px, 24px);
+      display: inline-block;
+    }
+  }
+
+  .product-name {
+    @include font-xxs;
+    font-weight: 400;
+  }
+
+  .price-section {
+    @include flexbox;
+    margin-top: 8px;
+
+    @media only screen and (min-width: $device-md) {
+      @include align-item-center;
+      @include just-center;
+      margin-top: 12px;
+    }
+
+    .special-price {
+      @include font-detail(16px, 19px);
+      color: var(--data_site_secondary_color);
+
+      @media only screen and (min-width: $device-md) {
+        @include font-detail(18px, 22px);
+      }
+
+      @media only screen and (min-width: $device-xl) {
+        @include font-detail(20px, 24px);
+      }
+    }
+
+    .old-price {
+      @include font-detail(14px, 17px);
+      color: rgba(64, 64, 64, 0.5);
+      text-decoration: line-through;
+      margin-left: 10px;
+    }
+  }
+}
+
+.card {
+  .card-head {
+    .product-overlay {
+      @media only screen and (max-width: $device-md) {
+        bottom: -40px;
+        top: auto !important;
+        height: auto !important;
+        width: auto !important;
+        visibility: visible;
+        .overlay-link {
+          padding: 7px;
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+          i {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  .card-body {
+    margin-top:50px;
+    border-top: 1px solid var(--data_border_color);
+    @media only screen and (min-width: $device-md) {
+      margin-top: 0;
+      border-top: 0;
+    }
+    &.hide-icons {
+      margin: 0;
+      border: none;
+    }
+  }
+}

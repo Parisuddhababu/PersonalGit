@@ -1,0 +1,108 @@
+@import "../common/mixin";
+
+.sitemap-wrapper {
+    .sitemap-heading {
+        margin: 40px 0;
+
+        @media only screen and (max-width: $device-md) {
+            margin: 20px 0;
+        }
+    }
+
+    .main-cat-label {
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--data_border_color);
+        color: var(--data_site_text_color);
+
+        a {
+            color: var(--data_site_text_color);
+        }
+    }
+
+    .cat-label {
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .sitemap-group-link-section {
+        margin-bottom: 20px;
+        @include flexbox;
+        @include flexwrap;
+
+        .category-box {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 0 10px;
+
+            &.col-4 {
+                max-width: 25%;
+
+                @media only screen and (max-width: $device-sm) {
+                    max-width: 33.33%;
+                }
+
+                @media only screen and (max-width: $device-md) {
+                    max-width: 50%;
+                }
+
+                @media only screen and (max-width: $device-sm) {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .group-subcat {
+            @include flexbox;
+            @include flexwrap;
+
+            ul {
+                max-width: 24%;
+                width: 100%;
+                margin-bottom: 20px;
+
+                @media only screen and (max-width: $device-md) {
+                    max-width: 33.33%;
+                }
+            }
+        }
+
+        .inner-subcat-box {
+            @include flexbox;
+            @include flexwrap;
+            margin: 0 -10px;
+
+            .inner-box {
+                max-width: 25%;
+                width: 100%;
+                padding: 0 10px;
+
+                @media only screen and (max-width: $device-sm) {
+                    max-width: 100%;
+                }
+            }
+
+            .inner-box-wrapper {
+                @include flexbox;
+                @include flexwrap;
+
+                ul {
+                    max-width: 32%;
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    @media only screen and (max-width: ($device-lg - 1)) {
+                        max-width: 50%;
+                    }
+
+                    @media only screen and (max-width: $device-sm) {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

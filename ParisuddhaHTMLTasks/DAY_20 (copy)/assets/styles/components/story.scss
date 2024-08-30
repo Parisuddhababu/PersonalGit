@@ -1,0 +1,145 @@
+/* story  */
+.story {
+  @include flex-property-col;
+  @include justify-content-center;
+  @include align-center;
+  @include lg {
+    height: auto;
+    @include flex-property-row;
+    @include justify-content-center;
+    @include align-center;
+  }
+
+  .story-container {
+    background-color: $white-color;
+    max-width: 1300px;
+    min-height: 512px;
+    margin: auto auto;
+    position: relative;
+    @include flex-property-col;
+    @include justify-content-center;
+    padding:10px 15px 5px 15px;
+    .corn-bowl {
+      position: absolute;
+      left: 21px;
+      top: -92px;
+      visibility: hidden;
+      @include lg {
+        visibility: visible;
+      }
+      height: 100px;
+      width: 100px;
+      filter: drop-shadow(47.543px 63.092px 45px rgba(0, 0, 0, 0.76));
+      @include lg {
+        height: 180px;
+        width: 180px;
+      }
+      @include large {
+        top: -150px;
+        left: -60px;
+        height: 276px;
+        width: 283px;
+      }
+    }
+    .slider-pepper {
+      position: absolute;
+      left: 125px;
+      bottom: -52px;
+      z-index: 1;
+    }
+    .cards-container {
+      @include flex-property-col;
+      @include justify-content-center;
+      @include xl {
+        @include flex-property-row;
+        gap: 80px;
+      }
+      .story-headings-container {
+        font-size: 21px;
+        line-height: 33px;
+        color: $grey-color;
+        font-weight: 400;
+        font-family: $Playfair;
+        .events-sub-heading {
+          font-size: 35px;
+          line-height: 46px;
+          @include lg {
+            font-size: 42px;
+            line-height: 46px;
+          }
+          @include large {
+            margin-top: 25px;
+          }
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: $grey-color;
+          font-weight: 700;
+          font-family: $Playfair;
+        }
+        .events-main-heading {
+          font-size: 60px;
+          letter-spacing: 6px;
+          line-height: 46px;
+          color: $primary-color;
+          font-weight: 700;
+          font-family: $Playfair;
+          @include lg {
+            font-size: 75px;
+            margin-top: 10px;
+          }
+          @include xl {
+            font-size: 100px;
+          }
+        }
+      }
+
+      .story-content-container {
+        font-size: 21px;
+        line-height: 33px;
+        color: $grey-color;
+        font-weight: 400;
+        font-family: $Playfair;
+        margin-top: 20px;
+        position: relative;
+        .bell-pepper {
+          position: absolute;
+          bottom: -65px;
+          right: -27px;
+          visibility: hidden;
+          @include lg {
+            visibility: visible;
+          }
+        }
+        .story-text {
+          font-size: 16px;
+          @include xl {
+            font-size: 21px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+            max-width: 679px;
+          }
+        }
+        .story-read-more {
+          font-size: 17px;
+          letter-spacing: 3px;
+          line-height: 33px;
+          text-transform: uppercase;
+          color: $primary-color;
+          font-weight: 700;
+          font-family: $Playfair;
+          margin-top: 15px;
+          @include lg {
+            margin-top: 25px;
+          }
+          @include pointer;
+        }
+        .story-read-more:hover{
+          color: $grey-color;
+        }
+      }
+    }
+  }
+}

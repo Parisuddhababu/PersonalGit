@@ -1,0 +1,152 @@
+/* story  */
+.story {
+	width: auto;
+	background-color: $white-color;
+	height: 600px;
+	position: relative;
+	@include flex-property-col;
+	@include justify-content-center;
+	@include align-center;
+	@include sm {
+		@include justify-content-center;
+		@include align-center;
+	}
+	@include md {
+		@include justify-content-center;
+		@include align-center;
+	}
+	@include lg {
+		height: 512px;
+		display: flex;
+		@include justify-content-center;
+		@include align-center;
+	}
+
+	.bell-pepper {
+		position: absolute;
+		bottom: 12%;
+		right: 15%;
+		@include md {
+			bottom: 12%;
+			right: 15%;
+		}
+		@include lg {
+			bottom: 86px;
+			right: 45px;
+		}
+	}
+	.corn-bowl {
+		position: absolute;
+		top: -15%;
+		left: 5%;
+		height: 180px;
+		width: 180px;
+		filter: drop-shadow(47.543px 63.092px 45px rgba(0, 0, 0, 0.76));
+		@include md {
+			top: -15%;
+			left: 5%;
+		}
+		@include lg {
+			top: -28%;
+			left: 136px;
+			height: 276px;
+			width: 283px;
+		}
+	}
+	.story-container {
+		@include flex-property-col;
+		@include justify-content-center;
+		@include md {
+			@include flex-property-col;
+			@include justify-content-center;
+		}
+		@include lg {
+			@include flex-property-row;
+		}
+		.story-left-card {
+			width: 400px;
+			height: 131px;
+			font-size: 21px;
+			line-height: 33px;
+			color: $grey-color;
+			font-weight: 400;
+			font-family: $Playfair;
+			@include md {
+				width: 400px;
+				height: 131px;
+			}
+			@include lg {
+				width: 552px;
+				padding-left: 212px;
+			}
+			.events-sub-heading {
+				font-size: 35px;
+				@include lg {
+					font-size: 42px;
+				}
+				letter-spacing: 3px;
+				line-height: 5px;
+				text-transform: uppercase;
+				color: $grey-color;
+				font-weight: 700;
+				font-family: $Playfair;
+				margin-bottom: 30px;
+				margin-top: 10px;
+			}
+			.events-main-heading {
+				font-size: 60px;
+				@include lg {
+					font-size: 100px;
+				}
+				letter-spacing: 6px;
+				line-height: 80px;
+				color: $primary-color;
+				font-weight: 700;
+				font-family: $Playfair;
+				margin-bottom: 30px;
+				margin-top: 30px;
+			}
+		}
+
+		.story-right-card {
+			width: 679px;
+			height: 131px;
+			font-size: 21px;
+			line-height: 33px;
+			color: $grey-color;
+			font-weight: 400;
+			font-family: $Playfair;
+			margin-top: 20px;
+			@include md {
+				width: 679px;
+			}
+			@include lg {
+				width: 800px;
+			}
+			.story-text {
+				font-size: 24px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				word-wrap: break-word;
+				@include lg {
+					height: 131px;
+					width: 679px;
+				}
+			}
+			.story-read-more {
+				font-size: 17px;
+				letter-spacing: 3px;
+				line-height: 33px;
+				text-transform: uppercase;
+				color: $primary-color;
+				font-weight: 700;
+				font-family: $Playfair;
+				margin-top: 15px;
+				@include pointer;
+			}
+		}
+	}
+}

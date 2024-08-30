@@ -1,0 +1,114 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <form novalidate #videoFrm="ngForm" (ngSubmit)="onSaveVideo(videoFrm)">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Video <span class="asterisk_input"></span></label>
+              <div>
+                <ng-container #flowAdvanced="flow" [flowConfig]="flowConfig"></ng-container>
+                <div class="video-box has-upload" flowDrop [flow]="flowAdvanced.flowJs">
+                  <i
+                    *ngIf="showMainVideo"
+                    class="fa fa-2x fa-times-circle-o noVideo"
+                    aria-hidden="true"
+                    (click)="cancelVideo(upld_video)"
+                  ></i>
+                  <div [hidden]="showMainVideo" class="upload-area" id="uploadVideoFile">
+                    <input
+                      type="file"
+                      name="file"
+                      id="fileSelect"
+                      #upld_video
+                      flowButton
+                      [flow]="flowAdvanced.flowJs"
+                      [flowAttributes]="{ accept: 'video/mp4, video/webm, video/m4v, video/mpeg, video/mpv,video/quicktime' }"
+                    />
+                    <label for="fileSelect" id="dragFile"
+                      ><strong>Browse</strong> <span><br />for a video to upload</span>.</label
+                    >
+                    <input type="hidden" [(ngModel)]="model.valid_video" #valid_video="ngModel" name="valid_video" required />
+                  </div>
+                  <video
+                    [hidden]="!showMainVideo"
+                    #videoPlayer
+                    id="mainVideo"
+                    controls
+                    crossorigin="anonymous"
+                    class="upload-area"
+                    (loadedmetadata)="loadedVideo()"
+                    (timeupdate)="videoTimeUpdate()"
+                  >
+                    <source [src]="videoSrc" [type]="videoType" />
+                    Your browser does not support video.
+                  </video>
+                  <canvas id="video-canvas" style="display: none;" #canvasEle></canvas>
+                </div>
+                <div class="form-control-feedback text-danger" *ngIf="valid_video.errors && videoFrm.submitted">
+                  <p *ngIf="valid_video.errors.required">Please upload video</p>
+                </div>
+                <div class="videoUploadProgress" [hidden]="!showMainVideo">
+                  <div class="progressBarDiv">
+                    <div
+                      class="progress"
+                      id="ProdVideW"
+                      [ngStyle]="{ width: (flowAdvanced.transfers$ | async).totalProgress | percent }"
+                    ></div>
+                    <span class="progressValue" id="ProdVideV">{{ (flowAdvanced.transfers$ | async).totalProgress | percent }}</span>
+                    <!-- <span class="cancleUpload">X</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-2">( <strong>Allowed Extension: </strong> mp4, m4v, mov, mpeg, mpv, webm)</div>
+            <div class="form-group">
+              <strong>Note:</strong>
+              <span class="text-danger">
+                Your video is now processing. This will occur in the back end & can vary in time based on the video size. Please click
+                Upload & Save when your file reaches 100%.
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="thumbList.length > 0">
+            <div class="form-group">
+              <label>Select Video Thumb </label>
+              <div class="listVideoThumb">
+                <ul>
+                  <li class="videoThmDiv" *ngFor="let thumb of thumbList; let i = index">
+                    <label class="thumbList">
+                      <input type="radio" name="video_thumb" [id]="i" [value]="thumb" ngModel />
+                      <figure>
+                        <img alt="thumb" [src]="thumb" />
+                      </figure>
+                    </label>
+                  </li>
+                  <li class="customThumbLi" [hidden]="!showThumb">
+                    <label class="thumbList">
+                      <input type="radio" name="video_thumb" id="customThumbId" [value]="customThumbVal" ngModel />
+                      <figure>
+                        <img alt="thumb" [src]="customThumbVal" />
+                      </figure>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="thumbList customThumb">
+                      <input type="file" name="thumblist" (change)="changeImage($event)" accept="image/jpeg,image/jpg,image/png" />
+                      <div><i class="fa fa-camera text-white"></i><span>Upload your custom thumb</span></div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" [disabled]="isUploadDone" class="btn btn-primary">
+          <i class="fa fa-check-circle-o fa-lg"></i> Upload & Save</button
+        >&nbsp;
+      </div>
+    </form>
+  </div>
+</div>
+<app-loader></app-loader>

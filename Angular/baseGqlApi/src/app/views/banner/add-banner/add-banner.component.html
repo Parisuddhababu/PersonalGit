@@ -1,0 +1,76 @@
+<div>
+  <h2>{{ paramId ? "Update Banner" : "Create Banner" }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="bannerTitle">Banner Title</label><br />
+      <input type="text" id="bannerTitle" formControlName="bannerTitle" />
+      @if (form.controls.bannerTitle.touched && form.controls.bannerTitle.dirty
+      && form.controls.bannerTitle.invalid ){
+      <p style="color: red">Please enter banner title</p>
+      }
+    </div>
+
+    <div>
+      <label for="bannerTitleArabic">Banner Title Arabic</label><br />
+      <input
+        type="text"
+        id="bannerTitleArabic"
+        formControlName="bannerTitleArabic"
+      />
+      @if (form.controls.bannerTitleArabic.touched &&
+      form.controls.bannerTitleArabic.dirty &&
+      form.controls.bannerTitleArabic.invalid ){
+      <p style="color: red">Please enter banner arabic name</p>
+      }
+    </div>
+    <div>
+      <label for="status-bar">Status</label><br />
+      <input type="radio" id="active" name="status" formControlName="status" [value]=1  [checked]="bannerStatus ==1"/>
+      <label for="active">Active</label><br />
+      <input type="radio" id="Inactive" name="status" formControlName="status" [value]=0 [checked]="bannerStatus ==0"/>
+      <label for="Inactive">InActive</label><br />
+    </div>
+    <div class="banner-card">
+      <label for="bannerImage" class="banner-image"
+        ><div>
+          <span>{{
+            bannerImageUrl || bannerImage1
+              ? "Change image"
+              : "Upload Banner Image"
+          }}</span>
+        </div></label
+      ><br />
+      <input
+        type="file"
+        id="bannerImage"
+        class="banner-img"
+        formControlName="bannerImage"
+        (change)="handleImageChange($event)"
+      />
+      @if(bannerImageUrl || bannerImage1){
+      <img
+        [src]="paramId ? bannerImage1 : bannerImageUrl"
+        alt="Banner"
+        class="preview-image"
+      />
+      } @if(error){
+      <div class="error">
+        Image is required and must be jpeg/png with a size of 2MB or below,and
+        aspect ratio must be either 1:1 or 16:9.
+      </div>
+      }
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        class="submit"
+        [disabled]="form.invalid || error"
+        [ngClass]="{ 'invalid-form': form.invalid || error }"
+      >
+        {{ paramId ? "Update" : "Create" }}
+      </button>
+      <button type="button" class="cancel" (click)="Cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkbase_react_admin=self.webpackChunkbase_react_admin||[]).push([[793],{3793:function(e,n,a){a.r(n);a(2791);var t=a(184);n.default=function(){return(0,t.jsx)("div",{children:"Not Found"})}}}]);
+//# sourceMappingURL=793.d15dc84f.chunk.js.map

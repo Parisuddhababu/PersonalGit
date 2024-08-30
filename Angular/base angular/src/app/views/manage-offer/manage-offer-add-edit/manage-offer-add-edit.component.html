@@ -1,0 +1,333 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form (ngSubmit)="onOfferSave()" novalidate #offerFrm="ngForm" InvalidFormScrollNGFormDirective>
+          <div class="card-body">
+            <p class="col-sm-12 text-right requiredLabel">
+              <span [innerHTML]="'FORM_NOTE' | translate"></span>
+            </p>
+
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'OFFER_NAME' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.offer_name"
+                    type="text"
+                    name="offer_name"
+                    class="form-control"
+                    placeholder="{{ 'OFFER_NAME' | translate }}"
+                    required
+                    #offer_name="ngModel"
+                    autocomplete="off"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="offer_name.errors && offerFrm.submitted">
+                    <p *ngIf="offer_name.errors.required">
+                      {{ 'PLEASE_ENTER_OFFER_NAME' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'OFFER_CODE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.offer_code"
+                    type="text"
+                    name="offer_code"
+                    class="form-control"
+                    placeholder="{{ 'OFFER_CODE' | translate }}"
+                    required
+                    [pattern]="CommonRegx.offerCodeRegx"
+                    #offer_code="ngModel"
+                    autocomplete="off"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="offer_code.errors && offerFrm.submitted">
+                    <p *ngIf="offer_code.errors.required">
+                      {{ 'PLEASE_ENTER_OFFER_CODE' | translate }}
+                    </p>
+                    <p *ngIf="offer_code.errors.pattern">
+                      {{ 'PLEASE_ENTER_VALID_OFFER_CODE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="device_type">{{ 'OFFER_TYPE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="percentage"
+                        >{{ 'PERCENTAGE' | translate }}
+                        <input
+                          [(ngModel)]="model.offer_type"
+                          name="offerType"
+                          class="form-check-input"
+                          type="radio"
+                          id="percentage"
+                          value="0"
+                          #offerType="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="amount"
+                        >{{ 'AMOUNT' | translate }}
+                        <input
+                          class="form-check-input"
+                          name="offerType"
+                          [(ngModel)]="model.offer_type"
+                          type="radio"
+                          id="amount"
+                          value="1"
+                          #offerType="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+                    <div class="form-control-feedback text-danger" *ngIf="offerType.errors && offerFrm.submitted">
+                      <p *ngIf="offerType.errors.required">{{ 'PLEASE_SELECT_OFFER_TYPE' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12" *ngIf="model.offer_type == 0">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'OFFER_VALUE' | translate }} (%) <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.offer_value"
+                    type="text"
+                    name="offer_value"
+                    class="form-control"
+                    placeholder="{{ 'OFFER_VALUE' | translate }}"
+                    required
+                    #offer_value="ngModel"
+                    [pattern]="CommonRegx.percentRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="offer_value.errors && offerFrm.submitted">
+                    <p *ngIf="offer_value.errors.required">
+                      {{ 'PLEASE_ENTER_OFFER_VALUE' | translate }}
+                    </p>
+                    <p *ngIf="offer_value.errors.pattern">
+                      {{ 'PLEASE_ENTER_VALID_OFFER_VALUE_PERCENTAGE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12" *ngIf="model.offer_type == 1">
+                <div class="form-group">
+                  <label for="meta_keywords">{{ 'OFFER_VALUE' | translate }} <span class="asterisk_input"></span></label>
+                  <input
+                    [(ngModel)]="model.offer_value"
+                    type="text"
+                    name="offer_value"
+                    class="form-control"
+                    placeholder="{{ 'OFFER_VALUE' | translate }}"
+                    required
+                    #offer_value="ngModel"
+                    minlength="1"
+                    maxlength="12"
+                    [pattern]="CommonRegx.PriceRegx"
+                  />
+                  <div class="form-control-feedback text-danger" *ngIf="offer_value.errors && offerFrm.submitted">
+                    <p *ngIf="offer_value.errors.required">
+                      {{ 'PLEASE_ENTER_OFFER_VALUE' | translate }}
+                    </p>
+                    <p *ngIf="offer_value.errors.pattern">
+                      {{ 'PLEASE_ENTER_VALID_OFFER_VALUE_AMOUNT' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label>{{ 'START_DATE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="model.start_date"
+                      name="start_date"
+                      [disabled]="editMode"
+                      type="text"
+                      class="form-control"
+                      #start_date="ngModel"
+                      required
+                      placeholder="MM/DD/YYYY"
+                      #sDate="bsDatepicker"
+                      [minDate]="minDate"
+                      placement="top"
+                      bsDatepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="sDate.toggle()"></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="start_date.errors && offerFrm.submitted">
+                    <p *ngIf="start_date.errors.required">
+                      {{ 'PLEASE_SELECT_START_DATE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'END_DATE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="dtePkr">
+                    <input
+                      [(ngModel)]="model.end_date"
+                      [disabled]="!model.start_date"
+                      name="end_date"
+                      type="text"
+                      class="form-control"
+                      #end_date="ngModel"
+                      required
+                      placeholder="MM/DD/YYYY"
+                      #eDate="bsDatepicker"
+                      [minDate]="maxEndDate(model.start_date)"
+                      placement="top"
+                      bsDatepicker
+                      autocomplete="off"
+                      [bsConfig]="dateRangeConfig"
+                    />
+                    <i class="fa fa-calendar crsr-ptr" (click)="eDate.toggle()"></i>
+                  </div>
+                  <div class="form-control-feedback text-danger" *ngIf="end_date.errors && offerFrm.submitted">
+                    <p *ngIf="end_date.errors.required">
+                      {{ 'PLEASE_SELECT_END_DATE' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="device_type">{{ 'OFFER_USAGE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="onetime"
+                        >{{ 'ONE_TIME' | translate }}
+                        <input
+                          [(ngModel)]="model.offer_usage"
+                          name="offerUsage"
+                          class="form-check-input"
+                          type="radio"
+                          id="onetime"
+                          value="1"
+                          #offerUsage="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="multipletime"
+                        >{{ 'MULTIPLE_TIME' | translate }}
+                        <input
+                          class="form-check-input"
+                          name="offerUsage"
+                          [(ngModel)]="model.offer_usage"
+                          type="radio"
+                          id="multipletime"
+                          value="0"
+                          #offerUsage="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+                    <div class="form-control-feedback text-danger" *ngIf="offerUsage.errors && offerFrm.submitted">
+                      <p *ngIf="offerUsage.errors.required">{{ 'PLEASE_SELECT_OFFER_USAGE' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="device_type">{{ 'APPLICABLE' | translate }} <span class="asterisk_input"></span></label>
+                  <div class="d-block">
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="all_user"
+                        >{{ 'ALL' | translate }}
+                        <input
+                          class="form-check-input"
+                          name="applicable_user"
+                          [(ngModel)]="model.applicable"
+                          type="radio"
+                          id="all_user"
+                          value="0"
+                          #applicable_user="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="selected_user"
+                        >{{ 'SELECTED_USER' | translate }}
+                        <input
+                          class="form-check-input"
+                          name="applicable_user"
+                          [(ngModel)]="model.applicable"
+                          type="radio"
+                          id="selected_user"
+                          value="1"
+                          #applicable_user="ngModel"
+                          required
+                        />
+                        <span class="radio-span"></span>
+                      </label>
+                    </div>
+                    <div class="form-control-feedback text-danger" *ngIf="applicable_user.errors && offerFrm.submitted">
+                      <p *ngIf="applicable_user.errors.required">{{ 'PLEASE_SELECT_APPLICABLE_USERS' | translate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row open-top" *ngIf="model.applicable == '1'">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>{{ 'SELECTED_USER' | translate }} <span class="asterisk_input"></span></label>
+                  <ng-multiselect-dropdown
+                    placeholder="{{ 'SELECT_USER' | translate }}"
+                    [settings]="userSettings"
+                    [data]="userList"
+                    [(ngModel)]="model.user_ids"
+                    name="user_ids"
+                    #user_ids="ngModel"
+                    required
+                  >
+                  </ng-multiselect-dropdown>
+                  <div class="form-control-feedback text-danger" *ngIf="user_ids.errors && offerFrm.submitted">
+                    <p *ngIf="user_ids.errors.required">
+                      {{ 'PLEASE_SELECT_APPLICABLE_USERS' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              {{ 'SAVE' | translate }}</button
+            >&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/manage-offer/list']"><i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader></app-loader>

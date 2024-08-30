@@ -1,0 +1,147 @@
+@import "../common/variable";
+@import "../common/mixin";
+
+.slider {
+  position: relative;
+  width: 100%;
+}
+
+.range-slider {
+  margin-top: 8px;
+  position: relative;
+  z-index: 0;
+}
+
+.slider-track,
+.slider-range,
+.slider-left-value,
+.slider-right-value {
+  position: absolute;
+}
+
+.slider-track,
+.slider-range {
+  @include border-radius(3px);
+  height: 5px;
+}
+
+.slider-track {
+  background-color: var(--data_site_secondary_color);
+  width: 100%;
+  z-index: 1;
+}
+
+.slider-range {
+  background-color: var(--data_site_primary_color);
+  z-index: 2;
+}
+
+.slider-left-value,
+.slider-right-value {
+  color: var(--data_site_text_color);
+  font-size: inherit;
+  margin-top: 25px;
+}
+
+.slider-left-value {
+  left: -20px;
+}
+
+.slider-right-value {
+  right: -20px;
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 95%;
+  outline: none;
+}
+
+.thumb--zindex-3 {
+  z-index: 3;
+  left: 0;
+}
+
+.thumb--zindex-4 {
+  z-index: 4;
+  right: 0;
+}
+
+.thumb--zindex-5 {
+  z-index: 5;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+  background-color: #f1f5f7;
+  border: none;
+  @include border-radius(50%);
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+  background-color: #f1f5f7;
+  border: none;
+  @include border-radius(50%);
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+.apply-button {
+  @include flexbox;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding-top: 50px;
+
+  @media only screen and (min-width: $device-md) {
+    padding-top: 60px;
+  }
+
+  .ml-1 {
+    margin-left: 10px;
+  }
+}
+
+button {
+  display: block;
+  @include textCenter;
+  outline: none;
+  cursor: pointer;
+  @include box-shadow-none;
+  border-radius: var(--data_site_border_radius);
+  text-decoration: none !important;
+  position: relative;
+  border: 1px solid;
+  padding: 8px 15px;
+  height: 40px;
+  font-size: 14px;
+  line-height: 20px;
+
+  @media only screen and (min-width: $device-xl) {
+    padding: 13px 20px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

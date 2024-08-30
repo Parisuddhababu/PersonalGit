@@ -1,0 +1,61 @@
+@import "../common/mixin";
+// @import "../components/simple-feature";
+// @import "../components/modal";
+// @import "../components/ask-question-popup";
+// @import "../components/write-review-popup";
+// @import "../components/customise-product-popup";
+// @import "../components/review-item-popup";
+// @import "../components/view-price-breakup-popup";
+// @import "../components/card";
+
+*,
+*::before,
+*::after {
+  @include box(border-box);
+}
+
+body {
+  @include body-common;
+}
+
+main,
+section {
+  display: block;
+}
+
+img,
+a,
+input,
+textarea,
+p {
+  @include space-none;
+}
+
+ul,
+li {
+  @include order-unoderlist;
+}
+
+a {
+  @include anchor-link-common;
+}
+
+img {
+  @include img-common;
+}
+
+main {
+  @include main;
+}
+
+.container {
+  @include container;
+}
+
+section {
+  @include section;
+}
+
+p {
+  margin-bottom: 30px;
+}

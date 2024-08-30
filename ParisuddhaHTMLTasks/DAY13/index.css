@@ -1,0 +1,248 @@
+body {
+    width: 780px;
+    margin: auto;
+}
+
+.header-image {
+    height: 135px;
+    width: 150px;
+    object-fit: contain;
+    padding-left: 30px;
+}
+
+.blue-heading {
+    font-size: larger;
+    font-weight: bold;
+    color: #008DD2;
+    padding-left: 30px;
+}
+
+.headings-container {
+    display: flex;
+    padding-left: 30px;
+    justify-content: space-between;
+}
+
+.font-size-container {
+    padding-left: 30px;
+}
+
+.light-box {
+    height: 100px;
+    width: 100px;
+    background-color: #f1f1f1;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.white-box {
+    height: 100px;
+    width: 100px;
+    background-color: #ffffff;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.black-box {
+    height: 100px;
+    width: 100px;
+    background-color: #202020;
+}
+
+.blue-box {
+    height: 100px;
+    width: 100px;
+    background-color: #008dd2;
+}
+
+.middle-section {
+    padding-left: 30px;
+    margin-top: 7%;
+}
+
+.section-3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* ........................... */
+.container1 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.container1:hover input ~ .checkmark1 {
+    background-color: #ccc;
+}
+
+.container1 input:checked ~ .checkmark1 {
+    background-color: #2196F3;
+}
+
+.checkmark1:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container1 input:checked ~ .checkmark1:after {
+    display: block;
+}
+
+.container1 .checkmark1:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.section-5 {
+    display: flex;
+}
+
+.section-2-Montserrat {
+    font-weight: 900;
+    font-size: 40px;
+    margin: 0%
+}
+
+.section-2-regular {
+    font-weight: 100;
+    font-size: 40px;
+    margin: 0%
+}
+
+.section-2-SemiBold {
+    font-weight: 500;
+    font-size: 40px;
+    margin: 0%
+}
+
+.section-2-bold {
+    font-weight: bolder;
+    font-size: 40px;
+    margin: 0%
+}
+
+.white-box-cont {
+    margin-right: 10px;
+    margin-left: 10px
+}
+
+.sec-4-cont {
+    display: flex;
+    padding-left: 30px
+}
+
+.btn-normal {
+    height: 60px;
+    width: 150px;
+    margin-left: 30px;
+    background-image: linear-gradient(to right, #008dd2 0%, #008dd2 50%, #1d84b8 51%, #1d84b8 100%);
+    color: white;
+    border-radius: 12px;
+}
+
+.btn-hover {
+    height: 60px;
+    width: 150px;
+    margin-left: 30px;
+    background-color: #1d84b8;
+    color: white;
+    border-radius: 12px
+}
+
+.section-6 {
+    margin-bottom: 20px;
+}
+
+.sec-3-blue-heading {
+    color: #008dd2
+}
+
+.sec-3-box-cont {
+    display: flex;
+    padding-left: 30px;
+}
+.white-box-margin{
+    margin-right: 10px; margin-left: 10px
+}

@@ -1,0 +1,238 @@
+diff --git a/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipBase.tsx b/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipBase.tsx
+index 35651c5..624dfae 100644
+--- a/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipBase.tsx
++++ b/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipBase.tsx
+@@ -16,8 +16,8 @@ import {
+ } from '@graphcommerce/next-ui'
+ import { i18n } from '@lingui/core'
+ import { Trans } from '@lingui/react'
+-import { SxProps, Theme, IconButton, Box, IconButtonProps } from '@mui/material'
+-import { useState, useEffect } from 'react'
++import { SxProps, Theme, IconButton, Box, IconButtonProps, Typography } from '@mui/material'
++import { useState, useEffect, useContext } from 'react'
+ import { useWishlistEnabled } from '../../hooks'
+ import { AddProductToWishlistDocument } from '../../queries/AddProductToWishlist.gql'
+ import { GetIsInWishlistsDocument } from '../../queries/GetIsInWishlists.gql'
+@@ -25,6 +25,8 @@ import { GuestWishlistDocument } from '../../queries/GuestWishlist.gql'
+ import { RemoveProductFromWishlistDocument } from '../../queries/RemoveProductFromWishlist.gql'
+ import { WishlistSummaryFragment } from '../../queries/WishlistSummaryFragment.gql'
+ import { ProductWishlistChipFragment } from './ProductWishlistChip.gql'
++import router from 'next/router'
++import { UIContext } from '../../../../../components/common/contexts/UIContext'
+ 
+ const hideForGuest = import.meta.graphCommerce.wishlistHideForGuests
+ const ignoreProductWishlistStatus = import.meta.graphCommerce.wishlistIgnoreProductWishlistStatus
+@@ -32,6 +34,7 @@ const ignoreProductWishlistStatus = import.meta.graphCommerce.wishlistIgnoreProd
+ export type ProductWishlistChipProps = ProductWishlistChipFragment & { sx?: SxProps<Theme> } & {
+   showFeedbackMessage?: boolean
+   buttonProps?: IconButtonProps
++  title?: string
+ }
+ 
+ export type WishListItemType = NonNullable<
+@@ -43,7 +46,8 @@ const parts = ['root', 'wishlistIcon', 'wishlistIconActive', 'wishlistButton'] a
+ const { classes } = extendableComponent(compName, parts)
+ 
+ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+-  const { name, sku, url_key, showFeedbackMessage, buttonProps, sx = [] } = props
++  const { name, sku, url_key, showFeedbackMessage, buttonProps, sx = [] ,title} = props
++  const [, setState] = useContext(UIContext)
+ 
+   const addToCartForm = useFormAddProductsToCart(true)
+ 
+@@ -51,7 +55,7 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+   const [displayMessageBar, setDisplayMessageBar] = useState(false)
+ 
+   const { loggedIn } = useCustomerSession()
+-  const [addWishlistItem] = useMutation(AddProductToWishlistDocument)
++  const [addWishlistItem, {data, error}] = useMutation(AddProductToWishlistDocument)
+   const [removeWishlistItem] = useMutation(RemoveProductFromWishlistDocument)
+ 
+   const { data: GetCustomerWishlistData, loading } = useCustomerQuery(GetIsInWishlistsDocument)
+@@ -63,6 +67,7 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+   const isWishlistEnabled = useWishlistEnabled()
+ 
+   const heart = (
++    <>
+     <IconSvg
+       src={iconHeart}
+       size='medium'
+@@ -74,6 +79,8 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+             : theme.palette.primary.main,
+       })}
+     />
++    {title &&  <Typography fontWeight='bold'><Trans id ='ADD TO WISH LIST'/></Typography>}
++    </>
+   )
+ 
+   const activeHeart = (
+@@ -102,12 +109,54 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+           (item) => item?.product?.url_key,
+         ) || []
+       setInWishlist(inWishlistTest.includes(url_key))
++      
+     } else if (!loggedIn) {
+       const inWishlistTest =
+         guestWishlistData?.guestWishlist?.items.map((item) => item?.url_key) || []
+       setInWishlist(inWishlistTest.includes(url_key))
+     }
+-  }, [loggedIn, url_key, loading, GetCustomerWishlistData, guestWishlistData, sku])
++
++    if(error){
++      setState((prev) => ({
++        ...prev,
++        alerts: [
++          {
++            type: 'error',
++            message: `<span>Something went wrong!</span>` ,
++            timeout: 7000,
++            targetLink: router?.pathname,
++          },
++        ],
++      }))
++    }
++    if(data?.addProductsToWishlist){
++      if(inWishlist){
++        setState((prev) => ({
++          ...prev,
++          alerts: [
++            {
++              type: 'success',
++              message: `<span>${name} has been removed from your Wish List.</span>` ,
++              timeout: 7000,
++              targetLink: "/account/wishlist",
++            },
++          ],
++        }))
++      }
++      router.push("/account/wishlist");
++        setState((prev) => ({
++          ...prev,
++          alerts: [
++            {
++              type: 'success',
++              message: `<span>${name} has been added to your Wish List. Click <a href='/'>here</a> to continue shopping </span>` ,
++              timeout: 7000,
++              targetLink: "/account/wishlist",
++            },
++          ],
++        }))
++    }
++  }, [loggedIn, url_key, loading, GetCustomerWishlistData, guestWishlistData, sku, data, error])
+ 
+   const preventAnimationBubble: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+     e.preventDefault()
+@@ -131,9 +180,8 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+     
+     if (loggedIn) {
+       if (inWishlist && !ignoreProductWishlistStatus) {
+-        const wishlistItemsInSession =
+-          GetCustomerWishlistData?.customer?.wishlists[0]?.items_v2?.items || []
+ 
++        const wishlistItemsInSession = GetCustomerWishlistData?.customer?.wishlists[0]?.items_v2?.items || []
+         const item = wishlistItemsInSession.find((element) => element?.product?.url_key === url_key)
+ 
+         if (item?.id) {
+@@ -142,40 +190,24 @@ export function ProductWishlistChipBase(props: ProductWishlistChipProps) {
+         }
+       } else {
+         // eslint-disable-next-line @typescript-eslint/no-floating-promises
+-        addWishlistItem({ variables: { input: [{ sku, quantity: 1, selected_options }] } })
++        addWishlistItem({ variables: { input: [{ sku, quantity: 1, selected_options : selected_options.filter((el)=>!el)?.length > 0 ? [] : selected_options }] } })
+         setDisplayMessageBar(true)
+       }
+-    } else if (inWishlist) {
+-      cache.modify({
+-        id: cache.identify({ __typename: 'GuestWishlist' }),
+-        fields: {
+-          items(existingItems: WishListItemType[] = []) {
+-            const items = existingItems.filter((item) => item?.url_key !== url_key)
+-            return items
+-          },
+-        },
+-      })
+     } else {
+       /** Merging of wishlist items is done by policy, see typePolicies.ts */
+-      cache.writeQuery({
+-        query: GuestWishlistDocument,
+-        data: {
+-          guestWishlist: {
+-            __typename: 'GuestWishlist',
+-            items: [
+-              {
+-                __typename: 'GuestWishlistItem',
+-                sku,
+-                url_key,
+-                quantity: 1,
+-                selected_options,
+-              },
+-            ],
++      
++      router.push("/account/signin");
++      setState((prev) => ({
++        ...prev,
++        alerts: [
++          {
++            type: 'error',
++            message: `<span>You must login or register to add items to your wishlist </span>` ,
++            timeout: 7000,
++            targetLink: "/account/signin",
+           },
+-        },
+-        broadcast: true,
+-      })
+-      setDisplayMessageBar(true)
++        ],
++      }))
+     }
+   }
+ 
+diff --git a/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipDetail.tsx b/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipDetail.tsx
+index a62bf9e..ceabf00 100644
+--- a/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipDetail.tsx
++++ b/node_modules/@graphcommerce/magento-wishlist/components/ProductWishlistChip/ProductWishlistChipDetail.tsx
+@@ -1,12 +1,13 @@
++
+ import { ProductWishlistChipBase, ProductWishlistChipProps } from './ProductWishlistChipBase'
+ 
+ export function ProductWishlistChipDetail(props: ProductWishlistChipProps) {
+   return (
++    <>
+     <ProductWishlistChipBase
+-      sx={(theme) => ({
+-        boxShadow: theme.shadows[6],
+-      })}
+       {...props}
++      title='ADD TO WISHLIST'
+     />
++    </>
+   )
+ }
+diff --git a/node_modules/@graphcommerce/magento-wishlist/queries/GetWishlistProducts.graphql b/node_modules/@graphcommerce/magento-wishlist/queries/GetWishlistProducts.graphql
+index ca299a1..fca4c60 100644
+--- a/node_modules/@graphcommerce/magento-wishlist/queries/GetWishlistProducts.graphql
++++ b/node_modules/@graphcommerce/magento-wishlist/queries/GetWishlistProducts.graphql
+@@ -13,6 +13,7 @@ query GetWishlistProducts {
+             sku
+             ...ProductListItem
+           }
++          __typename
+         }
+       }
+     }
+diff --git a/node_modules/@graphcommerce/magento-wishlist/queries/WishlistSummaryFragment.graphql b/node_modules/@graphcommerce/magento-wishlist/queries/WishlistSummaryFragment.graphql
+index 23ae8f6..22d07fa 100644
+--- a/node_modules/@graphcommerce/magento-wishlist/queries/WishlistSummaryFragment.graphql
++++ b/node_modules/@graphcommerce/magento-wishlist/queries/WishlistSummaryFragment.graphql
+@@ -1,6 +1,11 @@
+ fragment WishlistSummaryFragment on Wishlist {
+   id
+   items_count
++  items {
++          id
++          qty
++          description
++        }
+   items_v2 {
+     items {
+       id

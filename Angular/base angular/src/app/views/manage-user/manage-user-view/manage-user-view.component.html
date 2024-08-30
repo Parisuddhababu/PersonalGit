@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+  <div class="row" #page>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-user"></i>{{ 'USER_DETAILS' | translate }}
+          <a routerLink="/manage-user" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> {{ 'BACK' | translate }}</a>
+          <a (click)="printPdf(page)" class="btn btn-secondary pull-right mr-2"
+            ><i class="fa fa-print fa-lg"></i> {{ 'PRINT' | translate }}</a
+          >
+        </div>
+        <div class="card-body view-user">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>{{ 'PROFILE_PHOTO' | translate }}</label>
+                <div class="profile">
+                  <div class="profile-wrapper">
+                    <img [src]="url" (error)="onErrorProfileImage($event)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-9">
+              <label>{{ 'ABOUT_ME' | translate }} </label>
+              <div>
+                This is static text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis felis vel libero volutpat, id
+                scelerisque nulla suscipit. Donec ante ante, iaculis non nunc vel, mattis sollicitudin ligula. Vivamus nisi mi, suscipit nec
+                pellentesque ut, laoreet eu lorem. Nullam vel tempor quam. Maecenas porttitor sapien sem, sit amet blandit libero consequat
+                in. Donec a mollis arcu, vel pharetra tortor. Nunc tristique felis a semper congue...
+                <a href="javascript:void(0);">Read more</a>
+              </div>
+            </div> -->
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'FULL_NAME' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.fullname }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'EMAIL' | translate }} </label>
+                <div class="col-md-7">
+                  <a href="mailto:{{ model.email }}">{{ model.email }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'USERNAME' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.username }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'PHONE_NUMBER' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.mobileNumber }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'DOB' | translate }}</label>
+                <div class="col-md-7">
+                  {{ model.dob | customDate: momentDateFormat }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'GENDER' | translate }} </label>
+                <div class="col-md-7">
+                  {{ model.gender }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <label class="col-md-5">{{ 'STATUS' | translate }} </label>
+                <div class="col-md-7">
+                  <span [ngClass]="getStatusClass(model.status)" class="badge">{{ model.status }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
