@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task8</title>
+		<link href="./output.css" rel="stylesheet" />
+	</head>
+	<body>
+		<h1>Tailwind Task 8</h1>
+		<main>
+			<section>
+				<h2>Spacing</h2>
+				<h2>Padding</h2>
+				<div class="flex items-start justify-between text-center">
+					<div class="padding-box p-3">
+						<div class="bg-slate-200 h-12">p-3</div>
+					</div>
+					<div class="padding-box px-3">
+						<div class="bg-slate-200 h-12">px-3</div>
+					</div>
+
+					<div class="padding-box py-3">
+						<div class="bg-slate-200 h-12">py-3</div>
+					</div>
+					<div class="padding-box pt-3">
+						<div class="bg-slate-200 h-12">pt-3</div>
+					</div>
+					<div class="padding-box pl-3">
+						<div class="bg-slate-200 h-12">pl-3</div>
+					</div>
+					<div class="padding-box pr-3">
+						<div class="bg-slate-200 h-12">pr-3</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2 class="text-xl font-extrabold text-lightPink my-3 text-center">Margin</h2>
+				<div class="flex justify-between text-center">
+					<div class="padding-box">
+						<div class="bg-slate-200 m-2 h-12">m-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 mt-2 h-12">mt-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 mb-2 h-12">mb-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 ml-2 h-16">ml-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 mr-2 h-16">mr-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 my-2 h-12">my-2</div>
+					</div>
+					<div class="padding-box">
+						<div class="bg-slate-200 mx-2 h-16">mx-2</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Justify Content</h2>
+				<div class="flex justify-start space-x-8 text-center bg-gray p-3">
+					<div class="justify-box">01</div>
+					<div class="justify-box">02</div>
+					<div class="justify-box">03</div>
+					<div class="justify-box">04</div>
+					<div class="justify-box">05</div>
+				</div>
+				<h2>Justify Between</h2>
+				<div class="flex justify-between text-center p-4 bg-gray">
+					<div class="justify-box">01</div>
+					<div class="justify-box">02</div>
+					<div class="justify-box">03</div>
+					<div class="justify-box">04</div>
+					<div class="justify-box">05</div>
+				</div>
+			</section>
+			<section>
+				<h2>Justify Items</h2>
+				<div class="grid justify-items-start text-center p-1 bg-gray">
+					<div class="justify-box">01</div>
+				</div>
+				<div class="grid justify-items-center text-center bg-gray">
+					<div class="justify-box">01</div>
+				</div>
+				<div class="grid justify-items-end text-center bg-gray">
+					<div class="justify-box">01</div>
+				</div>
+			</section>
+			<section>
+				<h2>Justify self</h2>
+				<div class="grid grid-cols-1 gap-4 text-center bg-gray h-auto p-3 content-start">
+					<div class="justify-box-self justify-self-end w-20 h-16">01</div>
+					<div class="justify-box-self">02</div>
+					<div class="justify-box-self justify-self-center w-20 h-16">03</div>
+					<div class="justify-box-self">04</div>
+					<div class="justify-box-self justify-self-start w-20 h-16">05</div>
+					<div class="justify-box-self">06</div>
+				</div>
+			</section>
+			<section>
+				<h2>Align Content</h2>
+				<div class="grid grid-cols-3 gap-4 text-center bg-gray h-56 content-stretch my-2">
+					<div class="justify-box-self">01</div>
+					<div class="justify-box-self">02</div>
+					<div class="justify-box-self">03</div>
+					<div class="justify-box-self">04</div>
+					<div class="justify-box-self">05</div>
+					<div class="justify-box-self">06</div>
+				</div>
+				<div class="grid grid-cols-3 gap-4 text-center bg-gray h-56 content-between my-2">
+					<div class="justify-box-self">01</div>
+					<div class="justify-box-self">02</div>
+					<div class="justify-box-self">03</div>
+					<div class="justify-box-self">04</div>
+					<div class="justify-box-self">05</div>
+					<div class="justify-box-self">06</div>
+				</div>
+				<div class="grid grid-cols-3 gap-4 text-center bg-gray h-56 content-evenly my-2">
+					<div class="justify-box-self">01</div>
+					<div class="justify-box-self">02</div>
+					<div class="justify-box-self">03</div>
+					<div class="justify-box-self">04</div>
+					<div class="justify-box-self">05</div>
+					<div class="justify-box-self">06</div>
+				</div>
+			</section>
+			<section>
+				<h2>Align Items</h2>
+				<div class="flex gap-4 w-full rounded-lg bg-gray text-center items-start my-2">
+					<div class="flex-1 rounded-lg bg-slate-200 py-4">01</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-12">02</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-8">03</div>
+				</div>
+				<div class="flex gap-4 w-full rounded-lg bg-gray text-center items-center my-2">
+					<div class="flex-1 rounded-lg bg-slate-200 py-4">01</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-12">02</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-8">03</div>
+				</div>
+				<div class="flex gap-4 w-full rounded-lg bg-gray text-center items-end my-2">
+					<div class="flex-1 rounded-lg bg-slate-200 py-4">01</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-12">02</div>
+					<div class="flex-1 rounded-lg bg-slate-200 py-8">03</div>
+				</div>
+			</section>
+			<section>
+				<h2>Align self</h2>
+				<div class="flex items-stretch gap-4 rounded-lg bg-gray text-center h-24">
+					<div class="p-4 flex-1 rounded-lg bg-slate-200 self-center">01</div>
+					<div class="p-4 flex-1 rounded-lg bg-slate-200 self-start">02</div>
+					<div class="p-4 flex-1 rounded-lg bg-slate-200 self-end">03</div>
+				</div>
+			</section>
+			<section>
+				<h2>Place Content</h2>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-start h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-end h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-center h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+			</section>
+			<section>
+				<h2>Place Content Between</h2>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-between h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-around h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+				<div class="grid grid-cols-[repeat(2,56px)] place-content-evenly h-32 gap-4 bg-gray text-center">
+					<div class="place-content-box">01</div>
+					<div class="place-content-box">02</div>
+					<div class="place-content-box">03</div>
+					<div class="place-content-box">04</div>
+				</div>
+			</section>
+			<section>
+				<h2>Place Items</h2>
+				<div class="grid grid-cols-3 h-32 gap-4">
+					<div class="bg-gray grid place-items-start">
+						<div class="p-4 w-14 rounded-lg bg-slate-200">01</div>
+					</div>
+					<div class="bg-gray grid place-items-center">
+						<div class="p-4 w-14 rounded-lg bg-slate-200">02</div>
+					</div>
+					<div class="bg-gray grid place-items-end">
+						<div class="p-4 w-14 rounded-lg bg-slate-200">03</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Place Self Items</h2>
+				<div class="grid h-16 gap-4 bg-gray text-center">
+					<div class="p-4 w-20 h-16 rounded-lg bg-slate-200 place-self-start">01</div>
+				</div>
+				<div class="grid h-16 gap-4 bg-gray text-center">
+					<div class="p-4 w-20 h-16 rounded-lg bg-slate-200 place-self-center">02</div>
+				</div>
+				<div class="grid h-16 gap-4 bg-gray text-center">
+					<div class="p-4 w-20 h-16 rounded-lg bg-slate-200 place-self-end">03</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

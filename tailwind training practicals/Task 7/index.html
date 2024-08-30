@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task7</title>
+		<link href="./output.css" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<h1>Tailwind Task 7</h1>
+		<section>
+			<h2>flex,flex basis,flex direction,flex wrap,flex grow,flex shrink</h2>
+			<h3 class="small-heading pb-4">Flex & FlexBasis</h3>
+			<div class="flex-box-container">
+				<div class="basis-1/4 flex-box">01</div>
+				<div class="basis-1/4 flex-box">02</div>
+				<div class="basis-1/2 flex-box">03</div>
+				<div class="basis-1/4 flex-box">04</div>
+				<div class="basis-1/4 flex-box">05</div>
+				<div class="basis-1/2 flex-box">06</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="small-heading pb-4">Flex Wrapper</h3>
+			<div class="flex-wrapper-container">
+				<div class="flex-wrapper">01</div>
+				<div class="flex-wrapper">02</div>
+				<div class="flex-wrapper">03</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="small-heading pb-4">Flex</h3>
+			<div class="flex flex-row-reverse lg:flex-row gap-4 text-center">
+				<div class="flex-grow-shrink flex-auto">Flex-auto</div>
+				<div class="flex-grow-shrink flex-1">Flex-1</div>
+				<div class="flex-grow-shrink flex-none">Flex-none</div>
+				<div class="flex-grow-shrink flex-initial">Flex-initial</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="small-heading">Flex Col</h3>
+			<div class="flex flex-col-reverse lg:flex-col justify-center items-center gap-4 text-center">
+				<div class="flex-grow-shrink">1</div>
+				<div class="flex-grow-shrink">2</div>
+				<div class="flex-grow-shrink">3</div>
+				<div class="flex-grow-shrink">4</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="small-heading pb-4">Flex Grow,Shrink</h3>
+			<div class="flex flex-row gap-4 text-center">
+				<div class="flex-grow-shrink flex-grow-0">Flex-grow-0</div>
+				<div class="flex-grow-shrink flex-shrink">Flex-shrink</div>
+				<div class="flex-grow-shrink flex-shrink-0 flex-grow-0">Flex-shrink-0</div>
+				<div class="flex-grow-shrink flex-grow">Flex-grow</div>
+			</div>
+		</section>
+		<section>
+			<h2>order,Grid Template Columns,Grid Column Start / End,Grid Template Rows,Grid Row Start / End,Grid Auto Flow,Grid Auto Columns,Grid Auto Rows,gap</h2>
+			<section>
+				<h3 class="text-3xl font-playball py-4">Order</h3>
+				<div class="flex flex-col gap-y-3 justify-between text-center">
+					<p class="min-w-28 rounded-lg py-4 bg-gray text-white order-last">01</p>
+					<p class="min-w-28 rounded-lg py-4 bg-gray text-white order-first">02</p>
+					<p class="min-w-28 rounded-lg py-4 bg-gray text-white order-2">03</p>
+					<p class="min-w-28 rounded-lg py-4 bg-gray text-white order-none">04</p>
+				</div>
+			</section>
+			<h3 class="text-3xl font-playball py-4">Grid</h3>
+			<div class="grid grid-cols-4 lg:grid-cols-none gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+				<div class="p-4 order-box">04</div>
+				<div class="p-4 order-box">05</div>
+				<div class="p-4 order-box">06</div>
+				<div class="grid grid-cols-subgrid gap-4 col-span-3">
+					<div class="col-start-2 p-4 order-box">07</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Row</h3>
+			<div class="grid grid-rows-4 lg:grid-rows-none grid-flow-col gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+				<div class="p-4 order-box">04</div>
+				<div class="p-4 order-box">05</div>
+				<div class="grid grid-rows-subgrid gap-4 row-span-3">
+					<div class="row-start-2 p-4 order-box">06</div>
+				</div>
+				<div class="p-4 order-box">07</div>
+				<div class="p-4 order-box hover:row-span-2 cursor-pointer">08</div>
+				<div class="p-4 order-box">09</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Col</h3>
+			<div class="grid grid-cols-3 gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+				<div class="p-4 rounded-lg col-span-2 shadow-lg bg-gray text-white">04</div>
+				<div class="p-4 order-box">05</div>
+				<div class="p-4 order-box">06</div>
+				<div class="p-4 rounded-lg col-start-3 col-end-4 shadow-lg bg-gray text-white">07</div>
+				<div class="p-4 order-box">08</div>
+				<div class="p-4 rounded-lg shadow-lg col-span-full bg-gray text-white">09</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Row(Start,end)</h3>
+			<div class="grid grid-rows-4 grid-flow-col gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+				<div class="p-4 order-box">04</div>
+				<div class="p-4 order-box">05</div>
+				<div class="row-start-2 p-4 order-box">06</div>
+				<div class="p-4 order-box row-span-2">07</div>
+				<div class="p-4 order-box row-start-2 row-end-5">10</div>
+				<div class="p-4 order-box row-span-full">11</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Auto Flow</h3>
+			<div class="grid grid-cols-3 grid-rows-3 grid-flow-col-dense lg:grid-flow-row-dense gap-4 text-center">
+				<div class="p-4 col-span-2 order-box">01</div>
+				<div class="p-4 col-span-2 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+				<div class="p-4 order-box">04</div>
+				<div class="p-4 order-box">05</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Col Flow</h3>
+			<div class="grid grid-flow-col auto-cols-max lg:auto-cols-min gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="text-3xl font-playball py-4">Grid Row Flow</h3>
+			<div class="grid grid-flow-row auto-rows-max lg:auto-rows-auto gap-4 text-center">
+				<div class="p-4 order-box">01</div>
+				<div class="p-4 order-box">02</div>
+				<div class="p-4 order-box">03</div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-white text-center text-3xl font-extrabold font-serif py-7;
+    }
+
+    h3 {
+        @apply text-center text-white text-3xl font-bold font-mono;
+    }
+    p{
+        @apply font-playball text-xl p-3;
+    }
+    section{
+        @apply bg-gray lg:h-[100vh] sm:h-auto;
+    }
+}
+
+@layer components {
+    .main-container {
+        @apply container bg-white h-auto lg:w-4/5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto lg:my-28 p-10 rounded-3xl;
+    }
+}

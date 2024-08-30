@@ -1,0 +1,36 @@
+.cus-slider {
+    :global {
+        .p-component {
+            &.p-carousel-horizontal {
+                @apply w-full;
+            }
+        }
+
+        .p-carousel-items-content {
+            @apply -mx-9;
+
+            .p-carousel-items-container{
+                .p-carousel-item{
+                    @apply px-2.5;
+                }
+            }
+        }
+        
+        .p-carousel{
+            .p-carousel-content {
+                .p-carousel-prev,
+                .p-carousel-next {
+                    @apply text-white z-1 bg-dark-grey w-10 h-10;
+
+                    &:enabled:hover{
+                        @apply bg-orange text-white;
+                    }
+
+                    &.p-disabled {
+                        @apply bg-dark-grey opacity-100;
+                    }
+                }            
+            }
+        }
+    }
+}

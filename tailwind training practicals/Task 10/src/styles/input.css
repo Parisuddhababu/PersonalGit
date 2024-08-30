@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-4xl text-center font-serif font-bold p-10 select-auto;
+    }
+
+    section {
+        @apply container mx-auto px-24 py-5 scroll-smooth;
+
+    }
+
+    h2 {
+        @apply text-center text-2xl font-mono pb-4;
+    }
+
+    input {
+        @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 caret-pink-500;
+    }
+    textarea{
+        @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+    }
+}
+
+@layer components {
+    .pointer {
+        @apply cursor-pointer;
+    }
+
+    .border-box {
+        @apply border border-slate-400 p-4;
+    }
+}

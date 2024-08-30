@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkterraforma_systems=self.webpackChunkterraforma_systems||[]).push([[4888],{64888:(s,e,r)=>{r.r(e),r.d(e,{default:()=>m});r(65043);var t=r(74117),a=r(70579);const m=()=>{const{t:s}=(0,t.Bd)();return(0,a.jsx)("div",{children:s("Smart Composters Page Incomming!!!")})}}}]);
+//# sourceMappingURL=4888.3a8f30d3.chunk.js.map

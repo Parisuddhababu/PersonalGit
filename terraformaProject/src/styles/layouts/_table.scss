@@ -1,0 +1,66 @@
+table {
+	@apply w-full text-sm text-left text-gray-500;
+	thead {
+		@apply text-sm text-black capitalize bg-accents-3;
+		tr {
+			th {
+				@apply p-5 text-white border-none first:rounded-tl-xl last:rounded-tr-xl;
+			}
+		}
+	}
+	tbody {
+		@apply text-gray-700;
+		tr {
+			@apply hover:bg-gray-200 hover:shadow transition-all duration-300 even:bg-accents-2 odd:bg-white;
+
+			td,
+			th {
+				padding-top: 15px;
+				padding-bottom: 15px;
+				@apply px-5 text-center;
+			}
+		}
+	}
+}
+//no-sonar
+.custom-dataTable {
+	max-width: calc(100vw - 67px);
+
+	@apply w-full my-0 mx-auto rounded-t-xl;
+
+	.sr-only {
+		@apply hidden;
+	}
+}
+
+.sidebar-show {
+	& ~ div {
+		.custom-dataTable {
+			max-width: calc(100vw - 29px);
+			@screen sm {
+				max-width: calc(100vw - 250px);
+			}
+		}
+	}
+}
+.scrollable-tree-container {
+	max-height: 400px; /* Adjust this value as needed */
+	overflow-y: auto;
+}
+
+.p-rating .p-rating-icon::before {
+	color: black;
+	background-color: black;
+}
+
+.p-rating .p-rating-icon::after {
+	color: black;
+	fill: black;
+}
+.p-rating .p-rating-icon {
+	@apply text-primary;
+}
+
+.audit-table{
+	@apply mx-0 max-w-full;
+}

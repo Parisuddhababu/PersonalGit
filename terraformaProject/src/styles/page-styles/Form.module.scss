@@ -1,0 +1,163 @@
+.form-group {
+	input:focus,
+	select:focus{
+		@apply shadow-outline-2;
+	}
+
+	.form-control {
+		&[type='text'],
+		&[type='password'],
+		&[type='date'],
+		&[type='datetime-local'],
+		&[type='number'],
+		&[type="tel"],
+		&[type="email"],
+		&.custom-select {
+			@apply appearance-none border w-full py-1 px-3 border-border-primary text-baseColor;
+			&:focus,
+			&:active {
+				@apply border-primary outline-0;
+			}
+			&.disabled,
+			&[disabled] {
+				@apply border-gray-300 bg-light-blue cursor-not-allowed placeholder:text-baseColor;
+			}
+		}
+
+		&[type='date'] {
+			@apply uppercase;
+			&::-webkit-inner-spin-button,
+			&::-webkit-calendar-picker-indicator {
+    			@apply hidden;
+			}
+		}
+
+		&.custom-select {
+			@apply pr-8 truncate cursor-pointer;
+		}
+	}
+
+	.input-group {
+		@apply relative;
+		&.with-icon {
+			.input-icon {
+				height: 100%;
+				@apply absolute top-0 right-0 w-10  flex items-center justify-center rounded rounded-tr-none rounded-br-none;
+
+				svg,
+				img {
+					@apply h-5 w-5;
+				}
+
+				&.error {
+					@apply bg-error border-error text-white;
+					svg {
+						@apply fill-white;
+					}
+				}
+			}
+
+			.form-control {
+				@apply px-4;
+			}
+
+			select {
+				&.form-control {
+					@apply pr-8 truncate;
+				}
+			}
+			
+			.input-login {
+				background-color: rgb(216 234 255 / 60%);
+				@apply border border-gray-200 bg-white focus:border focus:border-primary;
+			}
+		}
+		option {
+			@apply text-gray-600;
+		}
+
+		select:disabled {
+			@apply bg-slate-300;
+		}
+	}
+
+	.radio-btn-group {
+		@apply flex flex-wrap items-center;
+
+		.radio-btn {
+			@apply mr-3 my-1 flex items-center justify-start;
+			
+			input[type='radio'] {
+				height: 18px;
+				width: 18px;
+			}
+		}
+
+		&.radio-btn-group-list {
+			@apply block;
+			.radio-btn {
+				@apply block mr-0;
+			}
+		}
+	}
+
+	.checkbox-group {
+		.checkbox-item {
+			@apply mr-3 my-1 inline-block relative;
+
+			> span {
+				@apply block items-center cursor-pointer pl-7 relative font-normal;
+				&:before {
+					@apply inline-block border absolute left-0 rounded-extra-5 bg-white border-solid border-border-primary;
+					content: '';
+					height: 18px;
+					width: 18px;
+				}
+				&:after {
+					@apply bg-primary block absolute border border-solid border-white origin-center rotate-45;
+					border-width: 0 1.8px 1.8px 0;
+					height: 9px;
+					left: 6px;
+					top: 3px;
+					width: 4.5px;
+				}
+			}
+
+			input[type='checkbox'] {
+				@apply absolute left-0 opacity-0;
+				&:checked {
+					~ span {
+						&:before {
+							@apply bg-primary border-primary;
+						}
+						&:after {
+							content: '';
+						}
+					}
+				}
+				&.disabled,
+				&[disabled] {
+					~ span {
+						@apply text-gray-600 cursor-not-allowed;
+						&:before,
+						&:after {
+							@apply opacity-70;
+						}
+					}
+				}
+			}
+		}
+
+		&.checkbox-group-list {
+			.checkbox-item {
+				@apply block mr-0;
+			}
+		}
+	}
+}
+
+:global {
+	.error {
+		@apply border-red-500 text-red-500 font-thin;
+	}
+}

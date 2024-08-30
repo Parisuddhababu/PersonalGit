@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-3xl font-bold text-center;
+    }
+
+    h3 {
+        @apply text-2xl my-10 font-serif text-center;
+    }
+
+    section {
+        @apply container mx-auto;
+    }
+}
+
+@layer components {
+    .center {
+        @apply text-center;
+    }
+
+    .box-decoration {
+        @apply box-decoration-slice hover:box-decoration-clone bg-gradient-to-r from-gray to-purple text-white px-2 text-5xl;
+    }
+
+    .flex-box {
+        @apply p-4 min-w-14 h-14 bg-gray rounded-lg;
+    }
+
+    .break-through {
+        @apply min-w-full bg-gray p-6 text-white mb-6;
+    }
+}

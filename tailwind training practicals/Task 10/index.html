@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task10</title>
+		<link href="./output.css" rel="stylesheet" />
+	</head>
+	<header>
+		<h1>Tailwind Task 10</h1>
+	</header>
+	<body>
+		<main>
+			<section>
+				<h2>Brightness</h2>
+				<div class="flex justify-around">
+					<img class="pointer brightness-50 hover:brightness-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer brightness-75 hover:brightness-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer brightness-100 hover:brightness-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer brightness-150 hover:brightness-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2>Contrast</h2>
+				<div class="flex justify-around">
+					<img class="pointer contrast-50 hover:contrast-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer contrast-75 hover:contrast-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer contrast-150 hover:contrast-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer contrast-200 hover:contrast-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2>Hue Rotate</h2>
+				<div class="flex justify-around">
+					<img class="pointer -hue-rotate-180 hover:hue-rotate-0" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer -hue-rotate-90 hover:hue-rotate-0" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer hue-rotate-60 hover:hue-rotate-0" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer hue-rotate-90 hover:hue-rotate-0" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2>Saturate</h2>
+				<div class="flex justify-around">
+					<img class="pointer saturate-0 hover:saturate-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer saturate-50 hover:saturate-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer saturate-100 hover:saturate-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer saturate-200 hover:saturate-100" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2>Shadow & Opacity</h2>
+				<div class="flex justify-around">
+					<div class="w-auto shadow-sm shadow-yellow-500/50 pointer">
+						<img src="./src/assets/images/food_image.webp" width="300" height="200" class="hover:opacity-25" alt="food-img" title="food-img" />
+					</div>
+					<div class="w-auto shadow-md shadow-blue-500/50 pointer">
+						<img src="./src/assets/images/food_image.webp" width="300" height="200" class="hover:opacity-50" alt="food-img" title="food-img" />
+					</div>
+					<div class="w-auto shadow-lg shadow-indigo-500/50 pointer">
+						<img src="./src/assets/images/food_image.webp" width="300" height="200" class="hover:opacity-75" alt="food-img" title="food-img" />
+					</div>
+					<div class="w-auto shadow-xl shadow-cyan-500/50 pointer">
+						<img src="./src/assets/images/food_image.webp" width="300" height="200" class="hover:opacity-100" alt="food-img" title="food-img" />
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Blur</h2>
+				<div class="flex justify-around">
+					<img class="pointer blur-sm hover:blur-none" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer blur-md hover:blur-none" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer blur-lg hover:blur-none" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+					<img class="pointer blur-xl hover:blur-none" src="./src/assets/images/food_image.webp" width="300" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2 class="select-none">Grayscale && Invert && Sepia</h2>
+				<div class="flex justify-around">
+					<img class="pointer grayscale hover:grayscale-0" src="./src/assets/images/food_image.webp" width="400" height="200" alt="food-img" title="food-img" />
+					<img class="pointer invert hover:invert-0" src="./src/assets/images/food_image.webp" width="400" height="200" alt="food-img" title="food-img" />
+					<img class="pointer sepia hover:sepia-0" src="./src/assets/images/food_image.webp" width="400" height="200" alt="food-img" title="food-img" />
+				</div>
+			</section>
+			<section>
+				<h2 class="select-none">Transition</h2>
+				<div class="flex justify-around items-center text-black">
+					<div class="transform duration-100 py-4 px-4 rounded-lg transition ease-in-out hover:scale-150 bg-orange-400 h-24 w-36 text-center p-4">Scale 1.5</div>
+					<button class="transform duration-100 py-4 px-4 rounded-lg transition ease-in-out hover:rotate-180 bg-orange-400 h-24 w-36 p-4">Rotate 180°</button>
+					<button class="transform duration-100 py-4 px-4 rounded-lg transition ease-in-out hover:translate-x-20 hover:translate-y-20 bg-orange-400 h-24 w-36 p-4">Translate 5rem</button>
+					<button class="transform duration-100 py-4 px-4 rounded-lg transition ease-in-out hover:skew-x-12 hover:skew-y-12 bg-orange-400 h-24 w-36 p-4">Skew 12°</button>
+				</div>
+			</section>
+			<section>
+				<h2 class="select-none">Table</h2>
+				<table class="table-auto border border-slate-400 w-full p-4">
+					<thead>
+						<tr class="text-center">
+							<th class="border-box">S.No</th>
+							<th class="border-box">Name</th>
+							<th class="border-box">contact number</th>
+							<th class="border-box">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="hover:bg-slate-200 pointer text-center">
+							<td class="border-box">1</td>
+							<td class="border-box">Kumar</td>
+							<td class="border-box">123456789</td>
+							<td class="border-box">Active</td>
+						</tr>
+						<tr class="hover:bg-slate-200 pointer text-center">
+							<td class="border-box">2</td>
+							<td class="border-box">Kumar</td>
+							<td class="border-box">123456789</td>
+							<td class="border-box">Active</td>
+						</tr>
+						<tr class="hover:bg-slate-200 pointer text-center">
+							<td class="border-box">3</td>
+							<td class="border-box">Kumar</td>
+							<td class="border-box">123456789</td>
+							<td class="border-box">Active</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h2 class="select-none">SVG</h2>
+				<h2 class="select-none">Fill</h2>
+				<div class="flex justify-between">
+					<svg class="fill-rose-500 h-12" viewBox="0 0 46 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.0002 0C12.5068 0 4.00017 8.50659 4.00017 19V32.5335C4.00017 32.8383 3.9145 33.1371 3.75292 33.3956L0.912672 37.94C0.0801118 39.2721 1.0378 41 2.60867 41H43.3917C44.9625 41 45.9202 39.2721 45.0877 37.94L42.2474 33.3956C42.0858 33.1371 42.0002 32.8383 42.0002 32.5335V19C42.0002 8.50659 33.4936 0 23.0002 0ZM23.0002 48C20.2388 48 18.0002 45.7614 18.0002 43H28.0002C28.0002 45.7614 25.7616 48 23.0002 48Z"></path></svg>
+					<svg class="fill-black h-12" viewBox="0 0 46 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.0002 0C12.5068 0 4.00017 8.50659 4.00017 19V32.5335C4.00017 32.8383 3.9145 33.1371 3.75292 33.3956L0.912672 37.94C0.0801118 39.2721 1.0378 41 2.60867 41H43.3917C44.9625 41 45.9202 39.2721 45.0877 37.94L42.2474 33.3956C42.0858 33.1371 42.0002 32.8383 42.0002 32.5335V19C42.0002 8.50659 33.4936 0 23.0002 0ZM23.0002 48C20.2388 48 18.0002 45.7614 18.0002 43H28.0002C28.0002 45.7614 25.7616 48 23.0002 48Z"></path></svg>
+					<svg class="fill-purple-500 h-12" viewBox="0 0 46 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.0002 0C12.5068 0 4.00017 8.50659 4.00017 19V32.5335C4.00017 32.8383 3.9145 33.1371 3.75292 33.3956L0.912672 37.94C0.0801118 39.2721 1.0378 41 2.60867 41H43.3917C44.9625 41 45.9202 39.2721 45.0877 37.94L42.2474 33.3956C42.0858 33.1371 42.0002 32.8383 42.0002 32.5335V19C42.0002 8.50659 33.4936 0 23.0002 0ZM23.0002 48C20.2388 48 18.0002 45.7614 18.0002 43H28.0002C28.0002 45.7614 25.7616 48 23.0002 48Z"></path></svg>
+					<svg class="fill-none h-12" viewBox="0 0 46 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.0002 0C12.5068 0 4.00017 8.50659 4.00017 19V32.5335C4.00017 32.8383 3.9145 33.1371 3.75292 33.3956L0.912672 37.94C0.0801118 39.2721 1.0378 41 2.60867 41H43.3917C44.9625 41 45.9202 39.2721 45.0877 37.94L42.2474 33.3956C42.0858 33.1371 42.0002 32.8383 42.0002 32.5335V19C42.0002 8.50659 33.4936 0 23.0002 0ZM23.0002 48C20.2388 48 18.0002 45.7614 18.0002 43H28.0002C28.0002 45.7614 25.7616 48 23.0002 48Z"></path></svg>
+				</div>
+			</section>
+			<section>
+				<h2 class="select-none">Stroke</h2>
+				<div class="flex justify-around">
+					<div class="flex items-center justify-center">
+						<svg class="stroke-current h-10" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13C1 10.2386 3.23858 8 6 8H13.4914C14.3844 8 15.1691 7.40805 15.4144 6.54944L16.5856 2.45056C16.8309 1.59196 17.6156 1 18.5086 1H29.4914C30.3844 1 31.1691 1.59195 31.4144 2.45056L32.5856 6.54944C32.8309 7.40804 33.6156 8 34.5086 8H42C44.7614 8 47 10.2386 47 13V34C47 36.7614 44.7614 39 42 39H6C3.23858 39 1 36.7614 1 34V13Z" stroke-width="2"></path>
+							<circle cx="24" cy="23" r="9" stroke-width="2"></circle>
+						</svg>
+					</div>
+					<div class="flex items-center justify-center">
+						<svg class="stroke-black h-10" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13C1 10.2386 3.23858 8 6 8H13.4914C14.3844 8 15.1691 7.40805 15.4144 6.54944L16.5856 2.45056C16.8309 1.59196 17.6156 1 18.5086 1H29.4914C30.3844 1 31.1691 1.59195 31.4144 2.45056L32.5856 6.54944C32.8309 7.40804 33.6156 8 34.5086 8H42C44.7614 8 47 10.2386 47 13V34C47 36.7614 44.7614 39 42 39H6C3.23858 39 1 36.7614 1 34V13Z" stroke-width="2"></path>
+							<circle cx="24" cy="23" r="9" stroke-width="2"></circle>
+						</svg>
+					</div>
+					<div class="flex items-center justify-center">
+						<svg class="stroke-cyan-500 h-10" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 13C1 10.2386 3.23858 8 6 8H13.4914C14.3844 8 15.1691 7.40805 15.4144 6.54944L16.5856 2.45056C16.8309 1.59196 17.6156 1 18.5086 1H29.4914C30.3844 1 31.1691 1.59195 31.4144 2.45056L32.5856 6.54944C32.8309 7.40804 33.6156 8 34.5086 8H42C44.7614 8 47 10.2386 47 13V34C47 36.7614 44.7614 39 42 39H6C3.23858 39 1 36.7614 1 34V13Z" stroke-width="2"></path>
+							<circle cx="24" cy="23" r="9" stroke-width="2"></circle>
+						</svg>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2 class="select-none">Stroke Width</h2>
+				<div class="flex justify-around space-x-8">
+					<svg class="stroke-indigo-500 stroke-1" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="24" cy="24" r="23" stroke-linejoin="round"></circle>
+						<path d="M23 1C23 1 15 10.4901 15 24C15 37.5099 23 47 23 47" stroke-linejoin="round"></path>
+						<path d="M25 1C25 1 33 10.4901 33 24C33 37.5099 25 47 25 47" stroke-linejoin="round"></path>
+						<path d="M1 24H47"></path>
+					</svg>
+					<svg class="stroke-indigo-500 stroke-0" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="24" cy="24" r="23" stroke-linejoin="round"></circle>
+						<path d="M23 1C23 1 15 10.4901 15 24C15 37.5099 23 47 23 47" stroke-linejoin="round"></path>
+						<path d="M25 1C25 1 33 10.4901 33 24C33 37.5099 25 47 25 47" stroke-linejoin="round"></path>
+						<path d="M1 24H47"></path>
+					</svg>
+					<svg class="stroke-indigo-500 stroke-2" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="24" cy="24" r="23" stroke-linejoin="round"></circle>
+						<path d="M23 1C23 1 15 10.4901 15 24C15 37.5099 23 47 23 47" stroke-linejoin="round"></path>
+						<path d="M25 1C25 1 33 10.4901 33 24C33 37.5099 25 47 25 47" stroke-linejoin="round"></path>
+						<path d="M1 24H47"></path>
+					</svg>
+				</div>
+			</section>
+			<section>
+				<h2 class="font-mono">Interactivity</h2>
+				<h2>Accent Color</h2>
+				<div class="flex justify-between items-center">
+					<label> <input type="checkbox" checked /> Browser default </label>
+					<label> <input type="checkbox" class="accent-pink-500" checked /> Customized </label>
+					<label> <input type="checkbox" class="accent-violet-500" checked /> Customized </label>
+				</div>
+			</section>
+			<section>
+				<h2>Appearance</h2>
+				<div class="flex justify-center">
+					<select class="w-20 appearance-auto forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-slate-50 dark:bg-slate-800 hover:border-cyan-500 dark:hover:border-cyan-700 hover:bg-white dark:hover:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 px-2 mx-4">
+						<option>Yes</option>
+						<option>No</option>
+						<option>Maybe</option>
+					</select>
+					<select class="appearance-none row-start-1 col-start-1 bg-slate-50 dark:bg-slate-800 mx-4">
+						<option>Yes</option>
+						<option>No</option>
+						<option>Maybe</option>
+					</select>
+				</div>
+			</section>
+			<section>
+				<h2>cursor</h2>
+				<div class="flex justify-around">
+					<button type="button" class="cursor-help bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">cursor-help</button>
+					<button type="button" class="cursor-not-allowed bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">cursor-not-allowed</button>
+					<button type="button" class="cursor-none bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">cursor none</button>
+					<button type="button" class="cursor-progress bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">cursor-progress</button>
+				</div>
+			</section>
+			<section>
+				<h2>carret color</h2>
+				<input id="username" type="text" placeholder="Username" />
+			</section>
+			<section>
+				<h2>resize</h2>
+				<textarea id="message" rows="4" class="resize rounded-md" placeholder="Write your thoughts here..."></textarea>
+			</section>
+			<section>
+				<h2>User Select</h2>
+				<div class="select-none text-gray-500 dark:text-gray-400 text-center">The quick brown fox jumps over the lazy dog.</div>
+				<div class="select-all text-gray-500 dark:text-gray-400 text-center">The quick brown fox jumps over the lazy dog.</div>
+				<div class="select-text text-gray-500 dark:text-gray-400 text-center">The quick brown fox jumps over the lazy dog.</div>
+			</section>
+		</main>
+	</body>
+</html>

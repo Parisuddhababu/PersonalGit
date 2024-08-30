@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkterraforma_systems=self.webpackChunkterraforma_systems||[]).push([[4068],{84068:(s,e,r)=>{r.r(e),r.d(e,{default:()=>n});r(65043);var t=r(74117),a=r(70579);const n=()=>{const{t:s}=(0,t.Bd)();return(0,a.jsx)("div",{children:s("Smart Lifters Page Incomming!!!")})}}}]);
+//# sourceMappingURL=4068.8b608d3f.chunk.js.map

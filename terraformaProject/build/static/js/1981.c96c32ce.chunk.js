@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkterraforma_systems=self.webpackChunkterraforma_systems||[]).push([[1981],{46657:(s,e,r)=>{r.r(e),r.d(e,{default:()=>f});var a=r(59784),t=(r(65043),r(70579));const f=()=>(0,t.jsx)(a.A,{slider:!1})}}]);
+//# sourceMappingURL=1981.c96c32ce.chunk.js.map
