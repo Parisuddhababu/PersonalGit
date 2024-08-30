@@ -1,0 +1,75 @@
+
+/* Custom treeview -- START */
+
+.custom-tree label, .custom-tree img{
+    cursor: pointer;
+}
+.custom-tree .collapse-expand-btn{
+  width: 26px !important;
+  height: 26px;
+  margin-right: 14px;
+  z-index: 1;
+}
+.custom-tree .parent .parent-label{
+  font-weight: bold;
+  font-size: 14px;
+}
+.custom-tree .child{
+  padding-left: 70px;
+}
+.custom-tree .child .subchild{
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.custom-tree .expanded-child, .expanded-child .child .child-checkbox{
+  position: relative;
+}
+.custom-tree .expanded-child .child::before{
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: -8px;
+  left: 12px;
+  width: 1px;
+  background-color: #cccccc;
+}
+.custom-tree .expanded-child .child .child-checkbox::before{
+  content: "";
+  position: absolute;
+  left: -58px;
+  top: 10px;
+  width: 30px;
+  height: 1.5px;
+  background-color: #cccccc;
+}
+.custom-tree .collapse-child .child{
+  display: none;
+}
+
+.custom-checkbox .p-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox label {
+  margin-right: 10px!important;
+}
+
+/* Custom treeview -- END */
+
+.mr-2 {
+  margin-right: 0.5rem!important;
+}
+.mb-2 {
+  margin-bottom: 0.5rem!important;
+}
+.mr-4 {
+  margin-right: 1.5rem!important;
+}
+.d-flex {
+  display: flex!important;
+}
+.align-items-center {
+  align-items: center!important;
+}

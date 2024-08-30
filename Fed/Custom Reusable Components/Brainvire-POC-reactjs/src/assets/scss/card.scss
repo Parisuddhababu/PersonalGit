@@ -1,0 +1,169 @@
+/* styles.scss */
+.card-container {
+    width: 28rem;
+
+    .card {
+        max-width: 28rem;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: #f8f9fa;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+            transform: translateY(-0.5rem);
+        }
+
+        @media (min-width: 48rem) {
+            max-width: 32rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-container {
+            position: relative;
+
+            img {
+                object-fit: cover;
+                width: 60px;
+                height: 16rem;
+                background: transparent;
+                animation: fadeIn 1s ease;
+                /* Fade-in animation for images */
+            }
+
+            .overlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                --space: 0.125rem;
+                animation: fadeIn 0.5s ease forwards, slideIn 0.8s ease forwards;
+                /* Fade-in and slide-in animation for overlay content */
+
+                h2 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    margin-bottom: 0.5rem;
+
+                    animation: fadeIn 1s ease;
+                }
+
+                p {
+                    font-size: 1rem;
+                    color: #cccccc;
+                    animation: fadeIn 1s ease;
+                    /* Fade-in animation for text */
+                }
+            }
+
+            .marquee {
+                --duration: 5s;
+                --gap: var(--space);
+                display: flex;
+                overflow: hidden;
+                user-select: none;
+                transform: skewY(-1.8deg);
+            }
+
+            .marquee__group {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                gap: var(--gap);
+                min-width: 100%;
+                animation: scroll var(--duration) linear infinite;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .marquee__group {
+                    animation-play-state: paused;
+                }
+            }
+
+            .m-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .m-item img {
+                width: 28px;
+                height: 28px;
+                aspect-ratio: 1;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+
+            .m-item p {
+                font-size: 28px;
+                font-weight: bold;
+
+            }
+
+            .marquee--reverse .marquee__group {
+                animation-direction: reverse;
+                animation-delay: calc(var(--duration) / -2);
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(calc(-100% - var(--gap)));
+                }
+            }
+
+        }
+
+        .links {
+            padding: 1rem;
+
+            a {
+                display: block;
+                padding: 0.5rem 1rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                color: #ffffff;
+                background-color: #007bff;
+                border-radius: 0.25rem;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: 800;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                transition: background-color 0.3s, transform 0.3s;
+
+                &:hover {
+                    background-color: #0056b3;
+                    transform: translateY(-0.25rem);
+                }
+            }
+        }
+    }
+}
+
+// Keyframe animations
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(1rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

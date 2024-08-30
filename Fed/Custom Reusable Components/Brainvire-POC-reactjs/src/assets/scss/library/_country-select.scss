@@ -1,0 +1,181 @@
+@import "../common/variables";
+@import "../common/functions";
+@import "../common/mixins";
+
+#cNum {
+  @include flexbox;
+  flex-direction: row;
+  position: relative;
+
+  .search-country-main {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    input {
+      border: none;
+      border-bottom: 0.063rem solid #ccc;
+      @include border-radius(0);
+      border-top-right-radius: 0.25rem;
+      border-top-left-radius: 0.25rem;
+    }
+  }
+
+  input:not(.search-country) {
+    width: 100%;
+    float: right;
+    padding-left: 4.5rem !important;
+    margin: 0;
+    @include border-radius(0.313rem);
+    border: 0.063rem solid #cccccc;
+
+    &:focus {
+      border-color: #008dd2;
+    }
+  }
+
+  .country-list {
+    position: absolute;
+    top: 3.125rem;
+    width: 100%;
+    z-index: 2;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    white-space: nowrap;
+    @include border-radius(0.25rem);
+    box-shadow: 0 0 0 0.063rem hsla(0, 0%, 0%, 0.1), 0 0.25rem 0.688rem hsla(0, 0%, 0%, 0.1);
+
+    ul {
+      width: 100%;
+      padding: 0;
+      max-height: 9.375rem;
+      overflow-y: auto;
+      margin: 0;
+    }
+
+    li {
+      // padding: 0;
+      margin: 0;
+      cursor: pointer;
+      width: 100%;
+      align-items: flex-start;
+      color: #202020;
+      height: auto;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.125rem;
+      display: block;
+      background-color: #fff;
+      border-bottom: 0.063rem solid #f1f1f1;
+      overflow: hidden;
+      padding: 0.5rem 0.65rem;
+
+      &:hover,
+      &.active,
+      &:focus {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &:before {
+        content: none;
+      }
+
+      &.divider {
+        border-bottom: 0.063rem solid black;
+      }
+
+      .country-label {
+        padding-left: 0;
+        cursor: pointer;
+        display: block !important;
+        color: #202020;
+
+        @media only screen and (max-width: 767px) {
+          white-space: nowrap;
+          max-width: calc(100% - 4.375rem);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .country-value {
+        color: #202020;
+        cursor: pointer;
+        display: block !important;
+        margin-bottom: 0;
+
+        @media only screen and (max-width: 767px) {
+          width: 3.125rem;
+        }
+      }
+
+      label {
+        font-size: 0.875rem;
+
+        @media only screen and (max-width: 767px) {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    img,
+    .country-drop-image {
+      height: 0.875rem;
+      width: 1.25rem;
+      margin: auto 0.938rem auto 0.938rem;
+    }
+  }
+
+  #countryList {
+    @include flexbox;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: auto;
+    cursor: pointer;
+    top: 0;
+    background-size: 0.688 auto;
+    bottom: 0;
+    align-items: center;
+    border-right: 0.063rem solid #cccccc;
+    @include border-radius(0.313rem 0 0 0.313rem);
+    width: 3.75rem;
+
+    &::after {
+      content: "";
+      margin-left: 0.25rem;
+      border-top: 0.375rem solid $black-color;
+      border-left: 0.313rem solid transparent;
+      border-right: 0.313rem solid transparent;
+    }
+
+    label {
+      padding-left: 0;
+      display: block !important;
+      cursor: pointer;
+      font-size: 0.875rem;
+      margin-bottom: 0;
+    }
+
+    &>img,
+    .country-image {
+      width: 1.563rem;
+      height: auto;
+      margin: auto auto auto 0.625rem;
+    }
+
+    // .next-image-flag {
+    //   width: 1.563rem;
+    //   height: auto;
+    //   margin: auto auto auto 0.625rem;
+    // }
+  }
+}

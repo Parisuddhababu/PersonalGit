@@ -1,0 +1,62 @@
+[
+  {
+    "city": "Ahmedabad",
+    "area": "505.00 KM",
+    "latitude": 23.0225,
+    "longitude": 72.5714
+  },
+  {
+    "city": "Morbi",
+    "area": "46.58 KM",
+    "latitude": 22.8252,
+    "longitude": 70.8491
+  },
+  {
+    "city": "Rajkot",
+    "area": "170.00 KM",
+    "latitude": 22.3039,
+    "longitude": 70.8022
+  },
+  {
+    "city": "Bhavnagar",
+    "area": "108.27 KM",
+    "latitude": 21.7645,
+    "longitude": 72.1519
+  },
+  {
+    "city": "Vadodara",
+    "area": "220.33 KM",
+    "latitude": 22.3072,
+    "longitude": 73.1812
+  },
+  {
+    "city": "Jamnagar",
+    "area": "125.67 KM",
+    "latitude": 22.4707,
+    "longitude": 70.0577
+  },
+  {
+    "city": "Junagadh",
+    "area": "160.00 KM",
+    "latitude": 21.5222,
+    "longitude": 70.4579
+  },
+  {
+    "city": "Mehsana",
+    "area": "31.76 KM",
+    "latitude": 23.5880,
+    "longitude": 72.3693
+  },
+  {
+    "city": "Anand",
+    "area": "47.89 KM",
+    "latitude": 23.5880,
+    "longitude": 72.3693
+  },
+  {
+    "city": "Gandhinagar",
+    "area": "326.00 KM",
+    "latitude": 23.2156,
+    "longitude": 72.6369
+  }
+]

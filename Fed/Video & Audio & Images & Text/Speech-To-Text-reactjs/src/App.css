@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.mic-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.mic-image {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mic-image.animate {
+  animation: pulse 1s infinite;
+  box-shadow: 0 0 10px #888;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #888;
+  animation: fade 1s infinite;
+  opacity: 0;
+}
+
+.transcript {
+  margin-top: 20px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  resize: none;
+}
+
+.transcript:hover {
+  box-shadow: slategray 5px 5px 5px 5px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #464545;
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+    border-radius: 50%;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

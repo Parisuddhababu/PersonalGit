@@ -1,0 +1,16 @@
+export { default as ReadMoreIcon } from './ReadMoreIcon';
+export { default as CaseStudiesIcon } from './CaseStudiesIcon';
+export { default as SearchIcon } from './SearchIcon';
+export { default as ButtonDownArrowIcon } from './ButtonDownArrowIcon';
+export { default as RightSquareCornerSvg } from './RightSquareCorner';
+export { default as BottomRightCurveSvg } from './BottomRightCurve';
+export { default as BottomLeftCurveSvg } from './BottomLeftCurve';
+export { default as PlayButtonSvg } from './PlayButton';
+export { default as PrevArrowIcon } from './PrevArrowIcon';
+export { default as NextArrowIcon } from './NextArrowIcon';
+export { default as SmallNextArrowIcon } from './SmallNextArrowIcon';
+export { default as SmallPrevArrowIcon } from './SmallPrevArrowIcon';
+export { default as BtnRightArrow } from './BtnRightArrow';
+export { default as TopRightAngleArrow } from './TopRightAngleArrow';
+export { default as SliderNextArrow } from './SliderNextArrow';
+export { default as SliderPrevArrow } from './SliderPrevArrow';

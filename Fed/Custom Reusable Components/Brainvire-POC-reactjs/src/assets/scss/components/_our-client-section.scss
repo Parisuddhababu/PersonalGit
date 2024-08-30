@@ -1,0 +1,133 @@
+.our-client {
+    text-align: center;
+    padding: 3.875rem 0 4.45rem;
+
+    @include mq(768px) {
+        padding: 4.625rem 0 4.375rem;
+    }
+
+    @include mq(1024px) {
+        padding: 5.25rem 0 5rem;
+    }
+
+    @include mq(1440px) {
+        padding: 5.875rem 0 5.625rem;
+    }
+
+    h2 {
+        margin-bottom: 1.75rem;
+        position: relative;
+
+        @include mq(768px) {
+            margin-bottom: 2rem;
+        }
+
+        @include mq(1280px) {
+            margin-bottom: 2.375rem;
+        }
+
+        @include mq(1440px) {
+            margin-bottom: 2.813rem;
+        }
+
+        >span {
+            background-color: $white-color;
+            padding: 0 0.875rem;
+            display: inline-block;
+
+            @include mq(768px) {
+                padding: 0 1.25rem;
+            }
+
+            @include mq(1024px) {
+                padding: 0 1.75rem;
+            }
+
+            @include mq(1440px) {
+                padding: 0 2.188rem;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 0.125rem;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 1) 50%, rgba(217, 217, 217, 0) 100%);
+            z-index: -1;
+        }
+    }
+
+    ul {
+        @include grid(3, 1rem, 0.75rem);
+        margin-bottom: 0;
+
+        @include mq(375px) {
+            @include grid(3, 1.5rem, 0.813rem);
+        }
+
+        @include mq(768px) {
+            @include grid(4, 1.563rem, 0.938rem);
+        }
+
+        @include mq(991px) {
+            @include grid(5, 1.875rem, 1.25rem);
+        }
+
+        @include mq(1280px) {
+            @include grid(6, 1.875rem, 1.25rem);
+        }
+
+        @include mq(1440px) {
+            @include grid(6, 2.75rem, 1.875rem);
+        }
+
+        li {
+
+            .figure {
+                border: 0.063rem solid $border-color-2;
+                width: 100%;
+                height: 3.125rem;
+                @include flexbox();
+                align-items: center;
+                justify-content: center;
+                padding: 0.313rem 0.313rem;
+
+                @include mq(768px) {
+                    height: 4.25rem;
+                }
+
+                @include mq(1024px) {
+                    height: 4.688rem;
+                }
+
+                @include mq(1440px) {
+                    width: 10.25rem;
+                    height: 5.25rem;
+                }
+
+                >div,
+                img {
+                    vertical-align: middle;
+                    width: auto;
+                    height: 2.063rem !important;
+
+                    @include mq(768px) {
+                        height: 2.875rem !important;
+                    }
+
+                    @include mq(1280px) {
+                        height: 3rem !important;
+                    }
+
+                    @include mq(1440px) {
+                        height: 3.5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,126 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
+
+    @include mq(768px) {
+        min-height: calc(100% - (1.75rem * 2));
+    }
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+
+    &.hide {
+        display: none;
+    }
+
+    .modal-center {
+        @include flexbox;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        min-height: calc(100% - (0.5rem * 2));
+        justify-content: center;
+        padding: 3.125rem 0.938rem;
+        width: 100%;
+
+        @include mq(768px) {
+            padding: 3.125rem;
+        }
+
+        @include mq(1280px) {
+            padding: 1.875rem 4.375rem;
+        }
+
+        @include mq(1370px) {
+            padding: 3.125rem 4.375rem;
+        }
+    }
+
+    .modal-content {
+        width: 100%;
+        background-color: $white-color;
+        padding: 0;
+        position: relative;
+        max-width: 90%;
+
+        @include mq(1200px) {
+            max-width: 56.25rem;
+        }
+
+        @include mq(1520px) {
+            max-width: 81.25rem;
+        }
+
+        iframe {
+            vertical-align: middle;
+        }
+
+        .youtube-video-player {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+
+            iframe {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .close {
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        border: 0;
+        background: $white-color;
+        font-size: 0;
+        padding: 0.625rem;
+        outline: none;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        @include flexbox;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        cursor: pointer;
+        width: 1.75rem;
+        height: 1.75rem;
+
+        @include mq(768px) {
+            @include border-radius(100%);
+            background: linear-gradient(180deg, rgba($white-color, 0.2) 0%, rgba(255, 255, 255, 0) 143.27%);
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        svg {
+            width: 0.875rem;
+            height: 0.875rem;
+
+            path {
+                @include mq(768px) {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+}

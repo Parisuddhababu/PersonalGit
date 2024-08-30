@@ -1,0 +1,18 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+.grid {
+    @include grid(1, 1rem, 1rem);
+
+    @include mq(991px) {
+        @include grid(1, 1.25rem, 1.25rem);
+    }
+}
+
+.grid-2 {
+    @include grid(1, 1rem, 1rem);
+
+    @include mq(991px) {
+        @include grid(2, 1.25rem, 1.25rem);
+    }
+}

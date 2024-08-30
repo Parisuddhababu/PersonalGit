@@ -1,0 +1,311 @@
+@import "./variables";
+
+@mixin linear-gradient($direction, $color-stops...) {
+
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction)==false {
+    $color-stops: $direction,
+    $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+.fonts-loaded body {
+  font-family: $primary-font-family;
+}
+
+@mixin body-font {
+  font-family: $primary-font-family;
+  font-weight: normal;
+  // color: $secondary-color;
+  color: $black-color;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+
+  @include mq(1024px) {
+    font-size: 1rem;
+    line-height: 1.625rem;
+  }
+}
+
+@mixin newsUL-font {
+  font-weight: normal;
+  color: $secondary-color;
+  padding-top: 8.75rem;
+  font-size: 1rem;
+  line-height: 1.625rem;
+
+  @include mq(768px) {
+    font-size: 1rem;
+  }
+
+  @include mq(1520px) {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+}
+
+// === Font-size as h1-h6 headings === 
+
+@mixin font-xl {
+  font-size: 2.625rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  line-height: 3.313rem;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 3.75rem;
+    line-height: 4.438rem;
+  }
+}
+
+@mixin font-lg {
+  font-size: 1.563rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 2rem;
+  }
+}
+
+@mixin font-md {
+  font-size: 1.375rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 1.625rem;
+  }
+}
+
+@mixin font-sm {
+  font-size: 1.25rem;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 1.375rem;
+  }
+}
+
+@mixin font-xs {
+  font-size: 1.125rem;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 1.25rem;
+  }
+}
+
+@mixin font-xxs {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  text-transform: capitalize;
+
+  @include mq(1024px) {
+    font-size: 1.125rem;
+  }
+}
+
+@mixin font-xxxs {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  text-transform: capitalize;
+
+  @include mq(768px) {
+    font-size: 1rem;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin opacity($opacity) {
+  -webkit-opacity: $opacity;
+  -moz-opacity: $opacity;
+  -o-opacity: $opacity;
+  -ms-opacity: $opacity;
+  opacity: $opacity;
+}
+
+@mixin transition($seconds, $timing: ease) {
+  -webkit-transition: all $seconds ease;
+  -moz-transition: all $seconds ease;
+  -ms-transition: all $seconds ease;
+  -o-transition: all $seconds ease;
+  transition: all $seconds $timing;
+}
+
+@mixin transform($property) {
+  -o-transform: $property;
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  -moz-transform: $property;
+  transform: $property;
+}
+
+@mixin filter($filter-value) {
+  -o-filter: $filter-value;
+  -ms-filter: $filter-value;
+  -moz-filter: $filter-value;
+  -webkit-filter: $filter-value;
+  filter: $filter-value;
+}
+
+@mixin flexbox() {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin box-shadow($x-axis, $y-axis, $blur, $color) {
+  -ms-box-shadow: $x-axis $y-axis $blur $color;
+  -o-box-shadow: $x-axis $y-axis $blur $color;
+  -webkit-box-shadow: $x-axis $y-axis $blur $color;
+  -moz-box-shadow: $x-axis $y-axis $blur $color;
+  box-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin box-shadow-none {
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin box($property) {
+  box-sizing: $property;
+  -moz-box-sizing: $property;
+  -webkit-box-sizing: $property;
+  -o-box-sizing: $property;
+}
+
+@mixin trans-anim-none {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+@mixin space-none {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin app-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
+@mixin point-none {
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  -o-pointer-events: none;
+  -ms-pointer-events: none;
+  pointer-events: none;
+}
+
+// === Background properties === 
+
+@mixin bg-cmn {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin bg-parallax {
+  background-attachment: fixed;
+  @include bg-cmn;
+}
+
+// === CMN PADDING === 
+
+@mixin pading-70 {
+  padding: 3.125rem 0;
+
+  @include mq(1024px) {
+    padding: 4.375rem 0;
+  }
+}
+
+@mixin padding-50 {
+  padding: 2.188rem 0;
+
+  @include mq(1024px) {
+    padding: 3.125rem 0;
+  }
+}
+
+@mixin padding-30 {
+  padding: 0.938rem 0;
+
+  @include mq(1024px) {
+    padding: 1.875rem 0;
+  }
+}
+
+@mixin padding-0 {
+  padding: 0;
+}
+
+// === Custom Media Query === 
+
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+// === Custom Grid === 
+
+@mixin grid($column-count, $column-gap, $row-gap) {
+  display: grid;
+  grid-template-columns: repeat($column-count, minmax(1.875rem, calc((100% - #{$column-gap} * (#{$column-count} - 1)) / #{$column-count})));
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+  // width: 100%;
+  // justify-items: stretch;
+}
+
+// === Custom Container === 
+
+@mixin container($maxWidth) {
+  width: 100%;
+  max-width: $maxWidth;
+  margin-left: auto;
+  margin-right: auto;
+}

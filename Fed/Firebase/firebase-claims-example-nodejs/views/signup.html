@@ -1,0 +1,38 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+
+<form action="/signup" method="post">
+  <h1>Sign Up</h1>
+  <fieldset>
+    <legend></legend>
+    <label for="mail">Email:</label>
+    <input type="email" id="mail" name="email">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+
+    <label for="role">Role: </label>
+    <label class="light">You can select multiple role with key press of CTRL</label>
+    <select name="role" id="role" multiple>
+      <option value="market/read">Market Read</option>
+      <option value="market/write">Market Write</option>
+      <option value="merchant/read">Merchant Read</option>
+      <option value="merchant/write">Merchant Write</option>
+      <option value="crossdock/read">Crossdock Read</option>
+      <option value="crossdock/write">Crossdock Write</option>
+      <option value="user/read">User Read</option>
+      <option value="user/write">User Write</option>
+      <option value="zone/read">Zone Read</option>
+      <option value="zone/write">Zone Write</option>
+    </select>
+  </fieldset>
+  <button type="submit">Sign Up</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+.jodit-status-bar-link {
+    display: none;
+  }
+  
+  .jodit-wysiwyg {
+    ol, ul, li {
+      all: revert;
+    }
+  }

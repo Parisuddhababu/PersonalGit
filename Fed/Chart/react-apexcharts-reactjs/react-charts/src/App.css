@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
+  grid-template-rows: 500px 500px;
+  grid-auto-rows: 500px;
+}
+
+.container > div {
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 2em;
+border: 2px solid #d5d5d4;
+color: #979797;
+text-align: center;
+}

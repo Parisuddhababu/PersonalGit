@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="context-menu">
+      <div class="item" id="textField">Text</div>
+      <div class="item" id="textAreaField">Text Area</div>
+    </div>
+    <div class="container">
+      <div class="text-container">
+        <h2>Paragraph</h2>
+        <div class="para-container">
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error,
+            odio numquam eveniet aperiam tempora vitae mollitia voluptates
+            dolores hic quisquam perspiciatis quia eaque! Odio non modi
+            voluptatum magnam amet enim. Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Animi illo aliquid minima non, quibusdam earum
+            autem libero tempora nulla veniam eos dolorem perspiciatis a
+            similique, iste et. Temporibus, tempora facilis. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Amet, quo tempore
+            exercitationem optio, velit deserunt sunt assumenda nesciunt cum ea
+            quos debitis numquam reprehenderit et quis delectus obcaecati itaque
+            voluptatum! Lorem ipsum dolor sit, amet consectetur adipisicing
+            elit. Ipsum vero tempora officiis nobis quis incidunt voluptate iure
+            beatae. Culpa quas voluptates incidunt cumque voluptas doloribus
+            reiciendis vitae vero molestiae iure? Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Iusto fugit saepe harum explicabo
+            omnis, ipsa hic possimus incidunt obcaecati ipsum maxime libero?
+            Dignissimos tenetur omnis sed, deserunt consectetur incidunt
+            similique! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit culpa voluptatum cupiditate eaque est atque distinctio
+            hic! Praesentium fugiat quidem explicabo dignissimos officiis.
+            Excepturi, exercitationem ea quisquam quia laboriosam repellat.
+          </p>
+        </div>
+        <img
+          id="image"
+          src="https://i.pinimg.com/736x/7c/24/99/7c24996e5aec472f0e44f010828279d9.jpg"
+          alt="flag"
+          style="height: 250px; width: 250px; margin-top: 20px"
+        />
+        <img
+          id="image2"
+          src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+          alt="tree"
+          style="height: 250px; width: 250px; margin-top: 20px"
+        />
+      </div>
+      <div class="input-container" id="formContainer">
+        <form id="myForm">
+          <label for="text">Text</label><br />
+          <input
+            type="text"
+            id="text"
+            maxlength="20"
+            style="margin-bottom: 20px"
+          /><br />
+          <label for="textarea">Text Area</label><br />
+          <textarea
+            name="textarea"
+            id="textarea"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <div class="images-container" id="imagesList"></div>
+          <input
+            type="button"
+            style="cursor: pointer"
+            value="Submit form"
+          />
+        </form>
+      </div>
+    </div>
+    <script src="data.js"></script>
+  </body>
+</html>

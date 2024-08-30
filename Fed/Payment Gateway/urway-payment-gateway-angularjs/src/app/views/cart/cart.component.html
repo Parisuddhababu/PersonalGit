@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <form (ngSubmit)="onCartSave(f)" novalidate #f="ngForm">
+        <div class="card">
+          <div class="card-header">Cart Details</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">First Name <span class="asterisk_input"></span>
+                  </label>
+                  <input [(ngModel)]="model.firstName" type="text" name="firstName" class="form-control"
+                    placeholder="Enter First Name" #firstName="ngModel" required />
+                  <div class="form-control-feedback text-danger" *ngIf="firstName.errors && submitted">
+                    <p *ngIf="firstName.errors['required']">
+                      Please enter First Name
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Last Name <span class="asterisk_input"></span>
+                  </label>
+                  <input [(ngModel)]="model.lastName" type="text" name="lastName" class="form-control"
+                    placeholder="Enter Last Name" required #lastName="ngModel" />
+                  <div class="form-control-feedback text-danger" *ngIf="lastName.errors && submitted">
+                    <p *ngIf="lastName.errors['required']">
+                      Please enter Last Name
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Email Address <span class="asterisk_input"></span>
+                  </label>
+                  <input [(ngModel)]="model.customerEmail" type="text" name="customerEmail" class="form-control"
+                    placeholder="Enter Email Address" #customerEmail="ngModel" required />
+                  <div class="form-control-feedback text-danger" *ngIf="customerEmail.errors && submitted">
+                    <p *ngIf="customerEmail.errors['required']">
+                      Please enter Email address
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Amount <span class="asterisk_input"></span>
+                  </label>
+                  <input [(ngModel)]="model.amount" type="text" disabled name="amount" class="form-control"
+                    placeholder="Enter Amount" #amount="ngModel" required />
+                  <div class="form-control-feedback text-danger" *ngIf="amount.errors && submitted">
+                    <p *ngIf="amount.errors['required']">
+                      Please enter Amount
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Address
+                  </label>
+                  <input [(ngModel)]="model.address" type="text" name="address" class="form-control"
+                    placeholder="Enter Address" #address="ngModel" />
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">City
+                  </label>
+                  <input [(ngModel)]="model.city" type="text" name="city" class="form-control" placeholder="Enter City"
+                    #city="ngModel" />
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">State
+                  </label>
+                  <input [(ngModel)]="model.state" type="text" name="state" class="form-control"
+                    placeholder="Enter State" #state="ngModel" />
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Zip Code
+                  </label>
+                  <input [(ngModel)]="model.zipCode" type="text" name="zipCode" class="form-control"
+                    placeholder="Enter Zip Code" #zipCode="ngModel" />
+                </div>
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="form-group">
+                  <label for="meta_keywords">Phone Number
+                  </label>
+                  <input [(ngModel)]="model.phoneNumber" type="text" name="phoneNumber" class="form-control"
+                    placeholder="Enter Phone Number" #phoneNumber="ngModel" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check-circle-o fa-lg"></i>
+              Pay Now
+            </button>&nbsp;
+            <a class="btn btn-warning" [routerLink]="['/product-list']"><i class="fa fa-times"></i> Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

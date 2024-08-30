@@ -1,0 +1,50 @@
+// common
+@import "common/variables";
+@import "common/mixins";
+
+main {
+    position: relative;
+    min-height: calc(100vh - 0rem);
+    display: block;
+    padding: 3rem 0;
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+
+    @include mq(1280px) {
+        padding: 5rem 0;
+    }
+
+    .error-header {
+        text-align: center;
+
+        h1 {
+            margin-bottom: 0.75rem;
+            font-size: 1.75rem;
+            line-height: 2.25rem;
+
+            @include mq(991px) {
+                font-size: 2rem;
+                line-height: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            @include mq(1280px) {
+                font-size: 3rem;
+                line-height: 3.75rem;
+            }
+        }
+
+        p {
+            margin-bottom: 1rem;
+
+            @include mq(1024px) {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+footer {
+    display: block;
+}

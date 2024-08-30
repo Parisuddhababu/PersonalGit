@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geofencing</title>
+  </head>
+  <body>
+    <h2>Geofence polygon coordinates using google maps api</h2>
+    <div
+      style="
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      "
+    >
+      <div>
+        <label for="pac-input">Search</label>
+        <input id="pac-input" type="text" placeholder="Enter a location" />
+      </div>
+      <div>
+        <label for="list">Polygon</label>
+        <select id="list">
+          <option value="">--select--</option>
+          <option value="1">Polygon1</option>
+          <option value="2">Polygon2</option>
+        </select>
+      </div>
+    </div>
+    <div class="pac-card" id="pac-card">
+      <div>
+        <div id="title">Autocomplete search</div>
+      </div>
+    </div>
+    <div id="map" style="height: 450px"></div>
+    <div id="infowindow-content">
+      <span id="place-name" class="title"></span><br />
+      <span id="place-address"></span>
+    </div>
+    <div>
+      <button id="save" style="background-color: darkolivegreen">Save</button>
+    </div>
+    <h4>Coordinates</h4>
+    <ul id="coords"></ul>
+
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key={GOOGLE_MAP_API_KEY}&libraries=drawing,places"
+      integrity=""
+      crossorigin="anonymous"
+    ></script>
+    <script src="map.js"></script>
+  </body>
+</html>

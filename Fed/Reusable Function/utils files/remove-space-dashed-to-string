@@ -1,0 +1,34 @@
+### JSON Structure
+```
+const name = "Hello Brainers how-are you?"
+const phoneNumber = " +1 666-6666-6666 "
+```
+
+### Functionality
+```
+/**
+ * Remove dashed ('-') and space (' ') from string
+ * @param cString current String
+ * @returns string
+ */
+export const removeDashedSpaceFromString = (cString) => {
+  if (cString) {
+    const removedDashedString = cString.replaceAll('-', '');
+    return removedDashedString.replaceAll(' ', '');
+  }
+  return cString;
+}
+```
+
+### Output Structure
+```
+1) removeDashedSpaceFromString(name);
+
+=> "HelloBrainershowareyou?"
+
+----------------------------------------
+2) removeDashedSpaceFromString(phoneNumber)
+
+=> "+166666666666"
+```
+

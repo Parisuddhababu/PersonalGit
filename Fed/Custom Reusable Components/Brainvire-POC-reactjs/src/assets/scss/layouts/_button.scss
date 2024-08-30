@@ -1,0 +1,377 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+.btn {
+    padding: 0.75rem 1.75rem;
+    text-align: center;
+    cursor: pointer;
+    border: 0.125rem solid $primary-color;
+    outline: none;
+    background: $white-color;
+    color: $blue;
+    font-size: 0.875rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 1.625rem;
+    font-weight: 600;
+    font-family: $primary-font-family;
+    @include transition(0.2s);
+    min-width: 7.5rem;
+    min-height: 2.875rem;
+
+    @include mq(1024px) {
+        font-size: 1rem;
+        min-width: 9.375rem;
+        min-height: 3.125rem;
+        line-height: 1.313rem;
+    }
+
+    &:hover {
+        border-color: $light-blue;
+        color: $white-color;
+        background: transparent;
+    }
+
+    &.btn-full {
+        width: 100%;
+    }
+
+    &.spinner {
+        padding-left: 1rem;
+        padding-right: 2.5rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            @include box(border-box);
+            position: absolute;
+            top: 50%;
+            right: 0.65rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: -0.625rem;
+            margin-left: -0.625rem;
+            @include border-radius(50%);
+            border-top: 0.125rem solid $white-color;
+            border-right: 0.125rem solid transparent;
+            animation: spinner 0.6s linear infinite;
+        }
+    }
+
+    &.btn-primary {
+        background: $primary-color;
+        color: $white-color;
+        border-color: $primary-color;
+
+        svg {
+            vertical-align: middle;
+
+            path {
+                fill: $white-color;
+            }
+        }
+
+        &:hover {
+            background: $white-color;
+            color: $primary-color;
+            border-color: $primary-color;
+
+
+            svg {
+                path {
+                    fill: $primary-color;
+                }
+            }
+
+            &.spinner {
+                &::before {
+                    border-top-color: $primary-color;
+                }
+            }
+
+            &.disabled,
+            &:disabled {
+                background: $primary-color;
+                color: $white-color;
+                border-color: $primary-color;
+
+                svg {
+                    path {
+                        fill: $white-color;
+                    }
+                }
+
+                &::before {
+                    border-top-color: $white-color;
+                }
+            }
+        }
+    }
+
+    &.btn-primary-gradiant {
+        background: linear-gradient(90deg, #0053CE, #00C2FF 51%, #0053CE) 0/200%;
+        color: $white-color;
+        border: 0;
+        @include transition(0.5s);
+
+        svg {
+            vertical-align: middle;
+
+            path {
+                fill: $white-color;
+            }
+        }
+
+        &:hover {
+            background: linear-gradient(90deg, #0053CE, #00C2FF 51%, #0053CE) 100%/200%;
+
+            &.disabled,
+            &:disabled {
+                background: linear-gradient(90deg, #0053CE, #00C2FF 51%, #0053CE) 0/200%;
+                color: $white-color;
+            }
+        }
+    }
+
+    &.btn-black {
+        background-color: $black-color;
+        color: $white-color;
+        background-image: none;
+        border-color: transparent;
+
+        &:hover {
+            color: $black-color;
+            background: transparent;
+            border-color: $black-color;
+
+            &.disabled,
+            &:disabled {
+                background-color: $black-color;
+                color: $white-color;
+            }
+        }
+    }
+
+    &.btn-secondary {
+        background-color: $white-color;
+        color: $black-color;
+        background-image: none;
+        border-color: transparent;
+
+        &:hover {
+            color: $primary-color;
+            border-color: $primary-color;
+
+            >span {
+                svg {
+                    path {
+                        fill: $primary-color;
+                    }
+
+                    circle {
+                        stroke: $primary-color;
+                    }
+                }
+            }
+
+            &.spinner {
+                &::before {
+                    border-top-color: $primary-color;
+                }
+            }
+        }
+    }
+
+    &.btn-outline-primary {
+        background: $white-color;
+        color: $primary-color;
+        border-color: $primary-color;
+
+        svg {
+            vertical-align: middle;
+
+            path {
+                fill: $primary-color;
+            }
+        }
+
+        &:hover {
+            color: $white-color;
+            background: $primary-color;
+
+            svg {
+                path {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+
+    &.btn-square {
+        @include border-radius(0.375rem);
+    }
+
+    &.disabled,
+    &:disabled {
+        @include opacity(0.5);
+        cursor: not-allowed;
+    }
+}
+
+@keyframes spinner {
+    to {
+        @include transform(rotate(360deg));
+    }
+}
+
+.btn-icon {
+    column-gap: 0.625rem;
+
+    .btn-svg-icon {
+        display: inline-flex;
+
+        svg {
+            height: 1.25rem;
+            width: 2rem;
+            vertical-align: middle;
+            @include transition(0.2s);
+
+            path {
+                @include transition(0.2s);
+            }
+        }
+    }
+
+    &.btn-sm-icon {
+        .btn-svg-icon {
+            svg {
+                height: 1rem;
+                width: 1.25rem;
+            }
+        }
+    }
+}
+
+.btn-link {
+    @include font-xxxs;
+    font-weight: 600;
+    color: $black-color;
+    @include transition(0.2s);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    &>.btn-icon {
+        display: inline-flex;
+        margin-left: 0.5rem;
+
+        @include mq(1024px) {
+            margin-left: 0.625rem;
+        }
+
+        svg {
+            height: 1.25rem;
+            width: 1.375rem;
+            vertical-align: middle;
+            @include transition(0.2s);
+
+            path {
+                @include transition(0.2s);
+            }
+        }
+
+        &.btn-icon-lg {
+            svg {
+                height: 0.938rem;
+                width: 1.563rem;
+
+                @include mq(768px) {
+                    height: 1.25rem;
+                    width: 2rem;
+                }
+            }
+        }
+    }
+
+    &.btn-icon-left {
+        &>.btn-icon {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+    }
+
+    &:hover {
+        color: $primary-color;
+
+        >span {
+            svg {
+                path {
+                    fill: $primary-color;
+                }
+
+                circle {
+                    stroke: $primary-color;
+                }
+            }
+        }
+    }
+
+    &.btn-link-white {
+        color: $white-color;
+
+        >span {
+            svg {
+                path {
+                    fill: $white-color;
+                }
+
+                circle {
+                    stroke: $white-color;
+                }
+            }
+        }
+
+        &:hover {
+            >span {
+                svg {
+                    path {
+                        fill: $white-color;
+                    }
+
+                    circle {
+                        stroke: $white-color;
+                    }
+                }
+            }
+
+            color: $white-color;
+
+        }
+    }
+
+    &.btn-link-primary {
+        color: $primary-color;
+
+        >span {
+            svg {
+                path {
+                    fill: $primary-color;
+                }
+
+                circle {
+                    stroke: $primary-color;
+                }
+            }
+        }
+    }
+
+    &.disabled,
+    &:disabled {
+        @include opacity(0.5);
+        cursor: not-allowed;
+        border: 0;
+    }
+}

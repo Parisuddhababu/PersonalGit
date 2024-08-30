@@ -1,0 +1,78 @@
+.search-skill {
+    position: relative;
+
+    .MuiFormControl-root {
+        margin-bottom: 0;
+
+        .MuiInputBase-root {
+            padding: 0;
+            gap: 5px;
+
+            &.MuiOutlinedInput-root {
+                padding-right: 0;
+            }
+
+            &.Mui-focused,
+            &:hover {
+                input {
+                    border-color: #787a7c;
+                }
+            }
+
+            input {
+                width: 100%;
+                background: #f8f8f8;
+                padding: 14px 15px 14px 45px;
+                border: 1px solid transparent;
+            }
+
+            fieldset {
+                &.MuiOutlinedInput-notchedOutline {
+                    border-color: transparent;
+                }
+            }
+        }
+
+        .MuiAutocomplete-endAdornment {
+            display: none;
+        }
+    }
+
+    & > .search-icon {
+        position: absolute;
+        left: 11px;
+        bottom: 17px;
+    }
+
+    &.Mui-focused {
+
+        .MuiSvgIcon-root,
+        & > svg {
+            path {
+                fill: #071b34;
+            }
+        }
+    }
+}
+
+.parent-menu {
+    font-weight: 800;
+}
+
+.child-menu {
+    padding-left: 40px !important;
+    font-weight: 500;
+}
+
+.grandChild-menu {
+    padding-left: 60px !important;
+}
+
+.MuiAutocomplete-option {
+    word-break: break-word;
+    white-space: normal;
+}
+
+.MuiChip-label {
+    overflow: unset !important;
+}

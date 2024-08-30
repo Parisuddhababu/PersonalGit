@@ -1,0 +1,164 @@
+.filter-section {
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
+  padding: 13px 20px;
+  position: relative;
+  row-gap: 10px;
+  border-radius: 8px;
+  box-shadow: '0px 4px 11px #9C9BAA4D';
+
+  &::after {
+    content: '';
+    border: 10px solid transparent;
+    border-bottom: 15px solid #f8f8f8;
+    position: absolute;
+    top: -25px;
+    right: 72px;
+  }
+
+  .filter-button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    color: #9c9baa;
+    line-height: 19px;
+    font-weight: 600;
+    font-size: 16px;
+    border: '1px solid #E2E0E0';
+    background-color: '#ffffff';
+
+    &[aria-expanded='true'] {
+      background-color: #e2e0e0;
+    }
+
+    .MuiButton-endIcon {
+      margin: 0;
+    }
+  }
+}
+
+.filter-details {
+  .MuiPaper-root {
+    max-width: 300px;
+    min-width: 300px;
+  }
+
+  .date-input {
+    margin: 0;
+    width: 160px;
+
+    .MuiInputBase-root {
+      padding: 0;
+
+      input {
+        padding: 10px 0px 10px 15px;
+        font-size: 14px;
+        color: transparent;
+      }
+    }
+
+    .MuiInputAdornment-root {
+      margin: 0;
+
+      .MuiButtonBase-root {
+        margin: 0 10px 0 0;
+
+        svg {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+
+  .icon {
+    margin: auto 22px;
+  }
+
+  .top-section,
+  .bottom-section {
+    margin: 15px;
+  }
+
+  .top-section {
+    .MuiInputBase-root {
+      input {
+        font-size: 14px;
+        padding: 10px 10px 10px 15px;
+      }
+    }
+  }
+
+  .middle-section {
+    max-height: 260px;
+    overflow: auto;
+    font-size: 14px;
+    margin: 3px 0;
+
+    .check-icon {
+      svg {
+        font-size: 20px;
+      }
+    }
+
+    label.MuiFormControlLabel-root {
+      margin: 2px 20px 2px 0;
+      padding: 5px 0px 5px 15px;
+      position: relative;
+      z-index: 1;
+      display: block;
+
+      .MuiCheckbox-root.Mui-checked {
+        & ~ .MuiTypography-root {
+          &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #f8f8f8;
+            z-index: -1;
+          }
+        }
+      }
+
+      .MuiFormControlLabel-label {
+        font-size: 14px;
+        word-break: break-word;
+      }
+    }
+  }
+
+  .bottom-section {
+    button {
+      font-size: 16px;
+      line-height: 19px;
+
+      .MuiButton-iconSizeSmall {
+        .MuiSvgIcon-root {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.parent-menu-filter {
+  font-weight: 500 !important;
+  display: block !important;
+}
+
+.child-menu-filter {
+  padding-left: 40px !important;
+  display: block !important;
+}
+
+.grand-child-menu-filter {
+  padding-left: 60px !important;
+  display: block !important;
+}
+
+.circular-loader {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.MuiPopover-paper {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px !important;
+}
